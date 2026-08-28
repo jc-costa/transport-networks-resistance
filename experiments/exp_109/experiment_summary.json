@@ -1,0 +1,33 @@
+{
+  "title": "Test 5 \u2014 Linear chain, 2 self-loops on the SAME internal node",
+  "source_notebook": "test_self_loops.ipynb",
+  "timestamp": "20260601_194518",
+  "experiment_number": 109,
+  "k_ohm": 1000.0,
+  "n_nodes": 3,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 4,
+  "n_self_loops": 2,
+  "loop_description": "2 loops on internal (node 0) after merge_boundary_nodes",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 4000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 2.0,
+  "error_percent": 100.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.25,
+    1.0,
+    0.0
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ]
+}

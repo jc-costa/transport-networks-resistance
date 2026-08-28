@@ -1,0 +1,65 @@
+{
+  "experiment": {
+    "experiment_number": 788,
+    "timestamp": "20260722_124335",
+    "environment": "Local",
+    "experiment_dir": "<project_root>/utils/../experiments/exp_788",
+    "base_dir": "<project_root>/utils/../experiments"
+  },
+  "unit_tests": {
+    "single_edge_impedance": 1000.0,
+    "ladder_impedance": 500.0,
+    "planar_cross_check_2d_impedance": 3102.247829816149,
+    "planar_cross_check_3d_impedance": 3102.247829816149
+  },
+  "random_network": {
+    "N": 85,
+    "a": 0.6,
+    "contact_distance": 0.06,
+    "attempts": 1,
+    "n_contacts": 144,
+    "uniform_impedance": 3564.8720002035443,
+    "distance_dependent_impedance": 480.37192921922787
+  },
+  "sweep": {
+    "N_values": [
+      40,
+      55,
+      70,
+      85
+    ],
+    "a": 0.6,
+    "contact_distance": 0.06,
+    "n_trials": 5,
+    "R_eff_by_N": {
+      "40": [
+        506.0951355707445,
+        1363.8987650469232,
+        576.9295227495905,
+        616.3698581032977,
+        717.588408301815
+      ],
+      "55": [
+        865.4112904220299,
+        552.6097220751418,
+        955.8777312697523,
+        735.6448102424347,
+        1478.8534139341375
+      ],
+      "70": [
+        781.3312305865552,
+        367.98806605446094,
+        951.8182302496035,
+        276.8537247053611,
+        226.9007314442063
+      ],
+      "85": [
+        225.73911558723375,
+        289.3078743397376,
+        310.8565766650393,
+        213.7942822444639,
+        186.3892171953759
+      ]
+    }
+  }
+}

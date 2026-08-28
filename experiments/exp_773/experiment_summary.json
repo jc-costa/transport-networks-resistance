@@ -1,0 +1,19 @@
+{
+  "title": "Manual Example 3: Highway + 2-level cascading dead-end",
+  "N": 6,
+  "a": 1.0001999800039991,
+  "k": 1000,
+  "timestamp": "20260707_154134",
+  "experiment_number": 773,
+  "in_colab": false,
+  "intersections_found": 5,
+  "has_percolation": true,
+  "proceed_to_impedance": true,
+  "has_dead_ends": true,
+  "edges_before_pruning": 4,
+  "edges_after_pruning": 2,
+  "removed_edges_count": 2,
+  "impedance": 2000.0,
+  "impedance_singular": false,
+  "condition_number": 1.0
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Test 4 \u2014 Full pipeline integration with self-loop injection",
+  "source_notebook": "test_self_loops.ipynb",
+  "timestamp": "20260601_123534",
+  "experiment_number": 94,
+  "k_ohm": 1000.0,
+  "n_nodes": 3,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 3,
+  "n_self_loops": 1,
+  "loop_description": "1 loop injected on internal node after merge_boundary_nodes",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 3000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 1.5,
+  "error_percent": 50.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.3333333333333333,
+    1.0,
+    0.0
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "topology": "full_pipeline",
+  "source": "test4_sticks"
+}

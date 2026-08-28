@@ -1,0 +1,19 @@
+{
+  "title": "Manual Example 1: Highway + 2 dead-end branches",
+  "N": 7,
+  "a": 1.0248902380255167,
+  "k": 1000,
+  "timestamp": "20260707_154133",
+  "experiment_number": 771,
+  "in_colab": false,
+  "intersections_found": 6,
+  "has_percolation": true,
+  "proceed_to_impedance": true,
+  "has_dead_ends": true,
+  "edges_before_pruning": 5,
+  "edges_after_pruning": 3,
+  "removed_edges_count": 2,
+  "impedance": 3000.0,
+  "impedance_singular": false,
+  "condition_number": 3.0
+}

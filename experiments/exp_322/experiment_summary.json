@@ -1,0 +1,33 @@
+{
+  "title": "Test 1f - Chain mixed loops (2S+1I+2D)",
+  "source_notebook": "test_self_loops.ipynb",
+  "timestamp": "20260615_151612",
+  "experiment_number": 322,
+  "k_ohm": 1000.0,
+  "n_nodes": 3,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 7,
+  "n_self_loops": 5,
+  "loop_description": "2 loops source + 1 loop internal + 2 loops drain",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 2000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 1.0,
+  "error_percent": 0.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ]
+}

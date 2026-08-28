@@ -1,0 +1,19 @@
+{
+  "title": "Manual Example 2: Two rails + 2 dead-ends (one per rail)",
+  "N": 8,
+  "a": 0.98508882848198,
+  "k": 1000,
+  "timestamp": "20260511_112025",
+  "experiment_number": 78,
+  "in_colab": false,
+  "intersections_found": 8,
+  "has_percolation": true,
+  "proceed_to_impedance": true,
+  "has_dead_ends": true,
+  "edges_before_pruning": 8,
+  "edges_after_pruning": 6,
+  "removed_edges_count": 2,
+  "impedance": 1000.0,
+  "impedance_singular": false,
+  "condition_number": 1.0
+}

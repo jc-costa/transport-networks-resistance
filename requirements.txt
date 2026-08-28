@@ -1,0 +1,14 @@
+# Runtime dependencies for the simulation and analysis pipeline.
+# Pinned to the versions the published results were produced with.
+numpy==2.0.2
+scipy==1.13.1
+matplotlib==3.9.4
+
+# PDF report generation (utils/pdf_generator.py, utils/rebuild_experiments.py)
+reportlab==4.4.10
+
+# Notebook execution, including the cluster jobs that run a whole
+# notebook end-to-end via nbclient (cluster/run_*_sweep.sbatch)
+jupyterlab==4.2.5
+nbclient==0.10.2
+ipykernel==6.29.5

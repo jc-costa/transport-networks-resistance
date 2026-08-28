@@ -1,0 +1,19 @@
+{
+  "title": "Small-a Random (a=0.15, N=200, seed=99)",
+  "N": 200,
+  "a": 0.15,
+  "k": 1000,
+  "timestamp": "20260707_154135",
+  "experiment_number": 774,
+  "in_colab": false,
+  "intersections_found": 295,
+  "has_percolation": true,
+  "proceed_to_impedance": true,
+  "has_dead_ends": true,
+  "edges_before_pruning": 268,
+  "edges_after_pruning": 255,
+  "removed_edges_count": 13,
+  "impedance": 16087.839066014014,
+  "impedance_singular": false,
+  "condition_number": 721.4692849929064
+}

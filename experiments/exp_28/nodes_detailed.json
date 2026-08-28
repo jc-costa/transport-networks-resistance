@@ -1,0 +1,106 @@
+[
+  {
+    "local_index": 0,
+    "global_index": 5,
+    "x": 0.9085123221010494,
+    "y": 0.5146141013558194,
+    "type": "drain",
+    "voltage_V": 0.3333333333333335
+  },
+  {
+    "local_index": 1,
+    "global_index": 6,
+    "x": 0.7106638710680029,
+    "y": 0.32438564080974863,
+    "type": "internal",
+    "voltage_V": 0.5999999999999995
+  },
+  {
+    "local_index": 2,
+    "global_index": 22,
+    "x": 0.38934427021650503,
+    "y": 0.8781201296081218,
+    "type": "internal",
+    "voltage_V": 0.6666666666666664
+  },
+  {
+    "local_index": 3,
+    "global_index": 24,
+    "x": 0.26969696824762723,
+    "y": 0.8356831533515978,
+    "type": "internal",
+    "voltage_V": 0.6666666666666665
+  },
+  {
+    "local_index": 4,
+    "global_index": 25,
+    "x": 0.060570811500492885,
+    "y": 0.7615094644972957,
+    "type": "source",
+    "voltage_V": 0.33333333333333326
+  },
+  {
+    "local_index": 5,
+    "global_index": 40,
+    "x": 0.4060000678209555,
+    "y": 0.7561269374071649,
+    "type": "internal",
+    "voltage_V": 1.0000000000000002
+  },
+  {
+    "local_index": 6,
+    "global_index": 58,
+    "x": 0.35253007793412205,
+    "y": 0.6649811320133829,
+    "type": "internal",
+    "voltage_V": 0.19999999999999996
+  },
+  {
+    "local_index": 7,
+    "global_index": 64,
+    "x": 0.6168942366746691,
+    "y": 0.7528407549074616,
+    "type": "internal",
+    "voltage_V": 1.0
+  },
+  {
+    "local_index": 8,
+    "global_index": 88,
+    "x": 0.042012743712459,
+    "y": 0.4148266570235242,
+    "type": "source",
+    "voltage_V": 0.0
+  },
+  {
+    "local_index": 9,
+    "global_index": 127,
+    "x": 0.9436912965739103,
+    "y": 0.3182748683523624,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 10,
+    "global_index": 141,
+    "x": 0.7594168000378261,
+    "y": 0.8304884685610209,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 11,
+    "global_index": 142,
+    "x": 0.9398601029910872,
+    "y": 0.3396573452667913,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 12,
+    "global_index": 144,
+    "x": 0.9488285292279632,
+    "y": 0.31526196648585925,
+    "type": "drain",
+    "voltage_V": null
+  }
+]

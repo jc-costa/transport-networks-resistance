@@ -1,0 +1,26 @@
+[
+  {
+    "local_index": 0,
+    "global_index": 105,
+    "x": 0.037074348333814705,
+    "y": 0.1707229372585377,
+    "type": "source",
+    "voltage_V": 0.5
+  },
+  {
+    "local_index": 1,
+    "global_index": 112,
+    "x": 0.32814037472704904,
+    "y": 0.1815420550257533,
+    "type": "internal",
+    "voltage_V": 1.0
+  },
+  {
+    "local_index": 2,
+    "global_index": 140,
+    "x": 0.927387822447924,
+    "y": 0.3535659098079841,
+    "type": "drain",
+    "voltage_V": 0.0
+  }
+]

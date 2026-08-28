@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: Effective Resistance of Random Stick-Percolation Networks
+message: If you use this software or data, please cite it as below.
+type: software
+authors:
+  - family-names: Costa
+    given-names: Jefferson Carlos Lima da
+    affiliation: Centro de Informática, Universidade Federal de Pernambuco
+abstract: >-
+  Simulation and analysis code for an MSc dissertation on charge transport in
+  random conductive-stick networks. Builds random 2D and 3D stick networks,
+  solves the percolating cluster as a resistor network through the graph
+  Laplacian, studies how effective resistance depends on stick number, stick
+  length and film thickness, and tests whether an onion-layer probe protocol
+  recovers geometric information that a single scalar resistance measurement
+  collapses away.
+keywords:
+  - percolation
+  - effective resistance
+  - stick networks
+  - nanowire networks
+  - graph Laplacian
+  - inverse problem
+license: MIT
+year: 2026

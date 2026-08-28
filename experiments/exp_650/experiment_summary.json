@@ -1,0 +1,33 @@
+{
+  "title": "Test 1a - Chain 1 loop on source",
+  "source_notebook": "test_self_loops.ipynb",
+  "timestamp": "20260615_203129",
+  "experiment_number": 650,
+  "k_ohm": 1000.0,
+  "n_nodes": 3,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 3,
+  "n_self_loops": 1,
+  "loop_description": "1 loop on source node",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 2000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 1.0,
+  "error_percent": 0.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "title": "TD - Branched loop, 3 ring + 1 branch on Chain-3 (host=0)",
+  "source_notebook": "test_self_loops_multi_node.ipynb",
+  "timestamp": "20260706_150123",
+  "experiment_number": 696,
+  "k_ohm": 1000.0,
+  "n_nodes": 7,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 7,
+  "n_self_loops": 0,
+  "n_node_loop_nodes": 4,
+  "loop_description": "TD: branched ring, host=0, +1 branch",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 2000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 1.0,
+  "error_percent": 0.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.5,
+    1.0,
+    0.0,
+    0.5000000000000001,
+    0.5000000000000002,
+    0.5000000000000001,
+    0.5000000000000002
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ]
+}

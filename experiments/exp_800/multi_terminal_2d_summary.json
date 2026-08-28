@@ -1,0 +1,135 @@
+{
+  "experiment": {
+    "experiment_number": 800,
+    "timestamp": "20260724_104620",
+    "environment": "Local",
+    "experiment_dir": "<project_root>/utils/../experiments/exp_800",
+    "base_dir": "<project_root>/utils/../experiments"
+  },
+  "validation": {
+    "star_Vc": 0.6763508145206295,
+    "star_Vc_expected": 0.6763508145206294,
+    "grid_current_imbalance": -3.2526065174565133e-19,
+    "isolated_terminal_correctly_rejected": true
+  },
+  "faces_4terminal_network": {
+    "N": 60,
+    "a": 0.5,
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "terminal_currents": {
+      "351": -0.00028785132114063393,
+      "352": 0.000296495067741453,
+      "353": -0.000559885052870853,
+      "354": 0.0005512413062700268
+    },
+    "current_imbalance": -7.15573433840433e-18
+  },
+  "faces_8terminal_network": {
+    "N": 100,
+    "a": 0.5,
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "terminal_currents": {
+      "970": -0.0006182602391585101,
+      "971": 0.0019760358711863072,
+      "972": -0.0014664451423601146,
+      "973": 0.0013074102998380372,
+      "974": -0.0026348640551697774,
+      "975": 0.0014361232656637999
+    },
+    "current_imbalance": -2.5782327661705295e-16
+  },
+  "circular_3terminal_network": {
+    "N": 60,
+    "a": 0.5,
+    "terminal_centers": [
+      [
+        0.15,
+        0.5
+      ],
+      [
+        0.85,
+        0.5
+      ],
+      [
+        0.5,
+        0.85
+      ]
+    ],
+    "terminal_radii": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      0.5
+    ],
+    "terminal_currents": {
+      "158": -0.0015249789523348403,
+      "159": 0.0016844486522935185,
+      "160": -0.00015946969995867904
+    },
+    "current_imbalance": -8.131516293641283e-19
+  },
+  "circular_5terminal_network": {
+    "N": 100,
+    "a": 0.5,
+    "terminal_centers": [
+      [
+        0.15,
+        0.5
+      ],
+      [
+        0.85,
+        0.5
+      ],
+      [
+        0.5,
+        0.15
+      ],
+      [
+        0.5,
+        0.85
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "terminal_radii": [
+      0.18,
+      0.18,
+      0.18,
+      0.18,
+      0.12
+    ],
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      0.7,
+      0.3,
+      0.5
+    ],
+    "terminal_currents": {
+      "425": -0.00247186555582766,
+      "426": 0.0021425534486457375,
+      "427": -0.0005986022851018827,
+      "428": 0.0006835090024683445,
+      "429": 0.00024440538981546474
+    },
+    "current_imbalance": 3.957337929572091e-18
+  }
+}

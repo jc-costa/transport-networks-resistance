@@ -1,0 +1,45 @@
+{
+  "title": "TE - Branched loop, 3 ring + 2 branches on Chain-5 (host=1)",
+  "source_notebook": "test_self_loops_multi_node.ipynb",
+  "timestamp": "20260706_152359",
+  "experiment_number": 713,
+  "k_ohm": 1000.0,
+  "n_nodes": 10,
+  "n_edges_baseline": 4,
+  "n_edges_with_loops": 10,
+  "n_self_loops": 0,
+  "n_node_loop_nodes": 5,
+  "loop_description": "TE: branched ring, host=1, +2 branch",
+  "R_baseline_ohm": 4000.000000000001,
+  "R_with_loops_ohm": 3999.999999999998,
+  "R_cleaned_ohm": 4000.000000000001,
+  "R_loop_over_baseline": 0.9999999999999993,
+  "error_percent": -6.661338147750939e-14,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.75,
+    0.5,
+    0.24999999999999997,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.7500000000000001,
+    0.5000000000000002,
+    0.2500000000000001,
+    1.0,
+    0.0,
+    0.5000000000000003,
+    0.5000000000000003,
+    0.5000000000000002,
+    0.5000000000000003,
+    0.5000000000000003
+  ],
+  "voltages_cleaned": [
+    0.75,
+    0.5,
+    0.24999999999999997,
+    1.0,
+    0.0
+  ]
+}

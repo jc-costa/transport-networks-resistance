@@ -1,0 +1,170 @@
+[
+  {
+    "local_index": 0,
+    "global_index": 10,
+    "x": 0.04733764165637688,
+    "y": 0.46503065762941226,
+    "type": "source",
+    "voltage_V": 0.48837209302325496
+  },
+  {
+    "local_index": 1,
+    "global_index": 11,
+    "x": 0.24722988730894252,
+    "y": 0.49374475937598117,
+    "type": "internal",
+    "voltage_V": 0.9999999999999997
+  },
+  {
+    "local_index": 2,
+    "global_index": 13,
+    "x": 1.0564209187602833,
+    "y": 0.19683726288768016,
+    "type": "drain",
+    "voltage_V": 0.20930232558139225
+  },
+  {
+    "local_index": 3,
+    "global_index": 14,
+    "x": 0.9232545562550165,
+    "y": 0.4693817629448387,
+    "type": "drain",
+    "voltage_V": 0.3488372093023229
+  },
+  {
+    "local_index": 4,
+    "global_index": 16,
+    "x": 0.12487401901831113,
+    "y": 0.6223321206248148,
+    "type": "internal",
+    "voltage_V": 0.06976744186046388
+  },
+  {
+    "local_index": 5,
+    "global_index": 22,
+    "x": 0.9504296133415886,
+    "y": 0.6097744549542373,
+    "type": "drain",
+    "voltage_V": 0.0697674418604649
+  },
+  {
+    "local_index": 6,
+    "global_index": 23,
+    "x": 0.9231152505515484,
+    "y": 0.6160665019260894,
+    "type": "drain",
+    "voltage_V": 0.2790697674418599
+  },
+  {
+    "local_index": 7,
+    "global_index": 25,
+    "x": 0.2714919601587392,
+    "y": 0.9777497704536022,
+    "type": "internal",
+    "voltage_V": 0.16279069767441975
+  },
+  {
+    "local_index": 8,
+    "global_index": 27,
+    "x": 0.3204558941708542,
+    "y": 0.46471085854080424,
+    "type": "internal",
+    "voltage_V": 0.32558139534883807
+  },
+  {
+    "local_index": 9,
+    "global_index": 31,
+    "x": 0.6340511012459257,
+    "y": 0.8603976673567549,
+    "type": "internal",
+    "voltage_V": 1.0
+  },
+  {
+    "local_index": 10,
+    "global_index": 41,
+    "x": 0.5504432053817574,
+    "y": 0.7019140112137497,
+    "type": "internal",
+    "voltage_V": 0.0
+  },
+  {
+    "local_index": 11,
+    "global_index": 46,
+    "x": 0.5038183059094351,
+    "y": 0.39200819035685913,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 12,
+    "global_index": 47,
+    "x": 0.9292301571513563,
+    "y": 0.6108978836120587,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 13,
+    "global_index": 48,
+    "x": 0.928625974882382,
+    "y": 0.610929901210502,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 14,
+    "global_index": 49,
+    "x": 0.924209893441649,
+    "y": 0.7874661061806445,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 15,
+    "global_index": 50,
+    "x": 0.9285286763729853,
+    "y": 0.6148194829196808,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 16,
+    "global_index": 51,
+    "x": 0.9286137423091494,
+    "y": 0.6114189076032627,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 17,
+    "global_index": 57,
+    "x": 0.8008982253618323,
+    "y": 0.2599892474385264,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 18,
+    "global_index": 60,
+    "x": 0.8289999465042727,
+    "y": 0.26307460636046665,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 19,
+    "global_index": 63,
+    "x": 0.02393673965895665,
+    "y": 0.6082437672346399,
+    "type": "source",
+    "voltage_V": null
+  },
+  {
+    "local_index": 20,
+    "global_index": 64,
+    "x": 0.08428086479160485,
+    "y": 0.5399790011638359,
+    "type": "source",
+    "voltage_V": null
+  }
+]

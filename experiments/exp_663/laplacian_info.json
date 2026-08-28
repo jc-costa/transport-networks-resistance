@@ -1,0 +1,30 @@
+{
+  "source_node": 3,
+  "drain_node": 4,
+  "states": [
+    {
+      "state": "baseline",
+      "n_nodes": 5,
+      "n_edges": 4,
+      "condition_number": 5.828427124746191,
+      "is_singular": false,
+      "eigenvalue_range": null
+    },
+    {
+      "state": "with_loops",
+      "n_nodes": 5,
+      "n_edges": 7,
+      "condition_number": 5.828427124746191,
+      "is_singular": false,
+      "eigenvalue_range": null
+    },
+    {
+      "state": "cleaned",
+      "n_nodes": 5,
+      "n_edges": 4,
+      "condition_number": 5.828427124746191,
+      "is_singular": false,
+      "eigenvalue_range": null
+    }
+  ]
+}

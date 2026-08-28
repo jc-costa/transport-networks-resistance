@@ -1,0 +1,36 @@
+{
+  "title": "TG - Linear loop on SOURCE node (host=node 1 of Chain-3)",
+  "source_notebook": "test_self_loops_multi_node.ipynb",
+  "timestamp": "20260706_144424",
+  "experiment_number": 691,
+  "k_ohm": 1000.0,
+  "n_nodes": 5,
+  "n_edges_baseline": 2,
+  "n_edges_with_loops": 5,
+  "n_self_loops": 0,
+  "n_node_loop_nodes": 2,
+  "loop_description": "TG: 2-ring-node linear on source node, host=1",
+  "R_baseline_ohm": 2000.0,
+  "R_with_loops_ohm": 2000.0,
+  "R_cleaned_ohm": 2000.0,
+  "R_loop_over_baseline": 1.0,
+  "error_percent": 0.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.5,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.5,
+    1.0,
+    0.0,
+    1.0,
+    1.0
+  ],
+  "voltages_cleaned": [
+    0.5,
+    1.0,
+    0.0
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "experiment": {
+    "experiment_number": 797,
+    "timestamp": "20260722_151819",
+    "environment": "Local",
+    "experiment_dir": "<project_root>/utils/../experiments/exp_797",
+    "base_dir": "<project_root>/utils/../experiments"
+  },
+  "validation": {
+    "star_Vc": 0.6467028417274449,
+    "star_Vc_expected": 0.646702841727445,
+    "grid_current_imbalance": 8.131516293641283e-20
+  },
+  "four_terminal_network": {
+    "N": 80,
+    "a": 0.6,
+    "contact_distance": 0.08,
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      1.0
+    ],
+    "terminal_currents": {
+      "256": -0.00045256992372023875,
+      "257": 0.0018067696489428953,
+      "258": -0.0013541997252226412
+    },
+    "current_imbalance": 1.5395670849294163e-17
+  },
+  "eight_terminal_network": {
+    "N": 100,
+    "a": 0.6,
+    "contact_distance": 0.08,
+    "terminal_voltages": [
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "terminal_currents": {
+      "487": -0.0003500417649285077,
+      "488": 0.0018160874576573735,
+      "489": -0.0013112944907446211,
+      "490": 0.0015472793590404995,
+      "491": -0.0017020305610247837
+    },
+    "current_imbalance": -3.946495907847236e-17
+  }
+}

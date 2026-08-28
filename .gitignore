@@ -1,0 +1,27 @@
+# Virtual environments
+.venv/
+myenv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cluster job logs (SLURM stdout/stderr, regenerated on every run)
+logs/
+cluster/logs/
+*.out
+*.err
+
+# Local checkpoint files written mid-sweep by interrupted runs
+**/*_CHECKPOINT.json

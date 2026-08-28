@@ -1,0 +1,22 @@
+[
+  {
+    "edge_index": 0,
+    "segment": 15,
+    "node1": 105,
+    "node2": 112,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -0.0005,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 1,
+    "segment": 20,
+    "node1": 112,
+    "node2": 140,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 0.0005,
+    "voltage_drop_V": 0.0
+  }
+]

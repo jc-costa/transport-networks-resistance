@@ -1,0 +1,92 @@
+{
+  "boost_config": {
+    "REL_TOL": 0.15,
+    "TOP_N_GROUPS": 5,
+    "N_TRIALS_ORIGINAL": 6,
+    "N_TRIALS_BOOST": 50
+  },
+  "boosted_group_comparison": [
+    {
+      "group": 4,
+      "before": {
+        "n_triples": 14,
+        "n_layers_tested": 8,
+        "min_p": 0.0009141780233891273,
+        "frac_sig_p05": 0.25
+      },
+      "after": {
+        "n_triples": 14,
+        "n_layers_tested": 8,
+        "min_p": 3.2973786003586765e-38,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 6,
+      "before": {
+        "n_triples": 12,
+        "n_layers_tested": 8,
+        "min_p": 9.185582865270347e-07,
+        "frac_sig_p05": 0.375
+      },
+      "after": {
+        "n_triples": 12,
+        "n_layers_tested": 8,
+        "min_p": 1.3638841573037495e-48,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 9,
+      "before": {
+        "n_triples": 14,
+        "n_layers_tested": 8,
+        "min_p": 0.00015719859595259993,
+        "frac_sig_p05": 0.375
+      },
+      "after": {
+        "n_triples": 14,
+        "n_layers_tested": 8,
+        "min_p": 2.2842143721473633e-34,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 11,
+      "before": {
+        "n_triples": 16,
+        "n_layers_tested": 8,
+        "min_p": 0.000403947164295418,
+        "frac_sig_p05": 0.75
+      },
+      "after": {
+        "n_triples": 16,
+        "n_layers_tested": 8,
+        "min_p": 9.110904485017761e-13,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 16,
+      "before": {
+        "n_triples": 12,
+        "n_layers_tested": 8,
+        "min_p": 0.0006791780825499394,
+        "frac_sig_p05": 0.25
+      },
+      "after": {
+        "n_triples": 13,
+        "n_layers_tested": 8,
+        "min_p": 2.3249920896031283e-05,
+        "frac_sig_p05": 0.375
+      }
+    }
+  ],
+  "boosted_only_test_summary": {
+    "n_tests": 40,
+    "n_sig_p05": 35,
+    "frac_sig_p05": 0.875,
+    "bonferroni_alpha": 0.00125,
+    "n_sig_bonferroni": 31
+  }
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "local_index": 0,
+    "global_index": 2,
+    "x": 0.3049817669827989,
+    "y": 1.104686803149685,
+    "type": "internal",
+    "voltage_V": 0.2987012987012998
+  },
+  {
+    "local_index": 1,
+    "global_index": 4,
+    "x": 0.19578534417356458,
+    "y": 0.8830414413353721,
+    "type": "internal",
+    "voltage_V": 0.5324675324675332
+  },
+  {
+    "local_index": 2,
+    "global_index": 7,
+    "x": 0.9674157151058373,
+    "y": 0.2103902021596268,
+    "type": "drain",
+    "voltage_V": -1.6653345369377348e-16
+  },
+  {
+    "local_index": 3,
+    "global_index": 8,
+    "x": 0.9402939028487727,
+    "y": 0.18896666420996666,
+    "type": "drain",
+    "voltage_V": 0.0649350649350652
+  },
+  {
+    "local_index": 4,
+    "global_index": 9,
+    "x": 0.8380772952395618,
+    "y": 0.10822569633341769,
+    "type": "internal",
+    "voltage_V": 0.025974025974026083
+  },
+  {
+    "local_index": 5,
+    "global_index": 10,
+    "x": 0.9260925965746318,
+    "y": 0.17774904272453085,
+    "type": "drain",
+    "voltage_V": 0.012987012987013014
+  },
+  {
+    "local_index": 6,
+    "global_index": 12,
+    "x": 1.0062680755390443,
+    "y": 0.137108775693949,
+    "type": "drain",
+    "voltage_V": 0.7662337662337666
+  },
+  {
+    "local_index": 7,
+    "global_index": 13,
+    "x": 1.0702116050022512,
+    "y": 0.1471173668419186,
+    "type": "drain",
+    "voltage_V": 1.0
+  },
+  {
+    "local_index": 8,
+    "global_index": 14,
+    "x": 1.034683977688334,
+    "y": 0.14155649931978664,
+    "type": "drain",
+    "voltage_V": 0.0
+  },
+  {
+    "local_index": 9,
+    "global_index": 16,
+    "x": 0.5032337693549015,
+    "y": 0.6314811978501115,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 10,
+    "global_index": 21,
+    "x": 0.714343279881525,
+    "y": 0.41773709391893477,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 11,
+    "global_index": 22,
+    "x": 0.8453838889857499,
+    "y": 0.5332166319895977,
+    "type": "internal",
+    "voltage_V": null
+  },
+  {
+    "local_index": 12,
+    "global_index": 24,
+    "x": 0.953075144018697,
+    "y": 0.6281195515537412,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 13,
+    "global_index": 31,
+    "x": 0.978761139205861,
+    "y": 0.1889910168170236,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 14,
+    "global_index": 32,
+    "x": 0.9625239262024057,
+    "y": 0.16645921577603048,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 15,
+    "global_index": 33,
+    "x": 1.0158549215405182,
+    "y": 0.24046473482790015,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 16,
+    "global_index": 34,
+    "x": 0.9620286130686369,
+    "y": 0.16577188741612697,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 17,
+    "global_index": 35,
+    "x": 1.04463698513946,
+    "y": 0.06473921059931698,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 18,
+    "global_index": 36,
+    "x": 0.9973049424550625,
+    "y": 0.1540145999649118,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 19,
+    "global_index": 37,
+    "x": 0.9637789705308378,
+    "y": 0.16518850881116953,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 20,
+    "global_index": 38,
+    "x": -0.042518680055210756,
+    "y": 0.6815574158615584,
+    "type": "source",
+    "voltage_V": null
+  },
+  {
+    "local_index": 21,
+    "global_index": 46,
+    "x": 1.1284563846797124,
+    "y": 0.0470929257694237,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 22,
+    "global_index": 47,
+    "x": 1.0827850527898661,
+    "y": 0.12552483796165165,
+    "type": "drain",
+    "voltage_V": null
+  },
+  {
+    "local_index": 23,
+    "global_index": 61,
+    "x": 0.18982478085449128,
+    "y": 0.9351607853839079,
+    "type": "internal",
+    "voltage_V": null
+  }
+]

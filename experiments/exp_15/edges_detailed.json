@@ -1,0 +1,122 @@
+[
+  {
+    "edge_index": 0,
+    "segment": 14,
+    "node1": 33,
+    "node2": 17,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -5.2631578947368255e-05,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 1,
+    "segment": 6,
+    "node1": 17,
+    "node2": 15,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.2631578947368587e-05,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 2,
+    "segment": 6,
+    "node1": 17,
+    "node2": 16,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -5.263157894736792e-05,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 3,
+    "segment": 2,
+    "node1": 15,
+    "node2": 48,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -0.0002631578947368416,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 4,
+    "segment": 9,
+    "node1": 16,
+    "node2": 0,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 0.00026315789473684215,
+    "voltage_drop_V": 0.8947368421052638
+  },
+  {
+    "edge_index": 5,
+    "segment": 24,
+    "node1": 48,
+    "node2": 49,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.263157894736903e-05,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 6,
+    "segment": 0,
+    "node1": 0,
+    "node2": 2,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -0.00021052631578947378,
+    "voltage_drop_V": 0.3684210526315792
+  },
+  {
+    "edge_index": 7,
+    "segment": 3,
+    "node1": 49,
+    "node2": 53,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 0.0002631578947368425,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 8,
+    "segment": 26,
+    "node1": 2,
+    "node2": 40,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": null,
+    "voltage_drop_V": 0.5263157894736846
+  },
+  {
+    "edge_index": 9,
+    "segment": 25,
+    "node1": 53,
+    "node2": 55,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": null,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 10,
+    "segment": 20,
+    "node1": 40,
+    "node2": 39,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": null,
+    "voltage_drop_V": 0.0
+  },
+  {
+    "edge_index": 11,
+    "segment": 20,
+    "node1": 40,
+    "node2": 41,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": null,
+    "voltage_drop_V": 0.0
+  }
+]

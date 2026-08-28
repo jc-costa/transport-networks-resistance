@@ -1,0 +1,2062 @@
+[
+  {
+    "edge_index": 0,
+    "segment": 0,
+    "node1": 5,
+    "node2": 12,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.250226202767841e-05,
+    "voltage_drop_V": 0.0011334914390414008
+  },
+  {
+    "edge_index": 1,
+    "segment": 0,
+    "node1": 12,
+    "node2": 2,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.1871316851389535e-06,
+    "voltage_drop_V": 0.00711538653129995
+  },
+  {
+    "edge_index": 2,
+    "segment": 0,
+    "node1": 2,
+    "node2": 7,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.1315130342539847e-05,
+    "voltage_drop_V": 0.013635465277222758
+  },
+  {
+    "edge_index": 3,
+    "segment": 0,
+    "node1": 7,
+    "node2": 1,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.7918041745230706e-05,
+    "voltage_drop_V": 0.017918041745230706
+  },
+  {
+    "edge_index": 4,
+    "segment": 0,
+    "node1": 1,
+    "node2": 11,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.0158306614950374e-05,
+    "voltage_drop_V": 0.010158306614950374
+  },
+  {
+    "edge_index": 5,
+    "segment": 0,
+    "node1": 11,
+    "node2": 3,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.9450974757415418e-05,
+    "voltage_drop_V": 0.006082936235333403
+  },
+  {
+    "edge_index": 6,
+    "segment": 0,
+    "node1": 3,
+    "node2": 10,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.7210709887695308e-05,
+    "voltage_drop_V": 0.002067346130511294
+  },
+  {
+    "edge_index": 7,
+    "segment": 0,
+    "node1": 10,
+    "node2": 0,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.3635465277222758e-05,
+    "voltage_drop_V": 0.0011871316851389535
+  },
+  {
+    "edge_index": 8,
+    "segment": 0,
+    "node1": 0,
+    "node2": 4,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -7.11538653129995e-06,
+    "voltage_drop_V": 0.02250226202767841
+  },
+  {
+    "edge_index": 9,
+    "segment": 0,
+    "node1": 4,
+    "node2": 6,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.3597525392821553e-05,
+    "voltage_drop_V": 0.04137148007107033
+  },
+  {
+    "edge_index": 10,
+    "segment": 0,
+    "node1": 6,
+    "node2": 8,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 7.077446646901353e-06,
+    "voltage_drop_V": 0.042249717323381675
+  },
+  {
+    "edge_index": 11,
+    "segment": 0,
+    "node1": 8,
+    "node2": 9,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.067346130511294e-06,
+    "voltage_drop_V": 0.04667201523987746
+  },
+  {
+    "edge_index": 12,
+    "segment": 2,
+    "node1": 0,
+    "node2": 23,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -6.082936235333402e-06,
+    "voltage_drop_V": 0.021315130342539845
+  },
+  {
+    "edge_index": 13,
+    "segment": 2,
+    "node1": 23,
+    "node2": 25,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.3075559233284083e-05,
+    "voltage_drop_V": 0.01640407014393641
+  },
+  {
+    "edge_index": 14,
+    "segment": 2,
+    "node1": 25,
+    "node2": 16,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.9059969128465248e-05,
+    "voltage_drop_V": 0.023173834974227592
+  },
+  {
+    "edge_index": 15,
+    "segment": 2,
+    "node1": 16,
+    "node2": 21,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.1371480071070334e-05,
+    "voltage_drop_V": 0.010434068114141715
+  },
+  {
+    "edge_index": 16,
+    "segment": 2,
+    "node1": 21,
+    "node2": 17,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.049324281876049e-05,
+    "voltage_drop_V": 0.007328971442705112
+  },
+  {
+    "edge_index": 17,
+    "segment": 2,
+    "node1": 17,
+    "node2": 22,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -5.936246086215263e-05,
+    "voltage_drop_V": 0.008293433893757585
+  },
+  {
+    "edge_index": 18,
+    "segment": 2,
+    "node1": 22,
+    "node2": 18,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.1334914390414009e-06,
+    "voltage_drop_V": 0.01469338621727262
+  },
+  {
+    "edge_index": 19,
+    "segment": 2,
+    "node1": 18,
+    "node2": 24,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.8651346068554342e-05,
+    "voltage_drop_V": 0.011686277505983889
+  },
+  {
+    "edge_index": 20,
+    "segment": 2,
+    "node1": 24,
+    "node2": 19,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.9784837507596686e-05,
+    "voltage_drop_V": 0.011367559822971107
+  },
+  {
+    "edge_index": 21,
+    "segment": 2,
+    "node1": 19,
+    "node2": 20,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.224971732338168e-05,
+    "voltage_drop_V": 0.011414612336451968
+  },
+  {
+    "edge_index": 22,
+    "segment": 4,
+    "node1": 39,
+    "node2": 31,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -8.782372523098436e-07,
+    "voltage_drop_V": 0.010528632305068841
+  },
+  {
+    "edge_index": 23,
+    "segment": 4,
+    "node1": 31,
+    "node2": 37,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.566981621147684e-05,
+    "voltage_drop_V": 0.004348974352806845
+  },
+  {
+    "edge_index": 24,
+    "segment": 4,
+    "node1": 37,
+    "node2": 33,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.1387239743468003e-05,
+    "voltage_drop_V": 0.007870545060802703
+  },
+  {
+    "edge_index": 25,
+    "segment": 4,
+    "node1": 33,
+    "node2": 32,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.6672015239877465e-05,
+    "voltage_drop_V": 0.01746739367091521
+  },
+  {
+    "edge_index": 26,
+    "segment": 4,
+    "node1": 32,
+    "node2": 42,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.422297916494178e-06,
+    "voltage_drop_V": 0.021952139490607148
+  },
+  {
+    "edge_index": 27,
+    "segment": 4,
+    "node1": 42,
+    "node2": 16,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.667201523987957e-05,
+    "voltage_drop_V": 0.03468610689743773
+  },
+  {
+    "edge_index": 28,
+    "segment": 4,
+    "node1": 16,
+    "node2": 34,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.0127998657400894e-05,
+    "voltage_drop_V": 0.021946340037354406
+  },
+  {
+    "edge_index": 29,
+    "segment": 4,
+    "node1": 34,
+    "node2": 1,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.100821310277279e-05,
+    "voltage_drop_V": 0.019450974757415418
+  },
+  {
+    "edge_index": 30,
+    "segment": 4,
+    "node1": 1,
+    "node2": 43,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.7052403272744932e-05,
+    "voltage_drop_V": 0.027210709887695306
+  },
+  {
+    "edge_index": 31,
+    "segment": 4,
+    "node1": 43,
+    "node2": 40,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.2977032893131847e-05,
+    "voltage_drop_V": 0.04867212693264161
+  },
+  {
+    "edge_index": 32,
+    "segment": 4,
+    "node1": 40,
+    "node2": 36,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.4192833178201303e-05,
+    "voltage_drop_V": 0.03445345747027517
+  },
+  {
+    "edge_index": 33,
+    "segment": 4,
+    "node1": 36,
+    "node2": 41,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.017472827045991e-05,
+    "voltage_drop_V": 0.04842313992345798
+  },
+  {
+    "edge_index": 34,
+    "segment": 4,
+    "node1": 41,
+    "node2": 44,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.2024946036671036e-05,
+    "voltage_drop_V": 0.025728492802079117
+  },
+  {
+    "edge_index": 35,
+    "segment": 4,
+    "node1": 44,
+    "node2": 38,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.803741905500589e-05,
+    "voltage_drop_V": 0.026406049779720775
+  },
+  {
+    "edge_index": 36,
+    "segment": 4,
+    "node1": 38,
+    "node2": 35,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 6.0124730183362956e-06,
+    "voltage_drop_V": 0.008802016593238982
+  },
+  {
+    "edge_index": 37,
+    "segment": 5,
+    "node1": 48,
+    "node2": 52,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 6.01247301833463e-06,
+    "voltage_drop_V": 0.0033250214513116383
+  },
+  {
+    "edge_index": 38,
+    "segment": 5,
+    "node1": 52,
+    "node2": 2,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -6.012473018334741e-06,
+    "voltage_drop_V": 0.007077446646901353
+  },
+  {
+    "edge_index": 39,
+    "segment": 5,
+    "node1": 2,
+    "node2": 47,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.2024946036672591e-05,
+    "voltage_drop_V": 0.013597525392821552
+  },
+  {
+    "edge_index": 40,
+    "segment": 5,
+    "node1": 47,
+    "node2": 17,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 6.012473018337961e-06,
+    "voltage_drop_V": 0.014009321936341634
+  },
+  {
+    "edge_index": 41,
+    "segment": 5,
+    "node1": 17,
+    "node2": 51,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.0434068114141714e-05,
+    "voltage_drop_V": 0.013044859485290716
+  },
+  {
+    "edge_index": 42,
+    "segment": 5,
+    "node1": 51,
+    "node2": 45,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.3173834974227593e-05,
+    "voltage_drop_V": 0.016821494381179858
+  },
+  {
+    "edge_index": 43,
+    "segment": 5,
+    "node1": 45,
+    "node2": 46,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1946340037354407e-05,
+    "voltage_drop_V": 0.020127736662530704
+  },
+  {
+    "edge_index": 44,
+    "segment": 5,
+    "node1": 46,
+    "node2": 31,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.468610689743773e-05,
+    "voltage_drop_V": 0.01856802938672153
+  },
+  {
+    "edge_index": 45,
+    "segment": 5,
+    "node1": 31,
+    "node2": 49,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 7.328971442705113e-06,
+    "voltage_drop_V": 0.012388371434455592
+  },
+  {
+    "edge_index": 46,
+    "segment": 5,
+    "node1": 49,
+    "node2": 50,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -8.293433893757585e-06,
+    "voltage_drop_V": 0.012860297639898599
+  },
+  {
+    "edge_index": 47,
+    "segment": 9,
+    "node1": 74,
+    "node2": 47,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.4009321936341635e-05,
+    "voltage_drop_V": 0.08446783449884288
+  },
+  {
+    "edge_index": 48,
+    "segment": 9,
+    "node1": 47,
+    "node2": 70,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.3044859485290716e-05,
+    "voltage_drop_V": 0.011563174458567471
+  },
+  {
+    "edge_index": 49,
+    "segment": 9,
+    "node1": 70,
+    "node2": 34,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.469338621727262e-05,
+    "voltage_drop_V": 0.014136883199292127
+  },
+  {
+    "edge_index": 50,
+    "segment": 9,
+    "node1": 34,
+    "node2": 76,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.1686277505983888e-05,
+    "voltage_drop_V": 0.06066468592674995
+  },
+  {
+    "edge_index": 51,
+    "segment": 9,
+    "node1": 76,
+    "node2": 3,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -6.87953375544037e-06,
+    "voltage_drop_V": 0.09635690353444915
+  },
+  {
+    "edge_index": 52,
+    "segment": 9,
+    "node1": 3,
+    "node2": 75,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.872425044150585e-06,
+    "voltage_drop_V": 0.01905996912846525
+  },
+  {
+    "edge_index": 53,
+    "segment": 9,
+    "node1": 75,
+    "node2": 69,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.1414612336451968e-05,
+    "voltage_drop_V": 0.08621930069780642
+  },
+  {
+    "edge_index": 54,
+    "segment": 9,
+    "node1": 69,
+    "node2": 72,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.1367559822971107e-05,
+    "voltage_drop_V": 0.13556263614819652
+  },
+  {
+    "edge_index": 55,
+    "segment": 9,
+    "node1": 72,
+    "node2": 68,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.556912923661283e-06,
+    "voltage_drop_V": 0.05779756244191253
+  },
+  {
+    "edge_index": 56,
+    "segment": 9,
+    "node1": 68,
+    "node2": 73,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.5098604101777575e-06,
+    "voltage_drop_V": 0.21746805845623368
+  },
+  {
+    "edge_index": 57,
+    "segment": 9,
+    "node1": 73,
+    "node2": 71,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.597152526011325e-05,
+    "voltage_drop_V": 0.17181388529025726
+  },
+  {
+    "edge_index": 58,
+    "segment": 11,
+    "node1": 53,
+    "node2": 84,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.738613759656461e-05,
+    "voltage_drop_V": 0.0636977361993013
+  },
+  {
+    "edge_index": 59,
+    "segment": 11,
+    "node1": 84,
+    "node2": 85,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.8243524952203995e-05,
+    "voltage_drop_V": 0.23444028447798615
+  },
+  {
+    "edge_index": 60,
+    "segment": 11,
+    "node1": 85,
+    "node2": 4,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.1348621623639542e-05,
+    "voltage_drop_V": 0.17507782361583352
+  },
+  {
+    "edge_index": 61,
+    "segment": 11,
+    "node1": 4,
+    "node2": 80,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.751425591533132e-06,
+    "voltage_drop_V": 0.1865000272887372
+  },
+  {
+    "edge_index": 62,
+    "segment": 11,
+    "node1": 80,
+    "node2": 82,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.1151377915049498e-05,
+    "voltage_drop_V": 0.03950698517803822
+  },
+  {
+    "edge_index": 63,
+    "segment": 11,
+    "node1": 82,
+    "node2": 68,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.6404070143936413e-05,
+    "voltage_drop_V": 0.027825376678402486
+  },
+  {
+    "edge_index": 64,
+    "segment": 11,
+    "node1": 68,
+    "node2": 83,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.5039058856005324e-05,
+    "voltage_drop_V": 0.2117757732931696
+  },
+  {
+    "edge_index": 65,
+    "segment": 11,
+    "node1": 83,
+    "node2": 86,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.5558702550134475e-05,
+    "voltage_drop_V": 0.008977097333130846
+  },
+  {
+    "edge_index": 66,
+    "segment": 11,
+    "node1": 86,
+    "node2": 81,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.5877420233148864e-05,
+    "voltage_drop_V": 0.18078410467196177
+  },
+  {
+    "edge_index": 67,
+    "segment": 11,
+    "node1": 81,
+    "node2": 35,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.540475354236076e-05,
+    "voltage_drop_V": 0.09849911121753868
+  },
+  {
+    "edge_index": 68,
+    "segment": 12,
+    "node1": 88,
+    "node2": 48,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -8.634988712068915e-06,
+    "voltage_drop_V": 0.14127528011542934
+  },
+  {
+    "edge_index": 69,
+    "segment": 12,
+    "node1": 48,
+    "node2": 5,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.357232160146582e-05,
+    "voltage_drop_V": 0.018651346068554342
+  },
+  {
+    "edge_index": 70,
+    "segment": 12,
+    "node1": 5,
+    "node2": 87,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.190585796698752e-05,
+    "voltage_drop_V": 0.0406277135884221
+  },
+  {
+    "edge_index": 71,
+    "segment": 12,
+    "node1": 87,
+    "node2": 77,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -8.333536365522365e-06,
+    "voltage_drop_V": 0.1448270903202457
+  },
+  {
+    "edge_index": 72,
+    "segment": 14,
+    "node1": 95,
+    "node2": 36,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.060691575675678e-06,
+    "voltage_drop_V": 0.18351629882316317
+  },
+  {
+    "edge_index": 73,
+    "segment": 14,
+    "node1": 36,
+    "node2": 94,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.994380702163448e-05,
+    "voltage_drop_V": 0.26671255957422796
+  },
+  {
+    "edge_index": 74,
+    "segment": 14,
+    "node1": 94,
+    "node2": 69,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.6883115445955474e-05,
+    "voltage_drop_V": 0.23977683970324082
+  },
+  {
+    "edge_index": 75,
+    "segment": 14,
+    "node1": 69,
+    "node2": 80,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.500991208037597e-06,
+    "voltage_drop_V": 0.1450974355627247
+  },
+  {
+    "edge_index": 76,
+    "segment": 14,
+    "node1": 80,
+    "node2": 6,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.7401661031546194e-05,
+    "voltage_drop_V": 0.14512854721766688
+  },
+  {
+    "edge_index": 77,
+    "segment": 15,
+    "node1": 98,
+    "node2": 100,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.596136139918583e-05,
+    "voltage_drop_V": 0.02855409742153381
+  },
+  {
+    "edge_index": 78,
+    "segment": 15,
+    "node1": 100,
+    "node2": 96,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.35723216014636e-05,
+    "voltage_drop_V": 0.0598505319374103
+  },
+  {
+    "edge_index": 79,
+    "segment": 15,
+    "node1": 96,
+    "node2": 49,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.0239394332509886e-05,
+    "voltage_drop_V": 0.08535755433265013
+  },
+  {
+    "edge_index": 80,
+    "segment": 15,
+    "node1": 49,
+    "node2": 37,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.664624350753633e-05,
+    "voltage_drop_V": 0.016737345787262436
+  },
+  {
+    "edge_index": 81,
+    "segment": 15,
+    "node1": 37,
+    "node2": 61,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.348974352806845e-06,
+    "voltage_drop_V": 0.013215775079267078
+  },
+  {
+    "edge_index": 82,
+    "segment": 15,
+    "node1": 61,
+    "node2": 55,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.0528632305068842e-05,
+    "voltage_drop_V": 0.017557725143085234
+  },
+  {
+    "edge_index": 83,
+    "segment": 15,
+    "node1": 55,
+    "node2": 97,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.856802938672153e-05,
+    "voltage_drop_V": 0.0860691976904176
+  },
+  {
+    "edge_index": 84,
+    "segment": 15,
+    "node1": 97,
+    "node2": 21,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.2388371434455591e-05,
+    "voltage_drop_V": 0.045300580907148835
+  },
+  {
+    "edge_index": 85,
+    "segment": 15,
+    "node1": 21,
+    "node2": 70,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.746739367091521e-05,
+    "voltage_drop_V": 0.018243524952203993
+  },
+  {
+    "edge_index": 86,
+    "segment": 15,
+    "node1": 70,
+    "node2": 7,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1952139490607147e-05,
+    "voltage_drop_V": 0.01566981621147684
+  },
+  {
+    "edge_index": 87,
+    "segment": 15,
+    "node1": 7,
+    "node2": 99,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -9.920307310328225e-06,
+    "voltage_drop_V": 0.2842443051802035
+  },
+  {
+    "edge_index": 88,
+    "segment": 20,
+    "node1": 8,
+    "node2": 82,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.4355614906344e-06,
+    "voltage_drop_V": 0.06337184471624699
+  },
+  {
+    "edge_index": 89,
+    "segment": 20,
+    "node1": 82,
+    "node2": 72,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -7.870545060802703e-06,
+    "voltage_drop_V": 0.029972185763510045
+  },
+  {
+    "edge_index": 90,
+    "segment": 20,
+    "node1": 72,
+    "node2": 94,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.4942078628579603e-05,
+    "voltage_drop_V": 0.37533947585143734
+  },
+  {
+    "edge_index": 91,
+    "segment": 20,
+    "node1": 94,
+    "node2": 40,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.345230018464375e-06,
+    "voltage_drop_V": 0.23225910210395279
+  },
+  {
+    "edge_index": 92,
+    "segment": 20,
+    "node1": 40,
+    "node2": 108,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.4136883199292128e-05,
+    "voltage_drop_V": 0.36492600189013896
+  },
+  {
+    "edge_index": 93,
+    "segment": 21,
+    "node1": 109,
+    "node2": 41,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.6632248479233946e-05,
+    "voltage_drop_V": 0.22878594067882752
+  },
+  {
+    "edge_index": 94,
+    "segment": 21,
+    "node1": 41,
+    "node2": 83,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -8.802016593238981e-06,
+    "voltage_drop_V": 0.20936955938133073
+  },
+  {
+    "edge_index": 95,
+    "segment": 21,
+    "node1": 83,
+    "node2": 73,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 8.802016593240702e-06,
+    "voltage_drop_V": 0.005692285163064081
+  },
+  {
+    "edge_index": 96,
+    "segment": 21,
+    "node1": 73,
+    "node2": 9,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.445345747027517e-05,
+    "voltage_drop_V": 0.22859360565826664
+  },
+  {
+    "edge_index": 97,
+    "segment": 24,
+    "node1": 15,
+    "node2": 110,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.842313992345798e-05,
+    "voltage_drop_V": 0.2610683364202395
+  },
+  {
+    "edge_index": 98,
+    "segment": 24,
+    "node1": 110,
+    "node2": 114,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.4053499167985372e-05,
+    "voltage_drop_V": 0.02485632015631284
+  },
+  {
+    "edge_index": 99,
+    "segment": 24,
+    "node1": 114,
+    "node2": 66,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 8.38167148002611e-08,
+    "voltage_drop_V": 0.21138843640818167
+  },
+  {
+    "edge_index": 100,
+    "segment": 24,
+    "node1": 66,
+    "node2": 30,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.6737345787262436e-05,
+    "voltage_drop_V": 0.030239394332509884
+  },
+  {
+    "edge_index": 101,
+    "segment": 24,
+    "node1": 30,
+    "node2": 115,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.3215775079267078e-05,
+    "voltage_drop_V": 0.2627943600153786
+  },
+  {
+    "edge_index": 102,
+    "segment": 24,
+    "node1": 115,
+    "node2": 57,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.6406049779720775e-05,
+    "voltage_drop_V": 0.13431599968391777
+  },
+  {
+    "edge_index": 103,
+    "segment": 24,
+    "node1": 57,
+    "node2": 111,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.7604033186479683e-05,
+    "voltage_drop_V": 0.08465583503581314
+  },
+  {
+    "edge_index": 104,
+    "segment": 24,
+    "node1": 111,
+    "node2": 113,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.8125158711207567e-05,
+    "voltage_drop_V": 0.15648795185973763
+  },
+  {
+    "edge_index": 105,
+    "segment": 24,
+    "node1": 113,
+    "node2": 23,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 7.596526406139781e-06,
+    "voltage_drop_V": 0.18152701071574295
+  },
+  {
+    "edge_index": 106,
+    "segment": 24,
+    "node1": 23,
+    "node2": 10,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.8672126932641614e-05,
+    "voltage_drop_V": 0.020127998657400892
+  },
+  {
+    "edge_index": 107,
+    "segment": 24,
+    "node1": 10,
+    "node2": 75,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.0399958302289802e-05,
+    "voltage_drop_V": 0.021127315258976542
+  },
+  {
+    "edge_index": 108,
+    "segment": 26,
+    "node1": 112,
+    "node2": 85,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -6.1812888399228605e-06,
+    "voltage_drop_V": 0.5016538739257013
+  },
+  {
+    "edge_index": 109,
+    "segment": 26,
+    "node1": 85,
+    "node2": 113,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.5728492802079117e-05,
+    "voltage_drop_V": 0.4004222267017947
+  },
+  {
+    "edge_index": 110,
+    "segment": 26,
+    "node1": 113,
+    "node2": 25,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.023159059024136e-05,
+    "voltage_drop_V": 0.16512294057180654
+  },
+  {
+    "edge_index": 111,
+    "segment": 26,
+    "node1": 25,
+    "node2": 76,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -7.536943468859691e-06,
+    "voltage_drop_V": 0.061892180863623136
+  },
+  {
+    "edge_index": 112,
+    "segment": 26,
+    "node1": 76,
+    "node2": 11,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.5637384566487778e-05,
+    "voltage_drop_V": 0.09027396729911574
+  },
+  {
+    "edge_index": 113,
+    "segment": 26,
+    "node1": 11,
+    "node2": 43,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.903417159656474e-06,
+    "voltage_drop_V": 0.01705240327274493
+  },
+  {
+    "edge_index": 114,
+    "segment": 26,
+    "node1": 43,
+    "node2": 117,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.40901377220182e-06,
+    "voltage_drop_V": 0.32619426412542885
+  },
+  {
+    "edge_index": 115,
+    "segment": 26,
+    "node1": 117,
+    "node2": 88,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.258787929329676e-05,
+    "voltage_drop_V": 0.515831293052794
+  },
+  {
+    "edge_index": 116,
+    "segment": 28,
+    "node1": 101,
+    "node2": 86,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.326543627093881e-05,
+    "voltage_drop_V": 0.24749336162441787
+  },
+  {
+    "edge_index": 117,
+    "segment": 28,
+    "node1": 86,
+    "node2": 44,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.0127736662530705e-05,
+    "voltage_drop_V": 0.2440751495165407
+  },
+  {
+    "edge_index": 118,
+    "segment": 28,
+    "node1": 44,
+    "node2": 109,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.6821494381179858e-05,
+    "voltage_drop_V": 0.25451443348090663
+  },
+  {
+    "edge_index": 119,
+    "segment": 28,
+    "node1": 109,
+    "node2": 95,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.5732914740930766e-06,
+    "voltage_drop_V": 0.0031534980677936364
+  },
+  {
+    "edge_index": 120,
+    "segment": 28,
+    "node1": 95,
+    "node2": 108,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.0032799546476068e-06,
+    "voltage_drop_V": 0.21586316053725096
+  },
+  {
+    "edge_index": 121,
+    "segment": 28,
+    "node1": 108,
+    "node2": 117,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -5.564273211616788e-07,
+    "voltage_drop_V": 0.6424481390829262
+  },
+  {
+    "edge_index": 122,
+    "segment": 28,
+    "node1": 117,
+    "node2": 99,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.1563174458567471e-05,
+    "voltage_drop_V": 0.08707871057815134
+  },
+  {
+    "edge_index": 123,
+    "segment": 28,
+    "node1": 99,
+    "node2": 52,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.115137791504972e-05,
+    "voltage_drop_V": 0.29080232381052495
+  },
+  {
+    "edge_index": 124,
+    "segment": 28,
+    "node1": 52,
+    "node2": 12,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.325021451311638e-06,
+    "voltage_drop_V": 0.014192833178201303
+  },
+  {
+    "edge_index": 125,
+    "segment": 28,
+    "node1": 12,
+    "node2": 116,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1976367519867757e-05,
+    "voltage_drop_V": 0.6079261324331224
+  },
+  {
+    "edge_index": 126,
+    "segment": 1,
+    "node1": 13,
+    "node2": 14,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.2860297639898599e-05,
+    "voltage_drop_V": 0.012024946036671036
+  },
+  {
+    "edge_index": 127,
+    "segment": 1,
+    "node1": 14,
+    "node2": 15,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.6265419581820816e-05,
+    "voltage_drop_V": 0.00601247301833463
+  },
+  {
+    "edge_index": 128,
+    "segment": 18,
+    "node1": 104,
+    "node2": 56,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -9.455175697976159e-06,
+    "voltage_drop_V": 0.08691022065998683
+  },
+  {
+    "edge_index": 129,
+    "segment": 18,
+    "node1": 56,
+    "node2": 62,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.405121941922218e-06,
+    "voltage_drop_V": 0.024272918493948747
+  },
+  {
+    "edge_index": 130,
+    "segment": 18,
+    "node1": 62,
+    "node2": 102,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -9.747906956437124e-07,
+    "voltage_drop_V": 0.04477186295196506
+  },
+  {
+    "edge_index": 131,
+    "segment": 18,
+    "node1": 102,
+    "node2": 106,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.794525837378941e-05,
+    "voltage_drop_V": 0.1608246765711478
+  },
+  {
+    "edge_index": 132,
+    "segment": 18,
+    "node1": 106,
+    "node2": 28,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.045208920058279e-05,
+    "voltage_drop_V": 0.31419520308833676
+  },
+  {
+    "edge_index": 133,
+    "segment": 18,
+    "node1": 28,
+    "node2": 105,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.0452089200580847e-05,
+    "voltage_drop_V": 0.11383907494165418
+  },
+  {
+    "edge_index": 134,
+    "segment": 18,
+    "node1": 105,
+    "node2": 65,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.666204555607122e-06,
+    "voltage_drop_V": 0.20047589603188304
+  },
+  {
+    "edge_index": 135,
+    "segment": 18,
+    "node1": 65,
+    "node2": 13,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.248916498916659e-05,
+    "voltage_drop_V": 0.018037419055005888
+  },
+  {
+    "edge_index": 136,
+    "segment": 18,
+    "node1": 13,
+    "node2": 103,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.6235062234447596e-05,
+    "voltage_drop_V": 0.021197741003676773
+  },
+  {
+    "edge_index": 137,
+    "segment": 22,
+    "node1": 103,
+    "node2": 14,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.7557725143085235e-05,
+    "voltage_drop_V": 0.009172794967005737
+  },
+  {
+    "edge_index": 138,
+    "segment": 22,
+    "node1": 14,
+    "node2": 110,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.9419995159629224e-05,
+    "voltage_drop_V": 0.26708080943857415
+  },
+  {
+    "edge_index": 139,
+    "segment": 22,
+    "node1": 110,
+    "node2": 29,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.0776948032575896e-07,
+    "voltage_drop_V": 0.24148354180043796
+  },
+  {
+    "edge_index": 140,
+    "segment": 6,
+    "node1": 58,
+    "node2": 18,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.427291849394875e-05,
+    "voltage_drop_V": 0.0038724250441505847
+  },
+  {
+    "edge_index": 141,
+    "segment": 6,
+    "node1": 18,
+    "node2": 45,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.049894445801631e-05,
+    "voltage_drop_V": 0.00687953375544037
+  },
+  {
+    "edge_index": 142,
+    "segment": 6,
+    "node1": 45,
+    "node2": 55,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.148779710366685e-05,
+    "voltage_drop_V": 0.0035732914740930766
+  },
+  {
+    "edge_index": 143,
+    "segment": 6,
+    "node1": 55,
+    "node2": 32,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -7.183211682392449e-05,
+    "voltage_drop_V": 0.0054355614906344
+  },
+  {
+    "edge_index": 144,
+    "segment": 6,
+    "node1": 32,
+    "node2": 54,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.943112759428295e-05,
+    "voltage_drop_V": 0.009920307310328225
+  },
+  {
+    "edge_index": 145,
+    "segment": 6,
+    "node1": 54,
+    "node2": 56,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.05284381837752e-05,
+    "voltage_drop_V": 0.003666204555607122
+  },
+  {
+    "edge_index": 146,
+    "segment": 6,
+    "node1": 56,
+    "node2": 57,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -5.449958060389282e-06,
+    "voltage_drop_V": 0.00010776948032575895
+  },
+  {
+    "edge_index": 147,
+    "segment": 6,
+    "node1": 57,
+    "node2": 53,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.1981285557360294e-05,
+    "voltage_drop_V": 0.030452089200582788
+  },
+  {
+    "edge_index": 148,
+    "segment": 7,
+    "node1": 62,
+    "node2": 60,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.9722876554336088e-05,
+    "voltage_drop_V": 0.005449958060389282
+  },
+  {
+    "edge_index": 149,
+    "segment": 7,
+    "node1": 60,
+    "node2": 33,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.0943707964488912e-05,
+    "voltage_drop_V": 0.014942078628579603
+  },
+  {
+    "edge_index": 150,
+    "segment": 7,
+    "node1": 33,
+    "node2": 61,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 9.394407576526953e-05,
+    "voltage_drop_V": 0.005345230018464375
+  },
+  {
+    "edge_index": 151,
+    "segment": 7,
+    "node1": 61,
+    "node2": 46,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -0.00022152047402345477,
+    "voltage_drop_V": 0.0010032799546476068
+  },
+  {
+    "edge_index": 152,
+    "segment": 7,
+    "node1": 46,
+    "node2": 63,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 0.00012757639825818824,
+    "voltage_drop_V": 0.0005564273211616788
+  },
+  {
+    "edge_index": 153,
+    "segment": 7,
+    "node1": 63,
+    "node2": 19,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.6671496651583204e-05,
+    "voltage_drop_V": 0.004509860410177757
+  },
+  {
+    "edge_index": 154,
+    "segment": 7,
+    "node1": 19,
+    "node2": 59,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.9235160058682663e-05,
+    "voltage_drop_V": 0.004556912923661283
+  },
+  {
+    "edge_index": 155,
+    "segment": 10,
+    "node1": 77,
+    "node2": 59,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.4226921314173367e-05,
+    "voltage_drop_V": 0.04335766285667786
+  },
+  {
+    "edge_index": 156,
+    "segment": 10,
+    "node1": 59,
+    "node2": 20,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.4346009383860325e-05,
+    "voltage_drop_V": 0.01597152526011325
+  },
+  {
+    "edge_index": 157,
+    "segment": 10,
+    "node1": 20,
+    "node2": 78,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.563663407099459e-06,
+    "voltage_drop_V": 0.06811945675147862
+  },
+  {
+    "edge_index": 158,
+    "segment": 10,
+    "node1": 78,
+    "node2": 79,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 9.880911930313041e-06,
+    "voltage_drop_V": 0.26722630639190537
+  },
+  {
+    "edge_index": 159,
+    "segment": 23,
+    "node1": 74,
+    "node2": 22,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.565417316597642e-05,
+    "voltage_drop_V": 0.1067705903289421
+  },
+  {
+    "edge_index": 160,
+    "segment": 23,
+    "node1": 22,
+    "node2": 51,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.779756244191253e-05,
+    "voltage_drop_V": 0.004751425591533132
+  },
+  {
+    "edge_index": 161,
+    "segment": 23,
+    "node1": 51,
+    "node2": 97,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.996876595433868e-05,
+    "voltage_drop_V": 0.06567441183514466
+  },
+  {
+    "edge_index": 162,
+    "segment": 23,
+    "node1": 97,
+    "node2": 42,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.7825376678402488e-05,
+    "voltage_drop_V": 0.06955261969044485
+  },
+  {
+    "edge_index": 163,
+    "segment": 23,
+    "node1": 42,
+    "node2": 91,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.2110900540307576e-05,
+    "voltage_drop_V": 0.12458780954543536
+  },
+  {
+    "edge_index": 164,
+    "segment": 23,
+    "node1": 91,
+    "node2": 104,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.408377233605709e-05,
+    "voltage_drop_V": 0.0021389375289060375
+  },
+  {
+    "edge_index": 165,
+    "segment": 23,
+    "node1": 104,
+    "node2": 111,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -9.093489072520278e-07,
+    "voltage_drop_V": 0.17167382517612573
+  },
+  {
+    "edge_index": 166,
+    "segment": 23,
+    "node1": 111,
+    "node2": 84,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.2882220703001767e-05,
+    "voltage_drop_V": 0.009493990364070948
+  },
+  {
+    "edge_index": 167,
+    "segment": 23,
+    "node1": 84,
+    "node2": 112,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 0.00013444176344530267,
+    "voltage_drop_V": 0.2672135894477151
+  },
+  {
+    "edge_index": 168,
+    "segment": 25,
+    "node1": 87,
+    "node2": 116,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 8.707871057815134e-05,
+    "voltage_drop_V": 0.6474203545825031
+  },
+  {
+    "edge_index": 169,
+    "segment": 25,
+    "node1": 116,
+    "node2": 58,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.6854072116377385e-06,
+    "voltage_drop_V": 0.5683202765683796
+  },
+  {
+    "edge_index": 170,
+    "segment": 25,
+    "node1": 58,
+    "node2": 24,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.9228679837305808e-05,
+    "voltage_drop_V": 0.015558702550134473
+  },
+  {
+    "edge_index": 171,
+    "segment": 25,
+    "node1": 24,
+    "node2": 63,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -2.9972185763510047e-05,
+    "voltage_drop_V": 0.015877420233148865
+  },
+  {
+    "edge_index": 172,
+    "segment": 25,
+    "node1": 63,
+    "node2": 107,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.0528438183773866e-05,
+    "voltage_drop_V": 0.26093336294699
+  },
+  {
+    "edge_index": 173,
+    "segment": 3,
+    "node1": 29,
+    "node2": 26,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.0733319154914015e-05,
+    "voltage_drop_V": 0.01357232160146582
+  },
+  {
+    "edge_index": 174,
+    "segment": 3,
+    "node1": 26,
+    "node2": 30,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.3347181558349909e-05,
+    "voltage_drop_V": 0.02190585796698752
+  },
+  {
+    "edge_index": 175,
+    "segment": 3,
+    "node1": 30,
+    "node2": 28,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.073331915491274e-05,
+    "voltage_drop_V": 0.004500991208037597
+  },
+  {
+    "edge_index": 176,
+    "segment": 3,
+    "node1": 28,
+    "node2": 27,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.8705656659197344e-05,
+    "voltage_drop_V": 0.003060691575675678
+  },
+  {
+    "edge_index": 177,
+    "segment": 8,
+    "node1": 26,
+    "node2": 66,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.1422203672903697e-05,
+    "voltage_drop_V": 0.008333536365522365
+  },
+  {
+    "edge_index": 178,
+    "segment": 8,
+    "node1": 66,
+    "node2": 67,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.7828253452623165e-05,
+    "voltage_drop_V": 0.024226921314173366
+  },
+  {
+    "edge_index": 179,
+    "segment": 8,
+    "node1": 67,
+    "node2": 65,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.8084781505134523e-05,
+    "voltage_drop_V": 0.0366714966515832
+  },
+  {
+    "edge_index": 180,
+    "segment": 8,
+    "node1": 65,
+    "node2": 64,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.324564699872046e-05,
+    "voltage_drop_V": 0.09394407576526953
+  },
+  {
+    "edge_index": 181,
+    "segment": 13,
+    "node1": 91,
+    "node2": 54,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.941638129749679e-05,
+    "voltage_drop_V": 0.09271536274449999
+  },
+  {
+    "edge_index": 182,
+    "segment": 13,
+    "node1": 54,
+    "node2": 60,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.6622823499360172e-05,
+    "voltage_drop_V": 0.022489164989166588
+  },
+  {
+    "edge_index": 183,
+    "segment": 13,
+    "node1": 60,
+    "node2": 90,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -1.6622823499360284e-05,
+    "voltage_drop_V": 0.16705312022292335
+  },
+  {
+    "edge_index": 184,
+    "segment": 13,
+    "node1": 90,
+    "node2": 93,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -9.493990364070948e-06,
+    "voltage_drop_V": 0.4079182647106452
+  },
+  {
+    "edge_index": 185,
+    "segment": 13,
+    "node1": 93,
+    "node2": 27,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.925045712552686e-05,
+    "voltage_drop_V": 0.3579744576890107
+  },
+  {
+    "edge_index": 186,
+    "segment": 13,
+    "node1": 27,
+    "node2": 92,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 7.436006761781799e-07,
+    "voltage_drop_V": 0.3438371418062251
+  },
+  {
+    "edge_index": 187,
+    "segment": 13,
+    "node1": 92,
+    "node2": 64,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1976367519866202e-05,
+    "voltage_drop_V": 0.5213573470860478
+  },
+  {
+    "edge_index": 188,
+    "segment": 13,
+    "node1": 64,
+    "node2": 89,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.8244912197973104e-05,
+    "voltage_drop_V": 0.33335374570472576
+  },
+  {
+    "edge_index": 189,
+    "segment": 16,
+    "node1": 71,
+    "node2": 101,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.191549057365073e-06,
+    "voltage_drop_V": 0.4225920590847419
+  },
+  {
+    "edge_index": 190,
+    "segment": 16,
+    "node1": 101,
+    "node2": 81,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.976776679615936e-07,
+    "voltage_drop_V": 0.42827746629637964
+  },
+  {
+    "edge_index": 191,
+    "segment": 16,
+    "node1": 81,
+    "node2": 38,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 7.202975367078768e-05,
+    "voltage_drop_V": 0.0896970946242997
+  },
+  {
+    "edge_index": 192,
+    "segment": 19,
+    "node1": 102,
+    "node2": 90,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 5.602837565763963e-06,
+    "voltage_drop_V": 0.20637502511449912
+  },
+  {
+    "edge_index": 193,
+    "segment": 19,
+    "node1": 90,
+    "node2": 50,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 6.499265719074221e-06,
+    "voltage_drop_V": 0.1445270103635392
+  },
+  {
+    "edge_index": 194,
+    "segment": 19,
+    "node1": 50,
+    "node2": 96,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1389375289060374e-06,
+    "voltage_drop_V": 0.07249725669275153
+  },
+  {
+    "edge_index": 195,
+    "segment": 19,
+    "node1": 96,
+    "node2": 39,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.071856302499829e-05,
+    "voltage_drop_V": 0.08721729346203688
+  },
+  {
+    "edge_index": 196,
+    "segment": 19,
+    "node1": 39,
+    "node2": 107,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.080237973979803e-05,
+    "voltage_drop_V": 0.2894735973176187
+  },
+  {
+    "edge_index": 197,
+    "segment": 19,
+    "node1": 107,
+    "node2": 78,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.7795700234952826e-05,
+    "voltage_drop_V": 0.3359575716247428
+  },
+  {
+    "edge_index": 198,
+    "segment": 27,
+    "node1": 114,
+    "node2": 67,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 3.129643451587649e-05,
+    "voltage_drop_V": 0.23561535772235503
+  },
+  {
+    "edge_index": 199,
+    "segment": 27,
+    "node1": 67,
+    "node2": 105,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.933249811725619e-05,
+    "voltage_drop_V": 0.16380439938029984
+  },
+  {
+    "edge_index": 200,
+    "segment": 27,
+    "node1": 105,
+    "node2": 92,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -3.291442561170199e-05,
+    "voltage_drop_V": 0.22693737528889524
+  },
+  {
+    "edge_index": 201,
+    "segment": 27,
+    "node1": 92,
+    "node2": 98,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 2.1096622125976294e-05,
+    "voltage_drop_V": 0.2904547606411954
+  },
+  {
+    "edge_index": 202,
+    "segment": 27,
+    "node1": 98,
+    "node2": 79,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 1.51858733163881e-05,
+    "voltage_drop_V": 0.2766631910309416
+  },
+  {
+    "edge_index": 203,
+    "segment": 29,
+    "node1": 100,
+    "node2": 93,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": -4.6899851864920576e-05,
+    "voltage_drop_V": 0.2760379791024472
+  },
+  {
+    "edge_index": 204,
+    "segment": 29,
+    "node1": 93,
+    "node2": 106,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.465097453546729e-06,
+    "voltage_drop_V": 0.040718563024998294
+  },
+  {
+    "edge_index": 205,
+    "segment": 29,
+    "node1": 106,
+    "node2": 115,
+    "conductance_S": 1.0,
+    "resistance_ohms": 1.0,
+    "current_A": 4.31680379321463e-05,
+    "voltage_drop_V": 0.04689985186492057
+  }
+]

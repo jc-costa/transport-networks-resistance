@@ -1,0 +1,72 @@
+{
+  "experiment": {
+    "experiment_number": 833,
+    "timestamp": "20260818_164256",
+    "environment": "Local",
+    "experiment_dir": "<project_root>/utils/../experiments/exp_833",
+    "base_dir": "<project_root>/utils/../experiments"
+  },
+  "part_a_preview": [
+    {
+      "N": 70,
+      "a": 0.2,
+      "d": 0.1,
+      "n": 4,
+      "mean_ohm": 929.0643500197395
+    },
+    {
+      "N": 70,
+      "a": 0.2,
+      "d": 0.15,
+      "n": 1,
+      "mean_ohm": 975.0266711330274
+    },
+    {
+      "N": 45,
+      "a": 0.2,
+      "d": 0.1,
+      "n": 1,
+      "mean_ohm": 1009.9879611357469
+    }
+  ],
+  "grid_coverage": {
+    "onion_chunks_found": 1,
+    "scalar_chunks_found": 20,
+    "n_tasks": 20,
+    "combos_loaded_onion": 21,
+    "combos_loaded_scalar": 420
+  },
+  "shape_divergence_groups": [
+    {
+      "group": 0,
+      "keys": [
+        [
+          45,
+          0.2,
+          0.1
+        ],
+        [
+          70,
+          0.2,
+          0.15
+        ],
+        [
+          70,
+          0.2,
+          0.1
+        ]
+      ],
+      "shared_layers": [
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9
+      ],
+      "divergence": 0.03140010974535722
+    }
+  ]
+}

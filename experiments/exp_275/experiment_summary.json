@@ -1,0 +1,39 @@
+{
+  "title": "Test 5 - Chain 3 loops",
+  "source_notebook": "test_self_loops.ipynb",
+  "timestamp": "20260609_110827",
+  "experiment_number": 275,
+  "k_ohm": 1000.0,
+  "n_nodes": 5,
+  "n_edges_baseline": 4,
+  "n_edges_with_loops": 7,
+  "n_self_loops": 3,
+  "loop_description": "loops I1+I2+I3",
+  "R_baseline_ohm": 4000.000000000001,
+  "R_with_loops_ohm": 4000.000000000001,
+  "R_cleaned_ohm": 4000.000000000001,
+  "R_loop_over_baseline": 1.0,
+  "error_percent": 0.0,
+  "restoration_ok": true,
+  "voltages_baseline": [
+    0.75,
+    0.5,
+    0.24999999999999994,
+    1.0,
+    0.0
+  ],
+  "voltages_with_loops": [
+    0.75,
+    0.5,
+    0.24999999999999994,
+    1.0,
+    0.0
+  ],
+  "voltages_cleaned": [
+    0.75,
+    0.5,
+    0.24999999999999994,
+    1.0,
+    0.0
+  ]
+}
