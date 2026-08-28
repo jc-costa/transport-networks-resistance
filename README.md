@@ -1,4 +1,4 @@
-# Effective Resistance of Random Stick-Percolation Networks
+# Effective Resistance as an Inverse Descriptor of Random Geometric Networks
 
 Simulation and analysis code for an MSc dissertation on charge transport in random
 conductive-stick networks, the idealized model behind materials such as nanowire and
@@ -265,7 +265,7 @@ it a strict extension of the same draws rather than an independent resample.
 ```bibtex
 @mastersthesis{costa2026percolation,
   author  = {Jefferson Carlos Lima da Costa},
-  title   = {Effective Resistance of Random Stick-Percolation Networks},
+  title   = {Effective Resistance as an Inverse Descriptor of Random Geometric Networks},
   school  = {Centro de Inform\'atica, Universidade Federal de Pernambuco},
   year    = {2026}
 }
