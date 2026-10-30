@@ -1,0 +1,770 @@
+[
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 1,
+    "mean_ohm": 1005.9756057101785,
+    "median_ohm": 1005.9756057101785,
+    "std_ohm": 0.0,
+    "perc_rate": 0.0011135857461024498,
+    "R_eff_values": [
+      1005.9756057101785
+    ],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {
+      "0.2": {
+        "per_realization_means": [
+          188.73081374557233
+        ],
+        "mean": 188.73081374557233,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.3": {
+        "per_realization_means": [
+          311.85659157136473
+        ],
+        "mean": 311.85659157136473,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.4": {
+        "per_realization_means": [
+          359.5714334969694
+        ],
+        "mean": 359.5714334969694,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.5": {
+        "per_realization_means": [
+          557.2370208078614
+        ],
+        "mean": 557.2370208078614,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.6": {
+        "per_realization_means": [
+          783.0542562912046
+        ],
+        "mean": 783.0542562912046,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.7": {
+        "per_realization_means": [
+          854.9914985653988
+        ],
+        "mean": 854.9914985653988,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.8": {
+        "per_realization_means": [
+          977.6410690830656
+        ],
+        "mean": 977.6410690830656,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.9": {
+        "per_realization_means": [
+          1022.9357217964791
+        ],
+        "mean": 1022.9357217964791,
+        "std": 0.0,
+        "n_realizations": 1
+      }
+    }
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 6,
+    "mean_ohm": 935.7663396813205,
+    "median_ohm": 913.5869382307619,
+    "std_ohm": 95.7065322462852,
+    "perc_rate": 0.03870967741935484,
+    "R_eff_values": [
+      1082.2311092446657,
+      838.4337216915096,
+      955.8725396070225,
+      834.7351359834366,
+      1032.0241947067868,
+      871.3013368545013
+    ],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {
+      "0.1": {
+        "per_realization_means": [
+          129.08122126675642,
+          106.82818422943585,
+          63.81929536638881,
+          85.26117756863812,
+          50.6628275672183
+        ],
+        "mean": 87.1305411996875,
+        "std": 28.371321926488807,
+        "n_realizations": 5
+      },
+      "0.2": {
+        "per_realization_means": [
+          290.48794827169684,
+          201.16721411318997,
+          210.6708758421343,
+          108.73330463886937,
+          132.36452132252458,
+          110.06675759094018
+        ],
+        "mean": 175.5817702965592,
+        "std": 65.47003749760259,
+        "n_realizations": 6
+      },
+      "0.3": {
+        "per_realization_means": [
+          427.06152633705796,
+          210.38572246645617,
+          252.72586609406096,
+          212.89464757607712,
+          216.74426880674366,
+          231.10967367696836
+        ],
+        "mean": 258.48695082622737,
+        "std": 76.7408308286268,
+        "n_realizations": 6
+      },
+      "0.4": {
+        "per_realization_means": [
+          446.9823790653033,
+          262.3206256426533,
+          450.87536249489193,
+          599.7218954418347,
+          402.2794247795468,
+          414.6178366209595
+        ],
+        "mean": 429.46625400753163,
+        "std": 98.86810091169997,
+        "n_realizations": 6
+      },
+      "0.5": {
+        "per_realization_means": [
+          601.1971641494242,
+          466.35074924204423,
+          598.2998426947854,
+          424.82521074044496,
+          583.069817069164,
+          481.8361681144408
+        ],
+        "mean": 525.9298253350506,
+        "std": 70.57340193931563,
+        "n_realizations": 6
+      },
+      "0.6": {
+        "per_realization_means": [
+          668.9529207266218,
+          521.0953464201201,
+          770.4848079524907,
+          562.1812931454234,
+          660.707381052172,
+          491.1359613307367
+        ],
+        "mean": 612.4262851045941,
+        "std": 96.68338673615303,
+        "n_realizations": 6
+      },
+      "0.7": {
+        "per_realization_means": [
+          839.6740724524514,
+          766.3061840371074,
+          797.0057526304979,
+          656.541965693314,
+          844.4255226967159,
+          859.5354964654798
+        ],
+        "mean": 793.9148323292611,
+        "std": 69.03429726874081,
+        "n_realizations": 6
+      },
+      "0.8": {
+        "per_realization_means": [
+          840.80864239538,
+          849.0912200773805,
+          981.1296378851514,
+          889.3807084825605
+        ],
+        "mean": 890.1025522101181,
+        "std": 55.673760185975645,
+        "n_realizations": 4
+      },
+      "0.9": {
+        "per_realization_means": [
+          1082.2311092446635,
+          942.5269128835954,
+          1043.4680803596098,
+          843.7538003057488,
+          1032.0241947068218,
+          960.6695999609337
+        ],
+        "mean": 984.1122829102288,
+        "std": 78.97823760088251,
+        "n_realizations": 6
+      }
+    }
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 1,
+    "mean_ohm": 968.1588574915357,
+    "median_ohm": 968.1588574915357,
+    "std_ohm": 0.0,
+    "perc_rate": 0.0016638935108153079,
+    "R_eff_values": [
+      968.1588574915357
+    ],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {
+      "0.1": {
+        "per_realization_means": [
+          140.23346801890455
+        ],
+        "mean": 140.23346801890455,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.2": {
+        "per_realization_means": [
+          225.11309580444274
+        ],
+        "mean": 225.11309580444274,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.3": {
+        "per_realization_means": [
+          440.5881913940388
+        ],
+        "mean": 440.5881913940388,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.4": {
+        "per_realization_means": [
+          516.1206473905279
+        ],
+        "mean": 516.1206473905279,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.5": {
+        "per_realization_means": [
+          591.1017503226115
+        ],
+        "mean": 591.1017503226115,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.6": {
+        "per_realization_means": [
+          730.5128365522546
+        ],
+        "mean": 730.5128365522546,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.7": {
+        "per_realization_means": [
+          900.0288550180155
+        ],
+        "mean": 900.0288550180155,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.8": {
+        "per_realization_means": [
+          903.0661375135794
+        ],
+        "mean": 903.0661375135794,
+        "std": 0.0,
+        "n_realizations": 1
+      },
+      "0.9": {
+        "per_realization_means": [
+          1104.9799487143518
+        ],
+        "mean": 1104.9799487143518,
+        "std": 0.0,
+        "n_realizations": 1
+      }
+    }
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": [],
+    "reference_node_convention": "pre_merge_source_nodes[0]",
+    "layer_distances": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "onion_layer_curves": {}
+  }
+]

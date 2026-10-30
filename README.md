@@ -40,10 +40,16 @@ measurement protocol recovers information the scalar throws away.
 
 ## The model
 
-**Network generation (2D).** `N` sticks of length `a` are dropped at uniformly random
-positions and orientations in the unit square. Every pairwise intersection becomes a
-graph node. The sticks are cut at those intersections into segments, and each segment
-becomes an edge.
+**Network generation (2D).** Sticks of length `a` are deposited at uniform density `N`
+per unit area, with uniform orientations, and observed through the unit square: centres
+are drawn in the square enlarged by `a/2` on every side, `round(N·(1+a)²)` of them, and
+every stick is clipped to the film (Liang–Barsky); a stick that misses the film is
+dropped. `N` is therefore a density, the number of sticks actually in a realization is
+recorded as `n_sticks`, and the film is not depleted near its edges. (The earlier
+rejection rule, which redrew any stick leaving the square, is still available as
+`boundary="reject"` but is used for nothing reported here.) Every pairwise intersection
+becomes a graph node. The sticks are cut at those intersections into segments, and each
+segment becomes an edge.
 
 **Network generation (3D).** Two random finite segments in 3D are generically skew and
 almost surely never intersect exactly, so the exact-intersection test has no 3D
@@ -58,8 +64,9 @@ independent uniform angles instead would bias mass toward the poles, and
 
 **Film thickness.** Passing `box_dims=(1.0, 1.0, d)` confines the sticks to a slab
 instead of the full unit cube, while the transport direction and the source/drain
-convention stay untouched. `d = 1` recovers the isotropic cube exactly, and `d` going to
-zero approaches the 2D thin-sheet limit.
+convention stay untouched; the same clipping rule applies, with `N` centres in the slab
+on average (volumetric density `N/d`). `d = 1` recovers the isotropic cube exactly, and
+`d` going to zero approaches the 2D thin-sheet limit.
 
 **Resistance model.** Each edge carries `R_edge = R0 * L_edge`, proportional to its own
 Euclidean length, rather than a uniform per-edge resistance. `distance_dependent_resistance.ipynb`
@@ -84,34 +91,52 @@ per network instead of one dense solve per probed pair.
 ## What was found
 
 Full numbers, figures, and the exact runs behind them are in **[docs/RESULTS.md](docs/RESULTS.md)**.
-In short:
+Everything below is from the runs regenerated under the clipping boundary rule
+(2026-09-15), after the merge-geometry correction of 2026-08-31 (see the reproducibility
+notes at the end); the pool of trials counts each distinct sweep once. In short:
 
 **1. The forward scaling.** `R_eff` falls monotonically with both `N` and `a`. Pooled over
-2835 individual percolating trials, the unconstrained fit gives
+2919 unique percolating trials on 101 `(N, a)` points, the unconstrained fit gives
 
 ```
-R_eff ≈ 10246 · N^(-1.28) · a^(-1.75)      R² = 0.848
+R_eff ≈ 28254 · N^(-1.694) · a^(-2.459)      R² = 0.904
 ```
+
+**1b. The percolation form.** Fitted as `R_eff = A·a^q·(N·a² − c)^(−t)`, the same trials
+give `q = 0.99`, the `a¹` of the wire-limited model, and `t = 1.44 [1.36, 1.51]` with a
+free threshold `c = 2.28` that absorbs the rounding of the transition in a finite box
+(`R² = 0.921`). A dedicated near-threshold sweep in boxes of 5 to 10 stick lengths places
+the half-percolation density at `N·a² = 5.5–5.7`, the infinite-system threshold, shows
+`R_eff/(R0·a)` collapsing across box sizes above `N·a² ≈ 8`, and gives `t = 1.10–1.23` with
+the threshold pinned there. The dense wire-limited limit `R ∝ a/(N·a²)` does not fit.
 
 **2. The `N·a²` collapse does not survive scrutiny.** Continuum stick-percolation theory
 uses the excluded-area parameter `N·a²` to locate the percolation *threshold*, and it is
 tempting to assume `R_eff` collapses onto the same variable away from the threshold. It
-does not. The constrained single-variable fit is clearly worse (`R² = 0.776` against
-`0.848`), and the general fit's exponents give `p / 2q = 0.37` where a true collapse
-requires 1.0. The inversion therefore uses the general fit, and this was checked rather
-than assumed.
+does not. The constrained single-variable fit is worse (`R² = 0.848` against `0.904`), and
+the general fit's exponents give `p / 2q = 0.34` where a true collapse requires 1.0. The
+inversion therefore uses the general fit.
 
-**3. The scalar inversion is underdetermined.** Even with the better fit, a target `R_eff`
-pins down a whole *curve* of `(N, a)` solutions rather than a point, because more short
-sticks behave much like fewer long ones. Picking one point off that curve requires a
-constraint from outside the model, such as a fabrication limit. Out-of-sample validation
-redraws fresh networks at candidate values and confirms the curve.
+**3. The scalar inversion is underdetermined, and it is validated.** A target `R_eff`
+pins down a whole *curve* of `(N, a)` solutions rather than a point. Out-of-sample
+validation on the 22 unique candidates the pipeline can reach (7 targets × 4 geometries,
+minus 6 the curve places outside the node budget or below the stick floor; 30 fresh
+networks each) reproduces the target to a median absolute error of 16%, 19 of 22 within
+30%; the errors are about 10% for long sticks and largest at the percolation threshold and
+where the straight-line power law misses the curvature of the critical form.
 
-**4. Thickness enters, but the scalar cannot see it.** Holding `N` fixed, `R_eff` rises
-monotonically with `d` and the percolation success rate falls, across every `(N, a)`
-baseline tested. This is the direct consequence of spreading the same material through a
-larger volume. Since the scalar inversion never used `d` at all, adding a genuine third
-parameter makes the underdetermination strictly worse.
+**4. Thickness enters, with a fitted exponent.** Over the 420-combination `(N, a, d)` grid
+(341 combinations with at least one percolating realization, 7800 realizations at 24 per
+combination),
+
+```
+R_eff ≈ 8.64e5 · N^(-1.892) · a^(-2.634) · d^(0.804)      R² = 0.854
+```
+
+against `R² = 0.635` without the `d` term. `R_eff` *rises* with `d` at fixed stick count
+per unit area, because the same sticks are spread through more volume until percolation
+is lost; at fixed density `N/d` it falls by a factor of three over a doubling of `d`, as
+the exponents predict in direction and a 250-realization control confirms.
 
 **5. Curve shape carries information the scalar collapses away.** This is the main
 contribution. Instead of a single source-to-drain number, the **onion-layer protocol**
@@ -120,18 +145,27 @@ curve rather than a scalar. Grouping `(N, a, d)` triples whose *scalar* `R_eff` 
 within 15%, precisely the triples the scalar inversion cannot separate, a one-way ANOVA
 per group and shell asks whether their onion curves still differ.
 
-On the full 420-combination grid at 6 realizations per point, 39 of 214 tests are
-significant at `p < 0.05`, against roughly 5% expected by chance. Re-running the five
-strongest groups at 50 realizations sharpens this decisively: 35 of 40 tests significant,
-31 surviving Bonferroni correction, with minimum p-values falling from about `1e-4` to as
-low as `1e-48`.
+On the full grid at 24 realizations per point, 337 of the 341 combinations form 32
+matched groups and 234 group-and-shell tests; 81 (34.6%) are significant at `p < 0.05`,
+against roughly 5% expected by chance, and 19 survive Bonferroni correction, with the
+strongest groups at `p < 1e-5`. The fraction stays between 22% and 45% for matching
+tolerances from 5% to 30%. A regression validated on combinations never seen in
+training then says what the information is: the curve recovers the film thickness `d`
+(out-of-sample `R²` rising from 0.15 on a single realization to 0.76 when 24 are
+averaged) while the scalar recovers nothing about `d` however many are averaged; neither
+observable separates `N` from `a` at fixed resistance.
 
-The answer is yes: the shape of the onion curve distinguishes geometries that the scalar
-resistance maps to the same value.
+One finding is reported as a correction rather than buried. On the earlier
+rejection-rule grid the curve appeared to recover `a` (`R² = 0.55`). That was the depleted
+rim of the earlier generator, one stick length wide, read as a signal; it disappeared
+when the rule was corrected, and the recovery of `d` survived.
 
-One caveat is reported honestly rather than buried. Group 16 stays weak even at 50
-realizations (38% of its shells significant), which points to a genuinely marginal effect
-there rather than a sampling artifact.
+**6. What an onion curve is not.** The dependence of the pairwise resistance on probe
+separation is linear in the sparse 3D networks, as in a wire, and sub-linear over most
+of the box in dense 2D networks (local exponent 0.5–0.8, the parallel-path effect), with
+a mild upturn at the far edge where the nodes on clipped sticks have fewer
+continuations. An onion curve of a film a few stick lengths across is not the
+resistance-versus-distance law of an infinite homogeneous film.
 
 ---
 
@@ -205,12 +239,17 @@ cd cluster
 mkdir -p logs
 sbatch run_effective_resistance_d_array.sbatch   # scalar R_eff over the (N, a, d) grid
 sbatch run_onion_grid_array.sbatch               # onion curves over the same grid
-sbatch run_onion_grid_boost_array.sbatch         # 50 realizations on the strongest groups
+sbatch run_critical_sweep_array.sbatch           # near-threshold sweep, 33 points
+sbatch run_preview_curves_array.sbatch           # 150 preview realizations
+sbatch prepare_validation_plan.sbatch            # pool + fit + freeze the 28 inverse candidates
+sbatch run_validation_array.sbatch               # 30 fresh networks per candidate
 ```
 
 Each task writes one `chunk_NN.json`. Once the full set is present, the corresponding
-notebook detects it automatically and loads instead of recomputing. See
-[cluster/README.md](cluster/README.md) for the details of each job.
+notebook detects it automatically and loads instead of recomputing. The two large grids
+can also be run as a single 48-worker job on the `short-complex` partition
+(`run_scalar_grid_parallel.sbatch`, `run_onion_grid_parallel.sbatch`), which writes the
+same chunk files. See [cluster/README.md](cluster/README.md) for the details of each job.
 
 ---
 
@@ -254,9 +293,8 @@ This is fixed by `stable_seed()` in `utils/pipeline_utils.py`, which derives see
 `hashlib`. Data collected before the fix (the scalar `(N, a, d)` grid in
 `experiments/exp_829/`) remains a valid random sample and is used as such, but it cannot
 be regenerated byte for byte from today's seed formula. Everything collected afterwards
-can. The boosted rerun exploits this: because it reuses the same `stable_seed()` values,
-its first 6 realizations per combination are byte-identical to the original data, making
-it a strict extension of the same draws rather than an independent resample.
+can, and the cluster results were spot-checked on a laptop by redrawing individual units
+from their seeds (they reproduce bit for bit).
 
 ---
 
@@ -274,3 +312,32 @@ it a strict extension of the same draws rather than an independent resample.
 ## License
 
 [MIT](LICENSE), Copyright (c) 2026 Jefferson Carlos Lima da Costa.
+
+**Merge-geometry correction (2026-08-31).** `distance_dependent_impedance` used to measure
+edge lengths on the merged geometry, where each terminal sits at the centroid of the face
+it replaces, which inflated every whole-face `R_eff` by an amount that grows with density.
+Edge lengths are now measured on the pre-merge geometry, with the harmonic-mean length for
+collapsed parallel edges. Every grid was regenerated after the fix (`cluster/backups/`
+holds the pre-fix data with checksums, and `cluster/verify_rerun_vs_backup.py` checks that
+only the scalar column moved). The numbers in this README and in `docs/RESULTS.md` are
+post-correction; runs numbered below `exp_843` are not.
+
+**One sweep, once (2026-09-14).** Because seeds are stable, re-running a sweep reproduces
+its trials exactly, and the `experiments/` archive holds several such re-runs of the same
+grids. The pooling in `inverse_N_a_from_R_eff.ipynb` and `cluster/run_validation_task.py`
+now skips any `(N, a)` cell whose `R_eff_values` vector has already been pooled, so the
+fit sees each trial once.
+
+**Clipping boundary rule (2026-09-15).** The generator used to redraw any stick whose
+second endpoint fell outside the box, which depleted a rim of width `~a`, biased the
+orientations there and made `N` a count of whole sticks rather than a density. It now
+places centres at uniform density in the box enlarged by `a/2` and clips every stick to
+the film (`utils/point_generator.py`, `utils/point_generator_3d.py`, `boundary="clip"`),
+and the intersection tolerance was tightened from `1e-3` to `1e-9`, since clipped sticks
+that end near each other at the edge were otherwise occasionally joined. Every sweep was
+regenerated under the new rule, at 24 realizations per combination for the 3D grids
+(previously 6), with the onion grid storing each realization's curve as its own record
+(`per_realization_curves`). The rejection-rule results are kept under
+`cluster/*_results_reject/` and `experiments/exp_843`–`exp_869`; every summary records
+its boundary rule and the pooling scripts refuse to mix the two. The onion-grid boost
+(`run_onion_grid_boost_task.py`) was retired by the higher base count and feeds no result.

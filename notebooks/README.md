@@ -93,7 +93,7 @@ a SLURM job, reloading committed results instead of recomputing. The pattern is 
 | `effective_resistance_vs_N_a.ipynb` | Part B | `run_effective_resistance_sweep.sbatch` |
 | `effective_resistance_vs_d.ipynb` | Part C | `run_effective_resistance_d_array.sbatch` |
 | `inverse_N_a_from_R_eff.ipynb` | Section 6 | `run_validation_array.sbatch` |
-| `r_eff_ij_vs_N_a_d.ipynb` | Parts B, C, D | `run_onion_grid_array.sbatch`, `run_onion_grid_boost_array.sbatch` |
+| `r_eff_ij_vs_N_a_d.ipynb` | Parts B, C | `run_onion_grid_array.sbatch` (or `run_onion_grid_parallel.sbatch`); Part D needs the retired boost run and is skipped (`RUN_BOOST=False`) |
 | `test_150_random_networks.ipynb` | Section 4 | `run_random_networks_array.sbatch` |
 
 See [`../cluster/README.md`](../cluster/README.md).

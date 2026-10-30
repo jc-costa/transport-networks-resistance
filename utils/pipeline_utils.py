@@ -80,7 +80,11 @@ def run_full_pipeline(points_1, points_2, angles, N, a,
         ImpedanceCalculator, merge_boundary_nodes, build_incidence_matrix, build_laplacian
     )
 
-    results = {"title": title, "N": N, "a": a, "k": k}
+    # N is the density parameter of the draw (stick centres per unit area);
+    # the number of sticks actually present may differ from it under the
+    # clipping boundary rule, so every loop below runs over the lists.
+    n_sticks = len(points_1)
+    results = {"title": title, "N": N, "n_sticks": n_sticks, "a": a, "k": k}
 
     intersections_points = []
     intersected_line_1 = []
@@ -90,7 +94,7 @@ def run_full_pipeline(points_1, points_2, angles, N, a,
         identify_intersections(
             points_1, points_2,
             intersections_points, intersected_line_1, intersected_line_2,
-            graph, angles, a, N
+            graph, angles, a, n_sticks
         )
     results["intersections_points"] = intersections_points
     results["graph"] = graph
@@ -480,7 +484,8 @@ def run_full_pipeline_circular_terminals(points_1, points_2, angles, N, a,
     return results
 
 
-def generate_percolating_network(N, a, k_uniform=1000.0, max_attempts=200, seed=None):
+def generate_percolating_network(N, a, k_uniform=1000.0, max_attempts=200, seed=None,
+                                 boundary="clip"):
     """
     Draw random stick networks (N sticks, aspect ratio a) via run_full_pipeline
     until one percolates, or give up after max_attempts.
@@ -498,7 +503,7 @@ def generate_percolating_network(N, a, k_uniform=1000.0, max_attempts=200, seed=
 
     for attempt in range(1, max_attempts + 1):
         points_1, points_2, angles = [], [], []
-        generate_points(N, points_1, points_2, angles, a, enforce_bounds=True)
+        generate_points(N, points_1, points_2, angles, a, enforce_bounds=True, boundary=boundary)
         with contextlib.redirect_stdout(io.StringIO()):
             results = run_full_pipeline(points_1, points_2, angles, N, a,
                                         k=k_uniform, verbose=False)
@@ -506,21 +511,61 @@ def generate_percolating_network(N, a, k_uniform=1000.0, max_attempts=200, seed=
             results["points_1"] = points_1
             results["points_2"] = points_2
             results["angles"] = angles
+            results["boundary"] = boundary
             return results, attempt
 
     return None, max_attempts
 
 
-def distance_dependent_impedance(results, R0):
+def distance_dependent_impedance(results, R0, use_merged_geometry=False):
     """
     Recompute the impedance of a run_full_pipeline() result using the
     distance-dependent resistance model (R_edge = R0 * L_edge) instead of the
     uniform-k model already stored in results['impedance'].
+
+    Edge lengths are measured on the PRE-MERGE geometry. merge_boundary_nodes
+    parks each merged terminal at the average position of the face it replaces,
+    so measuring lengths on the merged coordinates would re-measure every edge
+    that touches a terminal, changing the resistance of wire segments that never
+    moved. Shorting a face is node identification: the face nodes are tied
+    together by an ideal conductor and the wires keep their real lengths, which
+    is what merged_edge_true_lengths recovers (including the correct
+    parallel combination for collapsed edges). The difference is not academic:
+    on (N=40, a=0.6) percolating networks the centroid geometry overstates the
+    whole-face R_eff by 2-17% depending on the realization.
+
+    Parameters
+    ----------
+    results : dict
+        A run_full_pipeline / run_full_pipeline_3d result.
+    R0 : float
+        Resistance per unit length.
+    use_merged_geometry : bool
+        Set True to reproduce the older (physically incorrect) numbers that
+        measured edge lengths on the merged centroid coordinates. Only useful
+        for comparing against results recorded before this was fixed.
     """
-    from impedance_calculator import ImpedanceCalculator
+    from impedance_calculator import (ImpedanceCalculator, build_merge_node_mapping,
+                                      merged_edge_true_lengths)
 
     calc = ImpedanceCalculator(
         results["merged_intersections"], results["merged_graph"],
         results["merged_segment_to_nodes"], edge_conductance=results["edge_conductance"],
     )
-    return calc.calculate(k=R0, distance_dependent=True)
+
+    edge_lengths = None
+    if not use_merged_geometry:
+        if "pre_merge_segment_to_nodes" not in results:
+            raise KeyError(
+                "results has no pre_merge_* fields, so the true edge lengths cannot be "
+                "recovered; pass use_merged_geometry=True to accept the merged centroid "
+                "geometry instead")
+        node_mapping, _, _, _ = build_merge_node_mapping(
+            len(results["pre_merge_intersections"]),
+            results["pre_merge_source_nodes"], results["pre_merge_drain_nodes"])
+        edge_lengths = merged_edge_true_lengths(
+            results["pre_merge_intersections"], results["pre_merge_segment_to_nodes"],
+            node_mapping, results["merged_segment_to_nodes"],
+            edge_conductance=results["edge_conductance"])
+
+    return calc.calculate(k=R0, distance_dependent=True, edge_lengths=edge_lengths)

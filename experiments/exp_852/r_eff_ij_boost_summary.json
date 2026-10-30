@@ -1,0 +1,92 @@
+{
+  "boost_config": {
+    "REL_TOL": 0.15,
+    "TOP_N_GROUPS": 5,
+    "N_TRIALS_ORIGINAL": 6,
+    "N_TRIALS_BOOST": 50
+  },
+  "boosted_group_comparison": [
+    {
+      "group": 4,
+      "before": {
+        "n_triples": 13,
+        "n_layers_tested": 8,
+        "min_p": 0.003784168446185697,
+        "frac_sig_p05": 0.25
+      },
+      "after": {
+        "n_triples": 8,
+        "n_layers_tested": 8,
+        "min_p": 1.2074607605784976e-25,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 6,
+      "before": {
+        "n_triples": 9,
+        "n_layers_tested": 8,
+        "min_p": 0.018454892983259707,
+        "frac_sig_p05": 0.125
+      },
+      "after": {
+        "n_triples": 3,
+        "n_layers_tested": 8,
+        "min_p": 3.284621939761136e-17,
+        "frac_sig_p05": 0.75
+      }
+    },
+    {
+      "group": 9,
+      "before": {
+        "n_triples": 14,
+        "n_layers_tested": 8,
+        "min_p": 0.00021406225295835646,
+        "frac_sig_p05": 0.25
+      },
+      "after": {
+        "n_triples": 5,
+        "n_layers_tested": 8,
+        "min_p": 7.731948935130142e-24,
+        "frac_sig_p05": 1.0
+      }
+    },
+    {
+      "group": 11,
+      "before": {
+        "n_triples": 10,
+        "n_layers_tested": 8,
+        "min_p": 0.0015800070636017068,
+        "frac_sig_p05": 0.375
+      },
+      "after": {
+        "n_triples": 4,
+        "n_layers_tested": 8,
+        "min_p": 6.235365963866794e-08,
+        "frac_sig_p05": 0.5
+      }
+    },
+    {
+      "group": 16,
+      "before": {
+        "n_triples": 8,
+        "n_layers_tested": 8,
+        "min_p": 0.020096900484954303,
+        "frac_sig_p05": 0.5
+      },
+      "after": {
+        "n_triples": 3,
+        "n_layers_tested": 8,
+        "min_p": 0.00498565357779082,
+        "frac_sig_p05": 0.25
+      }
+    }
+  ],
+  "boosted_only_test_summary": {
+    "n_tests": 40,
+    "n_sig_p05": 28,
+    "frac_sig_p05": 0.7,
+    "bonferroni_alpha": 0.00125,
+    "n_sig_bonferroni": 21
+  }
+}

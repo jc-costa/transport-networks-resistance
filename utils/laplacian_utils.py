@@ -90,6 +90,83 @@ def effective_resistance_pinv(intersections, segment_to_nodes, source_node, drai
     return float(e_sd @ Lp @ e_sd)
 
 
+def effective_resistance_merged_faces(intersections, segment_to_nodes,
+                                      source_nodes, drain_nodes,
+                                      R0=1000.0, edge_conductance=None):
+    """
+    Independent cross-check of the whole-face distance-dependent R_eff, computed
+    WITHOUT moving any node.
+
+    Merging a face into one terminal is node IDENTIFICATION: the face nodes are
+    tied together by an ideal (zero resistance) conductor, and every wire keeps
+    the length it physically has. That is done here by building the weighted
+    Laplacian on the ORIGINAL geometry and then summing the rows and columns of
+    each face into a single supernode, before the usual R_eff = e^T L+ e.
+
+    Contrast with running effective_resistance_pinv on a MERGED network's own
+    coordinates: merge_boundary_nodes parks each terminal at the average
+    position of the face it replaces, so under R_edge = R0 * L_edge that
+    re-measures every edge touching a terminal and changes the resistance of
+    wires that never moved. This function is the reference that
+    pipeline_utils.distance_dependent_impedance is expected to reproduce, and
+    the two agree to ~1e-12 relative in 2D and 3D.
+
+    Parameters
+    ----------
+    intersections, segment_to_nodes : the PRE-MERGE network (2D or 3D).
+    source_nodes, drain_nodes : iterable of int
+        The face node groups, each shorted into one terminal.
+    R0 : float
+        Resistance per unit length (R_edge = R0 * edge_length).
+    edge_conductance : dict, optional
+        edge_idx -> parallel multiplier, if the pre-merge network already has one.
+
+    Returns
+    -------
+    float : R_eff between the two merged terminals.
+    """
+    inter = np.asarray(intersections, dtype=float)
+    edge_conductance = edge_conductance or {}
+    n = len(inter)
+
+    L = np.zeros((n, n))
+    for e, (n1, n2) in segment_to_nodes.items():
+        if n1 == n2:
+            continue
+        length = float(np.linalg.norm(inter[n1] - inter[n2]))
+        if length <= 0:
+            continue
+        g = edge_conductance.get(e, 1) / (R0 * length)
+        L[n1, n1] += g; L[n2, n2] += g
+        L[n1, n2] -= g; L[n2, n1] -= g
+
+    source_set, drain_set = set(source_nodes), set(drain_nodes)
+    if source_set & drain_set:
+        raise ValueError("source_nodes and drain_nodes overlap; a node cannot be "
+                         "shorted into both terminals")
+    internal = [i for i in range(n) if i not in source_set and i not in drain_set]
+
+    index = {old: new for new, old in enumerate(internal)}
+    source_idx, drain_idx = len(internal), len(internal) + 1
+    for old in source_set:
+        index[old] = source_idx
+    for old in drain_set:
+        index[old] = drain_idx
+
+    m = len(internal) + 2
+    L_merged = np.zeros((m, m))
+    for i in range(n):
+        row = index[i]
+        for j in range(n):
+            if L[i, j]:
+                L_merged[row, index[j]] += L[i, j]
+
+    e_sd = np.zeros(m)
+    e_sd[source_idx] = 1
+    e_sd[drain_idx] = -1
+    return float(e_sd @ np.linalg.pinv(L_merged) @ e_sd)
+
+
 def effective_resistance_from_reference(intersections, segment_to_nodes, reference_node,
                                         R0=1000.0, edge_conductance=None):
     """

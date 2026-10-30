@@ -2,17 +2,25 @@ from collections import deque
 
 
 def connected_components(graph):
-    """
-    Partition ALL nodes into connected components, using the same
-    shared-stick adjacency rule find_path uses internally (two nodes i, j
-    are adjacent iff graph[i] and graph[j] -- each a (stick_a, stick_b)
-    pair -- share a stick index) -- but with no x>0.9 "reached the drain"
-    flag and no single designated start_node, since a multi-terminal network
-    's terminals aren't confined to one face and there's no single
-    source/drain distinction to trace.
+    """Group intersection nodes connected through shared stick IDs.
 
-    Returns list[list[int]], one list of node indices per component, sorted
-    largest-first.
+    Parameters
+    ----------
+    graph : sequence of pairs of int
+        ``graph[i]`` contains the two stick IDs meeting at node i.
+        This is the intersection representation, not a neighbor list.
+
+    Returns
+    -------
+    components : list of list of int
+        Node indices in breadth-first discovery order, grouped by component.
+        Components are sorted by decreasing size, with ties retaining
+        discovery order. An empty graph returns an empty list.
+
+    Notes
+    -----
+    No source/drain boundary condition is imposed, so these components also
+    support terminals placed away from the boundary faces.
     """
     n = len(graph)
     visited = [False] * n
@@ -39,6 +47,37 @@ def connected_components(graph):
 
 
 def find_path(intersections_points, graph, start_node):
+    """Traverse shared-stick connections and record whether a drain is reached.
+
+    Parameters
+    ----------
+    intersections_points : sequence of coordinate sequences, shape (n, d)
+        Intersection coordinates in the unit-width film, with x first.
+        Only x is used; d may be 2 or 3.
+    graph : sequence of pairs of int, length n
+        Stick IDs meeting at each intersection, aligned with the coordinates.
+        Equal stick pairs are treated as the same entry during traversal.
+    start_node : int
+        Valid node index, normally chosen from the source region x < 0.1.
+
+    Returns
+    -------
+    path_nodes : list of int
+        Discovered nodes, starting with start_node, in traversal order.
+    path_pairs_of_lines : list
+        Distinct entries from graph encountered during traversal.
+    path_pairs_of_edges : list of tuple of int
+        Parent/child node pairs recorded on discovery. These are traversal
+        edges, not all consecutive electrical segments along the sticks.
+    path_perc : int
+        1 if a newly discovered node has x > 0.9, otherwise 0. The starting
+        node alone does not set this flag, even if it lies in the drain.
+
+    Notes
+    -----
+    The input ordering determines discovery order. Coordinates and indices
+    are assumed valid; an empty graph has no valid starting node.
+    """
     visited = set()
     queue = deque([start_node])
     path_nodes = [start_node]
@@ -47,35 +86,22 @@ def find_path(intersections_points, graph, start_node):
     path_perc = 0
 
     while queue:
-        # print(f'valor de queue antes = {queue}')
         current_node = queue.popleft()
-        # print(f'valor de queue depois = {queue}')
 
         if current_node not in visited:
             visited.add(current_node)
-            # print(f'nós visitados {visited}')
             target_edge = graph[current_node]
-            # print(f'valor de target edge = {target_edge}')
 
-            #Appending the target edge to path_pairs_of_lines if it's not already there
             if target_edge not in path_pairs_of_lines:
                 path_pairs_of_lines.append(target_edge)
-                # print(f'valor de path_pairs_of_lines = {path_pairs_of_lines}')
 
-            #Visiting each edge and appending the nodes
             for i, edge in enumerate(graph):
                 if i != current_node and (target_edge[0] in edge or target_edge[1] in edge) and edge not in path_pairs_of_lines:
-                    # print(f'valor do i = {i}')
-                    # print(f'valor do current node = {current_node}')
                     if i not in path_nodes:
                         queue.append(i)
-                        # print(f'valor da queue após append = {queue}')
                         path_nodes.append(i)
-                        # print(f'valor do path_pairs_of_nodes{path_nodes}')
                         path_pairs_of_lines.append(edge)
-                        # print(f'valor do path_pairs_of_lines = {path_pairs_of_lines}')
                         path_pairs_of_edges.append((current_node,i))
-                        # print(f'valor do path_pairs_of_edges = {path_pairs_of_edges}')
                         if intersections_points[i][0] > 0.9:
                           path_perc = 1
 
@@ -84,20 +110,24 @@ def find_path(intersections_points, graph, start_node):
 
 def verify_pruned_percolation(filtered_segment_edge_list, intersections_points,
                               source_segments, drain_segments):
-    """
-    Verify that the pruned path still percolates (source reachable to drain).
+    """Check for a source-to-drain connection in the retained electrical edges.
 
     Parameters
     ----------
-    filtered_segment_edge_list : list of (segment, (n1, n2))
-    intersections_points : list of (x, y)
-    source_segments : set
-    drain_segments : set
+    filtered_segment_edge_list : sequence of (int, (int, int))
+        Retained (stick ID, endpoint-node pair) entries.
+    intersections_points : sequence of coordinate sequences, shape (n, d)
+        Global node coordinates in the unit-width film, with x first.
+    source_segments, drain_segments : set of int
+        Stick IDs touching the source and drain regions, respectively.
 
     Returns
     -------
     proceed : bool
-        True if the pruned network still percolates.
+        True when retained sticks include both boundary sets and a retained
+        node with x < 0.1 connects to one with x > 0.9. Empty edges or a
+        missing boundary return False. Nodes exactly on a threshold are
+        not boundary nodes.
     """
     if not filtered_segment_edge_list:
         return False
@@ -138,21 +168,27 @@ def verify_pruned_percolation(filtered_segment_edge_list, intersections_points,
 
 
 def build_connected_path(filtered_segment_edge_list, filtered_nodes, intersections_points):
-    """
-    Filter to only the connected component between source and drain.
+    """Retain components that connect both boundary regions and deduplicate edges.
 
     Parameters
     ----------
-    filtered_segment_edge_list : list of (segment, (n1, n2))
-    filtered_nodes : list of int
-    intersections_points : list of (x, y)
+    filtered_segment_edge_list : sequence of (int, (int, int))
+        Retained (stick ID, endpoint-node pair) entries.
+    filtered_nodes : sequence of int
+        Global indices of retained nodes, used to select boundary nodes.
+    intersections_points : sequence of coordinate sequences, shape (n, d)
+        Global coordinates in the unit-width film. Source nodes have
+        x < 0.1 and drain nodes have x > 0.9; thresholds are strict.
 
     Returns
     -------
     segment_to_nodes : dict
-        {index: (n1, n2)} mapping with unique edges.
-    filtered_nodes : list
-        Sorted list of nodes on the connected path.
+        Consecutive edge IDs mapped to unique, sorted global endpoint pairs.
+        Repeated pairs, including parallel edges, collapse to one pair.
+    filtered_nodes : list of int
+        Sorted nodes reachable from both boundary sets. More than one
+        component may qualify. Returns an empty dict and list when no
+        component connects the two regions.
     """
     pruned_adj = {n: {} for n in filtered_nodes}
     for seg, (n1, n2) in filtered_segment_edge_list:
@@ -196,27 +232,34 @@ def build_connected_path(filtered_segment_edge_list, filtered_nodes, intersectio
 
 
 def rebuild_local_graph(filtered_nodes, intersections_points, segment_to_nodes):
-    """
-    Rebuild the graph with consecutive node indices for impedance calculation.
+    """Renumber retained nodes and edges for impedance calculation.
 
     Parameters
     ----------
-    filtered_nodes : list of int
-        Global node indices on the connected path.
-    intersections_points : list of (x, y)
-    segment_to_nodes : dict
-        {seg_index: (global_n1, global_n2)}
+    filtered_nodes : sequence of int
+        Unique global node indices, including every edge endpoint.
+    intersections_points : sequence of coordinate sequences, shape (n, d)
+        Global node coordinates; coordinates and units are preserved.
+    segment_to_nodes : dict of int to (int, int)
+        Edge IDs mapped to pairs of global node indices.
 
     Returns
     -------
     node_mapping : dict
-        {global_index: local_index}
+        Global-to-local indices assigned in sorted global-node order.
     path_intersections : list
-        Coordinate list for local nodes.
+        Coordinates in local-node order, referencing the original entries.
     new_segment_to_nodes : dict
-        {seg_index: (local_n1, local_n2)}
+        Consecutive edge IDs mapped to local endpoint pairs. New IDs follow
+        sorted old edge IDs; dictionary insertion order follows the input.
     path_graph : list
-        path_graph[local_i] = list of segment indices.
+        Incident edge IDs for each local node. A self-loop is listed twice
+        at its node, once for each endpoint.
+
+    Notes
+    -----
+    Empty nodes and edges produce empty outputs. Every endpoint must occur
+    in filtered_nodes; a missing endpoint raises KeyError.
     """
     nodes_in_path = sorted(filtered_nodes)
     node_mapping = {old: new for new, old in enumerate(nodes_in_path)}

@@ -1,0 +1,12 @@
+1. CV-seed sensitivity (seed 0 is the pre-set run)
+   S      seed0 +0.135  mean +0.138  sd 0.002  range [+0.135, +0.140]  seeds >= 0.20: 0/10  minus S +0.000
+   S+C1   seed0 +0.163  mean +0.165  sd 0.004  range [+0.158, +0.171]  seeds >= 0.20: 0/10  minus S +0.027
+   S+C4   seed0 +0.156  mean +0.159  sd 0.004  range [+0.155, +0.166]  seeds >= 0.20: 0/10  minus S +0.022
+   S+C16  seed0 +0.205  mean +0.204  sd 0.003  range [+0.198, +0.209]  seeds >= 0.20: 9/10  minus S +0.066
+   S+P    seed0 +0.201  mean +0.203  sd 0.004  range [+0.196, +0.208]  seeds >= 0.20: 8/10  minus S +0.066
+2-3. one split per target (seed 0)
+   S      binomial SE ~ 0.020
+   S+C1   binomial SE ~ 0.020   vs S on 630 networks: gained 85, lost 68, McNemar p = 0.2
+   S+C4   binomial SE ~ 0.020   vs S on 630 networks: gained 96, lost 78, McNemar p = 0.2
+   S+C16  binomial SE ~ 0.020   vs S on 630 networks: gained 105, lost 65, McNemar p = 0.0027
+   S+P    binomial SE ~ 0.020   vs S on 630 networks: gained 105, lost 62, McNemar p = 0.0011

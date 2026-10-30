@@ -1,0 +1,17 @@
+{
+ "task_id": 42,
+ "a": 0.025,
+ "x_target": 4,
+ "N": 6400,
+ "x": 4.000000000000001,
+ "Lambda": 40.0,
+ "R0": 1000.0,
+ "n": 0,
+ "n_target": 50,
+ "draws": 600,
+ "perc_rate": 0.0,
+ "stopped": "fails_in_a_row",
+ "R_eff_values": [],
+ "networks": [],
+ "seconds": 176.18110299110413
+}

@@ -31,7 +31,17 @@
 set -eo pipefail
 set -x
 
-module load Python/3.10.8-GCCcore-12.2.0
+# No `module load` here on purpose: the Python/3.10.8-GCCcore-12.2.0 module these jobs
+# used until 2026-08 no longer exists on Apuana (`module spider Python` finds nothing
+# at all), and its removal took the ~/envs/piano_sweep venv built against
+# /opt/easybuild/software/Python/3.10.8-GCCcore-12.2.0 with it.
+#
+# The venv is now built from /usr/bin/python3 (3.10.12), NOT from the login node's
+# conda at /opt/miniforge3. That distinction matters: /opt is node-local here, so a
+# venv rooted in /opt/miniforge3 activates fine on the login node and then dies on a
+# compute node with `python: command not found`, because bash skips the dangling
+# symlink (job 13754). /usr/bin/python3 exists on every node (verified on
+# cluster-node1, job 13755). Re-run smoke_test.sbatch after any change to this setup.
 source ~/envs/piano_sweep/bin/activate
 
 export MPLBACKEND=Agg   # headless node: never try to open an interactive plot window

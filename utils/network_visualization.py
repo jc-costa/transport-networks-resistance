@@ -4,6 +4,7 @@
 # ============================================================================
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
+from matplotlib.colors import LogNorm
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch, Arc, Circle, FancyArrowPatch, PathPatch
 from matplotlib.path import Path
@@ -515,77 +516,32 @@ def plot_before_after_merge(filtered_segment_edge_list, filtered_nodes,
 
 
 
-# def draw_self_loop(ax, x, y, count, xlim=None, ylim=None):
-#     """
-#     Draw one or more self-loop arcs attached to a node at (x, y)
-#     using FancyArrowPatch with arc3 connection style.
-
-#     Parameters:
-#     - ax: matplotlib axes
-#     - x, y: node coordinates
-#     - count: number of self-loops (>=1)
-#     - xlim, ylim: unused (kept for backwards compatibility)
-
-#     Returns (label_x, label_y) for placing the label.
-#     """
-#     if count <= 0:
-#         return x, y
-
-#     base_rad = 0.2
-#     for i in range(count):
-#         rad = base_rad + i * 0.05
-#         ls = ['-', '--', ':'][min(i, 2)]
-#         lw = max(0.8, 2.0 - i * 0.3)
-#         loop = FancyArrowPatch(
-#             (x, y), (x, y),
-#             arrowstyle='-',
-#             connectionstyle=f"arc3,rad={rad}",
-#             color='orange', lw=lw, zorder=6, linestyle=ls
-#         )
-#         ax.add_patch(loop)
-
-#     label_x = x
-#     label_y = y + 0.08 + count * 0.03
-#     return label_x, label_y
-
-# def draw_self_loop(ax, x, y, count, xlim=None, ylim=None):
-#     """
-#     Draw one or more self-loop arcs above the node using Arc patches.
-#     Returns (label_x, label_y) for placing the label.
-#     """
-#     if count <= 0:
-#         return x, y
-
-#     # Ajuste a altura do arco conforme o número de loops
-#     height_step = 0.12   # altura total do arco (será dobrada internamente)
-#     for i in range(count):
-#         h = height_step * (i + 1)          # altura do arco
-#         # Arco com centro no nó, largura fixa 0.12, altura h
-#         arc = Arc((x, y), width=0.12, height=h,
-#                   angle=0, theta1=0, theta2=180,
-#                   color='orange', lw=2.0 - i*0.3, zorder=6,
-#                   linestyle=['-', '--', ':'][min(i,2)])
-#         ax.add_patch(arc)
-
-#     # Posição do label: acima do nó, com deslocamento vertical acumulado
-#     label_y = y + 0.08 + count * 0.03
-#     return x, label_y
-
-
 def draw_self_loop(ax, x, y, count, x_pos=None):
-    """Draw self‑loops as closed teardrop shapes attached to the node.
+    """Draw directional self-loop arcs and return label coordinates.
 
-    Uses FancyArrowPatch with arc3 connection style and a small
-    perturbation between start/end so matplotlib renders the patch
-    (identical start/end produces a degenerate patch that is dropped).
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axes to which the loop patches are added.
+    x, y : float
+        Node position in the axes' data coordinates.
+    count : int
+        Number of loops. Nonpositive values draw nothing and return (x, y).
+    x_pos : float, optional
+        Physical x coordinate used to classify the node in the unit-width
+        film. Values below 0.1 point loops left; values above 0.9 point
+        them right. Other values, including None, point loops upward.
 
-    Direction:
-      - Interior nodes: loop bulges upward.
-      - Source nodes (x < 0.1): loop bulges left (outside the graph).
-      - Drain nodes (x > 0.9): loop bulges right (outside the graph).
-    Multiple loops on the same node are stacked with increasing rad.
+    Returns
+    -------
+    label_x, label_y : float
+        Label position in data coordinates, above upward loops or beside
+        boundary loops.
 
-    Returns (label_x, label_y) for the label text.
+    Notes
+    -----
+    Slightly separated anchors keep Matplotlib from dropping a degenerate
+    patch. Multiple loops use increasing curvature with unchanged anchors.
     """
     if count <= 0:
         return x, y
@@ -680,11 +636,6 @@ def draw_chain_panel(ax, intersections, segment_to_nodes, voltages,
         if n1 != n2:
             ax.plot([nx[n1], nx[n2]], [y_mid, y_mid], 'k-', lw=2, zorder=2)
 
-    # Draw self-loop arcs (directional concentric arcs)
-    # for node, count in loop_count.items():
-    #     lx, ly = draw_self_loop(ax, nx[node], ny[node], count)
-    #     lbl = f"⚡" + (f"×{count}" if count > 1 else "")
-    #     ax.text(lx, ly, lbl, ha='center', fontsize=7, color='orange')
     for node, count in loop_count.items():
         lx, ly = draw_self_loop(ax, nx[node], y_mid, count, x_pos=nx[node])
         lbl = f"⚡" + (f"×{count}" if count > 1 else "")
@@ -704,107 +655,32 @@ def draw_chain_panel(ax, intersections, segment_to_nodes, voltages,
                 color='navy', fontweight='bold')
 
 
-# def draw_ladder_panel(ax, intersections, segment_to_nodes, voltages,
-#                       source_node, drain_node, title, node_labels=None):
-#     """
-#     Draw a 2‑D network (ladder) with nodes at their actual (x, y) positions.
-#     Self‑loops are rendered as small circles near the node.
-#     """
-#     nx = [p[0] for p in intersections]
-#     ny = [p[1] for p in intersections]
-
-#     ax.set_xlim(-0.08, 1.08)
-#     ax.set_ylim(-0.05, 1.05)
-#     ax.set_xticks([0.0, 0.5, 1.0])
-#     ax.set_xticklabels(["0", "0.5", "1"], fontsize=7)
-#     ax.set_yticks([])
-#     ax.set_title(title, fontsize=9, pad=3)
-#     ax.axvline(0.1, ls='--', lw=0.7, color='steelblue', alpha=0.4)
-#     ax.axvline(0.9, ls='--', lw=0.7, color='tomato', alpha=0.4)
-
-#     loop_count = {}
-#     for n1, n2 in segment_to_nodes.values():
-#         if n1 == n2:
-#             loop_count[n1] = loop_count.get(n1, 0) + 1
-
-#     # Draw real edges
-#     for n1, n2 in segment_to_nodes.values():
-#         if n1 != n2:
-#             ax.plot([nx[n1], nx[n2]], [ny[n1], ny[n2]], 'k-', lw=1.8, zorder=2)
-
-#     # Draw self-loop arcs (directional concentric arcs)
-#     for node, count in loop_count.items():
-#         lx, ly = draw_self_loop(ax, nx[node], ny[node], count)
-#         lbl = f"⚡" + (f"×{count}" if count > 1 else "")
-#         ax.text(lx, ly, lbl, ha='center', fontsize=7, color='orange')
-
-#     cmap_v = plt.get_cmap("RdYlGn")
-#     for i, (vx, vy, v) in enumerate(zip(nx, ny, voltages)):
-#         color = cmap_v(v)
-#         ax.scatter(vx, vy, s=240, c=[color], zorder=5, edgecolors='k', lw=1.2)
-#         ax.text(vx, vy + 0.10, f"V={v:.3f}", ha='center', fontsize=7.5,
-#                 bbox=dict(fc='white', alpha=0.85, pad=1, edgecolor='none'))
-#         lbl = (node_labels or {}).get(i, f"N{i}")
-#         ax.text(vx, vy - 0.12, lbl, ha='center', fontsize=8,
-#                 color='navy', fontweight='bold')
-
-
 def draw_self_loop_ladder(ax, x, y, count, x_pos=None):
-    """Draw self‑loop teardrops attached to a node (ladder topology).
+    """Draw ladder self-loops with the same geometry as draw_self_loop.
 
-    Same approach as draw_self_loop: FancyArrowPatch + arc3 +
-    perturbation to force rendering.  Direction choice:
-      - Interior: upward.
-      - Source (x < 0.1): leftward (outside the graph).
-      - Drain (x > 0.9): rightward (outside the graph).
-    Multiple loops are stacked with increasing rad.
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axes to which the loop patches are added.
+    x, y : float
+        Node position in the axes' data coordinates.
+    count : int
+        Number of loops; nonpositive values draw nothing.
+    x_pos : float, optional
+        Physical x coordinate in the unit-width film. Values below 0.1
+        select leftward loops, values above 0.9 select rightward loops,
+        and other values (including None) select upward loops.
 
-    Returns (label_x, label_y) for the label text.
+    Returns
+    -------
+    label_x, label_y : float
+        Label position in data coordinates, or (x, y) when count <= 0.
+
+    See Also
+    --------
+    draw_self_loop : Shared drawing implementation and rendering assumptions.
     """
-    if count <= 0:
-        return x, y
-
-    eps = 0.04
-    d = 2 * eps
-
-    is_source = x_pos is not None and x_pos < 0.1
-    is_drain = x_pos is not None and x_pos > 0.9
-
-    if is_source:
-        start, end = (x, y - eps), (x, y + eps)
-        rad_sign = -1             # → rad = -4.0, bulges LEFT
-        base_rad = 4.0
-        step_rad = 1.7
-        label_x = x - 0.20
-        label_y = y
-    elif is_drain:
-        start, end = (x, y - eps), (x, y + eps)
-        rad_sign = 1              # → rad = +4.0, bulges RIGHT
-        base_rad = 4.0
-        step_rad = 1.7
-        label_x = x + 0.20
-        label_y = y
-    else:
-        start, end = (x - eps, y), (x + eps, y)
-        rad_sign = -1             # bulges UP
-        base_rad = 3.3
-        step_rad = 1.7
-        max_bulge = (base_rad + (count - 1) * step_rad) * d
-        label_x = x
-        label_y = y + max_bulge + 0.04
-
-    for i in range(count):
-        rad = base_rad + i * step_rad
-        loop = FancyArrowPatch(
-            start, end,
-            arrowstyle='-',
-            connectionstyle=f"arc3,rad={rad_sign * rad}",
-            color='orange', lw=2.5, zorder=6,
-            linestyle=['-', '--', ':'][min(i, 2)],
-        )
-        ax.add_patch(loop)
-
-    return label_x, label_y
+    return draw_self_loop(ax, x, y, count, x_pos=x_pos)
 
 
 def draw_ladder_panel(ax, intersections, segment_to_nodes, voltages,
@@ -980,7 +856,9 @@ def plot_small_network_with_impedance(intersections, segment_to_nodes, result,
 
 
 def plot_network_colored_by_resistance(intersections, segment_to_nodes, edge_resistances,
-                                       title=None, figsize=(8, 6), cmap_name='viridis'):
+                                       title=None, figsize=(8, 6), cmap_name='viridis',
+                                       log_scale=False, cbar_label=None, highlight_nodes=None,
+                                       show_node_ids=False):
     """
     Plot a (real, many-edge) network with each edge colored by its resistance
     value and a colorbar -- for inspecting where a distance-dependent model
@@ -993,6 +871,21 @@ def plot_network_colored_by_resistance(intersections, segment_to_nodes, edge_res
         title: Optional custom title
         figsize: Figure size tuple
         cmap_name: Matplotlib colormap name
+        cbar_label: colorbar label; defaults to 'Edge resistance (Ω)'. The
+            function draws any per-edge quantity, not only resistance (edge
+            current and dissipated power share the same layout), so callers
+            plotting something else should say what it is here
+        highlight_nodes: optional list of node indices drawn large with a black
+            outline, e.g. the two nodes of a two-point probe
+        show_node_ids: if True, annotate every node with its index, so the plot
+            doubles as the reference for picking the next pair to probe (off by
+            default: other callers don't expect labels, and a dense network gets
+            cluttered fast)
+        log_scale: if True, color edges on a logarithmic resistance scale.
+            A distance-dependent network can span several decades of edge
+            resistance (a handful of near-zero-length edges against the
+            longest ones), and on a linear scale that squashes almost every
+            edge into the same colour; ignored if any resistance is <= 0
 
     Returns:
         Matplotlib figure object, or None if there are no finite resistances to plot
@@ -1004,7 +897,10 @@ def plot_network_colored_by_resistance(intersections, segment_to_nodes, edge_res
         print("[WARNING] No finite edge resistances to plot")
         return None
 
-    norm = plt.Normalize(vmin=finite.min(), vmax=finite.max())
+    if log_scale and finite.min() > 0 and finite.max() > finite.min():
+        norm = LogNorm(vmin=finite.min(), vmax=finite.max())
+    else:
+        norm = plt.Normalize(vmin=finite.min(), vmax=finite.max())
     cmap = plt.get_cmap(cmap_name)
 
     fig, ax = plt.subplots(figsize=figsize)
@@ -1018,10 +914,128 @@ def plot_network_colored_by_resistance(intersections, segment_to_nodes, edge_res
     sm = cm.ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
     cbar = fig.colorbar(sm, ax=ax)
-    cbar.set_label('Edge resistance (Ω)')
+    label = cbar_label or 'Edge resistance (Ω)'
+    cbar.set_label(f'{label} (log scale)' if isinstance(norm, LogNorm) else label)
 
     ax.scatter(intersections[:, 0], intersections[:, 1], c='black', s=12, zorder=3)
-    ax.set_title(title or 'Network colored by edge resistance', fontsize=13)
+    if show_node_ids:
+        highlight_set = set(highlight_nodes or [])
+        for idx, (x, y) in enumerate(intersections[:, :2]):
+            if idx not in highlight_set:
+                ax.annotate(str(idx), (x, y), textcoords="offset points",
+                            xytext=(3, 3), fontsize=6, alpha=0.75, zorder=3)
+
+    if highlight_nodes:
+        highlight = sorted(set(highlight_nodes))
+        # The marker has to fit the label it contains, so its area grows with the
+        # number of digits; a fixed size clips three-digit node IDs.
+        for n in highlight:
+            digits = len(str(n))
+            ax.scatter(intersections[n, 0], intersections[n, 1],
+                       c='white', s=200 + 130 * (digits - 1), marker='o',
+                       edgecolors='black', linewidths=2, zorder=4)
+            ax.annotate(str(n), (intersections[n, 0], intersections[n, 1]),
+                        ha='center', va='center', fontsize=9, fontweight='bold', zorder=5)
+    if title != '':  # an empty string means no title (a thesis panel carries it in the caption)
+        ax.set_title(title or 'Network colored by edge resistance', fontsize=13)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    fig.tight_layout()
+
+    return fig
+
+
+def plot_network_colored_by_node_field(intersections, segment_to_nodes, node_values,
+                                       highlight_nodes=None, title=None, cbar_label='Value',
+                                       figsize=(8, 6), cmap_name='plasma', show_node_ids=False):
+    """
+    Plot a network with each NODE colored by an arbitrary scalar field defined
+    on the nodes -- as opposed to plot_network_colored_by_resistance (a field on
+    the EDGES) or plot_network_colored_by_voltage (specifically voltage, with a
+    diverging colormap centered on zero and source/drain marker shapes).
+
+    Written for the R_eff field: laplacian_utils.effective_resistance_from_reference
+    returns R_eff(reference, j) for every node j in one pseudoinverse, and coloring
+    the nodes by it turns a single two-point probe into a map of how the effective
+    resistance grows with distance from the probe. The field is non-negative and
+    zero at the reference, so it gets a sequential colormap rather than a diverging
+    one.
+
+    Nodes carrying a non-finite value (e.g. R_eff = inf for a node in a different
+    component) are drawn as small hollow gray markers instead of being dropped, so
+    a disconnected fragment stays visible.
+
+    Args:
+        intersections: List of [x, y] node coordinates
+        segment_to_nodes: dict edge_idx -> (n1, n2)
+        node_values: array of per-node scalar values, length n_nodes
+        highlight_nodes: optional list of node indices to draw large with a black
+            outline (e.g. the two probed nodes)
+        title: Optional custom title
+        cbar_label: Colorbar label (units of node_values)
+        figsize: Figure size tuple
+        cmap_name: Matplotlib colormap name (sequential by default)
+        show_node_ids: if True, annotate every node with its index
+
+    Returns:
+        Matplotlib figure object, or None if no node carries a finite value
+    """
+    intersections = np.asarray(intersections, dtype=float)
+    node_values = np.asarray(node_values, dtype=float)
+    finite_mask = np.isfinite(node_values)
+    if not finite_mask.any():
+        print("[WARNING] No finite node values to plot")
+        return None
+
+    finite_vals = node_values[finite_mask]
+    norm = plt.Normalize(vmin=finite_vals.min(), vmax=finite_vals.max())
+    cmap = plt.get_cmap(cmap_name)
+    highlight_set = set(highlight_nodes or [])
+
+    fig, ax = plt.subplots(figsize=figsize)
+
+    for n1, n2 in segment_to_nodes.values():
+        if n1 == n2:
+            continue
+        ax.plot([intersections[n1][0], intersections[n2][0]],
+                [intersections[n1][1], intersections[n2][1]],
+                color='gray', alpha=0.5, linewidth=1, zorder=1)
+
+    plain_idx = [i for i in range(len(intersections)) if finite_mask[i] and i not in highlight_set]
+    if plain_idx:
+        ax.scatter(intersections[plain_idx, 0], intersections[plain_idx, 1],
+                   c=node_values[plain_idx], cmap=cmap, norm=norm, s=28, zorder=3)
+
+    infinite_idx = [i for i in range(len(intersections)) if not finite_mask[i]]
+    if infinite_idx:
+        ax.scatter(intersections[infinite_idx, 0], intersections[infinite_idx, 1],
+                   facecolors='none', edgecolors='lightgray', s=28, zorder=2,
+                   label='not connected (inf)')
+
+    highlight_idx = [i for i in sorted(highlight_set) if finite_mask[i]]
+    if highlight_idx:
+        ax.scatter(intersections[highlight_idx, 0], intersections[highlight_idx, 1],
+                   c=node_values[highlight_idx], cmap=cmap, norm=norm, s=200, marker='o',
+                   edgecolors='black', linewidths=1.8, zorder=4)
+        for i in highlight_idx:
+            ax.annotate(str(i), (intersections[i, 0], intersections[i, 1]),
+                        textcoords="offset points", xytext=(8, 8), fontsize=11,
+                        fontweight='bold', zorder=5)
+
+    if show_node_ids:
+        for i, (x, y) in enumerate(intersections[:, :2]):
+            if i not in highlight_set:
+                ax.annotate(str(i), (x, y), textcoords="offset points",
+                            xytext=(3, 3), fontsize=6, alpha=0.7)
+
+    sm = cm.ScalarMappable(norm=norm, cmap=cmap)
+    sm.set_array([])
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.set_label(cbar_label)
+
+    if infinite_idx:
+        ax.legend(loc='best', fontsize=8)
+    ax.set_title(title or 'Network colored by node value', fontsize=13)
     ax.set_xticks([])
     ax.set_yticks([])
     fig.tight_layout()

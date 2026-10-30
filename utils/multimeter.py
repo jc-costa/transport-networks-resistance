@@ -273,3 +273,246 @@ def run_onion_protocol_pinv(intersections, segment_to_nodes, reference_node,
             })
 
     return records
+
+
+def series_path_resistance(intersections, segment_to_nodes, node_i, node_j,
+                           R0=1.0, distance_dependent=True):
+    """
+    Cheapest single series path between two nodes: Dijkstra with edge weight
+    R_edge = R0 * L_edge (or R0 per edge under the uniform model).
+
+    A single path carrying all the current is an UPPER BOUND on R_eff, so
+    comparing it against the measured value says roughly how many comparable
+    parallel routes the network offers. It is also the one number a reader can
+    re-derive by hand from the edge model alone, which makes it the natural
+    sanity check to print next to a probe result.
+
+    Returns
+    -------
+    (resistance, hops, length) : the path's total resistance, its edge count and
+    its total Euclidean length; (inf, None, None) if j is unreachable from i.
+    """
+    import heapq
+
+    inter = np.asarray(intersections, dtype=float)
+    adjacency = [[] for _ in range(len(inter))]
+    for n1, n2 in segment_to_nodes.values():
+        if n1 == n2:
+            continue
+        length = float(np.linalg.norm(inter[n2] - inter[n1]))
+        weight = R0 * length if distance_dependent else R0
+        adjacency[n1].append((n2, weight, length))
+        adjacency[n2].append((n1, weight, length))
+
+    best = {node_i: 0.0}
+    hops = {node_i: 0}
+    travelled = {node_i: 0.0}
+    queue = [(0.0, node_i)]
+    seen = set()
+    while queue:
+        cost, u = heapq.heappop(queue)
+        if u in seen:
+            continue
+        seen.add(u)
+        if u == node_j:
+            return cost, hops[u], travelled[u]
+        for v, weight, length in adjacency[u]:
+            new_cost = cost + weight
+            if new_cost < best.get(v, np.inf):
+                best[v] = new_cost
+                hops[v] = hops[u] + 1
+                travelled[v] = travelled[u] + length
+                heapq.heappush(queue, (new_cost, v))
+    return float('inf'), None, None
+
+
+def probe_summary(intersections, graph, segment_to_nodes, node_i, node_j,
+                  R0=1000.0, distance_dependent=True):
+    """
+    Measure R_eff(node_i, node_j) and run every self-check that goes with it,
+    returning numbers rather than printing them (see format_probe_summary for
+    the text, edge_color_field for the plot).
+
+    Both resistance models are solved on every call, so the distance-dependent
+    value can always be read against the uniform one for the same pair.
+
+    Checks included, and what each one would catch:
+      pinv       R_eff recomputed as e^T L+ e from the weighted Laplacian
+                 pseudoinverse, which shares no code with ImpedanceCalculator's
+                 boundary-reduction solve. Catches a wrong solve.
+      kcl        largest net current left at a non-probe node. Must be ~0 by
+                 charge conservation; catches a linear system that did not
+                 converge.
+      model      R/L == R0 on every edge (or R == R0 under the uniform model).
+                 Catches the edge model silently not being applied.
+      series     cheapest single series path, an upper bound on R_eff. Catches
+                 a result that is not physically plausible for the geometry.
+
+    Returns a dict; 'r_eff' is the selected model's value, and every check is
+    reported as a relative deviation so the caller can threshold it.
+    """
+    probe_dd = measure_r_eff(intersections, graph, segment_to_nodes, node_i, node_j,
+                             k=R0, distance_dependent=True)
+    probe_uniform = measure_r_eff(intersections, graph, segment_to_nodes, node_i, node_j,
+                                  k=R0, distance_dependent=False)
+    probe = probe_dd if distance_dependent else probe_uniform
+
+    R_edges = np.asarray(probe['edge_resistances'], dtype=float)
+    L_edges = np.asarray(probe['edge_lengths'], dtype=float)
+    real = L_edges > 0
+
+    summary = {
+        'node_i': node_i,
+        'node_j': node_j,
+        'distance_dependent': distance_dependent,
+        'R0': R0,
+        'probe': probe,
+        'r_eff': probe['impedance'],
+        'r_eff_dd': probe_dd['impedance'],
+        'r_eff_uniform': probe_uniform['impedance'],
+        'probe_distance': probe['probe_distance'],
+        'connected': np.isfinite(probe['impedance']),
+        'n_edges': int(real.sum()),
+    }
+
+    # charge conservation at every node that is not a probe
+    inject = probe['A'].T @ np.asarray(probe['currents'], dtype=float)
+    internal = [n for n in range(len(intersections)) if n not in (node_i, node_j)]
+    summary['kcl_residual'] = float(np.max(np.abs(inject[internal]))) if internal else 0.0
+
+    # the edge model actually applied to the solve
+    if real.any():
+        R_real, L_real = R_edges[real], L_edges[real]
+        if distance_dependent:
+            summary['model_deviation'] = float(np.max(np.abs(R_real / L_real - R0)) / R0)
+        else:
+            summary['model_deviation'] = float(np.max(np.abs(R_real - R0)) / R0)
+        summary['edge_stats'] = {
+            'R_min': float(R_real.min()), 'R_max': float(R_real.max()),
+            'R_mean': float(R_real.mean()), 'L_min': float(L_real.min()),
+            'L_max': float(L_real.max()), 'L_mean': float(L_real.mean()),
+            'spread': float(R_real.max() / R_real.min()),
+        }
+    else:
+        summary['model_deviation'] = None
+        summary['edge_stats'] = None
+
+    # independent recomputation of the distance-dependent value
+    if np.isfinite(probe_dd['impedance']) and probe_dd['impedance'] > 0:
+        from laplacian_utils import effective_resistance_pinv
+        r_pinv = effective_resistance_pinv(intersections, segment_to_nodes,
+                                           node_i, node_j, R0=R0)
+        summary['pinv'] = r_pinv
+        summary['pinv_deviation'] = abs(r_pinv - probe_dd['impedance']) / probe_dd['impedance']
+    else:
+        summary['pinv'] = None
+        summary['pinv_deviation'] = None
+
+    path_r, path_hops, path_len = series_path_resistance(
+        intersections, segment_to_nodes, node_i, node_j,
+        R0=R0, distance_dependent=distance_dependent)
+    summary['series_path'] = {'resistance': path_r, 'hops': path_hops, 'length': path_len}
+    summary['parallel_factor'] = (path_r / probe['impedance']
+                                  if np.isfinite(path_r) and probe['impedance'] > 0 else None)
+    return summary
+
+
+def format_probe_summary(summary, verbose=False, tolerance=1e-6):
+    """
+    Render probe_summary() as text: four lines by default, the full audit when
+    verbose=True. Kept deliberately short because this runs on every click of an
+    interactive widget, where a wall of numbers is harder to read than one line
+    per question.
+    """
+    i, j, R0 = summary['node_i'], summary['node_j'], summary['R0']
+    model = 'distance-dependent, R_edge = R0 * L' if summary['distance_dependent'] else 'uniform, R_edge = R0'
+    lines = []
+
+    if not summary['connected']:
+        lines.append(f"R_eff({i}, {j}) = inf   (the two nodes are in different components, "
+                     f"so no current can flow: correct, not a bug)")
+        return "\n".join(lines)
+
+    other = summary['r_eff_uniform'] if summary['distance_dependent'] else summary['r_eff_dd']
+    other_name = 'uniform' if summary['distance_dependent'] else 'distance-dependent'
+    lines.append(f"R_eff({i}, {j}) = {summary['r_eff']:.2f} Ω     [{model}, R0 = {R0:g}]")
+    lines.append(f"  probe distance {summary['probe_distance']:.4f}"
+                 f"     {other_name} model would read {other:.2f} Ω")
+
+    def verdict(value):
+        return "OK" if (value is not None and value < tolerance) else "CHECK"
+
+    checks = [f"pinv {verdict(summary['pinv_deviation'])}",
+              f"edge model {verdict(summary['model_deviation'])}",
+              f"KCL {'OK' if summary['kcl_residual'] < 1e-9 else 'CHECK'}"]
+    lines.append("  checks: " + "   ".join(checks) +
+                 "      (tick 'detailed checks' for the numbers behind these)")
+
+    path = summary['series_path']
+    if summary['parallel_factor']:
+        lines.append(f"  context: cheapest single path {path['resistance']:.0f} Ω over "
+                     f"{path['hops']} edges, so the measured value is "
+                     f"{summary['parallel_factor']:.1f}x lower, i.e. roughly that many "
+                     f"comparable parallel routes")
+
+    if not verbose:
+        return "\n".join(lines)
+
+    lines.append("")
+    lines.append("  detailed checks")
+    if summary['pinv'] is not None:
+        lines.append(f"    independent pinv (e^T L+ e): {summary['pinv']:.4f} Ω, "
+                     f"relative difference {summary['pinv_deviation']:.2e}")
+    lines.append(f"    max KCL residual at a non-probe node: {summary['kcl_residual']:.2e} A "
+                 f"(charge conservation, must be ~0)")
+    if summary['edge_stats']:
+        st = summary['edge_stats']
+        invariant = "R/L == R0" if summary['distance_dependent'] else "R == R0"
+        lines.append(f"    {invariant} on all {summary['n_edges']} edges: "
+                     f"max relative deviation {summary['model_deviation']:.2e}")
+        lines.append(f"    edge length  L: min={st['L_min']:.4g}  max={st['L_max']:.4g}  "
+                     f"mean={st['L_mean']:.4g}")
+        lines.append(f"    edge resist. R: min={st['R_min']:.4g}  max={st['R_max']:.4g}  "
+                     f"mean={st['R_mean']:.4g}   spread {st['spread']:.1f}x "
+                     f"(1.0x would mean length was ignored)")
+    if summary['probe']['I_total'] > 0:
+        lines.append(f"    I_total = {summary['probe']['I_total']:.4e} A, and R_eff = 1/I_total "
+                     f"= {1.0 / summary['probe']['I_total']:.2f} Ω by definition (1 V applied)")
+    return "\n".join(lines)
+
+
+def edge_color_field(probe, quantity='current', floor_fraction=1e-4):
+    """
+    Per-edge values to colour a network plot with, for the three quantities worth
+    looking at after a probe.
+
+    'resistance' is a property of the NETWORK (R_edge = R0 * L_edge), so it looks
+    identical for every probe pair; 'current' and 'power' are properties of the
+    MEASUREMENT and are what change when the probes move.
+
+    Current and power span many decades, since most edges carry essentially
+    nothing, so they are floored at floor_fraction of the maximum: without that,
+    the few live paths are the only distinguishable colour on a log scale and
+    everything else collapses into one.
+
+    Returns (values, colorbar_label, note).
+    """
+    R_edges = np.asarray(probe['edge_resistances'], dtype=float)
+    I_edges = np.abs(np.asarray(probe['currents'], dtype=float))
+
+    if quantity == 'resistance':
+        return (R_edges, 'Edge resistance R0 * L (Ω)',
+                'a property of the network: identical for every probe pair')
+
+    finite_R = np.where(np.isfinite(R_edges), R_edges, 0.0)
+    if quantity == 'current':
+        values, label = I_edges, 'Edge current |I| (A)'
+    elif quantity == 'power':
+        values, label = I_edges ** 2 * finite_R, 'Power dissipated I^2 R (W)'
+    else:
+        raise ValueError(f"quantity must be 'current', 'resistance' or 'power', got {quantity!r}")
+
+    peak = values.max() if values.size else 0.0
+    if peak > 0:
+        values = np.maximum(values, peak * floor_fraction)
+    return values, label, f'changes with the probes; floored at {floor_fraction:g} of the maximum'

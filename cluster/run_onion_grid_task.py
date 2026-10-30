@@ -55,7 +55,7 @@ N_PER_A = 6
 N_FLOOR = 20
 NODE_CAP = 1500
 CONTACT_DISTANCE = 0.03
-N_TRIALS = 6
+N_TRIALS = 24   # 6 until 2026-09-15; raised with the clipping boundary rule
 MAX_ATTEMPTS = 500
 R0 = 1000.0
 N_TASKS = 20
@@ -125,6 +125,16 @@ def run_one_combo(N, a, d):
 
     rate = len(R_effs) / total_attempts if total_attempts else 0.0
 
+    # Aligned record, one entry per accepted realization in the same order as
+    # R_eff_values, with None where a shell was empty. The per-layer lists
+    # below skip empty shells, so across layers they are NOT aligned by index
+    # whenever any realization lacks a shell; any per-realization analysis
+    # (shape normalization, ANOVA, regression) must read this field instead.
+    per_realization_curves = [
+        {str(layer_d): lm.get(layer_d) for layer_d in LAYER_DISTANCES}
+        for lm in per_network_layer_means
+    ]
+
     onion_layer_curves = {}
     for layer_d in LAYER_DISTANCES:
         per_realization = [lm[layer_d] for lm in per_network_layer_means if layer_d in lm]
@@ -138,6 +148,7 @@ def run_one_combo(N, a, d):
 
     return {
         "N": N, "a": a, "d": d, "n": len(R_effs),
+        "per_realization_curves": per_realization_curves,
         "mean_ohm": float(np.mean(R_effs)) if R_effs else None,
         "median_ohm": float(np.median(R_effs)) if R_effs else None,
         "std_ohm": float(np.std(R_effs)) if R_effs else None,

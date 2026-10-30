@@ -1,3 +1,16 @@
+"""Geometric predicates used by the 2D stick-intersection search.
+
+Coordinates are in the rotated, translated frame of the reference stick,
+which runs from (0, a) to (a, a). The candidate stick starts at (x, y),
+has nominal length a, and makes relative angle theta with the reference.
+Lengths share the same units; angles are in radians.
+
+Inputs are scalars and a must be positive. Bounds are inclusive. These
+predicates neither normalize angles nor clip arguments to sqrt, asin, or
+acos, so floating-point domain errors at boundaries are not suppressed.
+Each region predicate evaluates all four subregions before combining them.
+"""
+
 import math
 
 def is_point_inside_region_1_inferior_1(x, y, theta, a):
@@ -65,13 +78,28 @@ def is_point_inside_region_1_superior_2(x, y, theta, a):
     return False
 
 def is_point_inside_region_1(x, y, theta, a):
-    # Check if the point (x, y) is inside any of the four subregions of region 1
+    """Test the position and orientation constraints of region 1.
+
+    Parameters
+    ----------
+    x, y : float
+        Candidate start coordinates in the reference-stick frame.
+    theta : float
+        Relative angle in radians, used without normalization.
+    a : float
+        Positive nominal stick length, in the same units as x and y.
+
+    Returns
+    -------
+    bool
+        Whether any region-1 subregion accepts the point and angle,
+        including its boundaries. See the module notes for assumptions.
+    """
     region_1_inferior_1 = is_point_inside_region_1_inferior_1(x, y, theta, a)
     region_1_inferior_2 = is_point_inside_region_1_inferior_2(x, y, theta, a)
     region_1_superior_1 = is_point_inside_region_1_superior_1(x, y, theta, a)
     region_1_superior_2 = is_point_inside_region_1_superior_2(x, y, theta, a)
 
-    # Return True if the point is inside any of the four subregions, otherwise, return False
     return region_1_inferior_1 or region_1_inferior_2 or region_1_superior_1 or region_1_superior_2
 
 def is_point_inside_region_2_inferior_1(x, y, theta, a):
@@ -131,21 +159,28 @@ def is_point_inside_region_2_superior_2(x, y, theta, a):
     return False
 
 def is_point_inside_region_2(x, y, theta, a):
+    """Test the position and orientation constraints of region 2.
+
+    Parameters
+    ----------
+    x, y : float
+        Candidate start coordinates in the reference-stick frame.
+    theta : float
+        Relative angle in radians, used without normalization.
+    a : float
+        Positive nominal stick length, in the same units as x and y.
+
+    Returns
+    -------
+    bool
+        Whether any region-2 subregion accepts the point and angle,
+        including its boundaries. See the module notes for assumptions.
+    """
     region_2_inferior_1 = is_point_inside_region_2_inferior_1(x, y, theta, a)
     region_2_inferior_2 = is_point_inside_region_2_inferior_2(x, y, theta, a)
     region_2_superior_1 = is_point_inside_region_2_superior_1(x, y, theta, a)
     region_2_superior_2 = is_point_inside_region_2_superior_2(x, y, theta, a)
 
-    return region_2_inferior_1 or region_2_inferior_2 or region_2_superior_1 or region_2_superior_2
-
-def is_point_inside_region_2(x, y, theta, a):
-    # Check if the point (x, y) is inside any of the four subregions of region 2
-    region_2_inferior_1 = is_point_inside_region_2_inferior_1(x, y, theta, a)
-    region_2_inferior_2 = is_point_inside_region_2_inferior_2(x, y, theta, a)
-    region_2_superior_1 = is_point_inside_region_2_superior_1(x, y, theta, a)
-    region_2_superior_2 = is_point_inside_region_2_superior_2(x, y, theta, a)
-
-    # Return True if the point is inside any of the four subregions, otherwise, return False
     return region_2_inferior_1 or region_2_inferior_2 or region_2_superior_1 or region_2_superior_2
 
 def is_point_inside_region_3_inferior_1(x, y, theta, a):
@@ -204,6 +239,23 @@ def is_point_inside_region_3_superior_2(x, y, theta, a):
     return False
 
 def is_point_inside_region_3(x, y, theta, a):
+    """Test the position and orientation constraints of region 3.
+
+    Parameters
+    ----------
+    x, y : float
+        Candidate start coordinates in the reference-stick frame.
+    theta : float
+        Relative angle in radians, used without normalization.
+    a : float
+        Positive nominal stick length, in the same units as x and y.
+
+    Returns
+    -------
+    bool
+        Whether any region-3 subregion accepts the point and angle,
+        including its boundaries. See the module notes for assumptions.
+    """
     region_3_inferior_1 = is_point_inside_region_3_inferior_1(x, y, theta, a)
     region_3_inferior_2 = is_point_inside_region_3_inferior_2(x, y, theta, a)
     region_3_superior_1 = is_point_inside_region_3_superior_1(x, y, theta, a)
@@ -268,6 +320,23 @@ def is_point_inside_region_4_superior_2(x, y, theta, a):
     return False
 
 def is_point_inside_region_4(x, y, theta, a):
+    """Test the position and orientation constraints of region 4.
+
+    Parameters
+    ----------
+    x, y : float
+        Candidate start coordinates in the reference-stick frame.
+    theta : float
+        Relative angle in radians, used without normalization.
+    a : float
+        Positive nominal stick length, in the same units as x and y.
+
+    Returns
+    -------
+    bool
+        Whether any region-4 subregion accepts the point and angle,
+        including its boundaries. See the module notes for assumptions.
+    """
     region_4_inferior_1 = is_point_inside_region_4_inferior_1(x, y, theta, a)
     region_4_inferior_2 = is_point_inside_region_4_inferior_2(x, y, theta, a)
     region_4_superior_1 = is_point_inside_region_4_superior_1(x, y, theta, a)

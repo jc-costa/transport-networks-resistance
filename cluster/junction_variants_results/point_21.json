@@ -1,0 +1,4923 @@
+{
+ "task_id": 21,
+ "a": 0.15,
+ "N": 711,
+ "x": 15.997499999999999,
+ "x_target": 16,
+ "R0": 1000.0,
+ "rho_bar": [
+  0.1,
+  1.0,
+  10.0
+ ],
+ "sigmas": [
+  0.5,
+  1.0,
+  1.5
+ ],
+ "n_draws": 5,
+ "p_metal": 0.3333333333333333,
+ "rho_c": 1.0,
+ "kappas": [
+  10.0,
+  100.0,
+  1000.0
+ ],
+ "n_assign": 5,
+ "n": 30,
+ "n_target": 30,
+ "total_draws": 30,
+ "networks": [
+  {
+   "n_cross": 3714,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9918218409791981,
+     "ratio_min": 0.9905933475893457,
+     "ratio_max": 0.9928515544517721
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9738978895026069,
+     "ratio_min": 0.970526840537643,
+     "ratio_max": 0.9793665950924132
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9510206307899093,
+     "ratio_min": 0.9492019739850555,
+     "ratio_max": 0.9534292735023276
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.930597089395321,
+     "ratio_min": 0.9141884189071985,
+     "ratio_max": 0.9416174536138358
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8078756324287111,
+     "ratio_min": 0.7932626233673481,
+     "ratio_max": 0.8262385099363762
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6870115776675906,
+     "ratio_min": 0.6741084082269537,
+     "ratio_max": 0.6937316485518207
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8552501356687612,
+     "ratio_min": 0.8356399407958034,
+     "ratio_max": 0.8701968958868046
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5550768684824384,
+     "ratio_min": 0.546132426932819,
+     "ratio_max": 0.5701425806749484
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33034791848359146,
+     "ratio_min": 0.31755579298709863,
+     "ratio_max": 0.34653033890464047
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6124197596576426,
+     "mixed_fraction": 0.44157242864835755,
+     "mixed_dissipation": 0.1830108967098152
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.193312578265974,
+     "mixed_fraction": 0.44157242864835755,
+     "mixed_dissipation": 0.08577739255096434
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4711279806933146,
+     "mixed_fraction": 0.44157242864835755,
+     "mixed_dissipation": 0.027621527683878096
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.679778854069981,
+     "mixed_fraction": 0.4687668282175552,
+     "mixed_dissipation": 0.20613394954472417
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.48885159000228,
+     "mixed_fraction": 0.4687668282175552,
+     "mixed_dissipation": 0.13242221203275148
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.0411540941328865,
+     "mixed_fraction": 0.4687668282175552,
+     "mixed_dissipation": 0.04334611340481653
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.578756061851748,
+     "mixed_fraction": 0.4334948842218632,
+     "mixed_dissipation": 0.1826302648098365
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.239891059999684,
+     "mixed_fraction": 0.4334948842218632,
+     "mixed_dissipation": 0.1165888275324066
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.6761150310355437,
+     "mixed_fraction": 0.4334948842218632,
+     "mixed_dissipation": 0.04115019212441365
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5446835132012104,
+     "mixed_fraction": 0.45288099084544964,
+     "mixed_dissipation": 0.1555684682780212
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.031781838173135,
+     "mixed_fraction": 0.45288099084544964,
+     "mixed_dissipation": 0.0855256204066191
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3080718655299144,
+     "mixed_fraction": 0.45288099084544964,
+     "mixed_dissipation": 0.029923581538249616
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6186019090091561,
+     "mixed_fraction": 0.4429186860527733,
+     "mixed_dissipation": 0.18643931509426603
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2151636100350145,
+     "mixed_fraction": 0.4429186860527733,
+     "mixed_dissipation": 0.08825127463989535
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.559628952555415,
+     "mixed_fraction": 0.4429186860527733,
+     "mixed_dissipation": 0.041797465525283926
+    }
+   ],
+   "realization": 0,
+   "R_wire": 26.209076744586245,
+   "seconds_measure": 1.0614428520202637
+  },
+  {
+   "n_cross": 3679,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9915214706388223,
+     "ratio_min": 0.988104227254707,
+     "ratio_max": 0.9944583710090382
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9731246551766732,
+     "ratio_min": 0.9713615266793413,
+     "ratio_max": 0.9763528513487281
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9528770216945883,
+     "ratio_min": 0.9447611079382918,
+     "ratio_max": 0.9649786151840166
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9446388531831469,
+     "ratio_min": 0.9397209812576455,
+     "ratio_max": 0.9480586751630143
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8063578674367697,
+     "ratio_min": 0.8010990109788719,
+     "ratio_max": 0.8110522400472324
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6881190865730937,
+     "ratio_min": 0.6779788893151006,
+     "ratio_max": 0.6987205165940024
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.853131719646538,
+     "ratio_min": 0.8276449263233494,
+     "ratio_max": 0.8725177091501378
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5654744290658514,
+     "ratio_min": 0.5477756316085003,
+     "ratio_max": 0.5731105543320552
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3318813253097241,
+     "ratio_min": 0.3254144943159583,
+     "ratio_max": 0.3415650748779762
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.610635096478585,
+     "mixed_fraction": 0.4430551780375102,
+     "mixed_dissipation": 0.17763803465666295
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2188728533795037,
+     "mixed_fraction": 0.4430551780375102,
+     "mixed_dissipation": 0.10511988574769857
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.599528032196583,
+     "mixed_fraction": 0.4430551780375102,
+     "mixed_dissipation": 0.03518934564765452
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5760811113393236,
+     "mixed_fraction": 0.4547431367219353,
+     "mixed_dissipation": 0.15519971261691606
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0121578907982443,
+     "mixed_fraction": 0.4547431367219353,
+     "mixed_dissipation": 0.068112815469837
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2397235627938143,
+     "mixed_fraction": 0.4547431367219353,
+     "mixed_dissipation": 0.028624915698849594
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6141756906457538,
+     "mixed_fraction": 0.475129111171514,
+     "mixed_dissipation": 0.16684769642972416
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0728255932683473,
+     "mixed_fraction": 0.475129111171514,
+     "mixed_dissipation": 0.05985747194899672
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2508052437276964,
+     "mixed_fraction": 0.475129111171514,
+     "mixed_dissipation": 0.01921023137176649
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5525347525642583,
+     "mixed_fraction": 0.4463169339494428,
+     "mixed_dissipation": 0.13622477826817908
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8860289536339319,
+     "mixed_fraction": 0.4463169339494428,
+     "mixed_dissipation": 0.04775669428246382
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.0098340114058013,
+     "mixed_fraction": 0.4463169339494428,
+     "mixed_dissipation": 0.012620412532518686
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.4382358179693073,
+     "mixed_fraction": 0.42864908942647456,
+     "mixed_dissipation": 0.11615861518845808
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.7108044007798706,
+     "mixed_fraction": 0.42864908942647456,
+     "mixed_dissipation": 0.047289808300218644
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.8450187705453356,
+     "mixed_fraction": 0.42864908942647456,
+     "mixed_dissipation": 0.018706405739016503
+    }
+   ],
+   "realization": 1,
+   "R_wire": 26.43271649759741,
+   "seconds_measure": 1.0819473266601562
+  },
+  {
+   "n_cross": 3402,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9930939544380314,
+     "ratio_min": 0.9883033831207236,
+     "ratio_max": 0.9962335068465222
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9768707164793573,
+     "ratio_min": 0.9705208714368112,
+     "ratio_max": 0.9830423715049531
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9531179004683787,
+     "ratio_min": 0.9436250231655988,
+     "ratio_max": 0.9607566872808705
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.940564873440349,
+     "ratio_min": 0.9250273303606726,
+     "ratio_max": 0.9596819196511928
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.7975743335410732,
+     "ratio_min": 0.7879498086617971,
+     "ratio_max": 0.8133804501724672
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.689075623797191,
+     "ratio_min": 0.675140625020146,
+     "ratio_max": 0.7060053757040577
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8439762089333513,
+     "ratio_min": 0.8284865627349565,
+     "ratio_max": 0.8570187170237705
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5545554361586247,
+     "ratio_min": 0.5391179570894512,
+     "ratio_max": 0.5702704131100468
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3230637730665694,
+     "ratio_min": 0.31789496759763847,
+     "ratio_max": 0.3333945177521168
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.572252024074725,
+     "mixed_fraction": 0.4609053497942387,
+     "mixed_dissipation": 0.15154650064587877
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9757135481061279,
+     "mixed_fraction": 0.4609053497942387,
+     "mixed_dissipation": 0.059206242826351
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.163449198895995,
+     "mixed_fraction": 0.4609053497942387,
+     "mixed_dissipation": 0.024532906605515954
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6348468094218969,
+     "mixed_fraction": 0.4641387419165197,
+     "mixed_dissipation": 0.17347029778104664
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1377713687063666,
+     "mixed_fraction": 0.4641387419165197,
+     "mixed_dissipation": 0.06839891940670435
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3995004039230863,
+     "mixed_fraction": 0.4641387419165197,
+     "mixed_dissipation": 0.038565791479333096
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.587403777505215,
+     "mixed_fraction": 0.4503233392122281,
+     "mixed_dissipation": 0.1678278399608392
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.092663308651533,
+     "mixed_fraction": 0.4503233392122281,
+     "mixed_dissipation": 0.08081449985072617
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3849966574810524,
+     "mixed_fraction": 0.4503233392122281,
+     "mixed_dissipation": 0.03475541811633011
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6144883968945465,
+     "mixed_fraction": 0.455026455026455,
+     "mixed_dissipation": 0.1762954934756709
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1334324042587096,
+     "mixed_fraction": 0.455026455026455,
+     "mixed_dissipation": 0.07305583085535242
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3753889358713245,
+     "mixed_fraction": 0.455026455026455,
+     "mixed_dissipation": 0.028412497901867985
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5122638543550926,
+     "mixed_fraction": 0.4315108759553204,
+     "mixed_dissipation": 0.15289304399286344
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9596536703758896,
+     "mixed_fraction": 0.4315108759553204,
+     "mixed_dissipation": 0.07505252397993599
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1847757360601614,
+     "mixed_fraction": 0.4315108759553204,
+     "mixed_dissipation": 0.023111252885383404
+    }
+   ],
+   "realization": 2,
+   "R_wire": 27.74439698836796,
+   "seconds_measure": 0.9809918403625488
+  },
+  {
+   "n_cross": 3551,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9924348046087473,
+     "ratio_min": 0.9903868911246009,
+     "ratio_max": 0.99443421011774
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9748491332229822,
+     "ratio_min": 0.969775535431174,
+     "ratio_max": 0.9788495993803816
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9534708001737837,
+     "ratio_min": 0.9471767104212864,
+     "ratio_max": 0.9607473429045906
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9390671491381918,
+     "ratio_min": 0.9337151913110224,
+     "ratio_max": 0.9524252522484069
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8119997587996387,
+     "ratio_min": 0.80532132312074,
+     "ratio_max": 0.8222275082982962
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6927661224291073,
+     "ratio_min": 0.6855426601531169,
+     "ratio_max": 0.6966822662007652
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8531948273926773,
+     "ratio_min": 0.8458226480595511,
+     "ratio_max": 0.8658748697592549
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5587574173246689,
+     "ratio_min": 0.5378798280937517,
+     "ratio_max": 0.570647440483951
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33433097826864067,
+     "ratio_min": 0.3251724407218719,
+     "ratio_max": 0.34817702213323104
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.538562562053237,
+     "mixed_fraction": 0.4367783722894959,
+     "mixed_dissipation": 0.1525054098658174
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9520641904855793,
+     "mixed_fraction": 0.4367783722894959,
+     "mixed_dissipation": 0.06250124389613214
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1408767991959134,
+     "mixed_fraction": 0.4367783722894959,
+     "mixed_dissipation": 0.024469100208545334
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5706205821424768,
+     "mixed_fraction": 0.44072092368346943,
+     "mixed_dissipation": 0.15736085437665076
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9993709273529634,
+     "mixed_fraction": 0.44072092368346943,
+     "mixed_dissipation": 0.06099204565124822
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1771975049178485,
+     "mixed_fraction": 0.44072092368346943,
+     "mixed_dissipation": 0.020802100796010678
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.639206936429606,
+     "mixed_fraction": 0.43903125880033794,
+     "mixed_dissipation": 0.1844168167501552
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2301130778192624,
+     "mixed_fraction": 0.43903125880033794,
+     "mixed_dissipation": 0.0910953236486251
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.6429163708372676,
+     "mixed_fraction": 0.43903125880033794,
+     "mixed_dissipation": 0.06118707017759877
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5845316760406385,
+     "mixed_fraction": 0.4584624049563503,
+     "mixed_dissipation": 0.1588278218757771
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.003273380523461,
+     "mixed_fraction": 0.4584624049563503,
+     "mixed_dissipation": 0.05666921945963147
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1666981019364866,
+     "mixed_fraction": 0.4584624049563503,
+     "mixed_dissipation": 0.018283625402097308
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5472437034895032,
+     "mixed_fraction": 0.45311179949310054,
+     "mixed_dissipation": 0.15768262776615205
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.016448871792153,
+     "mixed_fraction": 0.45311179949310054,
+     "mixed_dissipation": 0.07661467490929101
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2651559914701203,
+     "mixed_fraction": 0.45311179949310054,
+     "mixed_dissipation": 0.030116333167010872
+    }
+   ],
+   "realization": 3,
+   "R_wire": 28.464569032712728,
+   "seconds_measure": 1.0215606689453125
+  },
+  {
+   "n_cross": 3681,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9918883860448722,
+     "ratio_min": 0.9896716091423716,
+     "ratio_max": 0.9957370373965216
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9742729211681503,
+     "ratio_min": 0.9697367571691354,
+     "ratio_max": 0.9827793203708752
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.95348568496361,
+     "ratio_min": 0.9494527893134466,
+     "ratio_max": 0.9562423317962832
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.944506516096005,
+     "ratio_min": 0.9296124712969066,
+     "ratio_max": 0.955960496718325
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8203882040188276,
+     "ratio_min": 0.8065212254781193,
+     "ratio_max": 0.834699117666467
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6900519896640851,
+     "ratio_min": 0.6838772834796839,
+     "ratio_max": 0.7001796088914539
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8436801879974443,
+     "ratio_min": 0.8243766045258971,
+     "ratio_max": 0.8594233136798733
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5473819095136442,
+     "ratio_min": 0.5307863605790485,
+     "ratio_max": 0.5729698915307907
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32627961941023587,
+     "ratio_min": 0.311583912912619,
+     "ratio_max": 0.3370275972362064
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6237946761152864,
+     "mixed_fraction": 0.45965770171149145,
+     "mixed_dissipation": 0.16863299020494663
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1358371167089665,
+     "mixed_fraction": 0.45965770171149145,
+     "mixed_dissipation": 0.07447004365226731
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3844131293678075,
+     "mixed_fraction": 0.45965770171149145,
+     "mixed_dissipation": 0.030852679758159814
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5791061200232752,
+     "mixed_fraction": 0.43765281173594134,
+     "mixed_dissipation": 0.16567488189472357
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.075023282913953,
+     "mixed_fraction": 0.43765281173594134,
+     "mixed_dissipation": 0.07756302274124427
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.334778845619061,
+     "mixed_fraction": 0.43765281173594134,
+     "mixed_dissipation": 0.032184980829620694
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.49084157304589,
+     "mixed_fraction": 0.4265145340939962,
+     "mixed_dissipation": 0.1278665150175543
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.7936860341654393,
+     "mixed_fraction": 0.4265145340939962,
+     "mixed_dissipation": 0.04377938801835368
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.9040007205595355,
+     "mixed_fraction": 0.4265145340939962,
+     "mixed_dissipation": 0.013530540373676604
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6086077904346054,
+     "mixed_fraction": 0.47296930182015756,
+     "mixed_dissipation": 0.169284251217297
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1194956985983837,
+     "mixed_fraction": 0.47296930182015756,
+     "mixed_dissipation": 0.07613350521656403
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.347366233227279,
+     "mixed_fraction": 0.47296930182015756,
+     "mixed_dissipation": 0.019164592826885717
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6091399062485927,
+     "mixed_fraction": 0.4539527302363488,
+     "mixed_dissipation": 0.17149280199303962
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0998722982245845,
+     "mixed_fraction": 0.4539527302363488,
+     "mixed_dissipation": 0.06647777467615877
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2908558774075636,
+     "mixed_fraction": 0.4539527302363488,
+     "mixed_dissipation": 0.018645429721637637
+    }
+   ],
+   "realization": 4,
+   "R_wire": 24.81263575862295,
+   "seconds_measure": 1.070772409439087
+  },
+  {
+   "n_cross": 3420,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9931432169360711,
+     "ratio_min": 0.9898530975363093,
+     "ratio_max": 0.9959431262731268
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9770720223580189,
+     "ratio_min": 0.9718638014732249,
+     "ratio_max": 0.983516299408506
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9509638690896891,
+     "ratio_min": 0.9473292685822886,
+     "ratio_max": 0.9547205828434963
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9335523483366547,
+     "ratio_min": 0.9248136609191305,
+     "ratio_max": 0.9438949041715107
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8088689395093663,
+     "ratio_min": 0.7972166634337541,
+     "ratio_max": 0.8385851414426717
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6755279198169304,
+     "ratio_min": 0.6534248749203367,
+     "ratio_max": 0.7094081209752648
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8588544928038647,
+     "ratio_min": 0.8426004535059521,
+     "ratio_max": 0.8811948721030326
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5489048716665332,
+     "ratio_min": 0.5300841318645703,
+     "ratio_max": 0.5597474662671134
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3325955450099037,
+     "ratio_min": 0.31722699794136533,
+     "ratio_max": 0.35205492395911286
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5902273699920935,
+     "mixed_fraction": 0.41228070175438597,
+     "mixed_dissipation": 0.1620257284668846
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0417438479101064,
+     "mixed_fraction": 0.41228070175438597,
+     "mixed_dissipation": 0.06456860248139422
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.228511935571818,
+     "mixed_fraction": 0.41228070175438597,
+     "mixed_dissipation": 0.017713650106854252
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6350898994464707,
+     "mixed_fraction": 0.42719298245614035,
+     "mixed_dissipation": 0.18311642849895624
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2126874994897316,
+     "mixed_fraction": 0.42719298245614035,
+     "mixed_dissipation": 0.08477098598390327
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.5577715256890983,
+     "mixed_fraction": 0.42719298245614035,
+     "mixed_dissipation": 0.052106112652338256
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5740068020608313,
+     "mixed_fraction": 0.4301169590643275,
+     "mixed_dissipation": 0.16359340667502145
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.067492695430077,
+     "mixed_fraction": 0.4301169590643275,
+     "mixed_dissipation": 0.08582766872181992
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3980788513750357,
+     "mixed_fraction": 0.4301169590643275,
+     "mixed_dissipation": 0.04218828566885879
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.636769311886335,
+     "mixed_fraction": 0.4631578947368421,
+     "mixed_dissipation": 0.18216669696737553
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.254266869523738,
+     "mixed_fraction": 0.4631578947368421,
+     "mixed_dissipation": 0.0980012792643456
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.586695555682164,
+     "mixed_fraction": 0.4631578947368421,
+     "mixed_dissipation": 0.030347509404887934
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6239160992178037,
+     "mixed_fraction": 0.4263157894736842,
+     "mixed_dissipation": 0.17613093459059337
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.144772688811201,
+     "mixed_fraction": 0.4263157894736842,
+     "mixed_dissipation": 0.0722536204967064
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.369227014279676,
+     "mixed_fraction": 0.4263157894736842,
+     "mixed_dissipation": 0.02187017619211923
+    }
+   ],
+   "realization": 5,
+   "R_wire": 29.279830449043864,
+   "seconds_measure": 1.0085866451263428
+  },
+  {
+   "n_cross": 3743,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9905689481642863,
+     "ratio_min": 0.9888160430759151,
+     "ratio_max": 0.9920275707215038
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9804086977008841,
+     "ratio_min": 0.9721639320351,
+     "ratio_max": 0.988627692443109
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9540036042549452,
+     "ratio_min": 0.9518457618087779,
+     "ratio_max": 0.9577270291689028
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.939286551885189,
+     "ratio_min": 0.921475524383024,
+     "ratio_max": 0.9513863778144769
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8117055022434947,
+     "ratio_min": 0.804439425552674,
+     "ratio_max": 0.8150933651437071
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6894486019822044,
+     "ratio_min": 0.6808486331570579,
+     "ratio_max": 0.6994697724726946
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8573402009326638,
+     "ratio_min": 0.8411103819799104,
+     "ratio_max": 0.8744958495600608
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.564911259972204,
+     "ratio_min": 0.551995836069556,
+     "ratio_max": 0.5741621560045065
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33305889590130716,
+     "ratio_min": 0.3222041548453783,
+     "ratio_max": 0.3412044318623496
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6256495527079742,
+     "mixed_fraction": 0.4544483034998664,
+     "mixed_dissipation": 0.17361721193835053
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1247874491234513,
+     "mixed_fraction": 0.4544483034998664,
+     "mixed_dissipation": 0.06977098254970313
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.350891720788071,
+     "mixed_fraction": 0.4544483034998664,
+     "mixed_dissipation": 0.02409004337150441
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5765362197472288,
+     "mixed_fraction": 0.4563184611274379,
+     "mixed_dissipation": 0.16717442914316286
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1374523830461833,
+     "mixed_fraction": 0.4563184611274379,
+     "mixed_dissipation": 0.10093890593846706
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4784944880106616,
+     "mixed_fraction": 0.4563184611274379,
+     "mixed_dissipation": 0.029663467246613062
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6039919900110076,
+     "mixed_fraction": 0.4290675928399679,
+     "mixed_dissipation": 0.1676999534101706
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.053391838371991,
+     "mixed_fraction": 0.4290675928399679,
+     "mixed_dissipation": 0.0529015670269329
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1799288487127093,
+     "mixed_fraction": 0.4290675928399679,
+     "mixed_dissipation": 0.010191761119560862
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.7830401009351238,
+     "mixed_fraction": 0.4616617686347849,
+     "mixed_dissipation": 0.2254072790996336
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.6032023835180675,
+     "mixed_fraction": 0.4616617686347849,
+     "mixed_dissipation": 0.10511514422056911
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.0482929420494114,
+     "mixed_fraction": 0.4616617686347849,
+     "mixed_dissipation": 0.04225781442629129
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.565601368583538,
+     "mixed_fraction": 0.4381512156024579,
+     "mixed_dissipation": 0.15641314025381833
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.001210564934407,
+     "mixed_fraction": 0.4381512156024579,
+     "mixed_dissipation": 0.06328222744220736
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1694482933152646,
+     "mixed_fraction": 0.4381512156024579,
+     "mixed_dissipation": 0.014340499905355106
+    }
+   ],
+   "realization": 6,
+   "R_wire": 26.150108120984534,
+   "seconds_measure": 1.0907206535339355
+  },
+  {
+   "n_cross": 3786,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9917255305946654,
+     "ratio_min": 0.9888750179625863,
+     "ratio_max": 0.9935486635781661
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9736498623237113,
+     "ratio_min": 0.9691148142452943,
+     "ratio_max": 0.98128278651296
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9507605885011772,
+     "ratio_min": 0.9469136391158836,
+     "ratio_max": 0.954832133825896
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.944497490674691,
+     "ratio_min": 0.9345505354209817,
+     "ratio_max": 0.9569606545968611
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8194787490371404,
+     "ratio_min": 0.8055499326169742,
+     "ratio_max": 0.8283222041839662
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.7022684836385803,
+     "ratio_min": 0.6909744919388671,
+     "ratio_max": 0.7196503518622641
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8535878819605738,
+     "ratio_min": 0.8259082990484831,
+     "ratio_max": 0.8733371951858623
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.562379012265405,
+     "ratio_min": 0.5455491267061168,
+     "ratio_max": 0.5781542089358662
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3443285597914906,
+     "ratio_min": 0.33623090581292264,
+     "ratio_max": 0.35747119123028426
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.493987642541889,
+     "mixed_fraction": 0.43079767564712096,
+     "mixed_dissipation": 0.13657505338576534
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.831663216013873,
+     "mixed_fraction": 0.43079767564712096,
+     "mixed_dissipation": 0.050147941285007866
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.9611649043841561,
+     "mixed_fraction": 0.43079767564712096,
+     "mixed_dissipation": 0.014045862466491697
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5407314603895246,
+     "mixed_fraction": 0.4292128895932382,
+     "mixed_dissipation": 0.15112690492770356
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.954336050708194,
+     "mixed_fraction": 0.4292128895932382,
+     "mixed_dissipation": 0.06689755735654368
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.192336915699802,
+     "mixed_fraction": 0.4292128895932382,
+     "mixed_dissipation": 0.034022268738817064
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6140775891040842,
+     "mixed_fraction": 0.4432118330692023,
+     "mixed_dissipation": 0.17139939027464623
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.140612425368746,
+     "mixed_fraction": 0.4432118330692023,
+     "mixed_dissipation": 0.07883929115536642
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4064430907626733,
+     "mixed_fraction": 0.4432118330692023,
+     "mixed_dissipation": 0.02923100430082585
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5474615627590433,
+     "mixed_fraction": 0.43766508188061276,
+     "mixed_dissipation": 0.15107438329269346
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9333986480351963,
+     "mixed_fraction": 0.43766508188061276,
+     "mixed_dissipation": 0.05150834237948524
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.0655028012946377,
+     "mixed_fraction": 0.43766508188061276,
+     "mixed_dissipation": 0.013385567746573648
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5605313247236554,
+     "mixed_fraction": 0.45219228737453776,
+     "mixed_dissipation": 0.15396468821782555
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9750995709365151,
+     "mixed_fraction": 0.45219228737453776,
+     "mixed_dissipation": 0.06076937412716099
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1455357766551026,
+     "mixed_fraction": 0.45219228737453776,
+     "mixed_dissipation": 0.017121449599832115
+    }
+   ],
+   "realization": 7,
+   "R_wire": 26.382868792446747,
+   "seconds_measure": 1.1306214332580566
+  },
+  {
+   "n_cross": 3464,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9925305572699148,
+     "ratio_min": 0.9905181174855877,
+     "ratio_max": 0.9948736519241088
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.972396410237355,
+     "ratio_min": 0.9692756804886684,
+     "ratio_max": 0.9775956373944724
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9500308088712384,
+     "ratio_min": 0.9373957253361983,
+     "ratio_max": 0.9583198238256994
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9384009144448185,
+     "ratio_min": 0.9251467464242576,
+     "ratio_max": 0.9459990763497895
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.7980648566657395,
+     "ratio_min": 0.7892622430986035,
+     "ratio_max": 0.8026878150461605
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6826138540257133,
+     "ratio_min": 0.6750280452186653,
+     "ratio_max": 0.6910814676685778
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8529813139115859,
+     "ratio_min": 0.8309115702079559,
+     "ratio_max": 0.8718622688886151
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5508810235797976,
+     "ratio_min": 0.5313229156807878,
+     "ratio_max": 0.5648695452864939
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3312769157067049,
+     "ratio_min": 0.32047251866025733,
+     "ratio_max": 0.3499178136265145
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6923265794386748,
+     "mixed_fraction": 0.43562355658198615,
+     "mixed_dissipation": 0.1963642745291773
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.363641429199572,
+     "mixed_fraction": 0.43562355658198615,
+     "mixed_dissipation": 0.10073424877304596
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7573234030604548,
+     "mixed_fraction": 0.43562355658198615,
+     "mixed_dissipation": 0.03933610076396748
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5959977738682054,
+     "mixed_fraction": 0.44226327944572746,
+     "mixed_dissipation": 0.16604514301969242
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0794149770498853,
+     "mixed_fraction": 0.44226327944572746,
+     "mixed_dissipation": 0.0722284430968698
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3255587962962543,
+     "mixed_fraction": 0.44226327944572746,
+     "mixed_dissipation": 0.03075482603505502
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5916743807769982,
+     "mixed_fraction": 0.42638568129330257,
+     "mixed_dissipation": 0.1634220438171216
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0725710742660124,
+     "mixed_fraction": 0.42638568129330257,
+     "mixed_dissipation": 0.074061879782583
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.311283360344615,
+     "mixed_fraction": 0.42638568129330257,
+     "mixed_dissipation": 0.024912917074889476
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6390543906611341,
+     "mixed_fraction": 0.41830254041570436,
+     "mixed_dissipation": 0.17274694531491344
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.098500807310796,
+     "mixed_fraction": 0.41830254041570436,
+     "mixed_dissipation": 0.05592192649398456
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2494431549119276,
+     "mixed_fraction": 0.41830254041570436,
+     "mixed_dissipation": 0.012366406317516105
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6153180331507715,
+     "mixed_fraction": 0.447459584295612,
+     "mixed_dissipation": 0.17375804023748495
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1819331672020614,
+     "mixed_fraction": 0.447459584295612,
+     "mixed_dissipation": 0.09741741725758686
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.550984010971038,
+     "mixed_fraction": 0.447459584295612,
+     "mixed_dissipation": 0.03753287801661463
+    }
+   ],
+   "realization": 8,
+   "R_wire": 30.636113669148962,
+   "seconds_measure": 0.9562821388244629
+  },
+  {
+   "n_cross": 3789,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9922604871467426,
+     "ratio_min": 0.9876296793299695,
+     "ratio_max": 0.998572504144352
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.972702875644932,
+     "ratio_min": 0.9641391517588194,
+     "ratio_max": 0.9819502138374497
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9587468291691634,
+     "ratio_min": 0.9387348991191302,
+     "ratio_max": 0.9777352087268907
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9546118170074109,
+     "ratio_min": 0.9347537490414513,
+     "ratio_max": 0.9741777014196104
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8119032540859369,
+     "ratio_min": 0.7934078869238883,
+     "ratio_max": 0.8435434166523305
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6748037062086437,
+     "ratio_min": 0.6557045395459816,
+     "ratio_max": 0.6927086180337917
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8272944131745819,
+     "ratio_min": 0.8027554704973882,
+     "ratio_max": 0.8635165433318875
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5918920907264733,
+     "ratio_min": 0.5595858966524296,
+     "ratio_max": 0.6309115496745842
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.326464208982827,
+     "ratio_min": 0.2935225258663908,
+     "ratio_max": 0.3437262463467764
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6277696682452323,
+     "mixed_fraction": 0.41858010029031406,
+     "mixed_dissipation": 0.19906348739065582
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3722522837414397,
+     "mixed_fraction": 0.41858010029031406,
+     "mixed_dissipation": 0.12081783878744476
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.8759387974519006,
+     "mixed_fraction": 0.41858010029031406,
+     "mixed_dissipation": 0.0581444833032254
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6989447845308583,
+     "mixed_fraction": 0.4444444444444444,
+     "mixed_dissipation": 0.19640738675594285
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.33417997351433,
+     "mixed_fraction": 0.4444444444444444,
+     "mixed_dissipation": 0.08218173251895683
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.588205119718695,
+     "mixed_fraction": 0.4444444444444444,
+     "mixed_dissipation": 0.01874059492545457
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6314923023563843,
+     "mixed_fraction": 0.4391660068619689,
+     "mixed_dissipation": 0.18074567536584382
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.181738540246114,
+     "mixed_fraction": 0.4391660068619689,
+     "mixed_dissipation": 0.0795574268908079
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.472239330404413,
+     "mixed_fraction": 0.4391660068619689,
+     "mixed_dissipation": 0.0362898185680071
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.602864996385367,
+     "mixed_fraction": 0.4407495381367115,
+     "mixed_dissipation": 0.17416832444586053
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1154802488193387,
+     "mixed_fraction": 0.4407495381367115,
+     "mixed_dissipation": 0.07114208091625213
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3279693039721767,
+     "mixed_fraction": 0.4407495381367115,
+     "mixed_dissipation": 0.020490923109856878
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.8063725600824234,
+     "mixed_fraction": 0.47110055423594616,
+     "mixed_dissipation": 0.23941338002507828
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.7085210990923008,
+     "mixed_fraction": 0.47110055423594616,
+     "mixed_dissipation": 0.1053711540745524
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.0965232200261728,
+     "mixed_fraction": 0.47110055423594616,
+     "mixed_dissipation": 0.025937858752482622
+    }
+   ],
+   "realization": 9,
+   "R_wire": 27.43150054298226,
+   "seconds_measure": 1.0302660465240479
+  },
+  {
+   "n_cross": 3494,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9929205999402331,
+     "ratio_min": 0.99093032102914,
+     "ratio_max": 0.9951300633539502
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9721237160685956,
+     "ratio_min": 0.9676141267891695,
+     "ratio_max": 0.9780005621161267
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9548136368895921,
+     "ratio_min": 0.9489526786727153,
+     "ratio_max": 0.9621051862910078
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9392320127092917,
+     "ratio_min": 0.9322487504126146,
+     "ratio_max": 0.946919628133285
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8084086446063624,
+     "ratio_min": 0.8013463013713219,
+     "ratio_max": 0.8209257693186945
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.691177482289306,
+     "ratio_min": 0.6704077809423084,
+     "ratio_max": 0.7030016348829972
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8561102647341201,
+     "ratio_min": 0.8415976514930675,
+     "ratio_max": 0.8706037919479622
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5589406883407256,
+     "ratio_min": 0.5373186407142531,
+     "ratio_max": 0.5727709508586808
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3254318062622029,
+     "ratio_min": 0.31998405515437284,
+     "ratio_max": 0.33623822202731024
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.4850003295593406,
+     "mixed_fraction": 0.4301659988551803,
+     "mixed_dissipation": 0.1424672658010934
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8924883576607452,
+     "mixed_fraction": 0.4301659988551803,
+     "mixed_dissipation": 0.07185945350512249
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.113164818766141,
+     "mixed_fraction": 0.4301659988551803,
+     "mixed_dissipation": 0.028647662261024123
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6395210108624523,
+     "mixed_fraction": 0.4627933600457928,
+     "mixed_dissipation": 0.18219361574994003
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2533204509776454,
+     "mixed_fraction": 0.4627933600457928,
+     "mixed_dissipation": 0.10313611301354202
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7170267416436538,
+     "mixed_fraction": 0.4627933600457928,
+     "mixed_dissipation": 0.05733245588505119
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5287237065309578,
+     "mixed_fraction": 0.4315970234688037,
+     "mixed_dissipation": 0.14178112485473737
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8960306140906,
+     "mixed_fraction": 0.4315970234688037,
+     "mixed_dissipation": 0.05649749834810153
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.0622030070430406,
+     "mixed_fraction": 0.4315970234688037,
+     "mixed_dissipation": 0.020546005395144444
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.4956384440221437,
+     "mixed_fraction": 0.4336004579278764,
+     "mixed_dissipation": 0.13867766253669658
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8738200397182891,
+     "mixed_fraction": 0.4336004579278764,
+     "mixed_dissipation": 0.06518073983207884
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.072858329710198,
+     "mixed_fraction": 0.4336004579278764,
+     "mixed_dissipation": 0.02717268709240768
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.603448855005945,
+     "mixed_fraction": 0.454779622209502,
+     "mixed_dissipation": 0.16654331055038682
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.094645124670339,
+     "mixed_fraction": 0.454779622209502,
+     "mixed_dissipation": 0.07742470006403747
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.425967220332178,
+     "mixed_fraction": 0.454779622209502,
+     "mixed_dissipation": 0.05276501862469123
+    }
+   ],
+   "realization": 10,
+   "R_wire": 27.360642266472688,
+   "seconds_measure": 1.004194974899292
+  },
+  {
+   "n_cross": 3695,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9940818465119019,
+     "ratio_min": 0.9904986413455567,
+     "ratio_max": 0.9976129687702172
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9780417886182404,
+     "ratio_min": 0.9715576051067543,
+     "ratio_max": 0.9875561940785275
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9535379290736028,
+     "ratio_min": 0.9445627556923979,
+     "ratio_max": 0.9588676572808682
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9376840950377051,
+     "ratio_min": 0.930970531933156,
+     "ratio_max": 0.948717054111206
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8199108476401678,
+     "ratio_min": 0.7992011507210963,
+     "ratio_max": 0.835531489819942
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.692107467609144,
+     "ratio_min": 0.6707455102074265,
+     "ratio_max": 0.7123887837462728
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8573324142383777,
+     "ratio_min": 0.8356097756078985,
+     "ratio_max": 0.8862712232620372
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5433566109589412,
+     "ratio_min": 0.5224984502864397,
+     "ratio_max": 0.5591459995465469
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33039098512612924,
+     "ratio_min": 0.30542131140595474,
+     "ratio_max": 0.35255200778823903
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.563198006521296,
+     "mixed_fraction": 0.4219215155615697,
+     "mixed_dissipation": 0.16145011003894377
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.103732341872996,
+     "mixed_fraction": 0.4219215155615697,
+     "mixed_dissipation": 0.1016917914228561
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.5010093421641018,
+     "mixed_fraction": 0.4219215155615697,
+     "mixed_dissipation": 0.05090184759467136
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5500776760164734,
+     "mixed_fraction": 0.44573748308525035,
+     "mixed_dissipation": 0.15293952054580734
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9700963480450415,
+     "mixed_fraction": 0.44573748308525035,
+     "mixed_dissipation": 0.06879036552299556
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2072024005211905,
+     "mixed_fraction": 0.44573748308525035,
+     "mixed_dissipation": 0.028992454259188304
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5563010765300627,
+     "mixed_fraction": 0.43491204330175914,
+     "mixed_dissipation": 0.15295865731837138
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9551087414897348,
+     "mixed_fraction": 0.43491204330175914,
+     "mixed_dissipation": 0.055695310969879994
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.108854801213221,
+     "mixed_fraction": 0.43491204330175914,
+     "mixed_dissipation": 0.015464603740156825
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.607052567825788,
+     "mixed_fraction": 0.4381596752368065,
+     "mixed_dissipation": 0.1742970787884487
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.158802702985433,
+     "mixed_fraction": 0.4381596752368065,
+     "mixed_dissipation": 0.0903136743421721
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4929925483415842,
+     "mixed_fraction": 0.4381596752368065,
+     "mixed_dissipation": 0.03588734176796866
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.543335014663334,
+     "mixed_fraction": 0.45115020297699593,
+     "mixed_dissipation": 0.15541604231364117
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.980355169920848,
+     "mixed_fraction": 0.45115020297699593,
+     "mixed_dissipation": 0.0669691540467764
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1718325582533047,
+     "mixed_fraction": 0.45115020297699593,
+     "mixed_dissipation": 0.021630117314235975
+    }
+   ],
+   "realization": 11,
+   "R_wire": 27.96960697673939,
+   "seconds_measure": 1.070434808731079
+  },
+  {
+   "n_cross": 3826,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9957085310724851,
+     "ratio_min": 0.9906189625836108,
+     "ratio_max": 1.000567382351137
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9763567247089636,
+     "ratio_min": 0.9721297066879299,
+     "ratio_max": 0.9801375089781987
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9533670800788103,
+     "ratio_min": 0.9491624247083417,
+     "ratio_max": 0.9554066139961928
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9420494769552683,
+     "ratio_min": 0.9380964612594863,
+     "ratio_max": 0.9476290863566739
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8035169301786628,
+     "ratio_min": 0.7952239082345945,
+     "ratio_max": 0.8120725287115779
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6964561624372994,
+     "ratio_min": 0.6908795214526375,
+     "ratio_max": 0.7094828757852686
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8450384211465535,
+     "ratio_min": 0.8240625338412437,
+     "ratio_max": 0.868902126708497
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5592985990994555,
+     "ratio_min": 0.5537980142551583,
+     "ratio_max": 0.5658339685942911
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3346780746964663,
+     "ratio_min": 0.3205793891151756,
+     "ratio_max": 0.3476136283337964
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.681415260246562,
+     "mixed_fraction": 0.4477260846837428,
+     "mixed_dissipation": 0.20672150796565442
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.4463302939834364,
+     "mixed_fraction": 0.4477260846837428,
+     "mixed_dissipation": 0.11250788256890745
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.8739348465141874,
+     "mixed_fraction": 0.4477260846837428,
+     "mixed_dissipation": 0.03875988760353117
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6918905242482913,
+     "mixed_fraction": 0.46968112911657084,
+     "mixed_dissipation": 0.20027205133096096
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.413461957726213,
+     "mixed_fraction": 0.46968112911657084,
+     "mixed_dissipation": 0.11569647332489372
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.983326874168148,
+     "mixed_fraction": 0.46968112911657084,
+     "mixed_dissipation": 0.06315171639615733
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6181780391806042,
+     "mixed_fraction": 0.4406691061160481,
+     "mixed_dissipation": 0.19550712268906537
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2982896049552717,
+     "mixed_fraction": 0.4406691061160481,
+     "mixed_dissipation": 0.1090616035967953
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.764936663501695,
+     "mixed_fraction": 0.4406691061160481,
+     "mixed_dissipation": 0.051912588405459655
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5756923556495632,
+     "mixed_fraction": 0.4573967590172504,
+     "mixed_dissipation": 0.15968474540441585
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.008485396073672,
+     "mixed_fraction": 0.4573967590172504,
+     "mixed_dissipation": 0.06302838893869031
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.233053234878854,
+     "mixed_fraction": 0.4573967590172504,
+     "mixed_dissipation": 0.03226660726063802
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.510494189927476,
+     "mixed_fraction": 0.40956612650287505,
+     "mixed_dissipation": 0.14599469282613364
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9461446723777645,
+     "mixed_fraction": 0.40956612650287505,
+     "mixed_dissipation": 0.08283059015851615
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2276432998165085,
+     "mixed_fraction": 0.40956612650287505,
+     "mixed_dissipation": 0.032379047038235444
+    }
+   ],
+   "realization": 12,
+   "R_wire": 25.128313654142257,
+   "seconds_measure": 1.1584062576293945
+  },
+  {
+   "n_cross": 3700,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9937914391551308,
+     "ratio_min": 0.9896907109736078,
+     "ratio_max": 0.9971984558591954
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9744413579145637,
+     "ratio_min": 0.972401364385072,
+     "ratio_max": 0.9765283186901436
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9547279698948884,
+     "ratio_min": 0.9505180441590709,
+     "ratio_max": 0.9578145887414813
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9399644513967959,
+     "ratio_min": 0.9337701519666155,
+     "ratio_max": 0.9464458890263031
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8101957400582632,
+     "ratio_min": 0.7969856399973618,
+     "ratio_max": 0.8202355465488632
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6880552575752421,
+     "ratio_min": 0.6830273875197083,
+     "ratio_max": 0.6905763306899558
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8528173194978892,
+     "ratio_min": 0.8289578914382846,
+     "ratio_max": 0.8719005235355083
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5767773279866374,
+     "ratio_min": 0.5323381971473419,
+     "ratio_max": 0.6016000897574082
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32198235534136566,
+     "ratio_min": 0.3056640500219367,
+     "ratio_max": 0.344039467496328
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5522778679222966,
+     "mixed_fraction": 0.41864864864864865,
+     "mixed_dissipation": 0.15803011671676268
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.015888299925408,
+     "mixed_fraction": 0.41864864864864865,
+     "mixed_dissipation": 0.07794224020502245
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.31497302677603,
+     "mixed_fraction": 0.41864864864864865,
+     "mixed_dissipation": 0.04169390537318978
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.54043476010523,
+     "mixed_fraction": 0.4554054054054054,
+     "mixed_dissipation": 0.1468825270426285
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.914021002859691,
+     "mixed_fraction": 0.4554054054054054,
+     "mixed_dissipation": 0.056088722850650474
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.117285399221023,
+     "mixed_fraction": 0.4554054054054054,
+     "mixed_dissipation": 0.03510740784389401
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6153123113288979,
+     "mixed_fraction": 0.4472972972972973,
+     "mixed_dissipation": 0.1785228255016091
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1817068744897696,
+     "mixed_fraction": 0.4472972972972973,
+     "mixed_dissipation": 0.08444931629249425
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.491270992227558,
+     "mixed_fraction": 0.4472972972972973,
+     "mixed_dissipation": 0.03919517779788731
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5948822488770944,
+     "mixed_fraction": 0.4516216216216216,
+     "mixed_dissipation": 0.16067010947887317
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.02377663882298,
+     "mixed_fraction": 0.4516216216216216,
+     "mixed_dissipation": 0.054302566055364716
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1701314442767656,
+     "mixed_fraction": 0.4516216216216216,
+     "mixed_dissipation": 0.014599136465880866
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.551785959182856,
+     "mixed_fraction": 0.4267567567567568,
+     "mixed_dissipation": 0.15277214996577063
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9502663742396218,
+     "mixed_fraction": 0.4267567567567568,
+     "mixed_dissipation": 0.0539670316541103
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.087297019735191,
+     "mixed_fraction": 0.4267567567567568,
+     "mixed_dissipation": 0.012910496347212003
+    }
+   ],
+   "realization": 13,
+   "R_wire": 27.273410210423574,
+   "seconds_measure": 1.059093952178955
+  },
+  {
+   "n_cross": 3653,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9930776857320008,
+     "ratio_min": 0.9913467427138487,
+     "ratio_max": 0.9949352159735361
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9760022669694906,
+     "ratio_min": 0.972513629060502,
+     "ratio_max": 0.9780555605293173
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9526905902555333,
+     "ratio_min": 0.9482651456287663,
+     "ratio_max": 0.9566048210220915
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.942226414666792,
+     "ratio_min": 0.9333504786222324,
+     "ratio_max": 0.9648364234552775
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8048215396561181,
+     "ratio_min": 0.7969454447780306,
+     "ratio_max": 0.8166409059874187
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6822287921485335,
+     "ratio_min": 0.678478260892015,
+     "ratio_max": 0.6895885118435683
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8532096833821934,
+     "ratio_min": 0.8266827553387842,
+     "ratio_max": 0.869887566764144
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5501332312935533,
+     "ratio_min": 0.5233584675329683,
+     "ratio_max": 0.5720345629254283
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33550213249776667,
+     "ratio_min": 0.3142666168796127,
+     "ratio_max": 0.35298078638371677
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6033443440607367,
+     "mixed_fraction": 0.4637284423761292,
+     "mixed_dissipation": 0.1587110031882022
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0425460405322715,
+     "mixed_fraction": 0.4637284423761292,
+     "mixed_dissipation": 0.06181744851183311
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.211696509971973,
+     "mixed_fraction": 0.4637284423761292,
+     "mixed_dissipation": 0.014947602888614511
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6062712807302124,
+     "mixed_fraction": 0.43744867232411716,
+     "mixed_dissipation": 0.17461300167040272
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.189442056015186,
+     "mixed_fraction": 0.43744867232411716,
+     "mixed_dissipation": 0.10655513207974014
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7635957891472613,
+     "mixed_fraction": 0.43744867232411716,
+     "mixed_dissipation": 0.09069354712726418
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.593975248475844,
+     "mixed_fraction": 0.45688475225841774,
+     "mixed_dissipation": 0.16534836604444048
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1003224882040827,
+     "mixed_fraction": 0.45688475225841774,
+     "mixed_dissipation": 0.08476927363364947
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4027161712533127,
+     "mixed_fraction": 0.45688475225841774,
+     "mixed_dissipation": 0.03364986969846171
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5726906450827585,
+     "mixed_fraction": 0.44538735286066244,
+     "mixed_dissipation": 0.17164143179705985
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1029246964693926,
+     "mixed_fraction": 0.44538735286066244,
+     "mixed_dissipation": 0.08233621787969413
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3877393172321346,
+     "mixed_fraction": 0.44538735286066244,
+     "mixed_dissipation": 0.03646385556388759
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.62496435109921,
+     "mixed_fraction": 0.4459348480700794,
+     "mixed_dissipation": 0.17980427634101706
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.224226571335942,
+     "mixed_fraction": 0.4459348480700794,
+     "mixed_dissipation": 0.10370359779500159
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.660048411133011,
+     "mixed_fraction": 0.4459348480700794,
+     "mixed_dissipation": 0.05269997802154125
+    }
+   ],
+   "realization": 14,
+   "R_wire": 26.276784168789664,
+   "seconds_measure": 1.050374984741211
+  },
+  {
+   "n_cross": 3609,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9923260434639467,
+     "ratio_min": 0.9892470904984362,
+     "ratio_max": 0.9939279662142099
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9722061688347114,
+     "ratio_min": 0.9636519536898168,
+     "ratio_max": 0.982276887882753
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.95934210587951,
+     "ratio_min": 0.9452107805773453,
+     "ratio_max": 0.9726551905939536
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9295205277934444,
+     "ratio_min": 0.9082224802769386,
+     "ratio_max": 0.9373180952727798
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.7974594856750081,
+     "ratio_min": 0.7891826152495354,
+     "ratio_max": 0.8060669449628446
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6765724482318418,
+     "ratio_min": 0.6614601612899411,
+     "ratio_max": 0.6941282692899526
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8543153591653599,
+     "ratio_min": 0.8369953392799753,
+     "ratio_max": 0.8841280032954123
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5550066454057045,
+     "ratio_min": 0.5263720195931381,
+     "ratio_max": 0.5793324954857046
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3328710211741056,
+     "ratio_min": 0.3096447594187516,
+     "ratio_max": 0.35168761651874575
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6870804096056513,
+     "mixed_fraction": 0.4483236353560543,
+     "mixed_dissipation": 0.19441080550015494
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3373795195718263,
+     "mixed_fraction": 0.4483236353560543,
+     "mixed_dissipation": 0.09539363450946212
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.718108780778791,
+     "mixed_fraction": 0.4483236353560543,
+     "mixed_dissipation": 0.03959019566937063
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.4859503494395718,
+     "mixed_fraction": 0.4369631476863397,
+     "mixed_dissipation": 0.13726148869147342
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8796636826609123,
+     "mixed_fraction": 0.4369631476863397,
+     "mixed_dissipation": 0.07392510394805842
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.10933415731188,
+     "mixed_fraction": 0.4369631476863397,
+     "mixed_dissipation": 0.028473265719985957
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.54088725700937,
+     "mixed_fraction": 0.4389027431421446,
+     "mixed_dissipation": 0.15829441892021462
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0710885058898505,
+     "mixed_fraction": 0.4389027431421446,
+     "mixed_dissipation": 0.09949624736466531
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.450190984355908,
+     "mixed_fraction": 0.4389027431421446,
+     "mixed_dissipation": 0.04673084449488344
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6045413556949597,
+     "mixed_fraction": 0.46079246328622886,
+     "mixed_dissipation": 0.1639828050472728
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0623591514725956,
+     "mixed_fraction": 0.46079246328622886,
+     "mixed_dissipation": 0.06243715281369248
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.245558731191053,
+     "mixed_fraction": 0.46079246328622886,
+     "mixed_dissipation": 0.017652632985777784
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.719629642495295,
+     "mixed_fraction": 0.4624549736769188,
+     "mixed_dissipation": 0.19817228926026198
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.373665408180678,
+     "mixed_fraction": 0.4624549736769188,
+     "mixed_dissipation": 0.08823469582299748
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.6598857435275067,
+     "mixed_fraction": 0.4624549736769188,
+     "mixed_dissipation": 0.01998308743323321
+    }
+   ],
+   "realization": 15,
+   "R_wire": 27.479877738842678,
+   "seconds_measure": 1.115382194519043
+  },
+  {
+   "n_cross": 3620,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9928345981475262,
+     "ratio_min": 0.9910669364974637,
+     "ratio_max": 0.9952929614730811
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9745301510389461,
+     "ratio_min": 0.9697714827448234,
+     "ratio_max": 0.9767990697337307
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9490749698612666,
+     "ratio_min": 0.9476170098715435,
+     "ratio_max": 0.9502339340694592
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9353721263104738,
+     "ratio_min": 0.9322959337539489,
+     "ratio_max": 0.93718593018402
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8091722401999268,
+     "ratio_min": 0.7983232988959394,
+     "ratio_max": 0.815219348733467
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.672903819238967,
+     "ratio_min": 0.6673052958604245,
+     "ratio_max": 0.684856397454697
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8538115736359246,
+     "ratio_min": 0.8392285523295961,
+     "ratio_max": 0.8662747117721349
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5486278557456652,
+     "ratio_min": 0.5177711578772819,
+     "ratio_max": 0.5783002323469572
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3208633438671041,
+     "ratio_min": 0.3126448319897891,
+     "ratio_max": 0.33316681771200535
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6073603142058135,
+     "mixed_fraction": 0.45773480662983423,
+     "mixed_dissipation": 0.15809045888609674
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0536183745486585,
+     "mixed_fraction": 0.45773480662983423,
+     "mixed_dissipation": 0.06415162861844019
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2513075411350325,
+     "mixed_fraction": 0.45773480662983423,
+     "mixed_dissipation": 0.02312015158210519
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.581861255715743,
+     "mixed_fraction": 0.4383977900552486,
+     "mixed_dissipation": 0.16297208626051432
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0549857869589343,
+     "mixed_fraction": 0.4383977900552486,
+     "mixed_dissipation": 0.07321794150590105
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.289494350233186,
+     "mixed_fraction": 0.4383977900552486,
+     "mixed_dissipation": 0.02532404815590695
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6047387283130412,
+     "mixed_fraction": 0.4585635359116022,
+     "mixed_dissipation": 0.17002966207982656
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.096752252668252,
+     "mixed_fraction": 0.4585635359116022,
+     "mixed_dissipation": 0.07005435965483403
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3286247068560573,
+     "mixed_fraction": 0.4585635359116022,
+     "mixed_dissipation": 0.0283866116737603
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.596846255958948,
+     "mixed_fraction": 0.4334254143646409,
+     "mixed_dissipation": 0.16852031512030996
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0786092014575566,
+     "mixed_fraction": 0.4334254143646409,
+     "mixed_dissipation": 0.07049167550427982
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.326935041965691,
+     "mixed_fraction": 0.4334254143646409,
+     "mixed_dissipation": 0.03218436692616595
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6867261683428938,
+     "mixed_fraction": 0.4574585635359116,
+     "mixed_dissipation": 0.2010758850586307
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.289721508759927,
+     "mixed_fraction": 0.4574585635359116,
+     "mixed_dissipation": 0.06981684808942659
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.507057290905496,
+     "mixed_fraction": 0.4574585635359116,
+     "mixed_dissipation": 0.019804946278106098
+    }
+   ],
+   "realization": 16,
+   "R_wire": 27.776930819898254,
+   "seconds_measure": 1.020315170288086
+  },
+  {
+   "n_cross": 3707,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9947697489914038,
+     "ratio_min": 0.9919861619034465,
+     "ratio_max": 0.9980151257154585
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9785471697940619,
+     "ratio_min": 0.9747101052641326,
+     "ratio_max": 0.9852833375710187
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9529533720189278,
+     "ratio_min": 0.9461234914558078,
+     "ratio_max": 0.9685881607046446
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.937340283351151,
+     "ratio_min": 0.9305024311577229,
+     "ratio_max": 0.951331912047317
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8227943459797069,
+     "ratio_min": 0.8136107695605767,
+     "ratio_max": 0.835147818574613
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.7012301765570329,
+     "ratio_min": 0.692734874950181,
+     "ratio_max": 0.709578074256293
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.851045799809943,
+     "ratio_min": 0.8339228642837004,
+     "ratio_max": 0.8652552390037782
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5610292744153726,
+     "ratio_min": 0.5328765674929277,
+     "ratio_max": 0.5789474369461995
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3314844706419936,
+     "ratio_min": 0.3240452670923902,
+     "ratio_max": 0.3366308734016912
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5388998802726288,
+     "mixed_fraction": 0.44375505799838144,
+     "mixed_dissipation": 0.14304163464973665
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8846610769007723,
+     "mixed_fraction": 0.44375505799838144,
+     "mixed_dissipation": 0.047546160331512904
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.01752729900037,
+     "mixed_fraction": 0.44375505799838144,
+     "mixed_dissipation": 0.016135974190876583
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5480730484155736,
+     "mixed_fraction": 0.43350418127866197,
+     "mixed_dissipation": 0.15342411991038607
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9696025446702352,
+     "mixed_fraction": 0.43350418127866197,
+     "mixed_dissipation": 0.06207393072791067
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1576207588426266,
+     "mixed_fraction": 0.43350418127866197,
+     "mixed_dissipation": 0.02797169261139367
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5898097097734285,
+     "mixed_fraction": 0.44267601834367415,
+     "mixed_dissipation": 0.16735723623938217
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1364972549663253,
+     "mixed_fraction": 0.44267601834367415,
+     "mixed_dissipation": 0.09511223586373649
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.47358051228623,
+     "mixed_fraction": 0.44267601834367415,
+     "mixed_dissipation": 0.035692306506715406
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5588873684554605,
+     "mixed_fraction": 0.4677636903156191,
+     "mixed_dissipation": 0.14757247469859952
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9420488993697584,
+     "mixed_fraction": 0.4677636903156191,
+     "mixed_dissipation": 0.056431038957464055
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1081128910774956,
+     "mixed_fraction": 0.4677636903156191,
+     "mixed_dissipation": 0.018624852384859013
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6142692759807646,
+     "mixed_fraction": 0.4488804963582412,
+     "mixed_dissipation": 0.17389989584987806
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1933414515436165,
+     "mixed_fraction": 0.4488804963582412,
+     "mixed_dissipation": 0.09812898732309688
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.538045864681064,
+     "mixed_fraction": 0.4488804963582412,
+     "mixed_dissipation": 0.031201343341023136
+    }
+   ],
+   "realization": 17,
+   "R_wire": 27.71146711579671,
+   "seconds_measure": 1.0964572429656982
+  },
+  {
+   "n_cross": 3808,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9939049227865013,
+     "ratio_min": 0.9914747523273001,
+     "ratio_max": 0.9976894115367544
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.978240699201318,
+     "ratio_min": 0.9767055385129757,
+     "ratio_max": 0.9810026948231674
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9533221396671234,
+     "ratio_min": 0.9501515404088585,
+     "ratio_max": 0.9567106357080567
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9372142532683826,
+     "ratio_min": 0.9326037234185997,
+     "ratio_max": 0.9439887711061519
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.805600772749562,
+     "ratio_min": 0.8028945252983712,
+     "ratio_max": 0.8094756955576929
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6903415922872028,
+     "ratio_min": 0.6853547469424215,
+     "ratio_max": 0.6945541326564975
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8489270151567793,
+     "ratio_min": 0.8297700165087071,
+     "ratio_max": 0.8585096086894944
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5607892513487442,
+     "ratio_min": 0.5400590149263768,
+     "ratio_max": 0.5767570930221055
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.31821617199283186,
+     "ratio_min": 0.3019479755268444,
+     "ratio_max": 0.33076436473011733
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.4811180874311463,
+     "mixed_fraction": 0.4227941176470588,
+     "mixed_dissipation": 0.13107788754378144
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.7989646153932946,
+     "mixed_fraction": 0.4227941176470588,
+     "mixed_dissipation": 0.05010337802954304
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.9451979294744535,
+     "mixed_fraction": 0.4227941176470588,
+     "mixed_dissipation": 0.020691329463938236
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5290060623322854,
+     "mixed_fraction": 0.4474789915966387,
+     "mixed_dissipation": 0.1490415171733961
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.953831874824799,
+     "mixed_fraction": 0.4474789915966387,
+     "mixed_dissipation": 0.07361177545515
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2171452802915868,
+     "mixed_fraction": 0.4474789915966387,
+     "mixed_dissipation": 0.037725504232022616
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6761491758485911,
+     "mixed_fraction": 0.4737394957983193,
+     "mixed_dissipation": 0.19591594491737416
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3683801261580073,
+     "mixed_fraction": 0.4737394957983193,
+     "mixed_dissipation": 0.10489059840012004
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7914903334819847,
+     "mixed_fraction": 0.4737394957983193,
+     "mixed_dissipation": 0.04535953856248904
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6380702829627858,
+     "mixed_fraction": 0.46875,
+     "mixed_dissipation": 0.18258519422376057
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2109694690517836,
+     "mixed_fraction": 0.46875,
+     "mixed_dissipation": 0.08211502471338719
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4795865471992093,
+     "mixed_fraction": 0.46875,
+     "mixed_dissipation": 0.02666704013568839
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5452862049228409,
+     "mixed_fraction": 0.4490546218487395,
+     "mixed_dissipation": 0.15149126637278593
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.001456491573545,
+     "mixed_fraction": 0.4490546218487395,
+     "mixed_dissipation": 0.07958017022011503
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2531718228857773,
+     "mixed_fraction": 0.4490546218487395,
+     "mixed_dissipation": 0.027406280788593747
+    }
+   ],
+   "realization": 18,
+   "R_wire": 26.306236587198864,
+   "seconds_measure": 1.1939270496368408
+  },
+  {
+   "n_cross": 3693,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.99214070280051,
+     "ratio_min": 0.98801022308964,
+     "ratio_max": 0.9955404382264477
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9761169417668208,
+     "ratio_min": 0.9696534730736462,
+     "ratio_max": 0.9822043820451903
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9548223118563411,
+     "ratio_min": 0.9464542204792912,
+     "ratio_max": 0.9587787389471223
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9376667498267771,
+     "ratio_min": 0.9359328242695172,
+     "ratio_max": 0.9392147084131497
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8186035928873588,
+     "ratio_min": 0.8046544559514638,
+     "ratio_max": 0.8274117788898671
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6840311415462684,
+     "ratio_min": 0.6662252316444045,
+     "ratio_max": 0.6975043206740998
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8539857822801821,
+     "ratio_min": 0.8358719805330006,
+     "ratio_max": 0.8685550985607284
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5757184814943537,
+     "ratio_min": 0.5605746054953357,
+     "ratio_max": 0.5906642940014325
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32719816745851327,
+     "ratio_min": 0.3176573640608778,
+     "ratio_max": 0.335187595738948
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.4701113637327583,
+     "mixed_fraction": 0.4245870565935554,
+     "mixed_dissipation": 0.1249130549999234
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.7861822222823946,
+     "mixed_fraction": 0.4245870565935554,
+     "mixed_dissipation": 0.05447834499126486
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.936481985845838,
+     "mixed_fraction": 0.4245870565935554,
+     "mixed_dissipation": 0.018191184252391263
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.7176942406872515,
+     "mixed_fraction": 0.4757649607365286,
+     "mixed_dissipation": 0.19834139739102807
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3751055227320723,
+     "mixed_fraction": 0.4757649607365286,
+     "mixed_dissipation": 0.08969741389235907
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.723162340202471,
+     "mixed_fraction": 0.4757649607365286,
+     "mixed_dissipation": 0.036763562581540045
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5811818476740132,
+     "mixed_fraction": 0.4616842675331709,
+     "mixed_dissipation": 0.15740211336171128
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0101220074991915,
+     "mixed_fraction": 0.4616842675331709,
+     "mixed_dissipation": 0.06005155810871245
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.167895146726016,
+     "mixed_fraction": 0.4616842675331709,
+     "mixed_dissipation": 0.013396390222055422
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6352028962704246,
+     "mixed_fraction": 0.45924722447874355,
+     "mixed_dissipation": 0.17446477863320242
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1684308776768577,
+     "mixed_fraction": 0.45924722447874355,
+     "mixed_dissipation": 0.08236027416866229
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.514613077376698,
+     "mixed_fraction": 0.45924722447874355,
+     "mixed_dissipation": 0.04853129909171623
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5239863744285864,
+     "mixed_fraction": 0.40806932033577037,
+     "mixed_dissipation": 0.14161515607151368
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.90030905922353,
+     "mixed_fraction": 0.40806932033577037,
+     "mixed_dissipation": 0.060677722715984636
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.081870819934979,
+     "mixed_fraction": 0.40806932033577037,
+     "mixed_dissipation": 0.020790028332655794
+    }
+   ],
+   "realization": 19,
+   "R_wire": 27.849128490797913,
+   "seconds_measure": 1.0575616359710693
+  },
+  {
+   "n_cross": 3479,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9928981122381952,
+     "ratio_min": 0.9876557637069271,
+     "ratio_max": 0.9964923822424172
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9737486078323944,
+     "ratio_min": 0.9710294535532553,
+     "ratio_max": 0.9814172011161737
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9520979759612651,
+     "ratio_min": 0.9465133682244078,
+     "ratio_max": 0.9570334895355932
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9353859569209098,
+     "ratio_min": 0.921738365613976,
+     "ratio_max": 0.9444715084928599
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8024853251215603,
+     "ratio_min": 0.79497483993671,
+     "ratio_max": 0.8075352959906336
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6885469935776811,
+     "ratio_min": 0.6711216280625231,
+     "ratio_max": 0.6993663678607551
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8538084426839128,
+     "ratio_min": 0.8390397472052631,
+     "ratio_max": 0.8618950758035797
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5653836319741432,
+     "ratio_min": 0.5526851169142206,
+     "ratio_max": 0.5743213988609115
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3155903076567131,
+     "ratio_min": 0.3007155904548814,
+     "ratio_max": 0.3298630409414942
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6402681154140513,
+     "mixed_fraction": 0.4524288588674907,
+     "mixed_dissipation": 0.1926036905992989
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3581235899395208,
+     "mixed_fraction": 0.4524288588674907,
+     "mixed_dissipation": 0.11664963205860233
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7738832223558925,
+     "mixed_fraction": 0.4524288588674907,
+     "mixed_dissipation": 0.03402726771731191
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.7039827355974257,
+     "mixed_fraction": 0.45990227076746193,
+     "mixed_dissipation": 0.2148894986529692
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.559827241885928,
+     "mixed_fraction": 0.45990227076746193,
+     "mixed_dissipation": 0.13301673672058426
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.132461686004217,
+     "mixed_fraction": 0.45990227076746193,
+     "mixed_dissipation": 0.048853060745493615
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6870647589546317,
+     "mixed_fraction": 0.4696751940212705,
+     "mixed_dissipation": 0.21272719935453877
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.5998017616973423,
+     "mixed_fraction": 0.4696751940212705,
+     "mixed_dissipation": 0.15640984243352965
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.305213255813164,
+     "mixed_fraction": 0.4696751940212705,
+     "mixed_dissipation": 0.05424133688201339
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.718680851520869,
+     "mixed_fraction": 0.45386605346363895,
+     "mixed_dissipation": 0.19849015989669264
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3420483473101164,
+     "mixed_fraction": 0.45386605346363895,
+     "mixed_dissipation": 0.07781184143497236
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.602457804117353,
+     "mixed_fraction": 0.45386605346363895,
+     "mixed_dissipation": 0.023601166747628757
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.592672356027195,
+     "mixed_fraction": 0.4435182523713711,
+     "mixed_dissipation": 0.17750393105548798
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1421011973510486,
+     "mixed_fraction": 0.4435182523713711,
+     "mixed_dissipation": 0.0852311265180773
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4420380275803946,
+     "mixed_fraction": 0.4435182523713711,
+     "mixed_dissipation": 0.0320640399442536
+    }
+   ],
+   "realization": 20,
+   "R_wire": 27.38662986704623,
+   "seconds_measure": 0.9814081192016602
+  },
+  {
+   "n_cross": 3489,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9910964703328655,
+     "ratio_min": 0.9861734309377812,
+     "ratio_max": 0.9958447076704594
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9746577494342212,
+     "ratio_min": 0.9700392503514592,
+     "ratio_max": 0.9788439140348144
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9510295268684956,
+     "ratio_min": 0.9476097994912183,
+     "ratio_max": 0.9577709698817193
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9405204651107022,
+     "ratio_min": 0.9307631855715821,
+     "ratio_max": 0.9481798920808602
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8053183504918072,
+     "ratio_min": 0.7891978247964376,
+     "ratio_max": 0.818919931164474
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6770735414671437,
+     "ratio_min": 0.6673578066772855,
+     "ratio_max": 0.6867106305114202
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8417052721004694,
+     "ratio_min": 0.8268838596575683,
+     "ratio_max": 0.8534560485362342
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5678204662833418,
+     "ratio_min": 0.5402289742474166,
+     "ratio_max": 0.5981036814404366
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32723564261569493,
+     "ratio_min": 0.31859823754395755,
+     "ratio_max": 0.3338915974603504
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.525096915915343,
+     "mixed_fraction": 0.45514474061335625,
+     "mixed_dissipation": 0.14506546025373399
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9601062809404988,
+     "mixed_fraction": 0.45514474061335625,
+     "mixed_dissipation": 0.08025583780414963
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.210991263913161,
+     "mixed_fraction": 0.45514474061335625,
+     "mixed_dissipation": 0.0262407529037436
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6217223516901085,
+     "mixed_fraction": 0.4468329034107194,
+     "mixed_dissipation": 0.17070402398490958
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.173533738284239,
+     "mixed_fraction": 0.4468329034107194,
+     "mixed_dissipation": 0.08925167164361682
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.500985586373241,
+     "mixed_fraction": 0.4468329034107194,
+     "mixed_dissipation": 0.039873604408930424
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6332051651760178,
+     "mixed_fraction": 0.4230438521066208,
+     "mixed_dissipation": 0.17943227032481152
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1861787048299988,
+     "mixed_fraction": 0.4230438521066208,
+     "mixed_dissipation": 0.08290402422922162
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4791181032433127,
+     "mixed_fraction": 0.4230438521066208,
+     "mixed_dissipation": 0.03340674467487774
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6166421866337104,
+     "mixed_fraction": 0.43020922900544567,
+     "mixed_dissipation": 0.1762574553399988
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1965847483182754,
+     "mixed_fraction": 0.43020922900544567,
+     "mixed_dissipation": 0.09463406184527647
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.557714191659339,
+     "mixed_fraction": 0.43020922900544567,
+     "mixed_dissipation": 0.0401671669736112
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.661207391450528,
+     "mixed_fraction": 0.4388076812840355,
+     "mixed_dissipation": 0.19272007771010666
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.436109707645033,
+     "mixed_fraction": 0.4388076812840355,
+     "mixed_dissipation": 0.14922381176562458
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.1605224041965285,
+     "mixed_fraction": 0.4388076812840355,
+     "mixed_dissipation": 0.06888628062978888
+    }
+   ],
+   "realization": 21,
+   "R_wire": 28.485173441041837,
+   "seconds_measure": 0.9582931995391846
+  },
+  {
+   "n_cross": 3737,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9942272570691661,
+     "ratio_min": 0.9899095993603811,
+     "ratio_max": 0.998894517026862
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9739349658102396,
+     "ratio_min": 0.9684207251628821,
+     "ratio_max": 0.97685535807724
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.95504006091071,
+     "ratio_min": 0.9493695405105915,
+     "ratio_max": 0.960030676988778
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9364879651598391,
+     "ratio_min": 0.9295464913880281,
+     "ratio_max": 0.944916633576392
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.7992394409697375,
+     "ratio_min": 0.7886913556544761,
+     "ratio_max": 0.8174506228009981
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6983105735401889,
+     "ratio_min": 0.6941088507748204,
+     "ratio_max": 0.7032742687380227
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.852085109215966,
+     "ratio_min": 0.8300214916267984,
+     "ratio_max": 0.8721129050744388
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5554983907679144,
+     "ratio_min": 0.5234558020844695,
+     "ratio_max": 0.5684120956134324
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32182113399605,
+     "ratio_min": 0.30450464738879296,
+     "ratio_max": 0.3406687840488113
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.7780256901655083,
+     "mixed_fraction": 0.44875568637944874,
+     "mixed_dissipation": 0.23040030878453166
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.6747887014680827,
+     "mixed_fraction": 0.44875568637944874,
+     "mixed_dissipation": 0.12349749490408371
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.1651295177144156,
+     "mixed_fraction": 0.44875568637944874,
+     "mixed_dissipation": 0.032265112121759
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5890672808850537,
+     "mixed_fraction": 0.45651592186245654,
+     "mixed_dissipation": 0.17579491106871023
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.136924784331137,
+     "mixed_fraction": 0.45651592186245654,
+     "mixed_dissipation": 0.08358608645362825
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4260473496941013,
+     "mixed_fraction": 0.45651592186245654,
+     "mixed_dissipation": 0.03321476797407835
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5839445734287045,
+     "mixed_fraction": 0.4573187048434573,
+     "mixed_dissipation": 0.16647974978378377
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.04948333262819,
+     "mixed_fraction": 0.4573187048434573,
+     "mixed_dissipation": 0.06259796958676674
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.215914610577613,
+     "mixed_fraction": 0.4573187048434573,
+     "mixed_dissipation": 0.01362989960098892
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5753487967858824,
+     "mixed_fraction": 0.4391222906074391,
+     "mixed_dissipation": 0.16092025798324297
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0365481440663618,
+     "mixed_fraction": 0.4391222906074391,
+     "mixed_dissipation": 0.06988051841488806
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.274124279278026,
+     "mixed_fraction": 0.4391222906074391,
+     "mixed_dissipation": 0.030906427775865494
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5568140432955115,
+     "mixed_fraction": 0.45758629917045757,
+     "mixed_dissipation": 0.1656642682267389
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.063276038863905,
+     "mixed_fraction": 0.45758629917045757,
+     "mixed_dissipation": 0.08290506799067629
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.354651499811004,
+     "mixed_fraction": 0.45758629917045757,
+     "mixed_dissipation": 0.03687403917300507
+    }
+   ],
+   "realization": 22,
+   "R_wire": 26.887744727015612,
+   "seconds_measure": 1.0849335193634033
+  },
+  {
+   "n_cross": 3736,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9931755712709384,
+     "ratio_min": 0.9899253882959185,
+     "ratio_max": 0.9955962157621288
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9750105014958799,
+     "ratio_min": 0.9712662837745105,
+     "ratio_max": 0.9773465328158725
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9505507088927573,
+     "ratio_min": 0.9422788056355631,
+     "ratio_max": 0.9572878108319215
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9376868617106627,
+     "ratio_min": 0.9324694323041246,
+     "ratio_max": 0.9488919750625421
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.815000102132653,
+     "ratio_min": 0.8053147304005777,
+     "ratio_max": 0.8243227316363285
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6924807762770172,
+     "ratio_min": 0.6793157517452217,
+     "ratio_max": 0.7051508272539001
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8500979840955576,
+     "ratio_min": 0.8262163663636448,
+     "ratio_max": 0.8660695176873855
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5636137872294185,
+     "ratio_min": 0.5556311638549221,
+     "ratio_max": 0.5734883766276377
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3320261110764545,
+     "ratio_min": 0.3229191486235287,
+     "ratio_max": 0.33818455007895337
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.608886744229939,
+     "mixed_fraction": 0.43870449678800855,
+     "mixed_dissipation": 0.1708435476626567
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.111442071927092,
+     "mixed_fraction": 0.43870449678800855,
+     "mixed_dissipation": 0.07311937963133106
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.355673103933538,
+     "mixed_fraction": 0.43870449678800855,
+     "mixed_dissipation": 0.028764717689847463
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6468494643988663,
+     "mixed_fraction": 0.46413276231263384,
+     "mixed_dissipation": 0.17452321394502854
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.178365310227844,
+     "mixed_fraction": 0.46413276231263384,
+     "mixed_dissipation": 0.07514972424096636
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.414919494499924,
+     "mixed_fraction": 0.46413276231263384,
+     "mixed_dissipation": 0.02245879943143651
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5462241325884938,
+     "mixed_fraction": 0.42505353319057815,
+     "mixed_dissipation": 0.14969340711312257
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9391543003537193,
+     "mixed_fraction": 0.42505353319057815,
+     "mixed_dissipation": 0.057663048477692984
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1415723903364694,
+     "mixed_fraction": 0.42505353319057815,
+     "mixed_dissipation": 0.036759523062332274
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5951023785977911,
+     "mixed_fraction": 0.45021413276231265,
+     "mixed_dissipation": 0.16819647430491536
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0781862990830278,
+     "mixed_fraction": 0.45021413276231265,
+     "mixed_dissipation": 0.06832418378312187
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2899893478126034,
+     "mixed_fraction": 0.45021413276231265,
+     "mixed_dissipation": 0.02476784385868907
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5409374844477144,
+     "mixed_fraction": 0.4338865096359743,
+     "mixed_dissipation": 0.1462374140866031
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9525171792324711,
+     "mixed_fraction": 0.4338865096359743,
+     "mixed_dissipation": 0.06804359750758532
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.1665547376661163,
+     "mixed_fraction": 0.4338865096359743,
+     "mixed_dissipation": 0.026874979196463932
+    }
+   ],
+   "realization": 23,
+   "R_wire": 25.85127275773178,
+   "seconds_measure": 1.0874848365783691
+  },
+  {
+   "n_cross": 3427,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9913813228118269,
+     "ratio_min": 0.9887381179685387,
+     "ratio_max": 0.9930236038450517
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9763992307537341,
+     "ratio_min": 0.969984267256701,
+     "ratio_max": 0.9830890649623791
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9504458756367875,
+     "ratio_min": 0.9421589127260936,
+     "ratio_max": 0.9593754282166487
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9401205209276455,
+     "ratio_min": 0.9275079517962794,
+     "ratio_max": 0.9489221922655469
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8127079837046536,
+     "ratio_min": 0.7887525243848196,
+     "ratio_max": 0.8360475606219819
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6813960386469181,
+     "ratio_min": 0.6658465468491699,
+     "ratio_max": 0.6931802834706252
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8492672751277037,
+     "ratio_min": 0.8249674753866805,
+     "ratio_max": 0.8751061118203982
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5763193880896085,
+     "ratio_min": 0.5557013419535146,
+     "ratio_max": 0.5969957284837424
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.32340229617539895,
+     "ratio_min": 0.3155871434571315,
+     "ratio_max": 0.3393241513964401
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.6181040662997703,
+     "mixed_fraction": 0.44236941931718704,
+     "mixed_dissipation": 0.17929421194035167
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1768745694223957,
+     "mixed_fraction": 0.44236941931718704,
+     "mixed_dissipation": 0.0803115351229686
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4251887481087833,
+     "mixed_fraction": 0.44236941931718704,
+     "mixed_dissipation": 0.020793050569689213
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.560968763475959,
+     "mixed_fraction": 0.4461628246279545,
+     "mixed_dissipation": 0.14896269115231256
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.9687735339997234,
+     "mixed_fraction": 0.4461628246279545,
+     "mixed_dissipation": 0.06503349170469515
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.175543684443261,
+     "mixed_fraction": 0.4461628246279545,
+     "mixed_dissipation": 0.023951073223293592
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5354154003383176,
+     "mixed_fraction": 0.4114385760140064,
+     "mixed_dissipation": 0.13510439514217715
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8431135297070593,
+     "mixed_fraction": 0.4114385760140064,
+     "mixed_dissipation": 0.04116305545038107
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.958028913425451,
+     "mixed_fraction": 0.4114385760140064,
+     "mixed_dissipation": 0.016852181963610532
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6331282914641798,
+     "mixed_fraction": 0.44353662095126933,
+     "mixed_dissipation": 0.1778244301173163
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1957425095967626,
+     "mixed_fraction": 0.44353662095126933,
+     "mixed_dissipation": 0.08339813727188751
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4928839983793782,
+     "mixed_fraction": 0.44353662095126933,
+     "mixed_dissipation": 0.036918394404053895
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5643342171454155,
+     "mixed_fraction": 0.43361540706156987,
+     "mixed_dissipation": 0.15810631905306138
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0378002943563622,
+     "mixed_fraction": 0.43361540706156987,
+     "mixed_dissipation": 0.07918981833010226
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.313612988694581,
+     "mixed_fraction": 0.43361540706156987,
+     "mixed_dissipation": 0.0347066333690862
+    }
+   ],
+   "realization": 24,
+   "R_wire": 30.189361422013427,
+   "seconds_measure": 0.9617428779602051
+  },
+  {
+   "n_cross": 3605,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9936328777609236,
+     "ratio_min": 0.9884603071605143,
+     "ratio_max": 1.0001351306739057
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9751677729972481,
+     "ratio_min": 0.9657590285719941,
+     "ratio_max": 0.9817342972105566
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9526451485599091,
+     "ratio_min": 0.9433653997907908,
+     "ratio_max": 0.955816184439809
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9314342467556891,
+     "ratio_min": 0.913383738527152,
+     "ratio_max": 0.9451928637830096
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8027054338807476,
+     "ratio_min": 0.7950846290211174,
+     "ratio_max": 0.8129252958677144
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6869731758326728,
+     "ratio_min": 0.6614083498219837,
+     "ratio_max": 0.6980753372803669
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8599588834359307,
+     "ratio_min": 0.8480595825780038,
+     "ratio_max": 0.8803991664398758
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5473029940210935,
+     "ratio_min": 0.5273136250255173,
+     "ratio_max": 0.5702103871841239
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.33411664557252085,
+     "ratio_min": 0.31342130092519294,
+     "ratio_max": 0.36029770037980047
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5509433929299252,
+     "mixed_fraction": 0.42496532593619973,
+     "mixed_dissipation": 0.16111072570518328
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0233553466645833,
+     "mixed_fraction": 0.42496532593619973,
+     "mixed_dissipation": 0.07772404653250747
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2633844131405767,
+     "mixed_fraction": 0.42496532593619973,
+     "mixed_dissipation": 0.023064204515219726
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6665818097055232,
+     "mixed_fraction": 0.4662968099861304,
+     "mixed_dissipation": 0.18376029130775032
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.207526489866783,
+     "mixed_fraction": 0.4662968099861304,
+     "mixed_dissipation": 0.06740731284859014
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3989725343925805,
+     "mixed_fraction": 0.4662968099861304,
+     "mixed_dissipation": 0.015327428177399155
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6351462281964155,
+     "mixed_fraction": 0.42330097087378643,
+     "mixed_dissipation": 0.18701063448444485
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.212119811508798,
+     "mixed_fraction": 0.42330097087378643,
+     "mixed_dissipation": 0.07721834671342176
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.463954842449566,
+     "mixed_fraction": 0.42330097087378643,
+     "mixed_dissipation": 0.028895106958350365
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6269309424165468,
+     "mixed_fraction": 0.44909847434119277,
+     "mixed_dissipation": 0.17134577867306006
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1449548264581,
+     "mixed_fraction": 0.44909847434119277,
+     "mixed_dissipation": 0.07799836829072931
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4323701638143116,
+     "mixed_fraction": 0.44909847434119277,
+     "mixed_dissipation": 0.034007149358904566
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.64029814935556,
+     "mixed_fraction": 0.4302357836338419,
+     "mixed_dissipation": 0.18266994346474336
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.229678150885112,
+     "mixed_fraction": 0.4302357836338419,
+     "mixed_dissipation": 0.09221343019758294
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.629270461886356,
+     "mixed_fraction": 0.4302357836338419,
+     "mixed_dissipation": 0.05509059302475441
+    }
+   ],
+   "realization": 25,
+   "R_wire": 31.070392364985395,
+   "seconds_measure": 0.9825160503387451
+  },
+  {
+   "n_cross": 3630,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9932888386960352,
+     "ratio_min": 0.990241341065022,
+     "ratio_max": 0.9986920789519943
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9742983807533736,
+     "ratio_min": 0.9702163411472784,
+     "ratio_max": 0.9786592749371605
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9534878514568117,
+     "ratio_min": 0.946060869024333,
+     "ratio_max": 0.9591096325129072
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9329774774783381,
+     "ratio_min": 0.9278969074379495,
+     "ratio_max": 0.9384658090618746
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8108211963535255,
+     "ratio_min": 0.7908415058986954,
+     "ratio_max": 0.8273349121026763
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.7033147291593224,
+     "ratio_min": 0.6803072920189118,
+     "ratio_max": 0.7333628799882965
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8487484657897376,
+     "ratio_min": 0.8219899983516462,
+     "ratio_max": 0.8848973733146879
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5807022534597506,
+     "ratio_min": 0.5655574833548882,
+     "ratio_max": 0.5960236908015392
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3398067089264935,
+     "ratio_min": 0.3128615238962503,
+     "ratio_max": 0.3681725295871765
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5457544046034306,
+     "mixed_fraction": 0.43608815426997244,
+     "mixed_dissipation": 0.15311460619765738
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.968765613913904,
+     "mixed_fraction": 0.43608815426997244,
+     "mixed_dissipation": 0.06407740868181457
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.144681984704729,
+     "mixed_fraction": 0.43608815426997244,
+     "mixed_dissipation": 0.017545678699488483
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.4925767533132612,
+     "mixed_fraction": 0.44214876033057854,
+     "mixed_dissipation": 0.13427498853338085
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.829273129286247,
+     "mixed_fraction": 0.44214876033057854,
+     "mixed_dissipation": 0.05394166074114311
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 1.9983411610307282,
+     "mixed_fraction": 0.44214876033057854,
+     "mixed_dissipation": 0.02458835790611022
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5434143678174082,
+     "mixed_fraction": 0.42424242424242425,
+     "mixed_dissipation": 0.16382026053154916
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0491022368050698,
+     "mixed_fraction": 0.42424242424242425,
+     "mixed_dissipation": 0.08505067801065742
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3574041375015415,
+     "mixed_fraction": 0.42424242424242425,
+     "mixed_dissipation": 0.04051787131440768
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6571004113380392,
+     "mixed_fraction": 0.4490358126721763,
+     "mixed_dissipation": 0.19678061690458384
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.3273034885135577,
+     "mixed_fraction": 0.4490358126721763,
+     "mixed_dissipation": 0.09539856963869853
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.631728615022224,
+     "mixed_fraction": 0.4490358126721763,
+     "mixed_dissipation": 0.021889727196862645
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5394833828519165,
+     "mixed_fraction": 0.44490358126721763,
+     "mixed_dissipation": 0.14079949549476006
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.890938540865583,
+     "mixed_fraction": 0.44490358126721763,
+     "mixed_dissipation": 0.047391849670984906
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.0101505639308423,
+     "mixed_fraction": 0.44490358126721763,
+     "mixed_dissipation": 0.012914484761189629
+    }
+   ],
+   "realization": 26,
+   "R_wire": 27.380198381570235,
+   "seconds_measure": 1.1445753574371338
+  },
+  {
+   "n_cross": 3475,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9908867376517903,
+     "ratio_min": 0.9884121113611242,
+     "ratio_max": 0.9928625598138758
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.9707683918857489,
+     "ratio_min": 0.9657978297903264,
+     "ratio_max": 0.9747238120548783
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9534918121488701,
+     "ratio_min": 0.9503141005339192,
+     "ratio_max": 0.9582721893249679
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9383116949134083,
+     "ratio_min": 0.9169908139881535,
+     "ratio_max": 0.9505295363929779
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8108743980571805,
+     "ratio_min": 0.8022314646699646,
+     "ratio_max": 0.819149016202034
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.681046273327445,
+     "ratio_min": 0.6729105903671093,
+     "ratio_max": 0.6956161972233167
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8558776703802196,
+     "ratio_min": 0.8380050334613396,
+     "ratio_max": 0.8655608347105277
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5581172170816265,
+     "ratio_min": 0.5407650621742586,
+     "ratio_max": 0.5735086469165954
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3326030400885301,
+     "ratio_min": 0.3185355380615075,
+     "ratio_max": 0.3599577416405457
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5679572016203684,
+     "mixed_fraction": 0.42503597122302156,
+     "mixed_dissipation": 0.1605231605186269
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.053029937136495,
+     "mixed_fraction": 0.42503597122302156,
+     "mixed_dissipation": 0.07823010253948456
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.291719497446706,
+     "mixed_fraction": 0.42503597122302156,
+     "mixed_dissipation": 0.02405296138304234
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5887568829508238,
+     "mixed_fraction": 0.44115107913669066,
+     "mixed_dissipation": 0.16682766593801077
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0739388893892245,
+     "mixed_fraction": 0.44115107913669066,
+     "mixed_dissipation": 0.07108504071922966
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.318367208424804,
+     "mixed_fraction": 0.44115107913669066,
+     "mixed_dissipation": 0.03236781607295977
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6832177172365546,
+     "mixed_fraction": 0.42762589928057554,
+     "mixed_dissipation": 0.19839505864388085
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.380826264359877,
+     "mixed_fraction": 0.42762589928057554,
+     "mixed_dissipation": 0.10507797708302077
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.7656358245628105,
+     "mixed_fraction": 0.42762589928057554,
+     "mixed_dissipation": 0.0314534306379764
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.563057038814427,
+     "mixed_fraction": 0.4538129496402878,
+     "mixed_dissipation": 0.1538414115935605
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.024877455633977,
+     "mixed_fraction": 0.4538129496402878,
+     "mixed_dissipation": 0.08067119508720033
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3010368850072003,
+     "mixed_fraction": 0.4538129496402878,
+     "mixed_dissipation": 0.03120735288587254
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.820657951160687,
+     "mixed_fraction": 0.47424460431654675,
+     "mixed_dissipation": 0.2345847136854619
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.7212458005874054,
+     "mixed_fraction": 0.47424460431654675,
+     "mixed_dissipation": 0.11143169695581821
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 3.1336498708583163,
+     "mixed_fraction": 0.47424460431654675,
+     "mixed_dissipation": 0.025773425815289658
+    }
+   ],
+   "realization": 27,
+   "R_wire": 27.034429154393766,
+   "seconds_measure": 1.010016679763794
+  },
+  {
+   "n_cross": 3755,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.9929172831142676,
+     "ratio_min": 0.9891561568463134,
+     "ratio_max": 0.9951295946854481
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.973081943413764,
+     "ratio_min": 0.9702679676966613,
+     "ratio_max": 0.9758557504677455
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9507483555667834,
+     "ratio_min": 0.9447429069170675,
+     "ratio_max": 0.9555457281874398
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9368163259746703,
+     "ratio_min": 0.9273408526912416,
+     "ratio_max": 0.9444364818867375
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8121713540725384,
+     "ratio_min": 0.7890094331205783,
+     "ratio_max": 0.8234419985746193
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6920904595895335,
+     "ratio_min": 0.6791025723941594,
+     "ratio_max": 0.7078156601846727
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.8511423878484731,
+     "ratio_min": 0.8367370723789503,
+     "ratio_max": 0.8754495749425606
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5592627880681558,
+     "ratio_min": 0.5347661975535961,
+     "ratio_max": 0.5696720760855698
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3345145406628145,
+     "ratio_min": 0.3284896467914816,
+     "ratio_max": 0.3386542618949471
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5574679505125315,
+     "mixed_fraction": 0.4388814913448735,
+     "mixed_dissipation": 0.16609960356918488
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.061696167276397,
+     "mixed_fraction": 0.4388814913448735,
+     "mixed_dissipation": 0.07938700321239543
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.297338526524401,
+     "mixed_fraction": 0.4388814913448735,
+     "mixed_dissipation": 0.0210411414004585
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5947851820415626,
+     "mixed_fraction": 0.45912117177097206,
+     "mixed_dissipation": 0.1601747156217973
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0350567320615323,
+     "mixed_fraction": 0.45912117177097206,
+     "mixed_dissipation": 0.0635058300663128
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.2557875777230327,
+     "mixed_fraction": 0.45912117177097206,
+     "mixed_dissipation": 0.031045837187905708
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5882372979370725,
+     "mixed_fraction": 0.4617842876165113,
+     "mixed_dissipation": 0.17282346937474416
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1096881130353524,
+     "mixed_fraction": 0.4617842876165113,
+     "mixed_dissipation": 0.07947860439115792
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.435582788254646,
+     "mixed_fraction": 0.4617842876165113,
+     "mixed_dissipation": 0.05268951081313898
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5913838884739926,
+     "mixed_fraction": 0.45006657789613846,
+     "mixed_dissipation": 0.17295226248064102
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.12600161989957,
+     "mixed_fraction": 0.45006657789613846,
+     "mixed_dissipation": 0.0776298693729047
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.364689186883501,
+     "mixed_fraction": 0.45006657789613846,
+     "mixed_dissipation": 0.02547279310204934
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5735388052621442,
+     "mixed_fraction": 0.4330226364846871,
+     "mixed_dissipation": 0.16425788469578378
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0719891602395597,
+     "mixed_fraction": 0.4330226364846871,
+     "mixed_dissipation": 0.08090088734931819
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3374161861418643,
+     "mixed_fraction": 0.4330226364846871,
+     "mixed_dissipation": 0.028160929760959158
+    }
+   ],
+   "realization": 28,
+   "R_wire": 25.915332829363493,
+   "seconds_measure": 1.15364408493042
+  },
+  {
+   "n_cross": 3626,
+   "distributed": [
+    {
+     "rho_bar": 0.1,
+     "sigma": 0.5,
+     "ratio_mean": 0.99335661275334,
+     "ratio_min": 0.9921016893677133,
+     "ratio_max": 0.995919650920477
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.0,
+     "ratio_mean": 0.974034571424402,
+     "ratio_min": 0.9682021684050581,
+     "ratio_max": 0.9780964161016529
+    },
+    {
+     "rho_bar": 0.1,
+     "sigma": 1.5,
+     "ratio_mean": 0.9535520821112875,
+     "ratio_min": 0.9497573482590377,
+     "ratio_max": 0.9584751660942713
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.9380840380323479,
+     "ratio_min": 0.929387473274118,
+     "ratio_max": 0.9446251539960436
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.8047011635912771,
+     "ratio_min": 0.7966033927731175,
+     "ratio_max": 0.8134994470148343
+    },
+    {
+     "rho_bar": 1.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.6901756867049688,
+     "ratio_min": 0.6788359154703387,
+     "ratio_max": 0.6980516972829852
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 0.5,
+     "ratio_mean": 0.863669768438417,
+     "ratio_min": 0.8283161221221221,
+     "ratio_max": 0.8849904415909635
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.0,
+     "ratio_mean": 0.5631941713728705,
+     "ratio_min": 0.5489963074745279,
+     "ratio_max": 0.5821006880689522
+    },
+    {
+     "rho_bar": 10.0,
+     "sigma": 1.5,
+     "ratio_mean": 0.3345845597490418,
+     "ratio_min": 0.32148140300952927,
+     "ratio_max": 0.36042754920766795
+    }
+   ],
+   "bimodal": [
+    {
+     "kappa": 10.0,
+     "ratio": 1.5854808372360143,
+     "mixed_fraction": 0.4307777164920022,
+     "mixed_dissipation": 0.17961443313644795
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.1894470999490867,
+     "mixed_fraction": 0.4307777164920022,
+     "mixed_dissipation": 0.10300001560757442
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.5790490998751183,
+     "mixed_fraction": 0.4307777164920022,
+     "mixed_dissipation": 0.04069552723364856
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6059534966539013,
+     "mixed_fraction": 0.4553226696083839,
+     "mixed_dissipation": 0.16176792321051545
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0334694623462877,
+     "mixed_fraction": 0.4553226696083839,
+     "mixed_dissipation": 0.056672687964441144
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.204961390745767,
+     "mixed_fraction": 0.4553226696083839,
+     "mixed_dissipation": 0.019034216722771027
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.6674263328963086,
+     "mixed_fraction": 0.4456701599558742,
+     "mixed_dissipation": 0.18664117878323547
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.2445814729182563,
+     "mixed_fraction": 0.4456701599558742,
+     "mixed_dissipation": 0.07892019489994727
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.4952004534122674,
+     "mixed_fraction": 0.4456701599558742,
+     "mixed_dissipation": 0.02026188067404642
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5264672360864484,
+     "mixed_fraction": 0.44594594594594594,
+     "mixed_dissipation": 0.1393894055585937
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 1.8779400958507544,
+     "mixed_fraction": 0.44594594594594594,
+     "mixed_dissipation": 0.05424436230561089
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.0470323839616618,
+     "mixed_fraction": 0.44594594594594594,
+     "mixed_dissipation": 0.024001313403005455
+    },
+    {
+     "kappa": 10.0,
+     "ratio": 1.5849791696305535,
+     "mixed_fraction": 0.441257584114727,
+     "mixed_dissipation": 0.16586732828785208
+    },
+    {
+     "kappa": 100.0,
+     "ratio": 2.0994648850571647,
+     "mixed_fraction": 0.441257584114727,
+     "mixed_dissipation": 0.08355503360471934
+    },
+    {
+     "kappa": 1000.0,
+     "ratio": 2.3893960121840943,
+     "mixed_fraction": 0.441257584114727,
+     "mixed_dissipation": 0.032688577292351646
+    }
+   ],
+   "realization": 29,
+   "R_wire": 25.235327171002094,
+   "seconds_measure": 1.0288488864898682
+  }
+ ],
+ "seconds": 1515.481750011444
+}

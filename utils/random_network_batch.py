@@ -355,6 +355,26 @@ def summarize_batch(df):
     return stats, singular_df
 
 
+def _plot_r_eff_scatter(ax, solved, x_column, x_label, title=None):
+    """Draw the R-vs-<parameter> scatter used by the overview panels.
+
+    `solved` is the `status == 'ok'` subset of a results dataframe. Singular
+    reduced Laplacians are marked separately so a batch that hits one is
+    visible in the plot rather than only in the stats table.
+    """
+    singular_mask = solved['is_singular'] == True
+    ax.scatter(solved.loc[~singular_mask, x_column], solved.loc[~singular_mask, 'effective_resistance'],
+               c='steelblue', s=30, alpha=0.7, label='non-singular M')
+    ax.scatter(solved.loc[singular_mask, x_column], solved.loc[singular_mask, 'effective_resistance'],
+               c='crimson', marker='x', s=70, label='singular M')
+    ax.set_yscale('log')
+    ax.set_xlabel(x_label)
+    ax.set_ylabel('Effective resistance R (Ohm, log scale)')
+    if title:
+        ax.set_title(title)
+    ax.legend()
+
+
 def plot_percolation_overview(df, k_ohm, figsize=(13, 5)):
     """Two-panel overview: which (N, a) percolated, and R vs. a for solved cases."""
     fig, ax = plt.subplots(1, 2, figsize=figsize)
@@ -366,16 +386,31 @@ def plot_percolation_overview(df, k_ohm, figsize=(13, 5)):
     ax[0].set_title('Percolation over the (N, a) configurations\n(green = percolates, gray = does not)')
 
     solved = df[df['status'] == 'ok']
-    singular_mask = solved['is_singular'] == True
-    ax[1].scatter(solved.loc[~singular_mask, 'a'], solved.loc[~singular_mask, 'effective_resistance'],
-                  c='steelblue', s=30, alpha=0.7, label='non-singular M')
-    ax[1].scatter(solved.loc[singular_mask, 'a'], solved.loc[singular_mask, 'effective_resistance'],
-                  c='crimson', marker='x', s=70, label='singular M')
-    ax[1].set_yscale('log')
-    ax[1].set_xlabel('a (stick length)')
-    ax[1].set_ylabel('Effective resistance R (Ohm, log scale)')
-    ax[1].set_title(f'Effective resistance vs. a\n(solved cases; k = {k_ohm:.0f} Ohm/segment)')
-    ax[1].legend()
+    _plot_r_eff_scatter(
+        ax[1], solved, 'a', 'a (stick length)',
+        title=f'Effective resistance vs. a\n(solved cases; k = {k_ohm:.0f} Ohm/segment)',
+    )
+
+    plt.tight_layout()
+    return fig
+
+
+def plot_r_eff_vs_N(df, k_ohm, figsize=(6.5, 4.35), show_title=True):
+    """Companion panel to `plot_percolation_overview`: R vs. N for solved cases.
+
+    Same styling and log scale as that function's right panel, with N on the x
+    axis instead of a, so the two read as one figure when placed side by side.
+    `show_title=False` drops the axes title for use as a LaTeX subfigure, where
+    the subcaption carries that text instead.
+    """
+    fig, ax = plt.subplots(figsize=figsize)
+
+    solved = df[df['status'] == 'ok']
+    _plot_r_eff_scatter(
+        ax, solved, 'N', 'N (number of sticks)',
+        title=(f'Effective resistance vs. N\n(solved cases; k = {k_ohm:.0f} Ohm/segment)'
+               if show_title else None),
+    )
 
     plt.tight_layout()
     return fig

@@ -33,7 +33,8 @@ def run_full_pipeline_3d(points_1, points_2, N, a, contact_distance,
         ImpedanceCalculator, merge_boundary_nodes, build_incidence_matrix, build_laplacian
     )
 
-    results = {"title": title, "N": N, "a": a, "contact_distance": contact_distance, "k": k}
+    results = {"title": title, "N": N, "n_sticks": len(points_1), "a": a,
+               "contact_distance": contact_distance, "k": k}
 
     intersections_points, graph, contact_gaps = identify_contacts_3d(
         points_1, points_2, contact_distance
@@ -449,7 +450,7 @@ def run_full_pipeline_3d_spherical_terminals(points_1, points_2, N, a, contact_d
 
 
 def generate_percolating_network_3d(N, a, contact_distance, box_dims=(1.0, 1.0, 1.0),
-                                    k_uniform=1000.0, max_attempts=200, seed=None):
+                                    k_uniform=1000.0, max_attempts=200, seed=None, boundary="clip"):
     """
     Draw random 3D stick networks (N sticks, length a, contact_distance),
     confined to `box_dims` (unit cube by default; pass e.g. (1.0, 1.0, d)
@@ -477,7 +478,7 @@ def generate_percolating_network_3d(N, a, contact_distance, box_dims=(1.0, 1.0, 
         points_1, points_2, directions = [], [], []
         try:
             generate_points_3d(N, points_1, points_2, directions, a, box_dims=box_dims,
-                               enforce_bounds=True)
+                               enforce_bounds=True, boundary=boundary)
         except RuntimeError:
             # A single stick occasionally can't find in-bounds endpoints within
             # generate_points_3d's own per-segment attempt budget (rare tail
@@ -492,6 +493,7 @@ def generate_percolating_network_3d(N, a, contact_distance, box_dims=(1.0, 1.0, 
             results["points_2"] = points_2
             results["directions"] = directions
             results["box_dims"] = box_dims
+            results["boundary"] = boundary
             return results, attempt
 
     return None, max_attempts

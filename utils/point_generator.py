@@ -54,10 +54,79 @@ def calculate_angles(points_1, points_2):
         angles.append(angle)
     return angles
 
+def clip_segment_to_box(p1, p2, lower, upper):
+    """Liang-Barsky clipping of the segment p1-p2 to the axis-aligned box
+    [lower_k, upper_k] in every coordinate k. Returns (q1, q2) or None when
+    the segment misses the box. Works in any dimension."""
+    p1 = np.asarray(p1, dtype=float); p2 = np.asarray(p2, dtype=float)
+    d = p2 - p1
+    t0, t1 = 0.0, 1.0
+    for k in range(len(p1)):
+        for sign, bound in ((-1.0, lower[k]), (1.0, upper[k])):
+            # inside when sign*(p - bound) <= 0, i.e. p >= lower / p <= upper
+            num = sign * (bound - p1[k]); den = sign * d[k]
+            if den == 0.0:
+                if num < 0.0:
+                    return None
+                continue
+            r = num / den
+            if den < 0.0:
+                if r > t1: return None
+                if r > t0: t0 = r
+            else:
+                if r < t0: return None
+                if r < t1: t1 = r
+    if t1 - t0 <= 1e-12:
+        return None
+    return tuple(p1 + t0 * d), tuple(p1 + t1 * d)
+
+
 def generate_points(N, points_1, points_2, angles, a,
-                    enforce_bounds=True, max_attempts_per_segment=10000):
+                    enforce_bounds=True, max_attempts_per_segment=10000,
+                    boundary="clip"):
+    """
+    Place random sticks of length a in the unit square.
+
+    boundary="reject" (the rule used until 2026-09-15): draw a start point
+        uniformly in the square and an orientation uniformly in [0, 2pi), and
+        redraw until both endpoints lie inside. Exactly N sticks are placed.
+        A start point closer than a to an edge survives only for orientations
+        that keep the second endpoint inside, so the accepted sticks are
+        depleted within a distance of order a of every edge and biased there
+        toward orientations parallel to it.
+    boundary="clip" (current rule): the square is a window cut from a
+        larger film. Stick centres are placed uniformly in the enlarged box
+        [-a/2, 1 + a/2]^2 with uniform orientation, round(N (1 + a)^2) of them
+        so that the density of centres is N per unit area, and each stick is
+        clipped to the square; sticks that miss the square are dropped. The
+        stick material inside the square is then statistically uniform and
+        isotropic up to the edge, the number of sticks actually placed is
+        random with mean close to N, and clipped sticks are shorter than a.
+        N is a density (expected number of stick centres per unit area), and
+        N a^2 keeps its meaning as the excluded-area variable.
+
+    The lists points_1, points_2, angles are extended in place. angles[i] is
+    the direction from points_1[i] to points_2[i].
+    """
     if a < 0:
         raise ValueError("a must be non-negative")
+    if boundary not in ("reject", "clip"):
+        raise ValueError(f"boundary must be 'reject' or 'clip', got {boundary!r}")
+
+    if boundary == "clip":
+        n_window = int(round(N * (1.0 + a) ** 2))
+        lower = (0.0, 0.0); upper = (1.0, 1.0)
+        for _ in range(n_window):
+            cx = np.random.uniform(-a / 2.0, 1.0 + a / 2.0)
+            cy = np.random.uniform(-a / 2.0, 1.0 + a / 2.0)
+            alpha = np.random.uniform(0, 2 * np.pi)
+            hx, hy = 0.5 * a * np.cos(alpha), 0.5 * a * np.sin(alpha)
+            clipped = clip_segment_to_box((cx - hx, cy - hy), (cx + hx, cy + hy), lower, upper)
+            if clipped is None:
+                continue
+            q1, q2 = clipped
+            points_1.append(q1); points_2.append(q2); angles.append(alpha)
+        return
 
     # In a unit square, no segment longer than the diagonal can fit completely inside.
     if enforce_bounds and a > math.sqrt(2):

@@ -26,6 +26,122 @@ def _infer_dim(intersections, default=2):
     return default
 
 
+def build_merge_node_mapping(n_nodes, source_boundary_nodes, drain_boundary_nodes):
+    """
+    The old-index -> new-index renumbering that merge_boundary_nodes applies:
+    internal nodes first (ascending), then the single merged source node, then
+    the single merged drain node.
+
+    Factored out of merge_boundary_nodes so that code needing to relate a merged
+    network back to the network it came from (e.g.
+    merged_edge_true_lengths) can rebuild the mapping instead of
+    guessing it, with no risk of the two drifting apart.
+
+    Returns
+    -------
+    node_mapping : dict  old node index -> new node index
+    merged_source_idx, merged_drain_idx : int
+    internal_nodes : list of int  (old indices, ascending)
+    """
+    source_set = set(source_boundary_nodes)
+    drain_set = set(drain_boundary_nodes)
+    internal_nodes = [i for i in range(n_nodes) if i not in source_set and i not in drain_set]
+
+    node_mapping = {old_idx: new_idx for new_idx, old_idx in enumerate(internal_nodes)}
+
+    merged_source_idx = len(internal_nodes)
+    for old_idx in source_boundary_nodes:
+        node_mapping[old_idx] = merged_source_idx
+
+    merged_drain_idx = len(internal_nodes) + 1
+    for old_idx in drain_boundary_nodes:
+        node_mapping[old_idx] = merged_drain_idx
+
+    return node_mapping, merged_source_idx, merged_drain_idx, internal_nodes
+
+
+def merged_edge_true_lengths(pre_intersections, pre_segment_to_nodes, node_mapping,
+                             merged_segment_to_nodes, edge_conductance=None):
+    """
+    Effective length of every edge of a MERGED network, measured on the
+    geometry the network actually had before the merge.
+
+    Why this exists: merge_boundary_nodes puts each merged terminal at the
+    AVERAGE position of the face it replaces. Under the uniform model that is
+    harmless (resistance does not depend on position at all), but under the
+    distance-dependent model R_edge = R0 * L_edge it silently rewrites the
+    resistance of every edge touching a terminal -- wire segments that never
+    moved would be re-measured to the centroid. Shorting a face is node
+    IDENTIFICATION: the nodes are tied together by an ideal conductor, and the
+    wires keep their real lengths. This function recovers those real lengths.
+
+    Parallel edges are handled the way parallel resistors actually combine.
+    merge_boundary_nodes collapses the m edges that land on the same merged node
+    pair into ONE edge with conductance multiplier m, and ImpedanceCalculator
+    then uses G = m / (R0 * L). For that to equal the true parallel conductance
+    sum(1 / (R0 * L_i)), the effective length must be the harmonic-style
+    combination L_eff = m / sum(1 / L_i), which is what is returned here (it
+    reduces to L itself when m == 1).
+
+    Parameters
+    ----------
+    pre_intersections : list
+        Node coordinates BEFORE the merge (2D or 3D).
+    pre_segment_to_nodes : dict
+        edge_idx -> (node_a, node_b) before the merge.
+    node_mapping : dict
+        old node index -> merged node index (see build_merge_node_mapping).
+    merged_segment_to_nodes : dict
+        edge_idx -> (node_a, node_b) after the merge.
+    edge_conductance : dict, optional
+        Merged edge -> parallel multiplier, as returned by merge_boundary_nodes.
+        Only used to sanity-check that the recovered grouping matches.
+
+    Returns
+    -------
+    numpy.ndarray of length len(merged_segment_to_nodes): the effective length
+    of each merged edge (inf for an edge whose originals all had zero length,
+    which ImpedanceCalculator already treats as carrying no current).
+    """
+    pre_inter = np.asarray(pre_intersections, dtype=float)
+
+    # merged endpoint pair -> merged edge index
+    pair_to_edge = {}
+    for e, (n1, n2) in merged_segment_to_nodes.items():
+        pair_to_edge[(min(n1, n2), max(n1, n2))] = e
+
+    inv_length_sum = {e: 0.0 for e in merged_segment_to_nodes}
+    counts = {e: 0 for e in merged_segment_to_nodes}
+
+    for n1, n2 in pre_segment_to_nodes.values():
+        if n1 == n2:
+            continue
+        m1, m2 = node_mapping[n1], node_mapping[n2]
+        if m1 == m2:
+            continue  # both endpoints landed on the same terminal: shorted out
+        e = pair_to_edge.get((min(m1, m2), max(m1, m2)))
+        if e is None:
+            continue
+        counts[e] += 1
+        length = float(np.linalg.norm(pre_inter[n1] - pre_inter[n2]))
+        if length > 0:
+            inv_length_sum[e] += 1.0 / length
+
+    if edge_conductance:
+        for e, multiplier in edge_conductance.items():
+            if counts.get(e, 0) != multiplier:
+                raise ValueError(
+                    f"merged edge {e} groups {counts.get(e, 0)} pre-merge edge(s) but its "
+                    f"conductance multiplier is {multiplier}; the merged network and the "
+                    f"pre-merge network passed in do not correspond")
+
+    lengths = np.full(len(merged_segment_to_nodes), np.inf)
+    for e in merged_segment_to_nodes:
+        if inv_length_sum[e] > 0:
+            lengths[e] = counts[e] / inv_length_sum[e]
+    return lengths
+
+
 def merge_boundary_nodes(intersections, graph, segment_to_nodes,
                          source_boundary_nodes, drain_boundary_nodes):
     """
@@ -65,31 +181,10 @@ def merge_boundary_nodes(intersections, graph, segment_to_nodes,
     edge_conductance : dict
         Multiplier for each edge (number of parallel resistors)
     """
-    source_set = set(source_boundary_nodes)
-    drain_set = set(drain_boundary_nodes)
-    
-    # Identify internal nodes (neither source nor drain boundary)
-    n_nodes = len(intersections)
-    internal_nodes = [i for i in range(n_nodes) if i not in source_set and i not in drain_set]
-    
-    # New node ordering: [internal nodes..., merged_source, merged_drain]
-    # Create mapping from old to new indices
-    node_mapping = {}
-    
-    # Map internal nodes
-    for new_idx, old_idx in enumerate(internal_nodes):
-        node_mapping[old_idx] = new_idx
-    
-    # Merged source node (new index = len(internal_nodes))
-    merged_source_idx = len(internal_nodes)
-    for old_idx in source_boundary_nodes:
-        node_mapping[old_idx] = merged_source_idx
-    
-    # Merged drain node (new index = len(internal_nodes) + 1)
-    merged_drain_idx = len(internal_nodes) + 1
-    for old_idx in drain_boundary_nodes:
-        node_mapping[old_idx] = merged_drain_idx
-    
+    node_mapping, merged_source_idx, merged_drain_idx, internal_nodes = \
+        build_merge_node_mapping(len(intersections), source_boundary_nodes,
+                                 drain_boundary_nodes)
+
     # Build new intersections list
     new_intersections = []
     
@@ -465,7 +560,7 @@ class ImpedanceCalculator:
         
         return is_connected, visited
     
-    def calculate(self, k=1.0, distance_dependent=False, verbose=False):
+    def calculate(self, k=1.0, distance_dependent=False, edge_lengths=None, verbose=False):
         """
         Calculate the equivalent impedance.
 
@@ -476,6 +571,13 @@ class ImpedanceCalculator:
             distance_dependent=True, in which case k is used as R0 and each
             edge's resistance is R0 * L_edge (L_edge = Euclidean distance
             between the edge's two nodes).
+        edge_lengths : array-like, optional
+            Explicit length for each edge, used instead of measuring the
+            distance between this network's own node coordinates. Only
+            meaningful together with distance_dependent=True, and needed when
+            the stored coordinates no longer describe the real conductors --
+            after merge_boundary_nodes, where each terminal sits at the average
+            position of the face it replaced (see merged_edge_true_lengths).
         distance_dependent : bool
             If True, resistance per edge scales with its physical length
             instead of being the same (k) for every edge.
@@ -537,12 +639,18 @@ class ImpedanceCalculator:
         virtual_edges = set(self.virtual_source_edges + self.virtual_drain_edges)
         k_virtual = k * 1e-6  # Very small resistance for virtual edges
 
-        edge_lengths = np.zeros(self.n_edges)
-        for e, (n1, n2) in self.segment_to_nodes.items():
-            if n1 != n2:
-                edge_lengths[e] = np.linalg.norm(
-                    np.array(self.intersections[n2]) - np.array(self.intersections[n1])
-                )
+        if edge_lengths is None:
+            edge_lengths = np.zeros(self.n_edges)
+            for e, (n1, n2) in self.segment_to_nodes.items():
+                if n1 != n2:
+                    edge_lengths[e] = np.linalg.norm(
+                        np.array(self.intersections[n2]) - np.array(self.intersections[n1])
+                    )
+        else:
+            edge_lengths = np.asarray(edge_lengths, dtype=float)
+            if len(edge_lengths) != self.n_edges:
+                raise ValueError(f"edge_lengths has {len(edge_lengths)} entries but the "
+                                 f"network has {self.n_edges} edges")
 
         G = np.zeros(self.n_edges)
         for e in range(self.n_edges):
@@ -553,7 +661,7 @@ class ImpedanceCalculator:
                 multiplier = self.edge_conductance.get(e, 1)
                 if distance_dependent:
                     L_e = edge_lengths[e]
-                    G[e] = multiplier / (k * L_e) if L_e > 0 else 0.0
+                    G[e] = multiplier / (k * L_e) if 0 < L_e < np.inf else 0.0
                 else:
                     G[e] = multiplier / k  # n parallel resistors = n x conductance
 

@@ -1,7 +1,7 @@
 import math 
 from region_checks import *
 
-def point_within_segment(px, py, x1, y1, x2, y2, tolerance=0.001):
+def point_within_segment(px, py, x1, y1, x2, y2, tolerance=1e-9):
     """
     Check if point (px, py) lies within the bounding box of segment from (x1,y1) to (x2,y2).
     

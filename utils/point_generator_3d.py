@@ -63,7 +63,8 @@ def random_unit_vector_3d():
 
 
 def generate_points_3d(N, points_1, points_2, directions, a, box_dims=(1.0, 1.0, 1.0),
-                       enforce_bounds=True, max_attempts_per_segment=10000):
+                       enforce_bounds=True, max_attempts_per_segment=10000,
+                       boundary="clip"):
     """
     3D analogue of generate_points: draws N random sticks of length `a` in
     the box [0, box_dims[0]] x [0, box_dims[1]] x [0, box_dims[2]], retrying
@@ -89,6 +90,25 @@ def generate_points_3d(N, points_1, points_2, directions, a, box_dims=(1.0, 1.0,
         raise ValueError("a must be non-negative")
 
     box_dims = tuple(box_dims)
+    if boundary not in ("reject", "clip"):
+        raise ValueError(f"boundary must be 'reject' or 'clip', got {boundary!r}")
+    if boundary == "clip":
+        # Same rule as the 2D generator: centres uniform in the box enlarged by
+        # a/2 on every side, uniform directions, N centres per unit volume,
+        # segments clipped to the box and dropped when they miss it.
+        from point_generator import clip_segment_to_box
+        n_window = int(round(N * np.prod([(L + a) / L for L in box_dims])))
+        lower = (0.0, 0.0, 0.0); upper = box_dims
+        for _ in range(n_window):
+            c = np.array([np.random.uniform(-a / 2.0, L + a / 2.0) for L in box_dims])
+            direction = random_unit_vector_3d()
+            h = 0.5 * a * direction
+            clipped = clip_segment_to_box(c - h, c + h, lower, upper)
+            if clipped is None:
+                continue
+            q1, q2 = clipped
+            points_1.append(q1); points_2.append(q2); directions.append(tuple(direction))
+        return
     diagonal = math.sqrt(sum(L ** 2 for L in box_dims))
     # No segment longer than the box's space diagonal can fit completely inside it.
     if enforce_bounds and a > diagonal:

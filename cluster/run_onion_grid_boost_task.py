@@ -55,7 +55,7 @@ MAX_ATTEMPTS = 500
 N_TASKS = 20
 LAYER_DISTANCES = [round(0.1 * n, 2) for n in range(1, 10)]
 
-N_TRIALS_ORIGINAL = 6   # what cluster/onion_grid_results/ was computed at
+N_TRIALS_ORIGINAL = 24  # what cluster/onion_grid_results/ is computed at (6 until 2026-09-15)
 N_TRIALS_BOOST = 50     # target for this boosted rerun
 REL_TOL = 0.15          # same matched-scalar-R_eff grouping tolerance as the notebook
 TOP_N_GROUPS = 5        # how many strongest-signal groups to boost
@@ -214,6 +214,16 @@ def run_one_combo(N, a, d, n_trials):
 
     rate = len(R_effs) / total_attempts if total_attempts else 0.0
 
+    # Aligned record, one entry per accepted realization in the same order as
+    # R_eff_values, with None where a shell was empty. The per-layer lists
+    # below skip empty shells, so across layers they are NOT aligned by index
+    # whenever any realization lacks a shell; any per-realization analysis
+    # (shape normalization, ANOVA, regression) must read this field instead.
+    per_realization_curves = [
+        {str(layer_d): lm.get(layer_d) for layer_d in LAYER_DISTANCES}
+        for lm in per_network_layer_means
+    ]
+
     onion_layer_curves = {}
     for layer_d in LAYER_DISTANCES:
         per_realization = [lm[layer_d] for lm in per_network_layer_means if layer_d in lm]
@@ -226,7 +236,8 @@ def run_one_combo(N, a, d, n_trials):
             }
 
     return {
-        "N": N, "a": a, "d": d, "n": len(R_effs), "n_trials_requested": n_trials,
+        "N": N, "a": a, "d": d, "n": len(R_effs),
+        "per_realization_curves": per_realization_curves, "n_trials_requested": n_trials,
         "mean_ohm": float(np.mean(R_effs)) if R_effs else None,
         "median_ohm": float(np.median(R_effs)) if R_effs else None,
         "std_ohm": float(np.std(R_effs)) if R_effs else None,

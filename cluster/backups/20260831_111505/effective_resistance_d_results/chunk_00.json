@@ -1,0 +1,245 @@
+[
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 20,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 1,
+    "mean_ohm": 976.8062324282955,
+    "median_ohm": 976.8062324282955,
+    "std_ohm": 0.0,
+    "perc_rate": 0.0010964912280701754,
+    "R_eff_values": [
+      976.8062324282955
+    ]
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 45,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.1,
+    "n": 6,
+    "mean_ohm": 1066.8878506301219,
+    "median_ohm": 1024.6388478514257,
+    "std_ohm": 129.98041698903086,
+    "perc_rate": 0.018518518518518517,
+    "R_eff_values": [
+      962.9618694130489,
+      1026.4680082394475,
+      970.5439962448096,
+      1022.8096874634039,
+      1072.9565205084368,
+      1345.5870219115839
+    ]
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.15,
+    "n": 2,
+    "mean_ohm": 988.777692342233,
+    "median_ohm": 988.777692342233,
+    "std_ohm": 28.46250088793073,
+    "perc_rate": 0.0024009603841536613,
+    "R_eff_values": [
+      960.3151914543023,
+      1017.2401932301638
+    ]
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.2,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.3,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.5,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 0.7,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  },
+  {
+    "N": 70,
+    "a": 0.2,
+    "d": 1.0,
+    "n": 0,
+    "mean_ohm": null,
+    "median_ohm": null,
+    "std_ohm": null,
+    "perc_rate": 0.0,
+    "R_eff_values": []
+  }
+]

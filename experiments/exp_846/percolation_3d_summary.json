@@ -1,0 +1,65 @@
+{
+  "experiment": {
+    "experiment_number": 846,
+    "timestamp": "20260831_120358",
+    "environment": "Local",
+    "experiment_dir": "/Users/jefferson/Library/CloudStorage/GoogleDrive-jclc@cin.ufpe.br/.shortcut-targets-by-id/1rYn0mY-dmEuA4NKcrSO1-KsKjMo6XXH_/20242_PiaNo/ColabProject/utils/../experiments/exp_846",
+    "base_dir": "/Users/jefferson/Library/CloudStorage/GoogleDrive-jclc@cin.ufpe.br/.shortcut-targets-by-id/1rYn0mY-dmEuA4NKcrSO1-KsKjMo6XXH_/20242_PiaNo/ColabProject/utils/../experiments"
+  },
+  "unit_tests": {
+    "single_edge_impedance": 1000.0,
+    "ladder_impedance": 500.0,
+    "planar_cross_check_2d_impedance": 3102.247829816149,
+    "planar_cross_check_3d_impedance": 3102.247829816149
+  },
+  "random_network": {
+    "N": 60,
+    "a": 0.6,
+    "contact_distance": 0.06,
+    "attempts": 1,
+    "n_contacts": 144,
+    "uniform_impedance": 3564.8720002035443,
+    "distance_dependent_impedance": 427.112203786306
+  },
+  "sweep": {
+    "N_values": [
+      40,
+      55,
+      70,
+      85
+    ],
+    "a": 0.6,
+    "contact_distance": 0.06,
+    "n_trials": 5,
+    "R_eff_by_N": {
+      "40": [
+        470.14005508484314,
+        1315.2361586966576,
+        576.9295227495901,
+        638.4764925621032,
+        682.8935007003513
+      ],
+      "55": [
+        861.6717220196084,
+        551.2500749932099,
+        952.9269727278795,
+        735.5141402899042,
+        1478.8534139341461
+      ],
+      "70": [
+        668.6423839016096,
+        320.52270444271613,
+        951.8182302495685,
+        285.22840789923805,
+        192.47179684793505
+      ],
+      "85": [
+        204.76795979167053,
+        231.69772645492768,
+        272.33416657441705,
+        197.0051385278885,
+        138.830990549299
+      ]
+    }
+  }
+}
