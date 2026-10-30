@@ -53,7 +53,7 @@ ax.fill_between(ag, np.sqrt(2 * 3000) / ag, yhi, color="0.9", lw=0, zorder=0, la
 ax.fill_between(ag, ylo, 10, color="0.9", lw=0, hatch="///", edgecolor="0.75", zorder=0, label="fewer than 10 sticks")
 ax.plot(ag, 5.64 / ag ** 2, ls="-.", color="0.35", lw=1, zorder=1, label=r"$Na^2 = 5.64$")
 ca, cN = zip(*[(a, N) for N, a in cells])
-ax.scatter(ca, cN, s=9, marker="s", color="0.6", lw=0, zorder=2, label=f"fitted sweep cells ({len(cells)})")
+ax.scatter(ca, cN, s=9, marker="s", color="0.6", lw=0, zorder=2, label="fitted sweep cells")
 ly = {t: np.log10(N_of(1.3, t)) for t in targets}          # right-edge labels, nudged apart
 for lo, hi in zip(targets[::-1], targets[::-1][1:]):        # from the highest R (lowest N) upward
     ly[hi] = max(ly[hi], ly[lo] + 0.06)
@@ -69,14 +69,14 @@ for j, (c, (Rach, n)) in enumerate(zip(plan, achieved)):
                 bbox=dict(boxstyle="square,pad=0.08", fc="white", ec="none", alpha=0.85))
 for c in infeasible:
     ax.scatter([c["a"]], [c["N_curve"]], s=34, facecolor="white", edgecolor=col[c["R_target"]], lw=1.2, zorder=5)
-ax.scatter([], [], s=34, color="0.5", edgecolor="k", lw=0.6, label="candidate (label: achieved mean $R_{\\mathrm{eff}}$, $\\Omega$)")
-ax.scatter([], [], s=34, facecolor="white", edgecolor="0.4", lw=1.2, label="infeasible candidate (not simulated)")
+ax.scatter([], [], s=34, color="0.5", edgecolor="k", lw=0.6, label="candidate")
+ax.scatter([], [], s=34, facecolor="white", edgecolor="0.4", lw=1.2, label="infeasible candidate")
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlim(0.15, 1.3); ax.set_ylim(ylo, yhi)
 ax.set_xticks([0.2, 0.3, 0.4, 0.5, 0.7, 1.0]); ax.set_xticklabels(["0.2", "0.3", "0.4", "0.5", "0.7", "1.0"])
 ax.minorticks_off()
 ax.set_yticks([5, 10, 20, 50, 100, 200, 500, 1000]); ax.set_yticklabels(["5", "10", "20", "50", "100", "200", "500", "1000"])
-ax.set_xlabel("stick length $a$ (box side = 1)")
+ax.set_xlabel("stick length $a$")
 ax.set_ylabel("number of sticks $N$")
 ax.legend(fontsize=7.5, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=2)
 fig.tight_layout()
