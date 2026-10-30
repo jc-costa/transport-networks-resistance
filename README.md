@@ -303,7 +303,7 @@ from their seeds (they reproduce bit for bit).
 ```bibtex
 @mastersthesis{costa2026percolation,
   author  = {Jefferson Carlos Lima da Costa},
-  title   = {Effective Resistance as an Inverse Descriptor of Random Geometric Networks},
+  title   = {Effective Resistance as an Inverse Descriptor of Random Stick Networks},
   school  = {Centro de Inform\'atica, Universidade Federal de Pernambuco},
   year    = {2026}
 }
