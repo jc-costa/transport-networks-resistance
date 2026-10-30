@@ -27,8 +27,15 @@ for N, col in zip(Ns, cmap):
     x = [r["d"] for r in pts]; y = [np.mean(r["R_eff_values"]) for r in pts]
     e = [np.std(r["R_eff_values"], ddof=1) / np.sqrt(r["n"]) if r["n"] > 1 else 0 for r in pts]
     ax.errorbar(x, y, yerr=e, fmt="o-", capsize=3, color=col, label=f"$N$={N}")
-ax.set_xscale("log"); ax.set_xticks(ds); ax.set_xticklabels([str(d) for d in ds]); ax.minorticks_off()
-ax.set_xlabel("Film thickness $d$"); ax.set_ylabel(r"$R_{\mathrm{eff}}$ ($\Omega$)"); ax.grid(True, alpha=0.3); ax.legend(ncol=2)
+# no draw percolates beyond the last d with data: show d up to the next sampled value and shade the gap
+d_last = max(r["d"] for r in sl if r["n"] > 0); d_next = min(d for d in ds if d > d_last)
+xs = [d for d in ds if d <= d_next]
+ax.set_xscale("log"); ax.set_xlim(xs[0] / 1.05, d_next * 1.05)
+ax.set_xticks(xs); ax.set_xticklabels([f"{d:g}" for d in xs]); ax.minorticks_off()
+ax.axvspan(d_last, d_next * 1.05, color="0.9", lw=0, zorder=0)
+ax.text(np.sqrt(d_last * d_next), 0.5, f"no percolating\nnetworks\nfor $d > {d_last:g}$", transform=ax.get_xaxis_transform(),
+        ha="center", va="center", color="0.3", style="italic")
+ax.set_xlabel("Film thickness $d$"); ax.set_ylabel(r"$R_{\mathrm{eff}}$ ($\Omega$)"); ax.grid(True, alpha=0.3); ax.legend(loc="upper left")
 plt.tight_layout(); fig.savefig(os.path.join(out, "reff_vs_d_a02_reff.png"), dpi=150, metadata=meta); plt.close(fig)
 
 fig, ax = plt.subplots(figsize=(6.5, 5))
