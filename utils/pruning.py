@@ -1,3 +1,16 @@
+"""Dead-end removal for percolating stick networks.
+
+``prune_dead_end_nodes`` iteratively removes internal nodes of degree 1 (the
+source x < 0.1 and drain x > 0.9 strips are protected) until none remain or
+its iteration caps are reached, so the solved circuit keeps only conductors
+that can carry current. ``prune_dead_end_nodes_generic`` protects an
+arbitrary node set instead, for terminals placed anywhere, and
+``build_pruned_structures`` summarizes the result. ``prune_dangling_bonds``
+and its two helpers are an earlier stick-level method, used by
+``test_pruning_with_dangling_bonds.ipynb``.
+"""
+
+
 def remover_tupla_e_nos(filtered_path_pairs_of_lines, filtered_path_nodes, filtered_path_pairs_of_edges, dangling_segment):
     """
     Remove edges (tuples) that contain a dangling segment from the network.

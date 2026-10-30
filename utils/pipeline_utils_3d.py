@@ -19,19 +19,44 @@ import numpy as np
 
 def run_full_pipeline_3d(points_1, points_2, N, a, contact_distance,
                          title="Network 3D", k=1000, verbose=True):
-    """
-    Run the complete 3D pipeline on a given network of sticks.
-    Returns a dict with all intermediate results for inspection -- same
-    shape as run_full_pipeline's return value, plus a "contact_gaps" entry.
+    """Run the 3D two-terminal pipeline on one stick configuration.
+
+    Identical to ``pipeline_utils.run_full_pipeline`` after the geometry
+    step: contacts come from ``identify_contacts_3d`` instead of exact
+    intersections, and each contact is one node at the midpoint of the two
+    closest-approach points.
+
+    Parameters
+    ----------
+    points_1, points_2 : list of (float, float, float)
+        Stick endpoints. Source and drain are the nodes with x < 0.1 and
+        x > 0.9, so the box should span [0, 1] in x.
+    N : int
+        Density parameter of the draw; loops use ``len(points_1)``.
+    a : float
+        Stick length (recorded only; contact detection uses the endpoints).
+    contact_distance : float
+        Two sticks touch when the distance between their segments is at
+        most this value (about twice the implicit stick radius).
+    title : str, optional
+        Label for printed output.
+    k : float, optional
+        Uniform resistance per edge, in ohms.
+    verbose : bool, optional
+        Print progress.
+
+    Returns
+    -------
+    results : dict
+        Same keys as ``run_full_pipeline``, plus ``contact_distance`` and
+        ``contact_gaps`` (the closest-approach distance of every contact).
     """
     from intersection_utils_3d import identify_contacts_3d
     from path_analysis import find_path, build_connected_path, rebuild_local_graph
     from pruning import prune_dead_end_nodes, build_pruned_structures
     from path_analysis import verify_pruned_percolation
     from edge_discovery import discover_consecutive_edges, check_dead_ends
-    from impedance_calculator import (
-        ImpedanceCalculator, merge_boundary_nodes, build_incidence_matrix, build_laplacian
-    )
+    from impedance_calculator import ImpedanceCalculator, merge_boundary_nodes
 
     results = {"title": title, "N": N, "n_sticks": len(points_1), "a": a,
                "contact_distance": contact_distance, "k": k}
@@ -338,7 +363,7 @@ def run_full_pipeline_3d_spherical_terminals(points_1, points_2, N, a, contact_d
     """
     from intersection_utils_3d import identify_contacts_3d
     from path_analysis import connected_components, rebuild_local_graph
-    from pruning import prune_dead_end_nodes_generic, build_pruned_structures
+    from pruning import prune_dead_end_nodes_generic
     from edge_discovery import discover_consecutive_edges
     from impedance_calculator import merge_terminal_groups
     from multi_terminal_solver import (
@@ -463,9 +488,38 @@ def generate_percolating_network_3d(N, a, contact_distance, box_dims=(1.0, 1.0, 
     box_dims[2] (thickness) leaves the transport direction (x) and its
     boundary convention untouched.
 
-    Returns (results, attempts) where results is the run_full_pipeline_3d
-    dict for the percolating network (or None if none percolated within
-    max_attempts), and attempts is how many draws it took.
+    Parameters
+    ----------
+    N : int
+        Expected number of stick centres inside the box, i.e. a density of
+        N / (Lx Ly Lz) (see ``point_generator_3d.generate_points_3d``).
+    a : float
+        Stick length.
+    contact_distance : float
+        Bonding distance passed to ``run_full_pipeline_3d``.
+    box_dims : tuple of float, optional
+        Box extents (Lx, Ly, Lz); keep Lx = 1.
+    k_uniform : float, optional
+        Uniform edge resistance for the solve inside the pipeline.
+    max_attempts : int, optional
+        Number of draws before giving up.
+    seed : int, optional
+        If given, ``np.random.seed(seed)`` is called once before the first
+        draw; otherwise the global NumPy generator continues from its state.
+    boundary : {"clip", "reject"}, optional
+        Boundary rule passed to ``generate_points_3d``.
+
+    Returns
+    -------
+    results : dict or None
+        The ``run_full_pipeline_3d`` result of the first percolating draw,
+        with ``points_1``, ``points_2``, ``directions``, ``box_dims`` and
+        ``boundary`` added, or None if no draw percolated.
+    attempts : int
+        Draws used, counting the successful one; ``max_attempts`` on failure.
+        A draw abandoned because ``generate_points_3d`` raised RuntimeError
+        counts as an attempt, and the random numbers it consumed are not
+        rewound.
     """
     import io
     import contextlib

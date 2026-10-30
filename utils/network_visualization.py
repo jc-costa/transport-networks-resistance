@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import LogNorm
 from matplotlib.lines import Line2D
-from matplotlib.patches import Patch, Arc, Circle, FancyArrowPatch, PathPatch
+from matplotlib.patches import FancyArrowPatch, PathPatch
 from matplotlib.path import Path
 import numpy as np
 

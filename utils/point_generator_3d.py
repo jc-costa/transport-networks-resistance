@@ -66,9 +66,20 @@ def generate_points_3d(N, points_1, points_2, directions, a, box_dims=(1.0, 1.0,
                        enforce_bounds=True, max_attempts_per_segment=10000,
                        boundary="clip"):
     """
-    3D analogue of generate_points: draws N random sticks of length `a` in
-    the box [0, box_dims[0]] x [0, box_dims[1]] x [0, box_dims[2]], retrying
-    until both endpoints are in-bounds.
+    3D analogue of generate_points: random sticks of length `a` in the box
+    [0, box_dims[0]] x [0, box_dims[1]] x [0, box_dims[2]], appended to the
+    caller's lists. Directions are uniform on the unit sphere.
+
+    boundary="clip" (current rule): stick centres are uniform in the box
+    enlarged by a/2 on every side, round(N * prod((L + a) / L)) of them, so
+    that N centres fall inside the box on average; each stick is clipped to
+    the box and dropped if it misses it. Clipped sticks are shorter than a,
+    and the number of sticks placed is random. This is the 3D version of the
+    2D clipping rule.
+
+    boundary="reject" (the rule used until 2026-09-15, described in the rest
+    of this docstring): exactly N sticks, each redrawn until both endpoints
+    lie in the box.
 
     `box_dims` defaults to the unit cube (1.0, 1.0, 1.0), reproducing the
     original behavior exactly. Passing an anisotropic box, e.g.

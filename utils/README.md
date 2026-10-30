@@ -16,18 +16,19 @@ multi-terminal work follows the same principle.
 
 | Stage | Module | Notes |
 |---|---|---|
-| 1. Generate sticks | `point_generator.py` | 2D: random positions and angles in the unit square |
+| 1. Generate sticks | `point_generator.py` | 2D: random positions and angles in the unit square. The default `clip` boundary rule (since 2026-09-15) treats the square as a window cut from a larger film and clips sticks at its edge; `reject` is the earlier rule |
 | | `point_generator_3d.py` | 3D: takes `box_dims` for anisotropic boxes such as a thin film `[0,1]×[0,1]×[0,d]`. Directions are sampled by normalizing a 3D standard normal, which is exactly uniform on the sphere |
 | 2. Find connections | `intersection_utils.py` | 2D: exact line-segment intersections |
 | | `intersection_utils_3d.py` | 3D: the contact criterion, since exact intersections almost surely do not occur between random 3D segments |
-| 3. Find percolating paths | `path_analysis.py` | BFS from source to drain |
-| | `boundary_utils.py` | Classifies boundary nodes as source or drain by `x` coordinate |
+| 3. Find percolating paths | `path_analysis.py` | BFS from source to drain, connected components, and the graph helpers `rebuild_local_graph` and `build_graph_from_segments` |
+| | `boundary_utils.py` | `validate_strict_boundary_nodes`: raises when the source or drain node set is empty. Used by `result_exporter.py` |
 | 4. Clean up | `pruning.py` | Removes dead ends. Iterative node-based `prune_dead_end_nodes`, plus the legacy segment-based `prune_dangling_bonds` |
 | | `self_loops.py` | Detects, removes, and (for testing) injects `(i, i)` edges |
 | | `edge_discovery.py` | Consecutive edges along a stick, and dead-end segment detection |
 | 5. Solve the circuit | `impedance_calculator.py` | Equivalent resistance via `L = AᵀGA`. Contains `merge_boundary_nodes()` and the `ImpedanceCalculator` class |
 | | `laplacian_utils.py` | Builds the weighted Laplacian, extracts the reduced internal-node matrix, checks conditioning and singularity. Provides the pseudoinverse path used by the onion protocol |
 | | `multi_terminal_solver.py` | The same Dirichlet problem with an arbitrary number of prescribed-voltage terminals rather than exactly two |
+| | `junction_model.py` | Junction resistance: each crossing becomes two nodes joined by a junction edge `R_j`. Sparse two-terminal solve and red-bond detection. Used by `junction_resistance.ipynb` and `cluster/run_junction_task.py` |
 
 ## Orchestration
 
@@ -51,7 +52,6 @@ multi-terminal work follows the same principle.
 | `network_visualization.py` | The main plotting surface: raw lines, intersections, paths before and after pruning, networks colored by resistance |
 | `network_visualization_3d.py` | The 3D counterpart. Only the straight-edge pattern is ported; the 2D curved parallel-edge bowing and self-loop arcs use canvas APIs with no unique 3D analogue and are intentionally not attempted |
 | `node_loop_visualization.py` | Voltage-colored panels and the three-panel baseline/looped/cleaned report for node-loop tests |
-| `filtered_paths.py` | Node numbering and filtered percolation-path views |
 | `plotting.py` | Standalone figure functions, output to `figures/` |
 
 ## Loop topology
@@ -104,8 +104,7 @@ Kept for provenance, not used by current work.
 
 | File | Status |
 |---|---|
-| `pipeline_utils_src.py` | Earlier variant of `pipeline_utils.py` |
-| `plotting_old.py` | Superseded by `network_visualization.py` |
-| `utility_reset.py` | Empty placeholder |
-| `nextSteps.txt` | Working notes |
-| `path_pairs_of_lines vs  path_pairs_of_edges.txt` | Explains the distinction between the line-centric and node-centric views of a path. Still worth reading alongside `Paths.pdf` |
+| `pipeline_utils_src.py` | Earlier variant of `pipeline_utils.py`. Its `run_full_pipeline` imports `verify_pruned_percolation` from `pruning` instead of `path_analysis` and would fail if called |
+| `plotting_old.py` | Earlier version of `plotting.py`, with the same four functions |
+| `filtered_paths.py` | Empty placeholder. Its two plotting functions were unused and could not run; the module stays because twelve notebooks run `from filtered_paths import *` |
+| `utility_reset.py` | Empty placeholder, also star-imported by notebooks |

@@ -4,8 +4,8 @@ Every analysis in this project lives in a notebook. The `utils/` package holds t
 pipeline; these notebooks pose the questions, run them, and record the answers.
 
 All notebooks run unchanged both locally and on Google Colab. The path-setup cell in each
-one resolves `../utils` relative to the notebook for local use; on Colab, uncomment the
-Colab `utils_path` line and comment out the local one.
+one mounts Drive and uses the Colab `utils` path when `google.colab` can be imported, and
+otherwise resolves `../utils` relative to the notebook.
 
 > **Before running anything.** Jupyter and Colab always start with an empty runtime, but
 > the outputs saved in the file remain visible from the previous run. Running a cell in
@@ -16,8 +16,12 @@ Colab `utils_path` line and comment out the local one.
 >
 > If a cell that worked earlier suddenly raises `TypeError: got an unexpected keyword
 > argument`, the code in `utils/` changed while the session was live and Python is still
-> holding the old import. Re-run the imports cell, which force-reloads the changed
-> modules, then re-run the failing cell.
+> holding the old import. In notebooks whose imports cell force-reloads the modules (for
+> example `multimeter_r_eff.ipynb`), re-run that cell; otherwise restart the runtime.
+>
+> Since 2026-09-15 `generate_points` defaults to the `clip` boundary rule. Notebooks whose
+> saved outputs predate that date draw different networks when re-run; their Markdown says
+> so where it matters.
 
 ---
 
@@ -28,15 +32,16 @@ Read these in order. They build on one another.
 | # | Notebook | What it establishes |
 |---|---|---|
 | 1 | `calculating_the_impedance_of_a_graph.ipynb` | The incidence-matrix method for equivalent resistance, derived from scratch |
-| 2 | `exemplo_impedance.ipynb` | A fully worked example, building the Laplacian by hand and verifying the result |
-| 3 | `distance_dependent_resistance.ipynb` | Defines and validates the `R_edge = R0 · L_edge` model used everywhere afterwards, against hand-computable cases and six real random networks |
+| 2 | `exemplo_impedance.ipynb` | A fully worked example: the Laplacian pseudoinverse, the reference book's incidence-matrix example (and where it disagrees with the graph), and the `impedance_calculator` module |
+| 3 | `distance_dependent_resistance.ipynb` | Defines and validates the `R_edge = R0 · L_edge` model used everywhere afterwards, against hand-computable cases and six real random networks. Section 4 predates the merge-geometry fix of 2026-08-31 |
 | 4 | `test_random_network_impedance.ipynb` | The complete 2D workflow: random network, percolation, pruning, impedance |
-| 5 | `effective_resistance_vs_N_a.ipynb` | The forward problem in 2D. Part A is a dense 4×3 grid, Part B an adaptive grid sized for the cluster |
+| 5 | `effective_resistance_vs_N_a.ipynb` | The forward problem in 2D. Part A is a dense 4×3 grid, Part B an adaptive grid sized for the cluster. The saved Part B outputs predate the `clip` rule |
 | 6 | `inverse_N_a_from_R_eff.ipynb` | The inverse problem. Fits the scaling, tests the `N·a²` collapse rather than assuming it, traces the solution curve for a target, and validates on fresh networks |
 | 7 | `percolation_3d.ipynb` | The 3D generalization via a contact-distance bonding criterion, with the full validation suite and a 2D cross-check |
 | 8 | `effective_resistance_vs_d.ipynb` | Film thickness as a third parameter. Parts A and B are local, Part C is the 420-combination cluster grid |
 | 9 | `multimeter_r_eff.ipynb` | The probe protocol: `R_eff(i, j)` between arbitrary nodes, and the onion-layer sweep |
 | 10 | **`r_eff_ij_vs_N_a_d.ipynb`** | **The main result.** Does onion-curve shape disambiguate geometries the scalar `R_eff` cannot separate? |
+| 11 | `junction_resistance.ipynb` | Drops the ideal-contact assumption: each crossing gets a junction resistance `R_j`. The crossover `R_eff(ρ)` on the near-threshold sweep, additivity in `R_j`, red junctions, and distributed and metallic/semiconducting `R_j` |
 
 Results and figures from these are written up in [`../docs/RESULTS.md`](../docs/RESULTS.md).
 
@@ -68,7 +73,7 @@ be silently wrong.
 | `test_new_self_loops_random_networks.ipynb` | The same invariance through the full random-network pipeline |
 | `test_self_loops_node_specific.ipynb` | Self-loops on specific chosen nodes, with the affected node highlighted |
 | `test_self_loops_multi_node.ipynb` | Electrically inert node-loops (linear, branched, chorded subgraphs) attached to a host node, verified before, during, and after cleanup |
-| `test_150_random_networks.ipynb` | 150 random networks through the full pipeline, for batch statistics |
+| `test_150_random_networks.ipynb` | 1500 random networks (scaled up from the original 150) through the full pipeline: batch statistics and a check that the reduced Laplacian is never singular |
 | `test_paths_in_subregions.ipynb` | Path detection inside specific subregions |
 | `testing_points_in_subregions.ipynb` | Point location and geometric region detection |
 | `testing_data_structures.ipynb` | The node and edge data structures |
@@ -95,5 +100,6 @@ a SLURM job, reloading committed results instead of recomputing. The pattern is 
 | `inverse_N_a_from_R_eff.ipynb` | Section 6 | `run_validation_array.sbatch` |
 | `r_eff_ij_vs_N_a_d.ipynb` | Parts B, C | `run_onion_grid_array.sbatch` (or `run_onion_grid_parallel.sbatch`); Part D needs the retired boost run and is skipped (`RUN_BOOST=False`) |
 | `test_150_random_networks.ipynb` | Section 4 | `run_random_networks_array.sbatch` |
+| `junction_resistance.ipynb` | Part A | `run_junction_array.sbatch` |
 
 See [`../cluster/README.md`](../cluster/README.md).

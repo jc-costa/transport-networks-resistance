@@ -60,6 +60,14 @@ def solve_multi_terminal(intersections, segment_to_nodes, terminal_nodes, termin
                            sanity check for ANY topology/terminal count
       A, L, M, L_ib, edge_lengths, edge_resistances, is_singular,
       condition_number
+
+    Notes
+    -----
+    Same linear algebra as ``ImpedanceCalculator.calculate``: least squares
+    replaces ``np.linalg.solve`` when cond(M) > 1e10, and under the
+    distance-dependent model a zero-length edge gets zero conductance (open).
+    Voltages are only determined for nodes connected to at least one
+    terminal; use ``validate_multi_terminal_percolation`` before solving.
     """
     if len(terminal_nodes) != len(terminal_voltages):
         raise ValueError("terminal_nodes and terminal_voltages must have the same length")

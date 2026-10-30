@@ -13,9 +13,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")           # headless - no display needed
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
 from matplotlib.lines import Line2D
-from matplotlib.patches import Patch
 
 # -- make sure utils/ is importable ------------------------------------------
 UTILS_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -350,8 +350,8 @@ def build_incidence_matrix(n_nodes, n_edges, segment_to_nodes):
     """
     Build the incidence matrix A (edges x nodes).
     
-    A[e, n] = +1 if edge e starts at node n
-    A[e, n] = -1 if edge e ends at node n
+    A[e, n1] = -1 and A[e, n2] = +1 for edge e = (n1, n2); a self-loop
+    (n1 == n2) leaves row e at zero.
     
     Parameters:
     -----------
@@ -365,7 +365,8 @@ def build_incidence_matrix(n_nodes, n_edges, segment_to_nodes):
     Returns:
     --------
     A : numpy.ndarray
-        Incidence matrix of shape (n_edges, n_nodes)
+        Incidence matrix of shape (n_edges, n_nodes). Edge IDs index rows,
+        so they must lie in range(n_edges).
     """
     A = np.zeros((n_edges, n_nodes))
     
@@ -406,6 +407,30 @@ class ImpedanceCalculator:
     
     Uses the incidence matrix method following the book's approach.
     Supports virtual source/drain nodes for proper parallel path handling.
+
+    Method: with incidence matrix A and edge conductances G, the weighted
+    Laplacian is L = A^T diag(G) A. The source is held at V = 1 and the
+    drain at V = 0; the internal voltages solve M V_int = -L_ib V_b, where M
+    is the internal block of L. The impedance is 1 / I_total, with I_total
+    the net current into the drain.
+
+    Assumptions and numerical caveats:
+
+    - Without virtual nodes, source and drain are the nodes of minimum and
+      maximum x (first index on ties); after ``merge_boundary_nodes`` these
+      are the merged terminals. Callers may overwrite ``source_node`` and
+      ``drain_node`` before ``calculate`` (as ``multimeter.measure_r_eff``
+      does).
+    - If the drain is not reachable from the source, ``calculate`` returns
+      an infinite impedance without solving.
+    - M is solved with ``np.linalg.solve`` when its 2-norm condition number is
+      at most 1e10 and with least squares otherwise; ``is_singular`` reports
+      which. An internal component cut off from both terminals makes M
+      singular.
+    - An impedance is reported as infinite when I_total <= 1e-10, an absolute
+      threshold, so resistances above about 1e10 ohm read as open circuits.
+    - In the distance-dependent model an edge of zero (or non-finite) length
+      gets zero conductance, i.e. it is treated as open, not as a short.
     """
     
     def __init__(self, intersections, graph, segment_to_nodes, 

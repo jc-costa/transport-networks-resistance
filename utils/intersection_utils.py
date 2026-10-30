@@ -1,4 +1,18 @@
-import math 
+"""Exact pairwise intersections of 2D sticks.
+
+For each pair (i, j), stick j is moved into the frame of stick i: stick i
+starts at the origin, lies along the x axis, and is then shifted to the line
+y = a. The ``region_checks`` predicates decide from the transformed start
+point and angle of stick j whether the two sticks can cross; the crossing of
+stick j's line with y = a is mapped back to the original frame and kept only
+if it lies within both segments' bounding boxes.
+
+The frame uses the nominal length `a` for both sticks. Under the ``clip``
+boundary rule sticks can be shorter, which is safe: a length-a stick from
+the same start point contains the clipped one, and the final bounding-box
+test uses the real endpoints.
+"""
+import math
 from region_checks import *
 
 def point_within_segment(px, py, x1, y1, x2, y2, tolerance=1e-9):
@@ -22,6 +36,26 @@ def point_within_segment(px, py, x1, y1, x2, y2, tolerance=1e-9):
     return min_x <= px <= max_x and min_y <= py <= max_y
 
 def rotate_the_xy_axis(x2i, x1i, y2i, y1i, theta1, theta2, a):
+    """Express the start point of stick j in the frame of stick i.
+
+    Parameters
+    ----------
+    x2i, y2i : float
+        Start point of stick j.
+    x1i, y1i : float
+        Start point of stick i, mapped to the origin.
+    theta1, theta2 : float
+        Orientations of sticks i and j, in radians.
+    a : float
+        Offset added to y, which places stick i on the line y = a.
+
+    Returns
+    -------
+    x, y : float
+        Start point of stick j in the new frame.
+    theta : float
+        Orientation of stick j relative to stick i (theta2 - theta1).
+    """
    # Shift: Reference Point 1 to origin
     xs = x2i - x1i
     ys = y2i - y1i
@@ -36,6 +70,10 @@ def rotate_the_xy_axis(x2i, x1i, y2i, y1i, theta1, theta2, a):
     return x, y, theta
     
 def back_to_the_origial_coordinate_system(x, x1i, y, y1i, theta1, theta, a):
+    """Inverse of :func:`rotate_the_xy_axis`: map a point back to the original frame.
+
+    Returns the original coordinates and the absolute angle theta + theta1.
+    """
     # Final shift
     y = y - a
     # New coordinates
@@ -50,6 +88,13 @@ def back_to_the_origial_coordinate_system(x, x1i, y, y1i, theta1, theta, a):
     return x2i, y2i, theta2
     
 def find_intersection_point(x2, y2, a, angle):
+    """Crossing of the line through (x2, y2) at `angle` with the line y = a.
+
+    Returns ``(x, y)``, or None (after printing a message) when tan(angle)
+    is exactly zero. Near-parallel lines give a finite but very distant
+    point, which the bounding-box test in ``identify_intersections`` then
+    rejects.
+    """
     try:
         x = x2 + ((a - y2) / math.tan(angle))
         y = y2 + math.tan(angle)*(x - x2)
@@ -59,6 +104,40 @@ def find_intersection_point(x2, y2, a, angle):
         return None
 
 def identify_intersections(points_1, points_2, intersections_points, intersected_line_1, intersected_line_2, graph, angles, a, N):
+    """Find every crossing between the first N sticks.
+
+    Parameters
+    ----------
+    points_1, points_2 : sequence of (float, float)
+        Stick endpoints; ``points_1[i]`` is the start of stick i.
+    intersections_points, intersected_line_1, intersected_line_2, graph : list
+        Output lists, extended in place and also returned.
+    angles : sequence of float
+        Direction from ``points_1[i]`` to ``points_2[i]``, in radians.
+    a : float
+        Nominal stick length used to build each pair's frame.
+    N : int
+        Number of sticks to scan; must not exceed ``len(points_1)``. Callers
+        using the ``clip`` rule should pass ``len(points_1)``.
+
+    Returns
+    -------
+    intersections_points : list of (float, float)
+        One crossing per intersecting pair, in pair order (i < j).
+    intersected_line_1, intersected_line_2 : list
+        Start and end points of both sticks of each crossing, two entries per
+        crossing (stick i, then stick j).
+    graph : list of (int, int)
+        ``graph[n] = (i, j)``: the two sticks meeting at crossing n.
+
+    Notes
+    -----
+    The scan is O(N^2). Each pair is tried in the frame of stick i and, if
+    no crossing is found, in the frame of stick j, because the region tests
+    are not symmetric. The bounding-box test uses a tolerance of 1e-9.
+    Parallel sticks (tan = 0 in the relative frame) are reported as not
+    crossing, with a printed message.
+    """
     def add_intersection_if_valid(x, y, theta, x1i, y1i, x1f, y1f, x2i, y2i, x2f, y2f, theta1, i, j):
         """
         Helper function to compute intersection point and add it only if it lies

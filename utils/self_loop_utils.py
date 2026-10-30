@@ -23,7 +23,6 @@ def add_self_loop(segment_to_nodes: Dict[int, Tuple[int, int]],
     -------
     new_segment_to_nodes, new_graph  (copies — originals not modified)
     """
-    from pipeline_utils import run_impedance
     new_seg = dict(segment_to_nodes)
     new_graph = [list(g) for g in graph]
     new_edge_idx = max(new_seg.keys(), default=-1) + 1
@@ -46,7 +45,6 @@ def remove_self_loops(segment_to_nodes: Dict[int, Tuple[int, int]],
     -------
     clean_seg, clean_graph  (copies — originals not modified)
     """
-    from pipeline_utils import run_impedance
     # Filter out self-loops
     self_loop_indices = {e for e, (n1, n2) in segment_to_nodes.items() if n1 == n2}
     real_edges = [(e, (n1, n2)) for e, (n1, n2) in sorted(segment_to_nodes.items())
@@ -78,7 +76,6 @@ def check_percolation(segment_to_nodes: Dict[int, Tuple[int, int]],
     Self-loops (n, n) are silently ignored by BFS (they add n to its own
     neighbour set, which the visited-check skips on the first encounter).
     """
-    from pipeline_utils import run_impedance
     adj = {}
     for n1, n2 in segment_to_nodes.values():
         if n1 == n2:
@@ -125,7 +122,6 @@ def save_self_loop_experiment(
     loop_description : short string describing which loops were added
     extra_fields     : optional dict merged into experiment_summary.json
     """
-    from pipeline_utils import run_impedance
     n_loops = sum(1 for n1, n2 in seg_with_loops.values() if n1 == n2)
     R_base  = res_baseline['impedance']
     R_loop  = res_with_loops['impedance']
@@ -216,7 +212,7 @@ def run_self_loop_test(intersections, graph, seg, src, drn, k,
                        loop_nodes, label="", verbose=True):
     """
     Run a complete self-loop test: baseline -> inject loops -> cleanup.
-    Run a complete self-loop test: baseline -> inject loops -> cleanup.
+
     Parameters
     ----------
     intersections : list of [x, y] node positions
@@ -270,120 +266,3 @@ def run_self_loop_test(intersections, graph, seg, src, drn, k,
                     'voltages': res_clean['voltages']},
     }
 
-
-def run_test_suite(test_configs, k, verbose=True, show_plots=False):
-    """
-    Run a suite of self-loop tests defined by a list of configs.
-
-    Each config is a dict with keys:
-      id, name, intersections, graph, seg, src, drn,
-      loop_nodes (list of node IDs)
-
-    Returns a dict {test_id: run_self_loop_test_result}.
-    Legacy variables are also set in globals() for viz compatibility.
-    """
-    from pipeline_utils import run_impedance
-    results = {}
-    for cfg in test_configs:
-        tid = cfg['id']
-        r = run_self_loop_test(
-            cfg['intersections'], cfg['graph'], cfg['seg'],
-            cfg['src'], cfg['drn'], k, cfg['loop_nodes'],
-            label=tid, verbose=verbose,
-        )
-        results[tid] = r
-
-        # Print concise result line
-        R_base = r['baseline']['impedance']
-        R_loop = r['looped']['impedance']
-        R_clean = r['cleaned']['impedance']
-        pct = (R_loop / R_base - 1) * 100
-        print(f"  {tid:4s}  R: {R_base:8.2f} -> {R_loop:8.2f} -> {R_clean:8.2f}  "
-              f"({pct:+.1f}%)  restored={'OK' if abs(R_clean-R_base)<1e-4 else 'FAIL'}")
-
-        # Generate and show voltage profile plot if requested
-        if show_plots:
-            from network_visualization import draw_chain_panel, draw_ladder_panel
-            fig, axes = plt.subplots(1, 3, figsize=(14, 4))
-            cases = [
-                (r['baseline']['seg'], r['baseline']['result']['voltages'], 'Baseline'),
-                (r['looped']['seg'],   r['looped']['result']['voltages'],   'With loops'),
-                (r['cleaned']['seg'],  r['cleaned']['result']['voltages'],  'After removal'),
-            ]
-            inter = cfg['intersections']
-            src, drn = cfg['src'], cfg['drn']
-            topo = 'ladder' if len(set(p[1] for p in inter)) > 1 else 'chain'
-            for ax, (seg, volts, label) in zip(axes, cases):
-                if topo == 'ladder':
-                    draw_ladder_panel(ax, inter, seg, volts, src, drn, label)
-                else:
-                    draw_chain_panel(ax, inter, seg, volts, src, drn, label)
-            plt.tight_layout()
-            plt.show()
-            plt.close('all')
-
-
-        # Set legacy variables for downstream viz cells
-        g = globals()
-        g[f"res_base_{tid.lower()}"] = r['baseline']['result']
-        g[f"res_loop_{tid.lower()}"] = r['looped']['result']
-        g[f"res_clean_{tid.lower()}"] = r['cleaned']['result']
-        g[f"seg_loop_{tid.lower()}"] = r['looped']['seg']
-        g[f"seg_clean_{tid.lower()}"] = r['cleaned']['seg']
-        g[f"graph_loop_{tid.lower()}"] = r['looped']['graph']
-        g[f"graph_clean_{tid.lower()}"] = r['cleaned']['graph']
-
-        # Special handling for T5 (2 loops), T6 (2 nodes), T7 (3 loops)
-        # to maintain legacy variable names
-        if tid == 'T5':
-            g['res_2loop_t5'] = r['looped']['result']
-            g['seg_2loop_t5'] = r['looped']['seg']
-        elif tid == 'T6':
-            g['res_2node_t6'] = r['looped']['result']
-            g['seg_2node_t6'] = r['looped']['seg']
-        elif tid == 'T7':
-            g['res_3loop_t7'] = r['looped']['result']
-            g['seg_3loop_t7'] = r['looped']['seg']
-
-    return results
-
-import matplotlib.pyplot as plt
-import os
-
-def save_voltage_profile_plot(exp_dir, intersections, seg_base, seg_loop, seg_clean,
-                               res_base, res_loop, res_clean,
-                               src_node, drn_node, topology='chain', title='', show=True):
-    """
-    Generate a 3-panel voltage profile figure and save it in the experiment folder.
-
-    Parameters
-    ----------
-    exp_dir : str — experiment directory path
-    intersections, seg_*, res_* : test data for all three states
-    src_node, drn_node : int — source/drain node indices
-    topology : 'chain' or 'ladder' — selects drawing function
-    title : str — optional figure title
-    """
-    from network_visualization import draw_chain_panel, draw_ladder_panel
-
-    fig, axes = plt.subplots(1, 3, figsize=(14, 4))
-    cases = [
-        (seg_base,  res_base['voltages'],  'Baseline'),
-        (seg_loop,  res_loop['voltages'],  'With loops'),
-        (seg_clean, res_clean['voltages'], 'After removal'),
-    ]
-    for ax, (seg, volts, label) in zip(axes, cases):
-        if topology == 'ladder':
-            draw_ladder_panel(ax, intersections, seg, volts, src_node, drn_node, label)
-        else:
-            draw_chain_panel(ax, intersections, seg, volts, src_node, drn_node, label)
-
-    if title:
-        fig.suptitle(title, fontsize=11, y=1.02)
-    plt.tight_layout()
-    path = None
-    if exp_dir:
-        path = os.path.join(exp_dir, 'voltage_profiles.png')
-        plt.savefig(path, dpi=150, bbox_inches='tight')
-    plt.close('all')
-    if path: print(f'    plot -> {path}')

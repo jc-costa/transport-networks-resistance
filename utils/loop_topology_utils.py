@@ -399,8 +399,6 @@ def save_node_loop_experiment(
     counts *node-loop nodes* rather than wire self-loops, and reports both
     counts in the summary.
     """
-    from self_loop_utils import check_percolation
-
     n_loops = sum(1 for n1, n2 in seg_with_loops.values() if n1 == n2)
     R_base = res_baseline["impedance"]
     R_loop = res_with_loops["impedance"]

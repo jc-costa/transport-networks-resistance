@@ -23,6 +23,21 @@ def stable_seed(*parts, modulus=100000):
     This hashes the string form of `parts` through hashlib (stable across
     interpreters/processes/PYTHONHASHSEED settings) instead of relying on
     Python's built-in hash() for anything but pure numeric tuples.
+
+    Parameters
+    ----------
+    *parts : object
+        Values identifying one sweep point, joined as ``str(p)`` with "_".
+        Floats should be rounded by the caller (e.g. ``round(a, 3)``), since
+        ``str(0.30000000000000004)`` and ``str(0.3)`` give different seeds.
+    modulus : int, optional
+        Upper bound (exclusive) of the returned seed.
+
+    Returns
+    -------
+    int
+        SHA-256 of the joined string, reduced modulo `modulus`; a valid
+        argument to ``np.random.seed``.
     """
     key = "_".join(str(p) for p in parts)
     digest = hashlib.sha256(key.encode()).hexdigest()
@@ -30,9 +45,33 @@ def stable_seed(*parts, modulus=100000):
 
 
 def run_impedance(intersections, graph, segment_to_nodes, k=1.0, label=""):
-    """
-    Convenience wrapper: create ImpedanceCalculator, run, and print summary.
-    Returns the full result dict from ImpedanceCalculator.calculate().
+    """Solve a network with uniform edge resistance and print a short report.
+
+    Parameters
+    ----------
+    intersections : sequence of coordinate sequences, shape (n, d)
+        Node positions; source and drain are the nodes of minimum and
+        maximum x, as chosen by ``ImpedanceCalculator``.
+    graph : list of list of int
+        Incident edge IDs per node.
+    segment_to_nodes : dict of int to (int, int)
+        Edge IDs mapped to endpoint pairs. Self-loops are allowed.
+    k : float, optional
+        Resistance of every edge, in ohms.
+    label : str, optional
+        Tag printed above the report.
+
+    Returns
+    -------
+    dict
+        The result of ``ImpedanceCalculator.calculate(k=k)``.
+
+    Notes
+    -----
+    The report recomputes the reduced matrix with
+    ``laplacian_utils.compute_reduced_matrix`` to print its condition number,
+    and flags it singular above 1e10, the threshold at which
+    ``ImpedanceCalculator`` falls back to least squares.
     """
     from impedance_calculator import ImpedanceCalculator
     from laplacian_utils import compute_reduced_matrix
@@ -66,19 +105,55 @@ def run_impedance(intersections, graph, segment_to_nodes, k=1.0, label=""):
 
 def run_full_pipeline(points_1, points_2, angles, N, a,
                       title="Network", k=1000, verbose=True, save=False):
+    """Run the 2D two-terminal pipeline on one stick configuration.
+
+    Steps: exact stick intersections, source (x < 0.1) and drain (x > 0.9)
+    nodes, ``find_path`` from every source node, consecutive edges along the
+    percolating paths, dead-end pruning, a source-to-drain connectivity check,
+    the connected source-drain component, local renumbering, the boundary
+    merge, and a uniform-resistance solve.
+
+    Parameters
+    ----------
+    points_1, points_2 : list of (float, float)
+        Stick endpoints in the unit square.
+    angles : list of float
+        Stick orientations in radians, aligned with the endpoints.
+    N : int
+        Density parameter of the draw. Under the ``clip`` boundary rule the
+        number of sticks can differ from N; loops use ``len(points_1)``.
+    a : float
+        Stick length, also used by ``identify_intersections``.
+    title : str, optional
+        Label for printed output.
+    k : float, optional
+        Uniform resistance per edge, in ohms.
+    verbose : bool, optional
+        Print progress. Some early-exit messages print regardless.
+    save : bool, optional
+        Unused; kept for call-site compatibility.
+
+    Returns
+    -------
+    results : dict
+        Always holds ``has_percolation`` and the intersection data. When the
+        pruned network still connects source and drain, it also holds the
+        ``pre_merge_*`` network (renumbered, before the boundary merge), the
+        ``merged_*`` network with ``edge_conductance`` multipliers, and
+        ``impedance`` with the full ``calc_result``.
+
+    Notes
+    -----
+    The merged terminals sit at the mean position of their face nodes. For
+    the distance-dependent model use ``distance_dependent_impedance``, which
+    measures edge lengths on the pre-merge geometry.
     """
-    Run the complete pipeline on a given network.
-    Returns a dict with all intermediate results for inspection.
-    """
-    from point_generator import calculate_angles
     from intersection_utils import identify_intersections
     from path_analysis import find_path, build_connected_path, rebuild_local_graph
     from pruning import prune_dead_end_nodes, build_pruned_structures
     from path_analysis import verify_pruned_percolation
     from edge_discovery import discover_consecutive_edges, check_dead_ends
-    from impedance_calculator import (
-        ImpedanceCalculator, merge_boundary_nodes, build_incidence_matrix, build_laplacian
-    )
+    from impedance_calculator import ImpedanceCalculator, merge_boundary_nodes
 
     # N is the density parameter of the draw (stick centres per unit area);
     # the number of sticks actually present may differ from it under the
@@ -486,13 +561,37 @@ def run_full_pipeline_circular_terminals(points_1, points_2, angles, N, a,
 
 def generate_percolating_network(N, a, k_uniform=1000.0, max_attempts=200, seed=None,
                                  boundary="clip"):
-    """
-    Draw random stick networks (N sticks, aspect ratio a) via run_full_pipeline
-    until one percolates, or give up after max_attempts.
+    """Draw random 2D stick networks until one percolates.
 
-    Returns (results, attempts) where results is the run_full_pipeline dict for
-    the percolating network (or None if none percolated within max_attempts),
-    and attempts is how many draws it took.
+    Parameters
+    ----------
+    N : int
+        Stick density (see ``point_generator.generate_points``).
+    a : float
+        Stick length.
+    k_uniform : float, optional
+        Uniform edge resistance for the solve inside ``run_full_pipeline``.
+    max_attempts : int, optional
+        Number of draws before giving up.
+    seed : int, optional
+        If given, ``np.random.seed(seed)`` is called once before the first
+        draw; otherwise the global NumPy generator continues from its state.
+    boundary : {"clip", "reject"}, optional
+        Boundary rule passed to ``generate_points``.
+
+    Returns
+    -------
+    results : dict or None
+        The ``run_full_pipeline`` result of the first percolating draw, with
+        ``points_1``, ``points_2``, ``angles`` and ``boundary`` added, or
+        None if no draw percolated.
+    attempts : int
+        Draws used, counting the successful one; ``max_attempts`` on failure.
+
+    Notes
+    -----
+    All randomness comes from the global ``np.random`` state, so the result
+    depends on every earlier draw made with it in the same process.
     """
     import io
     import contextlib

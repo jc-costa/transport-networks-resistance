@@ -19,8 +19,6 @@ import traceback
 from contextlib import redirect_stdout
 
 from impedance_calculator import ImpedanceCalculator
-from laplacian_utils import compute_reduced_matrix
-from self_loop_utils import count_self_loops, check_percolation
 from loop_topology_utils import (
     add_node_loop, remove_node_loops, check_percolation_loops,
     save_node_loop_experiment,

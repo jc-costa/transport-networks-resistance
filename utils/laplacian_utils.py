@@ -12,12 +12,31 @@ def compute_reduced_matrix(intersections, segment_to_nodes, source_node, drain_n
     Build the weighted Laplacian L = A^T G A and extract the reduced matrix M
     for the internal nodes (all nodes except source and drain).
 
+    Parameters
+    ----------
+    intersections : sequence, length n_nodes
+        Node coordinates; only their number is used.
+    segment_to_nodes : dict of int to (int, int)
+        Edge IDs mapped to endpoint pairs; IDs must be 0..n_edges-1.
+    source_node, drain_node : int
+        Boundary nodes removed from M.
+    k : float, optional
+        Uniform edge resistance; every conductance is 1/k.
+
     Returns
     -------
     L         : full (n_nodes × n_nodes) Laplacian
     M         : reduced (n_internal × n_internal) matrix
     cond_M    : condition number of M (inf if empty)
     is_singular: True if cond_M > 1e10
+
+    Notes
+    -----
+    M is symmetric positive semi-definite, and positive definite when every
+    internal node is connected to source or drain. An internal node cut off
+    from both (an isolated piece) makes M singular, which the 2-norm
+    condition number reports as huge or infinite. The 1e10 threshold matches
+    the least-squares fallback in ``ImpedanceCalculator.calculate``.
     """
     n_nodes = len(intersections)
     n_edges = len(segment_to_nodes)
@@ -54,6 +73,10 @@ def _weighted_laplacian_distance_dependent(intersections, segment_to_nodes,
     since it only ever takes the norm of a coordinate difference. Shared by
     effective_resistance_pinv (single pair) and
     effective_resistance_from_reference (one reference to every other node).
+
+    Self-loops are skipped. A zero-length edge (two nodes at the same
+    position) gives an infinite conductance and an unusable L; callers are
+    expected not to produce one.
     """
     inter = np.asarray(intersections, dtype=float)
     edge_conductance = edge_conductance or {}

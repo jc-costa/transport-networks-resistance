@@ -1,5 +1,10 @@
+"""Random stick generation in the unit square (2D pipeline).
+
+``generate_points`` draws the sticks of one network with the global NumPy
+generator, so a seed set with ``np.random.seed`` before the call fixes the
+network. ``clip_segment_to_box`` is shared with the 3D generator.
+"""
 import numpy as np
-import random 
 import math
 
 
@@ -55,9 +60,22 @@ def calculate_angles(points_1, points_2):
     return angles
 
 def clip_segment_to_box(p1, p2, lower, upper):
-    """Liang-Barsky clipping of the segment p1-p2 to the axis-aligned box
-    [lower_k, upper_k] in every coordinate k. Returns (q1, q2) or None when
-    the segment misses the box. Works in any dimension."""
+    """Clip a segment to an axis-aligned box (Liang-Barsky).
+
+    Parameters
+    ----------
+    p1, p2 : array_like, shape (d,)
+        Segment endpoints, in any dimension d.
+    lower, upper : sequence of float, length d
+        Box bounds per coordinate.
+
+    Returns
+    -------
+    (q1, q2) : tuple of tuple of float, or None
+        Endpoints of the part inside the box, ordered from p1 towards p2, or
+        None when the segment misses the box or the inside part is shorter
+        than 1e-12 in the segment parameter (touching a face or an edge).
+    """
     p1 = np.asarray(p1, dtype=float); p2 = np.asarray(p2, dtype=float)
     d = p2 - p1
     t0, t1 = 0.0, 1.0
@@ -107,6 +125,31 @@ def generate_points(N, points_1, points_2, angles, a,
 
     The lists points_1, points_2, angles are extended in place. angles[i] is
     the direction from points_1[i] to points_2[i].
+
+    Parameters
+    ----------
+    N : int
+        Number of sticks ("reject") or expected number of stick centres per
+        unit area ("clip").
+    points_1, points_2 : list
+        Receive the stick endpoints as (x, y) tuples.
+    angles : list
+        Receives the stick orientations, in radians in [0, 2 pi).
+    a : float
+        Stick length, non-negative.
+    enforce_bounds : bool, optional
+        "reject" only: redraw sticks with an endpoint outside the square.
+        Raises ValueError if a > sqrt(2), when no stick can fit.
+    max_attempts_per_segment : int, optional
+        "reject" only: redraws allowed per stick before RuntimeError.
+    boundary : {"clip", "reject"}, optional
+        Boundary rule, as described above.
+
+    Notes
+    -----
+    Each candidate stick consumes three uniform draws from ``np.random`` (two
+    coordinates, one angle). Under "reject" the number of draws per network
+    is random, so changing `a` changes every later draw in the process.
     """
     if a < 0:
         raise ValueError("a must be non-negative")

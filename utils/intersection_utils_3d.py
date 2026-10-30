@@ -32,6 +32,17 @@ def closest_points_between_segments(a0, a1, b0, b1, epsilon=1e-12):
     Lumelsky 1985). `s`/`t` in [0, 1] parameterize position along each
     segment (0 = first endpoint, 1 = second endpoint).
 
+    Parameters
+    ----------
+    a0, a1 : array_like, shape (3,)
+        Endpoints of segment A.
+    b0, b1 : array_like, shape (3,)
+        Endpoints of segment B.
+    epsilon : float, optional
+        Absolute threshold on squared lengths and on the parallelism term
+        a*e - b^2. A segment with squared length <= epsilon is treated as a
+        point, so the threshold depends on the length units.
+
     Returns
     -------
     point_on_a, point_on_b : np.ndarray, shape (3,)

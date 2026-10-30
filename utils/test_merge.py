@@ -2,7 +2,6 @@
 """Test the merge_boundary_nodes function."""
 
 from impedance_calculator import ImpedanceCalculator, merge_boundary_nodes
-import numpy as np
 
 # Test: 2x2 grid network
 #   0 -┬- 2

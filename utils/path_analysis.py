@@ -281,3 +281,32 @@ def rebuild_local_graph(filtered_nodes, intersections_points, segment_to_nodes):
 
     return node_mapping, path_intersections, new_segment_to_nodes, path_graph
 
+
+def build_graph_from_segments(n_nodes, segment_to_nodes):
+    """Build per-node incident-edge lists from an edge-to-endpoints mapping.
+
+    Parameters
+    ----------
+    n_nodes : int
+        Number of nodes; every endpoint must lie in ``range(n_nodes)``.
+    segment_to_nodes : dict of int to (int, int)
+        Edge IDs mapped to their two endpoint node indices.
+
+    Returns
+    -------
+    graph : list of list of int
+        ``graph[i]`` lists the IDs of the edges incident to node i, in the
+        iteration order of ``segment_to_nodes``. A self-loop is listed twice
+        at its node, as in :func:`rebuild_local_graph`.
+
+    Notes
+    -----
+    ``ImpedanceCalculator`` takes this list as its ``graph`` argument; the
+    two-point solve in ``multimeter.measure_r_eff`` does not read it.
+    """
+    g = [[] for _ in range(n_nodes)]
+    for e, (n1, n2) in segment_to_nodes.items():
+        g[n1].append(e)
+        g[n2].append(e)
+    return g
+

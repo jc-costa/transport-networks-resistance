@@ -65,7 +65,7 @@ def build_junction_network(res):
     Returns a dict:
       n_cross           crossings kept (original indices in `crossings`)
       node_of[(n, s)]   index of the copy of crossing n on stick s
-      seg_u, seg_v      segment edges between copies, seg_R their R0-free length
+      seg_u, seg_v      segment edges between copies, seg_L their length
       jun_u, jun_v      junction edges (one per crossing), jun_cross the crossing
       source_nodes, drain_nodes   copies tied to each terminal
       coords            (x, y) of every node (copies share the crossing's point)
@@ -123,11 +123,33 @@ def solve_two_terminal(net, R0, R_j, contract_junctions=False):
     Effective resistance between the two terminals, and the current in every
     edge, with unit potential across the terminals.
 
-    R_j: scalar / array / callable, see junction_resistances(). With
-    contract_junctions=True the two copies of each crossing are identified
-    (an ideal contact, R_j = 0 exactly), which is the wire-limited model.
+    Parameters
+    ----------
+    net : dict
+        Junction graph from ``build_junction_network``.
+    R0 : float
+        Stick resistance per unit length; segment e has R0 * seg_L[e].
+    R_j : float, array_like or callable
+        Junction resistances, see ``junction_resistances``. They must all be
+        positive, or all exactly zero (treated as contract_junctions=True).
+    contract_junctions : bool, optional
+        Identify the two copies of each crossing (an ideal contact), which
+        is the wire-limited model.
 
-    Returns dict(R_eff, I_total, V (per node), I_seg, I_jun, seg_R, jun_R).
+    Returns
+    -------
+    dict
+        R_eff, I_total (current for unit voltage), V (per node of `net`),
+        I_seg and I_jun (edge currents; I_jun is None when contracted),
+        seg_R, jun_R, and the internal indices merged, s, d.
+
+    Notes
+    -----
+    Source copies are held at V = 1 and drain copies at V = 0; the interior
+    is solved with a sparse LU factorization (``scipy.sparse.linalg.splu``).
+    Every node of `net` is connected to the source by construction
+    (``_sd_component``), so the interior system is non-singular. A segment of
+    zero length would give an infinite conductance.
     """
     n_nodes = len(net["coords"])
     seg_R = R0 * net["seg_L"]
