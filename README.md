@@ -1,4 +1,4 @@
-# Effective Resistance as an Inverse Descriptor of Random Geometric Networks
+# Effective Resistance as an Inverse Descriptor of Random Stick Networks
 
 Simulation and analysis code for an MSc dissertation on charge transport in random
 conductive-stick networks, the idealized model behind materials such as nanowire and
