@@ -3,7 +3,7 @@
 Code, pre-registrations, summaries and manifest for the paper *Estimating Junction
 Resistance Ratios in Two-Dimensional Random Stick Films Using Simulated Probe
 Measurements*. The paper builds on the dissertation pipeline in this repository (`utils/`,
-`cluster/`) and adds the runs listed below, which are not in the dissertation.
+`cluster/`) and adds the runs listed below, which an appendix of the dissertation summarizes.
 
 ## Where things are
 
