@@ -8,8 +8,8 @@ EXPLORATORY (post hoc, revision plan item 3.2), on the pre-registered follow-up 
     networks inside fixed geometries.
  2. A contact that is not what the estimator assumes. The regression is fitted on films whose tip contact is
     kappa_train times their terminal resistance and applied to films whose contact is kappa_test (calibration error),
-    and a case where the contact varies from film to film (log-uniform over a factor 10, 0.05 to 0.5) in training and
-    in test, unknown to the estimator.
+    and two cases where the contact varies from film to film (log-uniform over a factor 10, 0.05 to 0.5), unknown
+    to the estimator: fitted and tested on such films, and fitted at 0.1 and tested on such films.
 
 Everything else as in junction_strategies_analysis.py (margin 10 %, base landing, 5 % noise, whole geometries held out,
 the same folds). Usage: python junction_strategies_contact_robust.py <E2 partial.jsonl> <E2b partial.jsonl> [--out summary.json]
@@ -80,13 +80,17 @@ out["mismatch"] = {}
 for design, att in (("9x243", 2187), ("9x27", 243)):
     for kt in (0.05, 0.1, 0.2, 0.5, 1.0):
         e = cv_mismatch("two", design, 0.1, kt) - y
-        out["mismatch"][f"{att}|train0.1|test{kt}"] = dict(rmse=rm(e), median_factor=fac(e))
+        out["mismatch"][f"{att}|train0.1|test{kt}"] = dict(rmse=rm(e), median_factor=fac(e), p90_factor=p90(e))
         print(f"  {att:5d} attempts, test contact {kt:4.2f}: {rm(e):.3f} ({fac(e):.2f})")
 rngk = np.random.default_rng(2)
 kvar = 10 ** rngk.uniform(np.log10(0.05), np.log10(0.5), D.n)
 for design, att in (("9x243", 2187), ("9x27", 243)):
-    e = cv_mismatch("two", design, kvar, kvar) - y
-    out["mismatch"][f"{att}|varying"] = dict(rmse=rm(e), median_factor=fac(e))
-    print(f"  {att:5d} attempts, contact varying 0.05 to 0.5 between films (unknown): {rm(e):.3f} ({fac(e):.2f})")
+    # the contact varies between films, 0.05 to 0.5 (log-uniform), and the estimator does not know it;
+    # "varying": fitted AND tested on such films; "train0.1|testvarying": fitted at 0.1, tested on such films
+    for key, ktr, lab in ((f"{att}|varying", kvar, "fitted and tested with a varying contact"),
+                          (f"{att}|train0.1|testvarying", 0.1, "fitted at 0.1, tested with a varying contact")):
+        e = cv_mismatch("two", design, ktr, kvar) - y
+        out["mismatch"][key] = dict(rmse=rm(e), median_factor=fac(e), p90_factor=p90(e))
+        print(f"  {att:5d} attempts, {lab}: {rm(e):.3f} ({fac(e):.2f}), P90 {p90(e):.2f}")
 if "--out" in sys.argv:
     json.dump(out, open(sys.argv[sys.argv.index("--out") + 1], "w"), indent=1)

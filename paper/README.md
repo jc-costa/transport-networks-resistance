@@ -12,7 +12,7 @@ Measurements*. The paper builds on the dissertation pipeline in this repository 
 | Run scripts and SLURM files of the new runs | `cluster/run_junction_pairwise_*`, `cluster/run_junction_strategies_*` |
 | Pre-registrations | `cluster/PREREGISTRATION*.md` |
 | Registered analyses | `cluster/junction_pairwise_*_analysis.py`, `cluster/junction_strategies_analysis.py`, `cluster/junction_strategies_more_analysis.py` |
-| Post hoc analyses (labeled as such in the paper) | `cluster/junction_pairwise_review_checks.py`, `junction_pairwise_prior_scenario.py`, `junction_pairwise_transfer_estimands.py`, `junction_strategies_decomposition.py`, `junction_strategies_narrowing.py`, `junction_strategies_contact.py`, `junction_strategies_contact_robust.py`, `junction_strategies_signal.py`, `junction_strategies_more_medians.py` |
+| Post hoc analyses (labeled as such in the paper) | `cluster/junction_pairwise_review_checks.py`, `junction_pairwise_prior_scenario.py`, `junction_pairwise_transfer_estimands.py`, `junction_strategies_decomposition.py`, `junction_strategies_narrowing.py`, `junction_strategies_contact.py`, `junction_strategies_contact_robust.py`, `junction_strategies_contact_scale.py`, `junction_strategies_signal.py`, `junction_strategies_more_medians.py` |
 | Frozen estimator of the transfer run | `cluster/freeze_junction_estimator.py`, `paper/figures/data/junction_estimator_frozen.json` |
 | Summaries behind every figure and table | `paper/figures/data/` |
 | Figure scripts (Figs. 1 to 4, supplementary figures, TOC graphic) | `paper/figures/scripts/` |

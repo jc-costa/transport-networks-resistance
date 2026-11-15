@@ -10,7 +10,9 @@ folds, margin, contact and noise as the registered analysis:
   * the fraction of sessions with no reading at all, and the fraction of position classes that stayed empty,
   * RMSE, median and 90th-percentile factor error over all films, over films with signal and over films without,
     each against the terminal-only predictor on the same films,
-  * the same with missing-data indicators added to the features (the number of positions with a reading).
+  * the same with missing-data indicators added to the features (the number of positions with a reading),
+  * the RMSE if the sessions without signal returned the terminal-only prediction instead (the registered analysis
+    fills the empty entries with the terminal resistance and applies the regression of the protocol).
 
 Nothing here is pre-registered. The registered results are the reference and are not changed.
 
@@ -60,12 +62,17 @@ def main():
                    "with_indicators": factor_stats(ei)}
             if none.any():
                 row["without_signal"] = {**factor_stats(e[none]), "terminal": factor_stats(e_term[none]), "n": int(none.sum())}
+            # an explicit return to the terminal-only predictor in the sessions without signal
+            ef = np.where(none, e_term, e)
+            row["explicit_fallback"] = factor_stats(ef)
             row["with_signal"] = {**factor_stats(e[~none]), "terminal": factor_stats(e_term[~none]), "n": int((~none).sum())}
             out[f"{kind}|{design}"] = row
             print(f"{kind:4s} {att:4d}: accepted {row['accepted_share']:.3f}, sessions without reading {row['sessions_without_reading']:.4f}, "
                   f"empty classes {empty:.3f}; RMSE all {row['all']['rmse']:.3f} (terminal {row['terminal_same_films']['rmse']:.3f}), "
                   f"with signal {row['with_signal']['rmse']:.3f} (terminal {row['with_signal']['terminal']['rmse']:.3f}), "
-                  f"with indicators {row['with_indicators']['rmse']:.3f}, P90 {row['all']['p90_factor']:.2f}")
+                  f"with indicators {row['with_indicators']['rmse']:.3f}, P90 {row['all']['p90_factor']:.2f}; "
+                  + (f"without signal {row['without_signal']['rmse']:.3f} (terminal {row['without_signal']['terminal']['rmse']:.3f}); " if none.any() else "")
+                  + f"explicit fallback {row['explicit_fallback']['rmse']:.3f}")
     if "--out" in sys.argv:
         json.dump(out, open(sys.argv[sys.argv.index("--out") + 1], "w"), indent=1)
 

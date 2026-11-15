@@ -3,7 +3,7 @@
     continuous junction ratios, equal junctions, by the estimator frozen from the dense grid (the terminal
     resistance with the all-pairs profile). Dashed: unity; band: the 90 % interval of the estimator.
 (b) Scenario of the advisor (R0, a and N known within 10 %, junction unknown), strategy run `strategies`:
-    RMSE of log10 rho by regime of the true rho, for the terminal resistance alone and for the all-pairs profile.
+    RMSE of log10 rho by regime of the true rho, for the terminal resistance with the nominal a and N and for the all-pairs profile.
 Inputs: COLAB/cluster/junction_pairwise_transfer_results/partial.jsonl, data/junction_estimator_frozen.json,
         data/junction_strategies_summary.json.
 """
@@ -33,9 +33,9 @@ axa.plot([lo, hi], [lo, hi], color=INK2, ls="--", lw=0.8, zorder=5)
 for sgn in (-1, 1):
     axa.plot([lo, hi], [lo + sgn * q90, hi + sgn * q90], color=CAT[1], ls=":", lw=0.9, zorder=5)
 axa.axvline(-1.0, color=GRAY, lw=0.6, ls=":"); axa.axvline(1.0, color=GRAY, lw=0.6, ls=":")
-axa.text(-1.25, 2.55, "wire-limited", fontsize=6.3, color=INK2, ha="center"); axa.text(0.0, 2.55, "intermediate", fontsize=6.3, color=INK2, ha="center")
-axa.text(1.5, 2.55, "junction-\nlimited", fontsize=6.3, color=INK2, ha="center", va="center")
-axa.text(0.03, 0.04, f"RMSE {rmse:.2f}; 90 % band covers {100 * cover:.0f} %", transform=axa.transAxes, fontsize=6.5, color=INK2, va="bottom")
+axa.text(-1.28, 2.55, "wire-\nlimited", fontsize=8.4, color=INK2, ha="center", va="center"); axa.text(0.0, 2.55, "intermediate", fontsize=8.4, color=INK2, ha="center")
+axa.text(1.5, 2.55, "junction-\nlimited", fontsize=8.4, color=INK2, ha="center", va="center")
+axa.text(0.03, 0.04, f"RMSE {rmse:.2f}; 90 % band covers {100 * cover:.0f} %", transform=axa.transAxes, fontsize=8.4, color=INK2, va="bottom")
 axa.set_xlim(lo - 0.05, hi + 0.05); axa.set_ylim(lo - 0.9, 2.9)
 axa.set_xlabel(r"true $\log_{10}\rho$"); axa.set_ylabel(r"estimated $\log_{10}\rho$")
 grid(axa); panel(axa, "a", x=-0.19)
@@ -45,13 +45,13 @@ labs = ["wire-limited\n" + r"$\rho<0.1$", "intermediate\n" + r"$0.1$–$10$", "j
 keys = ["wire-limited (rho < 0.1)", "intermediate (0.1 to 10)", "junction-limited (rho > 10)"]
 x = np.arange(3); w = 0.36
 t = [sm["terminal"]["by_regime"][k] for k in keys]; a_ = [sm["allpairs"]["by_regime"][k] for k in keys]
-axb.bar(x - w / 2, t, w, color=GRAY, label="terminal resistance")
-axb.bar(x + w / 2, a_, w, color=CAT[0], label="all pairs")
+axb.bar(x - w / 2, t, w, color=GRAY, label="terminal + nominal")
+axb.bar(x + w / 2, a_, w, color=CAT[0], label="all pairs (ideal)")
 for xi, v in zip(x - w / 2, t):
-    axb.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=6.3)
+    axb.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=8.4)
 for xi, v in zip(x + w / 2, a_):
-    axb.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=6.3)
-axb.set_xticks(x); axb.set_xticklabels(labs, fontsize=6.6); axb.set_ylim(0, 0.8)
-axb.set_ylabel(r"RMSE of $\log_{10}\rho$"); axb.legend(loc="upper right", fontsize=6.5, handlelength=1.0)
+    axb.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=8.4)
+axb.set_xticks(x); axb.set_xticklabels(labs, fontsize=8.4); axb.set_ylim(0, 0.8)
+axb.set_ylabel(r"RMSE of $\log_{10}\rho$"); axb.legend(loc="upper right", fontsize=8.4, handlelength=1.0)
 grid(axb, "y"); panel(axb, "b", x=-0.2)
 save(fig, "fig3_transfer.pdf")
