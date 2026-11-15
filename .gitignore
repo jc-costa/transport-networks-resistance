@@ -25,3 +25,12 @@ cluster/logs/
 
 # Local checkpoint files written mid-sweep by interrupted runs
 **/*_CHECKPOINT.json
+
+# Outputs of the paper's figure scripts and the stored records of its runs (in the data deposit)
+paper/figures/*.pdf
+paper/figures/*.png
+paper/figures/*.tif
+paper/figures/supp/
+cluster/junction_pairwise_*_results*/
+cluster/junction_strategies_results/
+cluster/junction_strategies_more_results/

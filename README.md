@@ -179,6 +179,7 @@ resistance-versus-distance law of an infinite homogeneous film.
 ├── experiments/    Every run ever produced, auto-numbered exp_N/ with data and figures.
 ├── figures/        Standalone illustrative figures.
 ├── docs/           Results write-up and methodology notes.
+├── paper/          Figure scripts, summaries and data manifest of the junction-resistance paper.
 └── Paths.jpg/.pdf  Reference diagram of the path data structures.
 ```
 
@@ -187,6 +188,18 @@ Each directory has its own README with a full index:
 [utils](utils/README.md) ·
 [cluster](cluster/README.md) ·
 [experiments](experiments/README.md)
+
+---
+
+## The junction-resistance paper
+
+The paper *Estimating Junction Resistance Ratios in Two-Dimensional Random Stick Films
+Using Simulated Probe Measurements* builds on this pipeline. Its run scripts, analyses and
+pre-registrations are in `cluster/` (files named `junction_pairwise_*`,
+`junction_strategies_*` and `PREREGISTRATION*.md`), and its figure scripts, the summaries
+behind every figure and table, and the manifest of the stored records are in `paper/`.
+`paper/README.md` maps each run to its script, its pre-registration and its analysis. The
+stored records of those runs are in the data deposit named in the paper, not here.
 
 ---
 

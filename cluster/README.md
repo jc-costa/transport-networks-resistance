@@ -138,6 +138,24 @@ the geometry stream. `notebooks/junction_resistance.ipynb` has the hand-solved c
 validation and a laptop-scale preview. Results (2026-09-18, Apuana): both sweeps complete,
 990 networks each.
 
+## Junction resistance and the pairwise resistances (2026-11, the paper)
+
+Runs made for the junction-resistance paper, each pre-registered in a
+`PREREGISTRATION*.md` file of this directory before it was run. Each run is one job that
+writes `<name>_results/partial.jsonl`, one row per geometry, resumable.
+
+| Job | Task script | Output | Analysis |
+|---|---|---|---|
+| `run_junction_pairwise_parallel.sbatch` with `GRID=confirm`, `dense` or `transfer` | `run_junction_pairwise_task.py` | `junction_pairwise_confirm_results/`, `junction_pairwise_dense_results/`, `junction_pairwise_transfer_results/` | `junction_pairwise_confirm_analysis.py`, `junction_pairwise_dense_analysis.py`, `junction_pairwise_transfer_analysis.py` |
+| `run_junction_strategies_parallel.sbatch` | `run_junction_strategies_task.py` | `junction_strategies_results/` | `junction_strategies_analysis.py` |
+| `run_junction_strategies_more_parallel.sbatch` | `run_junction_strategies_more_task.py` | `junction_strategies_more_results/` | `junction_strategies_more_analysis.py` |
+
+Unlike the earlier sweeps, the output of these runs is **not** committed (about 343 MB):
+it is in the data deposit named in the paper, with checksums in
+`paper/DATA-MANIFEST.md`. See `paper/README.md`.
+
+---
+
 ## Paired grids
 
 `run_onion_grid_task.py` reproduces the grid definition, the seed formula, and the
