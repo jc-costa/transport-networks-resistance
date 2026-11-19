@@ -83,7 +83,7 @@ and back specific thesis sections.
 | `thesis_figures_2d.py` | `experiments/exp_871/effective_resistance_sweep_summary_ext.json` | the extended-sweep box plot (`--out`), without re-running the sweep | thesis Fig. "extended-boxplots" |
 | `probe_figures.py` | nothing (draws the reference network `N = 40, a = 0.6`, seed 11) | `probe_sourcedrain.png`, `probe_farpair.png`, `probe_mid.png`, `probe_near.png` in the thesis; prints the probe numbers, self-checks and the all-pairs range | thesis Sec. "Single-pair probing", Fig. "probe" |
 | `onion_tolerance_sweep.py` | `onion_grid_results/`, `effective_resistance_d_results/` | `onion_grid_results/tolerance_sweep_summary.json` (with `--json`); prints the CV table and the grouping+ANOVA at nine tolerances | thesis Tables "onion-cv", "onion-tolerance-sweep" |
-| `curve_inversion.py` | `onion_grid_results/` | `curve_inversion_summary.json`, `curve_inversion_k.png` (with `--json`, `--figure`) | thesis Sec. "Inverting (N, a, d) from the onion curve" |
+| `curve_inversion.py` | `onion_grid_results/` | `curve_inversion_summary.json`, `curve_inversion_k.png` (with `--json`, `--figure`) | thesis Sec. "Inverting (N, a, d) from the radial profile" |
 | `density_control.py` | nothing (draws `N/d = 1500` at `a = 0.2`, 250 realizations each, process pool) | `figures/partA_constant_density_control.json` | thesis Table "density-control" |
 | `critical_sweep_fit.py` | `critical_sweep_results/` | fits and `critical_sweep.png` (with `--figure`) | thesis Sec. "The near-threshold sweep" |
 | `junction_analysis.py`, `junction_variants_analysis.py` | `junction_results/`, `junction_variants_results/` | `junction_summary.json`, `junction_variants_summary.json` (with `--json`), the six `junction_*.png` figures (with `--figures DIR`); print every number of the junction section | thesis Table "junction", Figs. "junction-crossover", "junction-red-share", "junction-dispersion", "junction-bimodal" |
@@ -161,7 +161,7 @@ it is in the data deposit named in the paper, with checksums in
 `run_onion_grid_task.py` reproduces the grid definition, the seed formula, and the
 network-draw order of `run_effective_resistance_d_task.py` exactly. The consequence is
 that a given `(N, a, d)` combination yields the *same network* in both datasets, so the
-onion curves and the scalar resistances are paired one to one by construction rather than
+radial profiles and the scalar resistances are paired one to one by construction rather than
 matched after the fact. The whole matched-group analysis in
 [`../docs/RESULTS.md`](../docs/RESULTS.md) depends on this.
 
@@ -207,7 +207,7 @@ python verify_rerun_vs_backup.py backups/<timestamp>
 ```
 
 `verify_rerun_vs_backup.py` encodes what the fix must and must not do: the scalar
-`R_eff` column has to move (downward, in general), while the onion curves and the network
+`R_eff` column has to move (downward, in general), while the radial profiles and the network
 draws (`n`, `perc_rate`) have to stay bit-for-bit identical, because the seeds did not
 change and the pinv path does no merging. Curves that move mean something other than this
 fix altered the pipeline, and the rerun should not be trusted.
@@ -218,7 +218,7 @@ The corrected scalars changed the matched groups (the five strongest went from
 4, 6, 9, 11, 16 to 10, 28, 9, 7, 13), so `run_onion_grid_boost_task.py --prepare` was
 re-run and `run_onion_grid_boost_array.sbatch` re-submitted; `onion_grid_boost_results/`
 and `onion_grid_boost_plan.json` hold the post-correction boost. `experiments/exp_858/`
-is the canonical analysis run for the onion study, `exp_868/` for the scalar `(N, a, d)`
+is the canonical analysis run for the radial-profile study, `exp_868/` for the scalar `(N, a, d)`
 grid and `exp_869/` for the inverse problem.
 
 ---
@@ -278,7 +278,7 @@ toward 1 by `N a^2 ~ 20`. Numbers in `critical_sweep_results/critical_fit_summar
 ## Curve inversion and the per-realization storage fix (2026-09-15)
 
 `curve_inversion.py` regresses `(log N, log a, log d)` on the log shell means of the
-onion grid (ridge and k-NN, grouped cross-validation by combination, plus an averaging
+radial-profile grid (ridge and k-NN, grouped cross-validation by combination, plus an averaging
 analysis over k realizations); results in `onion_grid_results/curve_inversion_summary.json`
 and `docs/RESULTS.md` section 5.
 

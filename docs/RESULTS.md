@@ -221,13 +221,13 @@ falls from 27% to 1.9%, and nothing percolates past `d = 0.2`.
 551 ± 17 Ω (`225, 0.15`, rate 0.83), 293 ± 10 Ω (`300, 0.20`, rate 0.98). At fixed density
 a thicker film conducts better, by a factor of 3.1 over a doubling of `d` (the fit
 predicts `d^(-1.09)`, a factor 0.47; the measured 0.32 is steeper because the thinnest
-combination sits at the transition). The onion curves of the same combinations
+combination sits at the transition). The radial profiles of the same combinations
 separate only from `r = 0.3` outward (16 standard errors at `r = 0.9`); at `r = 0.1` and
 `0.2` the three films are within one standard error of each other.
 
 ---
 
-## 5. Onion-curve shape separates geometries the scalar cannot
+## 5. Radial-profile shape separates geometries the scalar cannot
 
 **Notebook:** [`r_eff_ij_vs_N_a_d.ipynb`](../notebooks/r_eff_ij_vs_N_a_d.ipynb)
 **Run:** `experiments/exp_877/` (grouping, shape spread, ANOVA)
@@ -257,7 +257,7 @@ for bit when redrawn, so this is sampling spread at the transition, not a code d
 
 ### The test design
 
-The onion grid mirrors the scalar grid (same 420 combinations, same seeds, same draw
+The radial-profile grid mirrors the scalar grid (same 420 combinations, same seeds, same draw
 order), so every combination yields the same networks in both; all 341 usable
 combinations carry both observables. Combinations are sorted by scalar mean `R_eff` and
 greedily grouped within a 15% relative tolerance, requiring different `(N, a)`; within a
@@ -507,10 +507,10 @@ at 2000 nodes).
 | `experiments/exp_871/` | 2D extended adaptive `(N, a)` grid, clip rule (from `cluster/experiments_clip/`) | `effective_resistance_vs_N_a.ipynb` Part B (Apuana) |
 | `experiments/exp_872/` | Fixed-`(N, a)` thickness sweep and robustness combinations | `effective_resistance_vs_d.ipynb` Parts A–B |
 | `experiments/exp_873/` | 420-combination scalar `(N, a, d)` grid analysis and three-parameter fit | `effective_resistance_vs_d.ipynb` Part C |
-| `experiments/exp_876/` | Reference network, probes, onion protocol validation, 5-seed monotonicity check | `multimeter_r_eff.ipynb` |
-| `experiments/exp_877/` | Onion grid analysis: 32 groups, shape spread, ANOVA | `r_eff_ij_vs_N_a_d.ipynb` |
+| `experiments/exp_876/` | Reference network, probes, radial-profile protocol validation, 5-seed monotonicity check | `multimeter_r_eff.ipynb` |
+| `experiments/exp_877/` | Radial-profile grid analysis: 32 groups, shape spread, ANOVA | `r_eff_ij_vs_N_a_d.ipynb` |
 | `experiments/exp_884/` | Clip-rule 2D fits (power laws, critical form with bootstrap), solution curves, the 22-candidate validation loaded from `cluster/validation_results/` (`exp_878`–`exp_884` are earlier executions of the same notebook, superseded when the figure titles were removed) | `inverse_N_a_from_R_eff.ipynb` |
-| `cluster/*_results/` | Raw cluster outputs (scalar grid, onion grid, critical sweep, preview curves, supplement networks, robustness batch, backbone, junction, junction variants) | task scripts in `cluster/README.md` |
+| `cluster/*_results/` | Raw cluster outputs (scalar grid, radial-profile grid, critical sweep, preview curves, supplement networks, robustness batch, backbone, junction, junction variants) | task scripts in `cluster/README.md` |
 | `figures/backbone/`, `figures/junction/` | Figures of sections 7 and 8, written by the analysis scripts with `--figures` | `cluster/backbone_analysis.py`, `cluster/junction_analysis.py`, `cluster/junction_variants_analysis.py` |
 | `cluster/*_results_reject/`, `experiments/exp_843`–`exp_869` | Rejection-rule runs, kept for comparison only | — |
 

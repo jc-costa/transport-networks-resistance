@@ -83,7 +83,7 @@ pseudoinverse:
 R_eff(i, j) = (e_i - e_j)ᵀ L⁺ (e_i - e_j)
 ```
 
-The pseudoinverse form matters for the onion protocol below: it costs one decomposition
+The pseudoinverse form matters for the radial-profile protocol below: it costs one decomposition
 per network instead of one dense solve per probed pair.
 
 ---
@@ -139,11 +139,11 @@ is lost; at fixed density `N/d` it falls by a factor of three over a doubling of
 the exponents predict in direction and a 250-realization control confirms.
 
 **5. Curve shape carries information the scalar collapses away.** This is the main
-contribution. Instead of a single source-to-drain number, the **onion-layer protocol**
+contribution. Instead of a single source-to-drain number, the **radial-profile protocol** (called the *onion* protocol in file and function names, for example `run_onion_grid_task.py`)
 sweeps `R_eff(reference, j)` outward through concentric distance shells, producing a
 curve rather than a scalar. Grouping `(N, a, d)` triples whose *scalar* `R_eff` matches
 within 15%, precisely the triples the scalar inversion cannot separate, a one-way ANOVA
-per group and shell asks whether their onion curves still differ.
+per group and shell asks whether their radial profiles still differ.
 
 On the full grid at 24 realizations per point, 337 of the 341 combinations form 32
 matched groups and 234 group-and-shell tests; 81 (34.6%) are significant at `p < 0.05`,
@@ -160,11 +160,11 @@ rejection-rule grid the curve appeared to recover `a` (`R² = 0.55`). That was t
 rim of the earlier generator, one stick length wide, read as a signal; it disappeared
 when the rule was corrected, and the recovery of `d` survived.
 
-**6. What an onion curve is not.** The dependence of the pairwise resistance on probe
+**6. What an radial profile is not.** The dependence of the pairwise resistance on probe
 separation is linear in the sparse 3D networks, as in a wire, and sub-linear over most
 of the box in dense 2D networks (local exponent 0.5–0.8, the parallel-path effect), with
 a mild upturn at the far edge where the nodes on clipped sticks have fewer
-continuations. An onion curve of a film a few stick lengths across is not the
+continuations. An radial profile of a film a few stick lengths across is not the
 resistance-versus-distance law of an infinite homogeneous film.
 
 ---
@@ -236,7 +236,7 @@ and re-run individual cells.
 | 5 | [`inverse_N_a_from_R_eff.ipynb`](notebooks/inverse_N_a_from_R_eff.ipynb) | The inverse problem, and why it is underdetermined |
 | 6 | [`percolation_3d.ipynb`](notebooks/percolation_3d.ipynb) | The 3D contact-based generalization |
 | 7 | [`effective_resistance_vs_d.ipynb`](notebooks/effective_resistance_vs_d.ipynb) | Film thickness as a third parameter |
-| 8 | [`multimeter_r_eff.ipynb`](notebooks/multimeter_r_eff.ipynb) | The onion-layer probe protocol |
+| 8 | [`multimeter_r_eff.ipynb`](notebooks/multimeter_r_eff.ipynb) | The radial-profile probe protocol |
 | 9 | [`r_eff_ij_vs_N_a_d.ipynb`](notebooks/r_eff_ij_vs_N_a_d.ipynb) | **The main result** |
 
 ---
@@ -349,8 +349,8 @@ the film (`utils/point_generator.py`, `utils/point_generator_3d.py`, `boundary="
 and the intersection tolerance was tightened from `1e-3` to `1e-9`, since clipped sticks
 that end near each other at the edge were otherwise occasionally joined. Every sweep was
 regenerated under the new rule, at 24 realizations per combination for the 3D grids
-(previously 6), with the onion grid storing each realization's curve as its own record
+(previously 6), with the radial-profile grid storing each realization's curve as its own record
 (`per_realization_curves`). The rejection-rule results are kept under
 `cluster/*_results_reject/` and `experiments/exp_843`–`exp_869`; every summary records
-its boundary rule and the pooling scripts refuse to mix the two. The onion-grid boost
+its boundary rule and the pooling scripts refuse to mix the two. The radial-profile grid boost
 (`run_onion_grid_boost_task.py`) was retired by the higher base count and feeds no result.

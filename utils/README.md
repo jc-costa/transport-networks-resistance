@@ -26,7 +26,7 @@ multi-terminal work follows the same principle.
 | | `self_loops.py` | Detects, removes, and (for testing) injects `(i, i)` edges |
 | | `edge_discovery.py` | Consecutive edges along a stick, and dead-end segment detection |
 | 5. Solve the circuit | `impedance_calculator.py` | Equivalent resistance via `L = AᵀGA`. Contains `merge_boundary_nodes()` and the `ImpedanceCalculator` class |
-| | `laplacian_utils.py` | Builds the weighted Laplacian, extracts the reduced internal-node matrix, checks conditioning and singularity. Provides the pseudoinverse path used by the onion protocol |
+| | `laplacian_utils.py` | Builds the weighted Laplacian, extracts the reduced internal-node matrix, checks conditioning and singularity. Provides the pseudoinverse path used by the radial-profile protocol |
 | | `multi_terminal_solver.py` | The same Dirichlet problem with an arbitrary number of prescribed-voltage terminals rather than exactly two |
 | | `junction_model.py` | Junction resistance: each crossing becomes two nodes joined by a junction edge `R_j`. Sparse two-terminal solve and red-bond detection. Used by `junction_resistance.ipynb` and `cluster/run_junction_task.py` |
 
@@ -92,7 +92,7 @@ module, supplying networks to the self-loop notebooks rather than running on its
 | Module | Covers |
 |---|---|
 | `test_merge.py` | `merge_boundary_nodes()` on a 2×2 grid |
-| `test_multimeter.py` | `measure_r_eff()` and the onion protocol against closed-form cases: a ring, a disconnected pair, a resistor ladder |
+| `test_multimeter.py` | `measure_r_eff()` and the radial-profile protocol against closed-form cases: a ring, a disconnected pair, a resistor ladder |
 | `test_networks.py` | Hand-built 2D networks with known resistance, used by the self-loop suite |
 | `test_percolation_3d.py` | The 3D suite: contact geometry, and hand-built topologies with known `R_eff` |
 

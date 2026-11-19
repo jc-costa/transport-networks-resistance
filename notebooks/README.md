@@ -39,8 +39,8 @@ Read these in order. They build on one another.
 | 6 | `inverse_N_a_from_R_eff.ipynb` | The inverse problem. Fits the scaling, tests the `N·a²` collapse rather than assuming it, traces the solution curve for a target, and validates on fresh networks |
 | 7 | `percolation_3d.ipynb` | The 3D generalization via a contact-distance bonding criterion, with the full validation suite and a 2D cross-check |
 | 8 | `effective_resistance_vs_d.ipynb` | Film thickness as a third parameter. Parts A and B are local, Part C is the 420-combination cluster grid |
-| 9 | `multimeter_r_eff.ipynb` | The probe protocol: `R_eff(i, j)` between arbitrary nodes, and the onion-layer sweep |
-| 10 | **`r_eff_ij_vs_N_a_d.ipynb`** | **The main result.** Does onion-curve shape disambiguate geometries the scalar `R_eff` cannot separate? |
+| 9 | `multimeter_r_eff.ipynb` | The probe protocol: `R_eff(i, j)` between arbitrary nodes, and the radial-profile sweep |
+| 10 | **`r_eff_ij_vs_N_a_d.ipynb`** | **The main result.** Does radial-profile shape disambiguate geometries the scalar `R_eff` cannot separate? |
 | 11 | `junction_resistance.ipynb` | Drops the ideal-contact assumption: each crossing gets a junction resistance `R_j`. The crossover `R_eff(ρ)` on the near-threshold sweep, additivity in `R_j`, red junctions, and distributed and metallic/semiconducting `R_j` |
 
 Results and figures from these are written up in [`../docs/RESULTS.md`](../docs/RESULTS.md).
