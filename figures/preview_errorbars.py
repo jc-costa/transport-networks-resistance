@@ -1,4 +1,4 @@
-"""Regenerate the Part A preview onion-curve figure with error bars.
+"""Regenerate the Part A preview radial-profile figure with error bars.
 
 Mirrors notebooks/r_eff_ij_vs_N_a_d.ipynb Part A (cells 5, 6, 9) exactly, except:
   - N_TRIALS raised from 4 to 50 so the per-layer spread is meaningfully estimated
@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore', category=RuntimeWarning)
 sys.path.append(os.path.abspath("utils"))
 from pipeline_utils_3d import generate_percolating_network_3d
 from pipeline_utils import distance_dependent_impedance, stable_seed
-from multimeter import run_onion_protocol_pinv
+from multimeter import run_radial_profile_protocol_pinv
 
 R0 = 1000.0
 CONTACT_DISTANCE = 0.03
@@ -41,7 +41,7 @@ def run_one_combo(N, a, d, n_trials):
             continue
         R_effs.append(distance_dependent_impedance(res, R0)['impedance'])
         ref = res['pre_merge_source_nodes'][0]
-        records = run_onion_protocol_pinv(
+        records = run_radial_profile_protocol_pinv(
             res['pre_merge_intersections'], res['pre_merge_segment_to_nodes'],
             ref, layer_distances=LAYER_DISTANCES, R0=R0)
         lm = {}
@@ -64,7 +64,7 @@ def run_one_combo(N, a, d, n_trials):
             'perc_rate': len(R_effs) / total_attempts if total_attempts else None,
             'mean_ohm': float(np.mean(R_effs)) if R_effs else None,
             'sem_ohm': float(np.std(R_effs, ddof=1) / np.sqrt(len(R_effs))) if len(R_effs) > 1 else None,
-            'onion_curve': curve}
+            'radial_profile_curve': curve}
 
 
 rows = []
@@ -78,9 +78,9 @@ for (N, a, d) in preview_combos:
 
 fig, ax = plt.subplots(figsize=(7, 5.5))
 for row in rows:
-    ds = sorted(row['onion_curve'])
-    means = np.array([row['onion_curve'][d]['mean'] for d in ds])
-    sems = np.array([row['onion_curve'][d]['sem'] for d in ds])
+    ds = sorted(row['radial_profile_curve'])
+    means = np.array([row['radial_profile_curve'][d]['mean'] for d in ds])
+    sems = np.array([row['radial_profile_curve'][d]['sem'] for d in ds])
     ax.errorbar(ds, means, yerr=sems, fmt='o-', capsize=3, markersize=4, linewidth=1.4,
                 label=f"$N$={row['N']}, $a$={row['a']}, $d$={row['d']} ($n$={row['n']})")
 ax.set_yscale('log')

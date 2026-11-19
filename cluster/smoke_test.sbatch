@@ -51,7 +51,7 @@ fixed = "use_merged_geometry" in inspect.signature(f).parameters
 print("merge fix    :", "FIXED" if fixed else "STILL OLD CODE")
 
 from pipeline_utils_3d import generate_percolating_network_3d
-from multimeter import run_onion_protocol_pinv
+from multimeter import run_radial_profile_protocol_pinv
 print("utils imports: OK")
 
 if not fixed:

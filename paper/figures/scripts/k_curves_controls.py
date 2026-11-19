@@ -28,7 +28,7 @@ LAYERS = ci.LAYERS
 
 def load_jsonl(path):
     rows = [json.loads(l) for l in open(path)]
-    return [r for r in rows if r["n"] > 0 and r["onion_layer_curves"]]
+    return [r for r in rows if r["n"] > 0 and r["radial_profile_layer_curves"]]
 
 
 def complete(curves):
@@ -74,15 +74,15 @@ def averaging(X, Y, G, S, folds=10, lam=1.0):
 
 
 res = {"ks": KS}
-inplane = load_jsonl(os.path.join(COLAB, "cluster", "onion_inplane_results", "partial.jsonl"))
+inplane = load_jsonl(os.path.join(COLAB, "cluster", "radial_profile_inplane_results", "partial.jsonl"))
 both = ("per_realization_curves", "per_realization_curves_3d")
 res["slab_3d"] = averaging(*build(inplane, "per_realization_curves_3d", both))
 res["slab_inplane"] = averaging(*build(inplane, "per_realization_curves", both))
-flat = load_jsonl(os.path.join(COLAB, "cluster", "onion_flat_results", "partial.jsonl"))
+flat = load_jsonl(os.path.join(COLAB, "cluster", "radial_profile_flat_results", "partial.jsonl"))
 # the seven thicknesses of the slab grid; d = 0.02 was added to the flat runs only
 res["flat_inplane"] = averaging(*build(flat, "per_realization_curves", ("per_realization_curves",), exclude_d=(0.02,)))
 # the thesis curve: full slab grid with 3D shells (119 cells)
-grid = ci.load_rows(os.path.join(COLAB, "cluster", "onion_grid_results"))
+grid = ci.load_rows(os.path.join(COLAB, "cluster", "radial_profile_grid_results"))
 res["slab_grid_3d"] = averaging(*ci.dataset_realizations(grid))
 
 for name in ("slab_grid_3d", "slab_3d", "slab_inplane", "flat_inplane"):

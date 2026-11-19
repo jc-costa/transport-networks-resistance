@@ -1,6 +1,6 @@
 """
-Regenerate the 150 networks behind the Part A preview onion curves
-(cluster/preview_curves_results/, Fig. "onion-preview" in the thesis) from their
+Regenerate the 150 networks behind the Part A preview radial profiles
+(cluster/preview_curves_results/, Fig. "radial_profile-preview" in the thesis) from their
 seeds, and split every shell mean through the Laplacian-pseudoinverse identity
 
     R_eff(i, j) = L+_ii + L+_jj - 2 L+_ij .
@@ -42,7 +42,7 @@ import numpy as np  # noqa: E402
 from pipeline_utils_3d import generate_percolating_network_3d  # noqa: E402
 from pipeline_utils import distance_dependent_impedance, stable_seed  # noqa: E402
 from laplacian_utils import _weighted_laplacian_distance_dependent, _bfs_reachable  # noqa: E402
-from multimeter import onion_layers  # noqa: E402
+from multimeter import radial_profile_layers  # noqa: E402
 
 # Must match run_preview_curves_task.py exactly, or the seeds reproduce nothing.
 CONTACT_DISTANCE = 0.03
@@ -97,7 +97,7 @@ def regenerate_one(args):
            "n_nodes": int(len(inter)), "mean_degree": float(deg.mean()),
            "R_eff": R_eff, "R_eff_stored": stored["R_eff"],
            "Lii": float(dg[i]), "deg_i": int(deg[i]), "shells": {}}
-    for ld, cands in onion_layers(inter, i, layer_distances=LAYER_DISTANCES).items():
+    for ld, cands in radial_profile_layers(inter, i, layer_distances=LAYER_DISTANCES).items():
         js = np.array([j for j in cands if reach[j]])
         if js.size == 0:
             continue

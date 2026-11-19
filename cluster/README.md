@@ -28,7 +28,7 @@ independent of how the work was split across tasks.
 ```bash
 cd cluster
 mkdir -p logs
-sbatch run_onion_grid_array.sbatch
+sbatch run_radial_profile_grid_array.sbatch
 ```
 
 **On the QOS setting.** The jobs specify `--qos=simple` with `--array=0-19%4`, running
@@ -42,8 +42,8 @@ concurrency at one.
 | Job | Task script | Output | Feeds |
 |---|---|---|---|
 | `run_effective_resistance_d_array.sbatch` | `run_effective_resistance_d_task.py` | `effective_resistance_d_results/` (20 chunks) | `effective_resistance_vs_d.ipynb` Part C |
-| `run_onion_grid_array.sbatch` | `run_onion_grid_task.py` | `onion_grid_results/` (20 chunks) | `r_eff_ij_vs_N_a_d.ipynb` Parts B and C |
-| `run_onion_grid_boost_array.sbatch` | `run_onion_grid_boost_task.py` | `onion_grid_boost_results/` (18 chunks) | `r_eff_ij_vs_N_a_d.ipynb` Part D |
+| `run_radial_profile_grid_array.sbatch` | `run_radial_profile_grid_task.py` | `radial_profile_grid_results/` (20 chunks) | `r_eff_ij_vs_N_a_d.ipynb` Parts B and C |
+| `run_radial_profile_grid_boost_array.sbatch` | `run_radial_profile_grid_boost_task.py` | `radial_profile_grid_boost_results/` (18 chunks) | `r_eff_ij_vs_N_a_d.ipynb` Part D |
 | `run_validation_array.sbatch` | `run_validation_task.py` | `validation_results/` (28 candidate files) + `validation_plan.json` | `inverse_N_a_from_R_eff.ipynb` section 6 |
 | `run_preview_curves_array.sbatch` | `run_preview_curves_task.py` | `preview_curves_results/` | `r_eff_ij_vs_N_a_d.ipynb` Part A, thesis probe-distance section |
 | `run_critical_sweep_array.sbatch` | `run_critical_sweep_task.py` | `critical_sweep_results/` (33 points) | `critical_sweep_fit.py`, thesis critical-form subsection |
@@ -82,8 +82,8 @@ and back specific thesis sections.
 | `regenerate_preview_networks.py` | `preview_curves_results/` (for verification only) | `preview_curves_decomposition.json`; `--tables` prints the two LaTeX tables of Appendix D and the resistor-chain control | thesis Appendix D |
 | `thesis_figures_2d.py` | `experiments/exp_871/effective_resistance_sweep_summary_ext.json` | the extended-sweep box plot (`--out`), without re-running the sweep | thesis Fig. "extended-boxplots" |
 | `probe_figures.py` | nothing (draws the reference network `N = 40, a = 0.6`, seed 11) | `probe_sourcedrain.png`, `probe_farpair.png`, `probe_mid.png`, `probe_near.png` in the thesis; prints the probe numbers, self-checks and the all-pairs range | thesis Sec. "Single-pair probing", Fig. "probe" |
-| `onion_tolerance_sweep.py` | `onion_grid_results/`, `effective_resistance_d_results/` | `onion_grid_results/tolerance_sweep_summary.json` (with `--json`); prints the CV table and the grouping+ANOVA at nine tolerances | thesis Tables "onion-cv", "onion-tolerance-sweep" |
-| `curve_inversion.py` | `onion_grid_results/` | `curve_inversion_summary.json`, `curve_inversion_k.png` (with `--json`, `--figure`) | thesis Sec. "Inverting (N, a, d) from the radial profile" |
+| `radial_profile_tolerance_sweep.py` | `radial_profile_grid_results/`, `effective_resistance_d_results/` | `radial_profile_grid_results/tolerance_sweep_summary.json` (with `--json`); prints the CV table and the grouping+ANOVA at nine tolerances | thesis Tables "radial_profile-cv", "radial_profile-tolerance-sweep" |
+| `curve_inversion.py` | `radial_profile_grid_results/` | `curve_inversion_summary.json`, `curve_inversion_k.png` (with `--json`, `--figure`) | thesis Sec. "Inverting (N, a, d) from the radial profile" |
 | `density_control.py` | nothing (draws `N/d = 1500` at `a = 0.2`, 250 realizations each, process pool) | `figures/partA_constant_density_control.json` | thesis Table "density-control" |
 | `critical_sweep_fit.py` | `critical_sweep_results/` | fits and `critical_sweep.png` (with `--figure`) | thesis Sec. "The near-threshold sweep" |
 | `junction_analysis.py`, `junction_variants_analysis.py` | `junction_results/`, `junction_variants_results/` | `junction_summary.json`, `junction_variants_summary.json` (with `--json`), the six `junction_*.png` figures (with `--figures DIR`); print every number of the junction section | thesis Table "junction", Figs. "junction-crossover", "junction-red-share", "junction-dispersion", "junction-bimodal" |
@@ -98,13 +98,13 @@ its own. It refuses to continue unless every regenerated network reproduces its 
 
 ### Plan files
 
-`run_onion_grid_boost_task.py` and `run_validation_task.py` need their work enumerated
+`run_radial_profile_grid_boost_task.py` and `run_validation_task.py` need their work enumerated
 before submission, since the set of combinations depends on the analysis of a previous
-run. `onion_grid_boost_plan.json` and `validation_plan.json` are those enumerations, and
+run. `radial_profile_grid_boost_plan.json` and `validation_plan.json` are those enumerations, and
 are committed so the exact submitted workload is on record.
 
 ```bash
-python run_onion_grid_boost_task.py --prepare   # regenerates the plan, run before sbatch
+python run_radial_profile_grid_boost_task.py --prepare   # regenerates the plan, run before sbatch
 ```
 
 ---
@@ -158,7 +158,7 @@ it is in the data deposit named in the paper, with checksums in
 
 ## Paired grids
 
-`run_onion_grid_task.py` reproduces the grid definition, the seed formula, and the
+`run_radial_profile_grid_task.py` reproduces the grid definition, the seed formula, and the
 network-draw order of `run_effective_resistance_d_task.py` exactly. The consequence is
 that a given `(N, a, d)` combination yields the *same network* in both datasets, so the
 radial profiles and the scalar resistances are paired one to one by construction rather than
@@ -194,7 +194,7 @@ resistance of every edge touching a terminal, biasing the whole-face scalar `R_e
 moves fitted exponents, not just prefactors (a small local fit of `R_eff` against `N` at
 `a=0.6` shifted from -1.075 to -1.219).
 
-Everything computed through `run_onion_protocol_pinv` is unaffected, since that path
+Everything computed through `run_radial_profile_protocol_pinv` is unaffected, since that path
 never merges. Only the scalar column needs regenerating.
 
 **Order of operations:**
@@ -202,7 +202,7 @@ never merges. Only the scalar column needs regenerating.
 ```bash
 bash backup_results.sh                       # timestamped copy + MANIFEST.sha256
 sbatch run_effective_resistance_d_array.sbatch
-sbatch run_onion_grid_array.sbatch           # queues behind it: qos=simple caps 4 concurrent
+sbatch run_radial_profile_grid_array.sbatch           # queues behind it: qos=simple caps 4 concurrent
 python verify_rerun_vs_backup.py backups/<timestamp>
 ```
 
@@ -215,9 +215,9 @@ fix altered the pipeline, and the rerun should not be trusted.
 **Outcome.** Both grids were regenerated on 2026-08-31 and verified against
 `backups/20260831_111505/`: the scalar column moved, the curves and the draws did not.
 The corrected scalars changed the matched groups (the five strongest went from
-4, 6, 9, 11, 16 to 10, 28, 9, 7, 13), so `run_onion_grid_boost_task.py --prepare` was
-re-run and `run_onion_grid_boost_array.sbatch` re-submitted; `onion_grid_boost_results/`
-and `onion_grid_boost_plan.json` hold the post-correction boost. `experiments/exp_858/`
+4, 6, 9, 11, 16 to 10, 28, 9, 7, 13), so `run_radial_profile_grid_boost_task.py --prepare` was
+re-run and `run_radial_profile_grid_boost_array.sbatch` re-submitted; `radial_profile_grid_boost_results/`
+and `radial_profile_grid_boost_plan.json` hold the post-correction boost. `experiments/exp_858/`
 is the canonical analysis run for the radial-profile study, `exp_868/` for the scalar `(N, a, d)`
 grid and `exp_869/` for the inverse problem.
 
@@ -279,11 +279,11 @@ toward 1 by `N a^2 ~ 20`. Numbers in `critical_sweep_results/critical_fit_summar
 
 `curve_inversion.py` regresses `(log N, log a, log d)` on the log shell means of the
 radial-profile grid (ridge and k-NN, grouped cross-validation by combination, plus an averaging
-analysis over k realizations); results in `onion_grid_results/curve_inversion_summary.json`
+analysis over k realizations); results in `radial_profile_grid_results/curve_inversion_summary.json`
 and `docs/RESULTS.md` section 5.
 
-While writing it, a storage defect surfaced: `run_onion_grid_task.py` and
-`run_onion_grid_boost_task.py` stored each shell's `per_realization_means` with empty
+While writing it, a storage defect surfaced: `run_radial_profile_grid_task.py` and
+`run_radial_profile_grid_boost_task.py` stored each shell's `per_realization_means` with empty
 shells skipped, so the lists of different shells are aligned by index only for
 combinations in which every realization has every shell (137 of 359 in the grid, 9 of 69
 in the boost). The ANOVA's per-realization normalization assumed alignment. Both scripts
@@ -309,7 +309,7 @@ produced near-miss spurious nodes at 1e-3; verified against brute force, 0 misse
 
 Everything on this page was regenerated under `"clip"`: the 2D sweeps (notebook job;
 `experiments_clip/` on the cluster, `experiments/exp_870` and `exp_871` locally), the
-near-threshold sweep, the robustness batch, the scalar and onion `(N, a, d)` grids at
+near-threshold sweep, the robustness batch, the scalar and radial_profile `(N, a, d)` grids at
 **24** realizations per combination (paired by seed, with the aligned
 `per_realization_curves` record), the preview curves at the new combinations
 `(150, 0.2, 0.10)`, `(150, 0.2, 0.15)`, `(125, 0.2, 0.10)` (measured rates 22.0%, 8.7%,
@@ -340,5 +340,5 @@ at a time. `run_grid_parallel.py` runs the whole grid inside one `complex` job w
 process pool (`--workers 48`), one combination per process, BLAS pinned to one thread,
 and writes the same 20 chunk files as the array; every combination seeds itself, so the
 rows are identical to the array's (verified). `run_scalar_grid_parallel.sbatch` and
-`run_onion_grid_parallel.sbatch` are the job scripts. `GRID_PARALLEL_TRIALS`,
+`run_radial_profile_grid_parallel.sbatch` are the job scripts. `GRID_PARALLEL_TRIALS`,
 `GRID_PARALLEL_LIMIT` and `GRID_PARALLEL_OUT` are smoke-test hooks.

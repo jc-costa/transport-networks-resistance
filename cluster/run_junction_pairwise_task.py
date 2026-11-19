@@ -12,7 +12,7 @@ measured at every rho of RHOS, so the comparison across rho is paired:
 
   S         terminal resistance of the junction graph, strips shorted to the
             electrodes (the convention of Appendix F, solve_two_terminal)
-  C1,C4,C16 onion curves from 1, 4 and 16 anchors (the anchor sets and shells of
+  C1,C4,C16 radial profiles from 1, 4 and 16 anchors (the anchor sets and shells of
             run_pairwise2d_task.network_features, applied to the copies of the
             junction graph)
   P         all-pairs profile, mean R_uv over the pairs of copies whose distance

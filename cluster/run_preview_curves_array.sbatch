@@ -1,14 +1,14 @@
 #!/bin/bash
-# Part A preview onion curves (notebooks/r_eff_ij_vs_N_a_d.ipynb Part A, the
+# Part A preview radial profiles (notebooks/r_eff_ij_vs_N_a_d.ipynb Part A, the
 # three-curve validation figure in chapters/resultados/resultados.tex) at
 # N_TRIALS=50, spread over an array. See run_preview_curves_task.py's docstring
 # for why the preview needed recomputing and why its seeding differs from
-# run_onion_grid_task.py's.
+# run_radial_profile_grid_task.py's.
 #
 # --array=0-24%20: 150 work units (3 combos x 50 realizations) dealt round-robin
 # across 25 tasks, so the expensive (45, 0.2, 0.10) units spread evenly instead
 # of piling onto one task. The %20 throttle follows the same reasoning as
-# run_onion_grid_array.sbatch: it is a self-imposed ceiling above what qos=simple
+# run_radial_profile_grid_array.sbatch: it is a self-imposed ceiling above what qos=simple
 # actually grants (4 concurrent, as of 2026-08), so it costs nothing now and
 # picks up any future increase for free.
 #
@@ -38,7 +38,7 @@
 set -eo pipefail
 set -x
 
-# No `module load`: see run_onion_grid_array.sbatch for the full history. The venv
+# No `module load`: see run_radial_profile_grid_array.sbatch for the full history. The venv
 # must be the one built from /usr/bin/python3, not from the login node's
 # /opt/miniforge3, or this dies on a compute node with `python: command not found`.
 source ~/envs/piano_sweep/bin/activate

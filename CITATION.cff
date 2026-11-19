@@ -11,7 +11,7 @@ abstract: >-
   random conductive-stick networks. Builds random 2D and 3D stick networks,
   solves the percolating cluster as a resistor network through the graph
   Laplacian, studies how effective resistance depends on stick number, stick
-  length and film thickness, and tests whether an onion-layer probe protocol
+  length and film thickness, and tests whether an radial-profile probe protocol
   recovers geometric information that a single scalar resistance measurement
   collapses away.
 keywords:

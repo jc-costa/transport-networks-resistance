@@ -16,8 +16,8 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$HERE"
 
-DIRS=(effective_resistance_d_results onion_grid_results onion_grid_boost_results validation_results critical_sweep_results preview_curves_results)
-FILES=(onion_grid_boost_plan.json validation_plan.json)
+DIRS=(effective_resistance_d_results radial_profile_grid_results radial_profile_grid_boost_results validation_results critical_sweep_results preview_curves_results)
+FILES=(radial_profile_grid_boost_plan.json validation_plan.json)
 
 TS="$(date +%Y%m%d_%H%M%S)"
 DEST="backups/$TS"

@@ -1,6 +1,6 @@
 """
-Standalone script backing the SLURM array run of the Part A preview onion
-curves (notebooks/r_eff_ij_vs_N_a_d.ipynb Part A, Fig. "onion-preview" in
+Standalone script backing the SLURM array run of the Part A preview radial_profile
+curves (notebooks/r_eff_ij_vs_N_a_d.ipynb Part A, Fig. "radial_profile-preview" in
 chapters/resultados/resultados.tex).
 
 Why this exists as a cluster job at all: the preview figure originally shipped
@@ -15,15 +15,15 @@ The bottleneck is (45, 0.2, 0.10), which percolates on roughly 1 draw in 3000
 about an hour of single-core work, which is why the realizations are spread
 across an array here.
 
-SEEDING DIFFERS from run_onion_grid_task.py, deliberately. That script seeds
+SEEDING DIFFERS from run_radial_profile_grid_task.py, deliberately. That script seeds
 once per combo and draws N_TRIALS networks from one stream, which cannot be
 split across tasks. Here each (combo, realization) pair is its own work unit
 with its own seed, stable_seed(N, a, d, 'ext', r), so any task can compute any
 subset and the pooled result is identical regardless of how the array is
 partitioned. The consequence is that these realizations are NOT the same
-networks the paired scalar/onion grids drew, so this output feeds the preview
+networks the paired scalar/radial-profile grids drew, so this output feeds the preview
 figure only and must not be pooled into the grid datasets of
-cluster/onion_grid_results/ or cluster/effective_resistance_d_results/.
+cluster/radial_profile_grid_results/ or cluster/effective_resistance_d_results/.
 
 Usage:
   python run_preview_curves_task.py <task_id>   run this task's units
@@ -48,9 +48,9 @@ sys.path.insert(0, UTILS_PATH)
 import numpy as np  # noqa: E402
 from pipeline_utils_3d import generate_percolating_network_3d  # noqa: E402
 from pipeline_utils import distance_dependent_impedance, stable_seed  # noqa: E402
-from multimeter import run_onion_protocol_pinv  # noqa: E402
+from multimeter import run_radial_profile_protocol_pinv  # noqa: E402
 
-# Match run_onion_grid_task.py's physical constants exactly. Only N_TRIALS and
+# Match run_radial_profile_grid_task.py's physical constants exactly. Only N_TRIALS and
 # the per-draw attempt budget differ, for the reasons in the docstring.
 CONTACT_DISTANCE = 0.03
 R0 = 1000.0
@@ -89,7 +89,7 @@ def run_one_unit(ci, r):
 
     R_eff = float(distance_dependent_impedance(res, R0)['impedance'])
     reference_node = res['pre_merge_source_nodes'][0]
-    records = run_onion_protocol_pinv(
+    records = run_radial_profile_protocol_pinv(
         res['pre_merge_intersections'], res['pre_merge_segment_to_nodes'],
         reference_node, layer_distances=LAYER_DISTANCES, R0=R0
     )
@@ -244,15 +244,15 @@ def cmd_aggregate():
                         "mean_ohm": float(np.mean(R_effs)) if R_effs else None,
                         "sem_ohm": sd_R / np.sqrt(n) if n else None,
                         "total_attempts": sum(r["attempts"] for r in mine),
-                        "onion_curve": curve})
+                        "radial_profile_curve": curve})
         print(f"  N={N:3d} a={a} d={d:.2f}  n={n}/{N_TRIALS}  "
               f"R_eff={summary[-1]['mean_ohm']:.1f} +/- {summary[-1]['sem_ohm']:.1f}")
 
     fig, ax = plt.subplots(figsize=(7, 5.5))
     for row in summary:
-        ds = sorted(float(k) for k in row["onion_curve"])
-        means = [row["onion_curve"][str(x)]["mean"] for x in ds]
-        sems = [row["onion_curve"][str(x)]["sem"] for x in ds]
+        ds = sorted(float(k) for k in row["radial_profile_curve"])
+        means = [row["radial_profile_curve"][str(x)]["mean"] for x in ds]
+        sems = [row["radial_profile_curve"][str(x)]["sem"] for x in ds]
         ax.errorbar(ds, means, yerr=sems, fmt='o-', capsize=3, markersize=4, linewidth=1.4,
                     label=f"$N$={row['N']}, $a$={row['a']}, $d$={row['d']} ($n$={row['n']})")
     ax.set_yscale('log')
@@ -262,7 +262,7 @@ def cmd_aggregate():
     ax.grid(True, alpha=0.3, which='both')
     plt.tight_layout()
 
-    fig_path = os.path.join(HERE, "..", "figures", "partA_preview_onion_curves_errorbars.png")
+    fig_path = os.path.join(HERE, "..", "figures", "partA_preview_radial_profile_curves_errorbars.png")
     fig.savefig(fig_path, dpi=150, bbox_inches='tight')
     json_path = os.path.join(RESULTS_DIR, "preview_curves_summary.json")
     with open(json_path, "w") as f:

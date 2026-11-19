@@ -1146,12 +1146,12 @@ def plot_r_eff_vs_distance(records, reference_node=None, title=None, figsize=(8,
                            log_y=True):
     """
     Plot the R_eff(reference_node, j) vs. separation-distance curve produced
-    by multimeter.run_onion_protocol(): one point per probed node j, grouped
-    by onion layer, plus the per-layer mean +/- std as a guide since several
+    by multimeter.run_radial_profile_protocol(): one point per probed node j, grouped
+    by radial-profile shell, plus the per-layer mean +/- std as a guide since several
     j nodes usually qualify for the same shell.
 
     Args:
-        records: list of dict from run_onion_protocol(), each with
+        records: list of dict from run_radial_profile_protocol(), each with
             'layer_distance', 'probe_distance', 'r_eff'.
         reference_node: optional node index, used only for the title.
         title: optional custom title.
@@ -1202,7 +1202,7 @@ def plot_r_eff_vs_distance(records, reference_node=None, title=None, figsize=(8,
     if n_excluded:
         count_str += f', {n_excluded} excluded (disconnected)'
     ax.set_title(title or f'Effective resistance vs. distance{ref_str}\n'
-                          f'(onion-layer protocol, {count_str})',
+                          f'(radial-profile protocol, {count_str})',
                 fontsize=12)
     ax.grid(True, alpha=0.3)
     ax.legend(loc='best', fontsize=9)

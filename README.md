@@ -139,7 +139,7 @@ is lost; at fixed density `N/d` it falls by a factor of three over a doubling of
 the exponents predict in direction and a 250-realization control confirms.
 
 **5. Curve shape carries information the scalar collapses away.** This is the main
-contribution. Instead of a single source-to-drain number, the **radial-profile protocol** (called the *onion* protocol in file and function names, for example `run_onion_grid_task.py`)
+contribution. Instead of a single source-to-drain number, the **radial-profile protocol**
 sweeps `R_eff(reference, j)` outward through concentric distance shells, producing a
 curve rather than a scalar. Grouping `(N, a, d)` triples whose *scalar* `R_eff` matches
 within 15%, precisely the triples the scalar inversion cannot separate, a one-way ANOVA
@@ -251,7 +251,7 @@ cluster (CIn/UFPE) as SLURM array jobs, and their raw output is committed under
 cd cluster
 mkdir -p logs
 sbatch run_effective_resistance_d_array.sbatch   # scalar R_eff over the (N, a, d) grid
-sbatch run_onion_grid_array.sbatch               # onion curves over the same grid
+sbatch run_radial_profile_grid_array.sbatch               # radial profiles over the same grid
 sbatch run_critical_sweep_array.sbatch           # near-threshold sweep, 33 points
 sbatch run_preview_curves_array.sbatch           # 150 preview realizations
 sbatch prepare_validation_plan.sbatch            # pool + fit + freeze the 28 inverse candidates
@@ -261,7 +261,7 @@ sbatch run_validation_array.sbatch               # 30 fresh networks per candida
 Each task writes one `chunk_NN.json`. Once the full set is present, the corresponding
 notebook detects it automatically and loads instead of recomputing. The two large grids
 can also be run as a single 48-worker job on the `short-complex` partition
-(`run_scalar_grid_parallel.sbatch`, `run_onion_grid_parallel.sbatch`), which writes the
+(`run_scalar_grid_parallel.sbatch`, `run_radial_profile_grid_parallel.sbatch`), which writes the
 same chunk files. See [cluster/README.md](cluster/README.md) for the details of each job.
 
 ---
@@ -353,4 +353,4 @@ regenerated under the new rule, at 24 realizations per combination for the 3D gr
 (`per_realization_curves`). The rejection-rule results are kept under
 `cluster/*_results_reject/` and `experiments/exp_843`–`exp_869`; every summary records
 its boundary rule and the pooling scripts refuse to mix the two. The radial-profile grid boost
-(`run_onion_grid_boost_task.py`) was retired by the higher base count and feeds no result.
+(`run_radial_profile_grid_boost_task.py`) was retired by the higher base count and feeds no result.

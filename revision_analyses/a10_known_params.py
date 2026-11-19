@@ -1,11 +1,11 @@
 """A10 (advisor questions 1-2): on the 3D slab grid, what does each piece of information add?
 Ridge, 10-fold grouped by combination, one realization per sample, as in curve_inversion.py:
-scalar alone; + onion curve; + a known; + d known; + a and d known."""
+scalar alone; + radial profile; + a known; + d known; + a and d known."""
 import sys, os
 import numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cluster")); sys.argv = sys.argv[:1]
 import curve_inversion as ci
-rows = ci.load_rows(os.path.join(os.path.dirname(ci.__file__), "onion_grid_results"))
+rows = ci.load_rows(os.path.join(os.path.dirname(ci.__file__), "radial_profile_grid_results"))
 X, Y, G, S = ci.dataset_realizations(rows)
 logN, loga, logd = Y[:, 0:1], Y[:, 1:2], Y[:, 2:3]
 fit = lambda Xtr, Ytr: ci.ridge_fit(Xtr, Ytr, 1.0)

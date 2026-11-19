@@ -47,7 +47,7 @@
    "total_attempts": 1049,
    "mean_n_sticks": 333.716,
    "mean_n_nodes": 218.992,
-   "onion_curve": {
+   "radial_profile_curve": {
     "0.1": {
      "mean": 153.8744133798754,
      "sem": 6.927572046387758,
@@ -110,7 +110,7 @@
    "total_attempts": 300,
    "mean_n_sticks": 420.268,
    "mean_n_nodes": 416.528,
-   "onion_curve": {
+   "radial_profile_curve": {
     "0.1": {
      "mean": 176.6353807124076,
      "sem": 9.189945745189034,
@@ -173,7 +173,7 @@
    "total_attempts": 256,
    "mean_n_sticks": 509.004,
    "mean_n_nodes": 605.908,
-   "onion_curve": {
+   "radial_profile_curve": {
     "0.1": {
      "mean": 160.83300532183623,
      "sem": 6.189257756854743,

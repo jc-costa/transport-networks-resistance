@@ -7,7 +7,7 @@
     "mean_ohm": 1047.7809418635093,
     "sem_ohm": 34.0362039537503,
     "total_attempts": 1480,
-    "onion_curve": {
+    "radial_profile_curve": {
       "0.1": {
         "mean": 117.15698267220694,
         "std": 75.0782416854581,
@@ -72,7 +72,7 @@
     "mean_ohm": 1184.0532534481513,
     "sem_ohm": 40.24517395592328,
     "total_attempts": 22297,
-    "onion_curve": {
+    "radial_profile_curve": {
       "0.1": {
         "mean": 121.86491220215294,
         "std": 83.34676718078809,
@@ -137,7 +137,7 @@
     "mean_ohm": 1116.54678587564,
     "sem_ohm": 27.609624027292192,
     "total_attempts": 166399,
-    "onion_curve": {
+    "radial_profile_curve": {
       "0.1": {
         "mean": 115.80339318599904,
         "std": 51.657220723723654,

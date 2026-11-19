@@ -10,12 +10,12 @@ calculation).
 
 Two pieces:
   - measure_r_eff(): the probe itself, R_eff between one chosen pair.
-  - onion_layers() / run_onion_protocol(): the experimental protocol for
+  - radial_profile_layers() / run_radial_profile_protocol(): the experimental protocol for
     choosing WHICH pairs to probe. Probing all O(n^2) node pairs on a real
     network is wasteful and mostly redundant, so instead we fix one probe
     (reference_node) and sweep the other probe outward through concentric
     Euclidean-distance shells around it (d1=0.1, d2=0.2, d3=0.3, ... like
-    the layers of an onion), which is enough to see how R_eff grows with
+    the layers of an radial_profile), which is enough to see how R_eff grows with
     separation distance.
 """
 
@@ -87,11 +87,11 @@ def measure_r_eff(intersections, graph, segment_to_nodes, node_i, node_j,
     return result
 
 
-def onion_layers(intersections, reference_node, layer_distances=None,
+def radial_profile_layers(intersections, reference_node, layer_distances=None,
                  tolerance=None, candidate_nodes=None):
     """
     Group nodes into concentric Euclidean-distance shells around
-    `reference_node`: the "onion layers" used to pick which node j to
+    `reference_node`: the "radial-profile shells" used to pick which node j to
     probe against a fixed node i, instead of trying every pair.
 
     Parameters
@@ -146,22 +146,22 @@ def onion_layers(intersections, reference_node, layer_distances=None,
     return layers
 
 
-def run_onion_protocol(intersections, graph, segment_to_nodes, reference_node,
+def run_radial_profile_protocol(intersections, graph, segment_to_nodes, reference_node,
                        layer_distances=None, tolerance=None, k=1.0,
                        edge_conductance=None, distance_dependent=False,
                        candidate_nodes=None, max_probes_per_layer=None,
                        seed=None, verbose=False):
     """
-    Run the onion-layer protocol: probe R_eff(reference_node, j) for j drawn
+    Run the radial-profile protocol: probe R_eff(reference_node, j) for j drawn
     from each concentric distance shell around reference_node (see
-    onion_layers), building up R_eff as a function of separation distance
+    radial_profile_layers), building up R_eff as a function of separation distance
     without measuring all O(n^2) node pairs.
 
     Parameters
     ----------
     reference_node : int
         The fixed probe every layer is measured against.
-    layer_distances, tolerance, candidate_nodes : see onion_layers().
+    layer_distances, tolerance, candidate_nodes : see radial_profile_layers().
     k, edge_conductance, distance_dependent : see measure_r_eff().
     max_probes_per_layer : int, optional
         Cap on how many candidates to probe per shell. If a shell has more
@@ -182,7 +182,7 @@ def run_onion_protocol(intersections, graph, segment_to_nodes, reference_node,
          measure_r_eff() result dict}
     """
     rng = np.random.default_rng(seed)
-    layers = onion_layers(intersections, reference_node, layer_distances=layer_distances,
+    layers = radial_profile_layers(intersections, reference_node, layer_distances=layer_distances,
                           tolerance=tolerance, candidate_nodes=candidate_nodes)
 
     records = []
@@ -215,11 +215,11 @@ def run_onion_protocol(intersections, graph, segment_to_nodes, reference_node,
     return records
 
 
-def run_onion_protocol_pinv(intersections, segment_to_nodes, reference_node,
+def run_radial_profile_protocol_pinv(intersections, segment_to_nodes, reference_node,
                             layer_distances=None, tolerance=None, R0=1000.0,
                             edge_conductance=None, candidate_nodes=None):
     """
-    Fast onion-layer protocol: same idea as run_onion_protocol (probe
+    Fast radial-profile protocol: same idea as run_radial_profile_protocol (probe
     R_eff(reference_node, j) for j drawn from each concentric distance shell
     around reference_node), but instead of one dense O(n^3) solve per probed
     pair (measure_r_eff), computes R_eff from reference_node to EVERY node in
@@ -228,7 +228,7 @@ def run_onion_protocol_pinv(intersections, segment_to_nodes, reference_node,
 
     That also removes any reason to sample/cap probes per shell -- every
     candidate node in a shell is "free" once the pinv is computed, so every
-    one of them is included (unlike run_onion_protocol's max_probes_per_layer).
+    one of them is included (unlike run_radial_profile_protocol's max_probes_per_layer).
 
     Only supports the distance-dependent resistance model (R_edge = R0 *
     edge_length), since that's what effective_resistance_from_reference
@@ -236,11 +236,11 @@ def run_onion_protocol_pinv(intersections, segment_to_nodes, reference_node,
 
     Parameters
     ----------
-    intersections, segment_to_nodes : network geometry (see onion_layers /
+    intersections, segment_to_nodes : network geometry (see radial_profile_layers /
         effective_resistance_from_reference).
     reference_node : int
         The fixed probe every layer is measured against.
-    layer_distances, tolerance, candidate_nodes : see onion_layers().
+    layer_distances, tolerance, candidate_nodes : see radial_profile_layers().
     R0, edge_conductance : see effective_resistance_from_reference().
 
     Returns
@@ -250,7 +250,7 @@ def run_onion_protocol_pinv(intersections, segment_to_nodes, reference_node,
          Euclidean distance to reference_node, 'r_eff': R_eff (inf if j is
          not connected to reference_node)}
     """
-    layers = onion_layers(intersections, reference_node, layer_distances=layer_distances,
+    layers = radial_profile_layers(intersections, reference_node, layer_distances=layer_distances,
                           tolerance=tolerance, candidate_nodes=candidate_nodes)
 
     r_eff_vec = effective_resistance_from_reference(

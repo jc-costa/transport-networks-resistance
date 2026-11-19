@@ -6,8 +6,8 @@
 # only processes its own slice. Same pattern as run_random_networks_array.sbatch.
 #
 # --partition=short-simple / --qos=simple / --array=...%4: the short-complex /
-# qos=complex probe was tested directly on the sibling onion-grid array job
-# (run_onion_grid_array.sbatch, jobs 12587 and 12591 on 2026-08-18) -- both
+# qos=complex probe was tested directly on the sibling radial_profile-grid array job
+# (run_radial_profile_grid_array.sbatch, jobs 12587 and 12591 on 2026-08-18) -- both
 # times squeue showed exactly 1 task RUNNING and the other 19 stuck PENDING
 # with REASON=QOSMaxJobsPerUserLimit, i.e. "complex" caps this user at 1
 # concurrent job, worse than "simple"'s already-confirmed 4 (observed via the
@@ -40,7 +40,7 @@
 #
 # Measured 2026-08-31 on the post-fix rerun: with --cpus-per-task=8 and the array
 # throttle raised, the whole 420-combo scalar grid finished in ~7 minutes of wall
-# clock and the onion grid in ~30, not the ~20 min PER CHUNK estimated from the
+# clock and the radial-profile grid in ~30, not the ~20 min PER CHUNK estimated from the
 # August timing above. The old figure came from a single local chunk on 2 cores.
 #SBATCH --job-name=reff_d_arr
 #SBATCH --output=logs/%x_%A_%a.out

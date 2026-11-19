@@ -1,6 +1,6 @@
 """Fig. 4 (double column): what pairwise resistances add to the terminal one.
 (a) Films of finite thickness: out-of-sample R^2 for log10 d against the
-    number k of realizations averaged, for the onion curve with R (three model
+    number k of realizations averaged, for the radial profile with R (three model
     variants) and for R alone. From data/k_curves_controls.json, written by
     k_curves_controls.py, which reproduces the thesis values at k = 1 and 24.
 (b) Two dimensions: accuracy above chance of assigning one network to its

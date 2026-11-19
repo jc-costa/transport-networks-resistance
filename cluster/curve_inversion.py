@@ -1,6 +1,6 @@
 """
-Inversion of (N, a, d) from the onion curve, as a regression validated out
-of sample, on the 3D grid of cluster/onion_grid_results.
+Inversion of (N, a, d) from the radial profile, as a regression validated out
+of sample, on the 3D grid of cluster/radial_profile_grid_results.
 
 The ANOVA of r_eff_ij_vs_N_a_d.ipynb shows that curve shape differs between
 parameter triples that share the same scalar R_eff. This script asks the
@@ -20,7 +20,7 @@ RMSE of each log10 target, i.e. the typical factor error, and R^2.
 
 Two datasets are used, because the stored per-layer lists are aligned by
 realization only when every realization has every shell (see
-run_onion_grid_task.py, per_realization_curves):
+run_radial_profile_grid_task.py, per_realization_curves):
   realizations : combinations with complete shells, one sample per realization
   means        : every usable combination, one sample = its mean curve
 Usage: python curve_inversion.py [--folds 10] [--k 5] [--json out.json]
@@ -36,13 +36,13 @@ def load_rows(results_dir):
     rows = []
     for p in sorted(glob.glob(os.path.join(results_dir, "chunk_*.json"))):
         rows += json.load(open(p))
-    return [r for r in rows if r["n"] > 0 and r["onion_layer_curves"]]
+    return [r for r in rows if r["n"] > 0 and r["radial_profile_layer_curves"]]
 
 
 def dataset_realizations(rows):
     X, Y, G, S = [], [], [], []
     for r in rows:
-        c = r["onion_layer_curves"]
+        c = r["radial_profile_layer_curves"]
         if "per_realization_curves" in r:                       # aligned record (new task script)
             curves = r["per_realization_curves"]
             for i, cv in enumerate(curves):
@@ -60,7 +60,7 @@ def dataset_realizations(rows):
 def dataset_means(rows):
     X, Y, G, S = [], [], [], []
     for r in rows:
-        c = r["onion_layer_curves"]
+        c = r["radial_profile_layer_curves"]
         if any(str(l) not in c for l in LAYERS): continue
         X.append([c[str(l)]["mean"] for l in LAYERS]); S.append(float(np.mean(r["R_eff_values"])))
         Y.append([r["N"], r["a"], r["d"]]); G.append((r["N"], r["a"], r["d"]))
@@ -122,7 +122,7 @@ def plot_averaging(av, ks, path):
     fig, axes = plt.subplots(1, 3, figsize=(12, 3.8), sharey=True)
     for j, sym in enumerate(("N", "a", "d")):
         ax = axes[j]
-        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "onion curve + scalar")):
+        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "radial profile + scalar")):
             ax.plot(ks, [av[f"{fname}/k={k}"]["r2"][j] for k in ks], mk, label=lab)
         ax.axhline(0, color="gray", lw=0.8); ax.set_xscale("log"); ax.set_xticks(ks); ax.set_xticklabels([str(k) for k in ks])
         ax.set_xlabel("realizations averaged, k"); ax.grid(True, alpha=0.3)
@@ -137,7 +137,7 @@ def plot_averaging(av, ks, path):
     stem, ext = os.path.splitext(path)
     for j, sym in enumerate(("N", "a", "d")):
         fig, ax = plt.subplots(figsize=(4.4, 3.8))
-        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "onion curve + scalar")):
+        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "radial profile + scalar")):
             ax.plot(ks, [av[f"{fname}/k={k}"]["r2"][j] for k in ks], mk, label=lab)
         ax.axhline(0, color="gray", lw=0.8); ax.set_xscale("log"); ax.set_xticks(ks); ax.set_xticklabels([str(k) for k in ks])
         ax.set_xlabel("realizations averaged, k"); ax.set_ylabel("out-of-sample R^2"); ax.set_ylim(-0.15, 0.85); ax.grid(True, alpha=0.3)
@@ -150,7 +150,7 @@ def plot_averaging(av, ks, path):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--folds", type=int, default=10); ap.add_argument("--k", type=int, default=5)
-    ap.add_argument("--lam", type=float, default=1.0); ap.add_argument("--json", default=None); ap.add_argument("--results", default=os.path.join(HERE, "onion_grid_results"))
+    ap.add_argument("--lam", type=float, default=1.0); ap.add_argument("--json", default=None); ap.add_argument("--results", default=os.path.join(HERE, "radial_profile_grid_results"))
     ap.add_argument("--quad", action="store_true", help="also report the quadratic ridge expansion")
     ap.add_argument("--figure", default=None, help="write the averaging plot (out-of-sample R^2 against k) to this PNG")
     args = ap.parse_args()

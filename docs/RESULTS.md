@@ -231,8 +231,8 @@ separate only from `r = 0.3` outward (16 standard errors at `r = 0.9`); at `r = 
 
 **Notebook:** [`r_eff_ij_vs_N_a_d.ipynb`](../notebooks/r_eff_ij_vs_N_a_d.ipynb)
 **Run:** `experiments/exp_877/` (grouping, shape spread, ANOVA)
-**Scripts:** `cluster/onion_tolerance_sweep.py` (CV and tolerance tables), `cluster/curve_inversion.py` (regression)
-**Raw data:** `cluster/onion_grid_results/` (24 realizations per combination, with `per_realization_curves`), `cluster/preview_curves_results/`
+**Scripts:** `cluster/radial_profile_tolerance_sweep.py` (CV and tolerance tables), `cluster/curve_inversion.py` (regression)
+**Raw data:** `cluster/radial_profile_grid_results/` (24 realizations per combination, with `per_realization_curves`), `cluster/preview_curves_results/`
 
 ### The protocol
 
@@ -310,12 +310,12 @@ differences into the groups; at 5% it is still one test in five.
 
 The earlier study (rejection rule, 6 realizations) had 19.2% significant and confirmed
 the signal by boosting the five strongest groups to 50 realizations. Running the whole
-regenerated grid at 24 makes the boost unnecessary; `run_onion_grid_boost_task.py` is
+regenerated grid at 24 makes the boost unnecessary; `run_radial_profile_grid_boost_task.py` is
 kept but feeds no result.
 
 ### Inverting `(N, a, d)` from the curve
 
-`cluster/curve_inversion.py` → `cluster/onion_grid_results/curve_inversion_summary.json`.
+`cluster/curve_inversion.py` → `cluster/radial_profile_grid_results/curve_inversion_summary.json`.
 Ridge on standardized log10 features, 10-fold CV grouped by combination (test
 combinations never seen in training), targets log10 `N`, `a`, `d`.
 
@@ -335,7 +335,7 @@ separates `N` from `a` at fixed resistance. The rejection-rule grid had shown th
 recovering `a` (R² 0.55 on single realizations); that was the depleted rim, one stick
 length wide, read as a signal, and it disappeared with the change of rule.
 
-![Averaging](../cluster/onion_grid_results/curve_inversion_k.png)
+![Averaging](../cluster/radial_profile_grid_results/curve_inversion_k.png)
 
 ---
 
@@ -514,7 +514,7 @@ at 2000 nodes).
 | `figures/backbone/`, `figures/junction/` | Figures of sections 7 and 8, written by the analysis scripts with `--figures` | `cluster/backbone_analysis.py`, `cluster/junction_analysis.py`, `cluster/junction_variants_analysis.py` |
 | `cluster/*_results_reject/`, `experiments/exp_843`–`exp_869` | Rejection-rule runs, kept for comparison only | — |
 
-`exp_874` and `exp_875` are executions of the onion and multimeter notebooks superseded
+`exp_874` and `exp_875` are executions of the radial_profile and multimeter notebooks superseded
 by `exp_877` and `exp_876` (same data; the later runs only changed which groups are drawn
 as separate panels and skipped the interactive widget cell).
 

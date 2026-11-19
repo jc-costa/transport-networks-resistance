@@ -3,7 +3,7 @@ Confirmatory run of the 2D pairwise test (paper item e). See PREREGISTRATION.md,
 which fixes the hypotheses and the analysis before this script is run.
 
 The thesis's E7 found, in a comparison made after its results were seen, that
-the mean of sixteen onion curves (C16) and the all-pairs profile (P) assign a
+the mean of sixteen radial profiles (C16) and the all-pairs profile (P) assign a
 network to its (N, a) candidate more often than the terminal resistance alone.
 This run repeats Part A on FRESH networks, so that the comparison is tested on
 data drawn after the hypothesis was stated:

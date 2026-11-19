@@ -11,7 +11,7 @@ That fix has a sharp, checkable signature, and this script tests exactly it:
 
   * the SCALAR R_eff column (R_eff_values / mean_ohm) must change, downward,
     since the old values were biased high;
-  * the ONION CURVES must not move at all. run_onion_protocol_pinv never
+  * the RADIAL_PROFILE CURVES must not move at all. run_radial_profile_protocol_pinv never
     merges anything, and the seeds are unchanged, so identical networks must
     produce identical curves. Any change here means something OTHER than the
     merge fix altered the pipeline, and the rerun should not be trusted;
@@ -20,7 +20,7 @@ That fix has a sharp, checkable signature, and this script tests exactly it:
 
 Usage:
     python verify_rerun_vs_backup.py backups/<timestamp>
-    python verify_rerun_vs_backup.py backups/<timestamp> --dir onion_grid_results
+    python verify_rerun_vs_backup.py backups/<timestamp> --dir radial_profile_grid_results
 
 Exit code 0 if everything matches expectations, 1 otherwise.
 """
@@ -33,8 +33,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 RESULT_DIRS = [
     "effective_resistance_d_results",
-    "onion_grid_results",
-    "onion_grid_boost_results",
+    "radial_profile_grid_results",
+    "radial_profile_grid_boost_results",
 ]
 
 CURVE_TOL = 1e-9      # relative; same machine + same seeds should be far tighter
@@ -44,7 +44,7 @@ SCALAR_EPS = 1e-12
 def max_rel_deviation(old, new, path=""):
     """Largest relative difference between two nested JSON structures.
 
-    The onion curve payload is a dict of per-layer dicts ('mean', 'std',
+    The radial profile payload is a dict of per-layer dicts ('mean', 'std',
     'n_realizations', 'per_realization_means'), so this walks dicts and lists
     rather than assuming a flat list of numbers.
 
@@ -141,9 +141,9 @@ def compare_dir(name, backup_root):
             draw_mismatch.append((key, old.get("n"), new.get("n"),
                                   old.get("perc_rate"), new.get("perc_rate")))
 
-        # 2. onion curves must be identical (no merge involved anywhere)
-        old_curves = old.get("onion_layer_curves") or {}
-        new_curves = new.get("onion_layer_curves") or {}
+        # 2. radial profiles must be identical (no merge involved anywhere)
+        old_curves = old.get("radial_profile_layer_curves") or {}
+        new_curves = new.get("radial_profile_layer_curves") or {}
         worst, note = max_rel_deviation(old_curves, new_curves)
         if note:
             curve_mismatch.append((key, note))
@@ -169,11 +169,11 @@ def compare_dir(name, backup_root):
 
     if curve_mismatch:
         ok = False
-        print(f"  MISMATCH: {len(curve_mismatch)} combo(s) have different onion curves; "
+        print(f"  MISMATCH: {len(curve_mismatch)} combo(s) have different radial profiles; "
               f"the pinv path does no merging, so this should be impossible. "
               f"First: {curve_mismatch[0]}")
-    elif any((r.get("onion_layer_curves") for r in old_records.values())):
-        print("  OK: onion curves bit-for-bit unchanged (as the fix predicts)")
+    elif any((r.get("radial_profile_layer_curves") for r in old_records.values())):
+        print("  OK: radial profiles bit-for-bit unchanged (as the fix predicts)")
 
     if scalar_changes:
         drops = [d for _, _, _, d in scalar_changes]

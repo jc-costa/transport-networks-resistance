@@ -197,7 +197,7 @@ def effective_resistance_from_reference(intersections, segment_to_nodes, referen
 
     The naive way to get this (measure_r_eff-style: one dense O(n^3) solve
     per target node) is wasteful when you want dozens of targets per network,
-    e.g. the onion-layer protocol. Instead, compute the Laplacian
+    e.g. the radial-profile protocol. Instead, compute the Laplacian
     pseudoinverse L+ once (O(n^3), the same order as a single solve), then
     every pairwise R_eff follows from the standard identity
     R_eff(i, j) = L+_ii + L+_jj - 2*L+_ij -- with i fixed at reference_node,

@@ -1,5 +1,5 @@
 """New analysis (not in the thesis): how measurement noise degrades the thickness
-signal of the onion curve. Re-analysis of stored curves only, no simulation.
+signal of the radial profile. Re-analysis of stored curves only, no simulation.
 
 Each realization's nine shell means and its terminal resistance are multiplied
 by independent log-normal factors exp(sigma * z), z ~ N(0, 1), before the
@@ -25,7 +25,7 @@ LAYERS = ci.LAYERS
 
 def load_jsonl(path):
     rows = [json.loads(l) for l in open(path)]
-    return [r for r in rows if r["n"] > 0 and r["onion_layer_curves"]]
+    return [r for r in rows if r["n"] > 0 and r["radial_profile_layer_curves"]]
 
 
 def build(rows, key, exclude_d=()):
@@ -74,8 +74,8 @@ def scores(X, Y, G, S, sigma, seed=0, folds=10, lam=1.0, draws=10):
 
 
 res = {"sigmas": SIGMAS, "ks": KS}
-grid = ci.load_rows(os.path.join(COLAB, "cluster", "onion_grid_results"))
-flat = load_jsonl(os.path.join(COLAB, "cluster", "onion_flat_results", "partial.jsonl"))
+grid = ci.load_rows(os.path.join(COLAB, "cluster", "radial_profile_grid_results"))
+flat = load_jsonl(os.path.join(COLAB, "cluster", "radial_profile_flat_results", "partial.jsonl"))
 data = {"slab_3d": ci.dataset_realizations(grid),
         "flat_inplane": build(flat, "per_realization_curves", exclude_d=(0.02,))}
 for name, (X, Y, G, S) in data.items():

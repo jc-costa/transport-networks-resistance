@@ -6,12 +6,12 @@ subfigures, and Fig. "probe-distance-3d").
 The question behind it: is R_eff,ij linear in the Euclidean separation of the
 probes, and if not, why not. Two families of networks answer it.
 
-  * The three-dimensional preview onion curves of cluster/preview_curves_results/
-    (three (N, a, d) combinations, 50 realizations each, Fig. "onion-preview"),
+  * The three-dimensional preview radial profiles of cluster/preview_curves_results/
+    (three (N, a, d) combinations, 50 realizations each, Fig. "radial_profile-preview"),
     replotted on linear axes and fitted.
   * The twenty two-dimensional networks embedded in the thesis' supplementary
     page (docs/index.html of the thesis repository, five (N, a) combinations,
-    four seeds each), on which the shell protocol of run_onion_protocol_pinv is
+    four seeds each), on which the shell protocol of run_radial_profile_protocol_pinv is
     re-run from every source-boundary node and from every node near the box
     centre, together with the all-pairs parallel factor d_ij / R_eff,ij (series
     path bound over measured resistance) and the node-density profile against
@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 RESULTS_DIR = os.path.join(HERE, "preview_curves_results")
 R0 = 1000.0
-SHELLS = np.arange(1, 10) / 10           # 0.1 ... 0.9, tolerance 0.05, as in the onion protocol
+SHELLS = np.arange(1, 10) / 10           # 0.1 ... 0.9, tolerance 0.05, as in the radial-profile protocol
 TOL = 0.05
 PREVIEW_COMBOS = [(150, 0.2, 0.1), (150, 0.2, 0.15), (125, 0.2, 0.1)]
 KEYS = [str(round(0.1 * n, 2)) for n in range(1, 10)]
@@ -69,7 +69,7 @@ def preview_curves():
 
 
 def report_3d(curves):
-    print("=== Three-dimensional onion curves, linear axes ===")
+    print("=== Three-dimensional radial profiles, linear axes ===")
     r = SHELLS
     for combo, (mu, se, n) in curves.items():
         gamma = np.polyfit(np.log(r), np.log(mu), 1)[0]

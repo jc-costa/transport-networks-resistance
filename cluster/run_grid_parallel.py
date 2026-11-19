@@ -13,7 +13,7 @@ process ran it or in what order.
 
 Usage:
   python run_grid_parallel.py --task scalar --workers 48
-  python run_grid_parallel.py --task onion  --workers 48
+  python run_grid_parallel.py --task radial_profile  --workers 48
   python run_grid_parallel.py --task critical --workers 33
   python run_grid_parallel.py --task preview --workers 48
 """
@@ -27,7 +27,7 @@ for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUMEX
 
 TASKS = {
     "scalar":   dict(module="run_effective_resistance_d_task", combos="build_combos", worker="run_one_combo", n_tasks="N_TASKS", results="RESULTS_DIR"),
-    "onion":    dict(module="run_onion_grid_task",             combos="build_combos", worker="run_one_combo", n_tasks="N_TASKS", results="RESULTS_DIR"),
+    "radial_profile":    dict(module="run_radial_profile_grid_task",             combos="build_combos", worker="run_one_combo", n_tasks="N_TASKS", results="RESULTS_DIR"),
 }
 
 
@@ -91,7 +91,7 @@ def run_points(task, workers):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("--task", required=True, choices=["scalar", "onion", "critical", "preview"])
+    ap = argparse.ArgumentParser(); ap.add_argument("--task", required=True, choices=["scalar", "radial_profile", "critical", "preview"])
     ap.add_argument("--workers", type=int, default=int(os.environ.get("SLURM_CPUS_PER_TASK", "4")))
     a = ap.parse_args()
     sys.path.insert(0, HERE)

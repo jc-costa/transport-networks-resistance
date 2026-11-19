@@ -23,8 +23,8 @@ history and are not cited:
 | `exp_871/` | 2D extended adaptive `(N, a)` grid, copied from the cluster run (`cluster/experiments_clip/`), including the `R_eff` against `N·a²` collapse test |
 | `exp_872/` | Fixed `N = 70, a = 0.6` thickness sweep and the three robustness `(N, a)` combinations |
 | `exp_873/` | Analysis of the 420-combination scalar `(N, a, d)` grid, 7800 individual resistance values, with the three-parameter power-law fit (`fit_3d`) |
-| `exp_876/` | `multimeter_r_eff.ipynb`: reference network (`N = 40, a = 0.6`, seed 11), manual probes, onion protocol validation against the direct solve, five-seed monotonicity check (`exp_875` is an aborted execution of the same notebook) |
-| `exp_877/` | The onion-curve study: matched-group comparisons for all 32 groups, shape spread and the ANOVA; `partC_group_7_*` and `partC_group_31_*` are the thesis panels (`exp_874` is the same execution before those two groups were chosen) |
+| `exp_876/` | `multimeter_r_eff.ipynb`: reference network (`N = 40, a = 0.6`, seed 11), manual probes, radial-profile protocol validation against the direct solve, five-seed monotonicity check (`exp_875` is an aborted execution of the same notebook) |
+| `exp_877/` | The radial-profile study: matched-group comparisons for all 32 groups, shape spread and the ANOVA; `partC_group_7_*` and `partC_group_31_*` are the thesis panels (`exp_874` is the same execution before those two groups were chosen) |
 | `exp_884/` | Inverse notebook with the clip-rule pool (2919 trials): power-law and critical-form fits, solution curves and the 22-candidate validation loaded from `cluster/validation_results/` (`exp_878`–`exp_884` are earlier executions of the same notebook, superseded when the figure titles were removed) |
 
 They are discussed in [`../docs/RESULTS.md`](../docs/RESULTS.md).

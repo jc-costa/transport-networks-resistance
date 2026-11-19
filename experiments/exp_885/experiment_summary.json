@@ -29,7 +29,7 @@
       "probe_distance": 0.32383523641710243
     }
   ],
-  "onion_protocol": {
+  "radial_profile_protocol": {
     "reference_node": 31,
     "layer_distances": [
       0.1,

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Test measure_r_eff() and the onion-layer protocol against known networks."""
+"""Test measure_r_eff() and the radial-profile protocol against known networks."""
 
-from multimeter import measure_r_eff, onion_layers, run_onion_protocol, run_onion_protocol_pinv
+from multimeter import measure_r_eff, radial_profile_layers, run_radial_profile_protocol, run_radial_profile_protocol_pinv
 from laplacian_utils import effective_resistance_from_reference
 
 # ------------------------------------------------------------------
@@ -51,15 +51,15 @@ assert r_disc['impedance'] == float('inf')
 print("PASSED")
 
 # ------------------------------------------------------------------
-# Test 3: onion_layers groups nodes on a straight line by distance from
+# Test 3: radial_profile_layers groups nodes on a straight line by distance from
 # node 0 at the origin, into the right shells.
 # ------------------------------------------------------------------
 print()
 print("=" * 60)
-print("TEST 3: onion_layers on a straight line of nodes")
+print("TEST 3: radial_profile_layers on a straight line of nodes")
 print("=" * 60)
 line_intersections = [[0.1 * i, 0.0] for i in range(10)]  # nodes 0..9 at x=0.0..0.9
-layers = onion_layers(line_intersections, reference_node=0,
+layers = radial_profile_layers(line_intersections, reference_node=0,
                       layer_distances=[0.1, 0.2, 0.3], tolerance=0.01)
 print(f"layers = {layers}")
 assert layers[0.1] == [1]
@@ -68,13 +68,13 @@ assert layers[0.3] == [3]
 print("PASSED")
 
 # ------------------------------------------------------------------
-# Test 4: run_onion_protocol on a resistor ladder (nodes 0..9 in a line,
+# Test 4: run_radial_profile_protocol on a resistor ladder (nodes 0..9 in a line,
 # unit resistors between consecutive nodes). R_eff(0, n) should equal n
 # (series resistors), so R_eff vs. distance should come back linear.
 # ------------------------------------------------------------------
 print()
 print("=" * 60)
-print("TEST 4: run_onion_protocol on a resistor ladder")
+print("TEST 4: run_radial_profile_protocol on a resistor ladder")
 print("=" * 60)
 ladder_graph = [[] for _ in range(10)]
 ladder_segments = {}
@@ -83,7 +83,7 @@ for i in range(9):
     ladder_graph[i].append(i)
     ladder_graph[i + 1].append(i)
 
-records = run_onion_protocol(line_intersections, ladder_graph, ladder_segments,
+records = run_radial_profile_protocol(line_intersections, ladder_graph, ladder_segments,
                              reference_node=0,
                              layer_distances=[0.1, 0.2, 0.3, 0.4, 0.5],
                              tolerance=0.01, k=1.0)
@@ -110,7 +110,7 @@ assert r_eff_vec[4] == float('inf')
 print("PASSED")
 
 # ------------------------------------------------------------------
-# Test 6: run_onion_protocol_pinv vs. run_onion_protocol on the same
+# Test 6: run_radial_profile_protocol_pinv vs. run_radial_profile_protocol on the same
 # resistor ladder. The ladder's nodes are evenly spaced (0.1 apart), so the
 # distance-dependent model R_edge = R0 * length reduces to a uniform
 # per-edge resistance of R0 * 0.1 -- picking R0 = 10 reproduces Test 4's
@@ -120,15 +120,15 @@ print("PASSED")
 # ------------------------------------------------------------------
 print()
 print("=" * 60)
-print("TEST 6: run_onion_protocol_pinv vs. run_onion_protocol (resistor ladder)")
+print("TEST 6: run_radial_profile_protocol_pinv vs. run_radial_profile_protocol (resistor ladder)")
 print("=" * 60)
 R0 = 10.0  # R_edge = R0 * 0.1 = 1.0, matching Test 4's k=1.0
 
-fast_records = run_onion_protocol_pinv(line_intersections, ladder_segments,
+fast_records = run_radial_profile_protocol_pinv(line_intersections, ladder_segments,
                                        reference_node=0,
                                        layer_distances=[0.1, 0.2, 0.3, 0.4, 0.5],
                                        tolerance=0.01, R0=R0)
-slow_records = run_onion_protocol(line_intersections, ladder_graph, ladder_segments,
+slow_records = run_radial_profile_protocol(line_intersections, ladder_graph, ladder_segments,
                                   reference_node=0,
                                   layer_distances=[0.1, 0.2, 0.3, 0.4, 0.5],
                                   tolerance=0.01, k=R0, distance_dependent=True)

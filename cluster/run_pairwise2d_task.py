@@ -19,8 +19,8 @@ Per network, ONE pseudoinverse of the weighted pre-merge Laplacian (R_edge = 100
 laplacian_utils._weighted_laplacian_distance_dependent, the Laplacian of
 effective_resistance_from_reference) gives every R_ij = L+_ii + L+_jj - 2 L+_ij, and from it:
   S     terminal R_eff (distance_dependent_impedance, the convention of the thesis)
-  anchor curves: the onion curve (mean R_eff from the anchor to the nodes of each shell
-        0.1, ..., 0.9, half-width 0.05, multimeter.onion_layers) from up to 16 anchors:
+  anchor curves: the radial profile (mean R_eff from the anchor to the nodes of each shell
+        0.1, ..., 0.9, half-width 0.05, multimeter.radial_profile_layers) from up to 16 anchors:
           s0          = pre_merge_source_nodes[0] (the reference node of the thesis)
           7 more      source-strip nodes (x < 0.1), drawn without replacement
           8           interior nodes (0.1 <= x <= 0.9), drawn without replacement
@@ -29,7 +29,7 @@ effective_resistance_from_reference) gives every R_ij = L+_ii + L+_jj - 2 L+_ij,
         C16 = shell-wise mean over all anchors
         (nested sets; an anchor with an empty shell is skipped in that shell's mean)
   P     all-pairs profile: mean R_ij over the node pairs i < j whose distance lies within
-        0.05 of each shell distance 0.1, ..., 0.9 (same rule as onion_layers)
+        0.05 of each shell distance 0.1, ..., 0.9 (same rule as radial_profile_layers)
 Anchors are drawn with their own Generator, seeded stable_seed(N, round(a, 3), tag, k,
 'anchors'), so they never touch the global numpy stream the networks are drawn from.
 Raw values (ohm) are stored; logs are taken in pairwise2d_analysis.py.
@@ -56,14 +56,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "utils")); sys.path.insert(0, HERE)
 from pipeline_utils import generate_percolating_network, distance_dependent_impedance, stable_seed  # noqa: E402
 from laplacian_utils import _weighted_laplacian_distance_dependent, _bfs_reachable  # noqa: E402
-from multimeter import onion_layers  # noqa: E402
+from multimeter import radial_profile_layers  # noqa: E402
 
 R0 = 1000.0
 N_TRIALS = 30
 MAX_ATTEMPTS = 200          # per network, = MAX_ATTEMPTS_VAL of run_validation_task.py
 BOUNDARY = "clip"
 LAYERS = [round(0.1 * n, 2) for n in range(1, 10)]
-TOL = min(b - a for a, b in zip(LAYERS, LAYERS[1:])) / 2      # onion_layers' default half-width
+TOL = min(b - a for a, b in zip(LAYERS, LAYERS[1:])) / 2      # radial_profile_layers' default half-width
 N_SOURCE_ANCHORS, N_INTERIOR_ANCHORS = 8, 8
 REPRO_TOL = 1e-9
 PLAN_PATH = os.path.join(HERE, "pairwise2d_plan.json")
@@ -136,7 +136,7 @@ def network_features(res, rng):
         r = dg[v] + dg - 2.0 * Lp[v, :]
         r[v] = 0.0
         r[~reach] = np.inf
-        layers = onion_layers(inter_list, v, layer_distances=LAYERS)
+        layers = radial_profile_layers(inter_list, v, layer_distances=LAYERS)
         cv = []
         for dl in LAYERS:
             vals = [r[j] for j in layers[dl] if np.isfinite(r[j])]

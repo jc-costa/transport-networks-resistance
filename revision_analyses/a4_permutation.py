@@ -1,5 +1,5 @@
 """A4: permutation null for the per-layer ANOVA of the matched-R_eff groups (revision plan, M15).
-Reuses the grouping and normalization of cluster/onion_tolerance_sweep.py. Under the null, the
+Reuses the grouping and normalization of cluster/radial_profile_tolerance_sweep.py. Under the null, the
 triple labels of whole realizations are exchangeable within a group; each permutation recomputes
 every per-layer F test of every group and records the fraction with p < 0.05."""
 import sys, os, json
@@ -7,24 +7,24 @@ import numpy as np
 from scipy import stats
 HERE = os.path.dirname(os.path.abspath(__file__)); CL = os.path.join(HERE, "..", "cluster")
 sys.path.insert(0, CL)
-import onion_tolerance_sweep as ots
+import radial_profile_tolerance_sweep as ots
 
 import argparse
-_ap = argparse.ArgumentParser(); _ap.add_argument("--onion", default="onion_grid_results"); _ap.add_argument("--scalar", default=None)
+_ap = argparse.ArgumentParser(); _ap.add_argument("--radial-profile", default="radial_profile_grid_results"); _ap.add_argument("--scalar", default=None)
 _args = _ap.parse_args()
-onion = ots.load_rows(os.path.join(CL, _args.onion))
-scalar = ots.load_rows(os.path.join(CL, _args.scalar or ("effective_resistance_d_results" if _args.onion == "onion_grid_results" else _args.onion)))
-paired = [k for k in onion if k in scalar and onion[k]["onion_layer_curves"] and scalar[k]["mean_ohm"] is not None]
+radial_profile = ots.load_rows(os.path.join(CL, _args.radial_profile))
+scalar = ots.load_rows(os.path.join(CL, _args.scalar or ("effective_resistance_d_results" if _args.radial_profile == "radial_profile_grid_results" else _args.radial_profile)))
+paired = [k for k in radial_profile if k in scalar and radial_profile[k]["radial_profile_layer_curves"] and scalar[k]["mean_ohm"] is not None]
 paired.sort(key=lambda k: scalar[k]["mean_ohm"])
 
 def group_data(groups):
     out = []
     for group in groups:
-        shared = sorted(set.intersection(*[set(float(d) for d in onion[k]["onion_layer_curves"]) for k in group]))
+        shared = sorted(set.intersection(*[set(float(d) for d in radial_profile[k]["radial_profile_layer_curves"]) for k in group]))
         if len(shared) < 2: continue
         X, lab = [], []
         for k in group:
-            c = ots.aligned_curves(onion[k], shared)
+            c = ots.aligned_curves(radial_profile[k], shared)
             if c.shape[0] >= 3:
                 X.append(c / c[:, -1:]); lab.append(np.full(c.shape[0], len(X) - 1))
         if len(X) < 2: continue
@@ -77,4 +77,4 @@ for tol, P in [(0.15, 10000)] + [(t, 2000) for t in ots.TOLERANCES if t != 0.15]
           f"null mean {100*r['null_mean']:4.1f}% q99 {100*r['null_q99']:4.1f}% max {100*r['null_max']:4.1f}%  "
           f"p_global {r['p_global']:.1e} ({'10k' if P==10000 else '2k'} perms)  Bonf {r['bonf']}  BH {r['bh']}"
           + (f"  | Kruskal-Wallis on log10: {100*r['kw_frac']:.1f}% sig, {r['kw_bonf']} Bonf" if 'kw_frac' in r else ''), flush=True)
-json.dump([{k: (float(v) if isinstance(v, (np.floating,)) else v) for k, v in r.items()} for r in out], open(f"a4_result_{_args.onion}.json", "w"), indent=1)
+json.dump([{k: (float(v) if isinstance(v, (np.floating,)) else v) for k, v in r.items()} for r in out], open(f"a4_result_{_args.radial_profile}.json", "w"), indent=1)

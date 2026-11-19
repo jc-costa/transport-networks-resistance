@@ -1,14 +1,14 @@
 """
 Constant-density control for the thickness discussion of the thesis
-(chapters/resultados, "Table density-control"): scalar R_eff and onion curves
+(chapters/resultados, "Table density-control"): scalar R_eff and radial profiles
 for combinations that keep the stick number density N/d fixed while d grows,
 so that a thicker film is a film of the same material, not a dilution.
 
 The grid of run_effective_resistance_d_task.py holds N fixed as d varies, so
 the density falls with thickness there. This script draws N_TRIALS percolating
 networks for each (N, a, d) in COMBOS with N proportional to d, computes the
-distance-dependent whole-face R_eff and the onion curve of the first source
-node (same constants and protocol as run_onion_grid_task.py), and writes one
+distance-dependent whole-face R_eff and the radial profile of the first source
+node (same constants and protocol as run_radial_profile_grid_task.py), and writes one
 JSON with per-realization values plus the per-combination summary.
 
 Each (combo, realization) is its own work unit with seed
@@ -35,7 +35,7 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
 import numpy as np  # noqa: E402
 from pipeline_utils_3d import generate_percolating_network_3d  # noqa: E402
 from pipeline_utils import distance_dependent_impedance, stable_seed  # noqa: E402
-from multimeter import run_onion_protocol_pinv  # noqa: E402
+from multimeter import run_radial_profile_protocol_pinv  # noqa: E402
 
 CONTACT_DISTANCE = 0.03
 R0 = 1000.0
@@ -58,7 +58,7 @@ def run_unit(args):
     if res is None:
         return {"combo_index": ci, "realization": r, "percolated": False, "attempts": attempts}
     R_eff = float(distance_dependent_impedance(res, R0)["impedance"])
-    records = run_onion_protocol_pinv(res["pre_merge_intersections"], res["pre_merge_segment_to_nodes"],
+    records = run_radial_profile_protocol_pinv(res["pre_merge_intersections"], res["pre_merge_segment_to_nodes"],
                                       res["pre_merge_source_nodes"][0], layer_distances=LAYER_DISTANCES, R0=R0)
     layer_means = {}
     for layer_d in LAYER_DISTANCES:
@@ -89,7 +89,7 @@ def summarize(rows, n_trials):
                     "perc_rate": len(R) / att if att else None, "total_attempts": att,
                     "mean_n_sticks": float(np.mean([x["n_sticks"] for x in mine])) if mine else None,
                     "mean_n_nodes": float(np.mean([x["n_nodes"] for x in mine])) if mine else None,
-                    "onion_curve": curve})
+                    "radial_profile_curve": curve})
     return out
 
 
@@ -114,8 +114,8 @@ def main():
         print(f"N={s['N']:3d} a={s['a']} d={s['d']:.2f}  N/d={s['N_over_d']:.0f}  Na2={s['Na2']:.1f}  "
               f"n={s['n']}/{s['n_trials']}  rate={s['perc_rate']:.3f}  "
               f"R_eff={s['mean_ohm']:.1f} +/- {s['sem_ohm']:.1f}  "
-              f"r0.1={s['onion_curve']['0.1']['mean']:.0f}+/-{s['onion_curve']['0.1']['sem']:.0f}  "
-              f"r0.9={s['onion_curve']['0.9']['mean']:.0f}+/-{s['onion_curve']['0.9']['sem']:.0f}")
+              f"r0.1={s['radial_profile_curve']['0.1']['mean']:.0f}+/-{s['radial_profile_curve']['0.1']['sem']:.0f}  "
+              f"r0.9={s['radial_profile_curve']['0.9']['mean']:.0f}+/-{s['radial_profile_curve']['0.9']['sem']:.0f}")
     with open(args.out, "w") as f:
         json.dump({"combos": [list(c) for c in COMBOS], "n_trials": args.trials, "boundary": "clip",
                    "layer_distances": LAYER_DISTANCES, "R0": R0, "contact_distance": CONTACT_DISTANCE,

@@ -43,7 +43,7 @@ multi-terminal work follows the same principle.
 
 | Module | Description |
 |---|---|
-| `multimeter.py` | "Touch two probes to the network." `measure_r_eff(i, j)` between any two existing nodes without altering the network, unlike the boundary merge used for the standard source-to-drain calculation. Also `onion_layers()` and `run_onion_protocol()` for sweeping `R_eff` outward through concentric shells, plus `run_onion_protocol_pinv()`, the fast path that costs one pseudoinverse per network instead of one dense solve per probe |
+| `multimeter.py` | "Touch two probes to the network." `measure_r_eff(i, j)` between any two existing nodes without altering the network, unlike the boundary merge used for the standard source-to-drain calculation. Also `radial_profile_layers()` and `run_radial_profile_protocol()` for sweeping `R_eff` outward through concentric shells, plus `run_radial_profile_protocol_pinv()`, the fast path that costs one pseudoinverse per network instead of one dense solve per probe |
 
 ## Visualization
 
