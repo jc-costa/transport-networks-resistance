@@ -16,7 +16,7 @@ from style import TWO_COL, CAT, MARK, INK2, GRAY, DATADIR, grid, panel, save
 
 d = json.load(open(os.path.join(DATADIR, "junction_dense_summary.json")))
 FS = ["S", "S+C1", "S+C4", "S+C16", "S+P"]
-LAB = [r"$R$", r"$+C_1$", r"$+C_4$", r"$+C_{16}$", r"$+P$"]
+LAB = [r"$R$", r"$+R_{\mathrm{mean}}^{(1)}$", r"$+R_{\mathrm{mean}}^{(4)}$", r"$+R_{\mathrm{mean}}^{(16)}$", r"$+R_{\mathrm{mean}}^{(\mathrm{all})}$"]
 TG = [("log10 rho", r"$\rho$ (junction)", CAT[0], MARK[0]),
       ("log10 a", r"$a$ (stick length)", CAT[1], MARK[1]),
       ("log10 Na2", r"$Na^2$ (density)", CAT[2], MARK[2])]

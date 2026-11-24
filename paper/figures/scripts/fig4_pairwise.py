@@ -48,7 +48,7 @@ se = {m.group(1): float(m.group(2)) for m in re.finditer(r"^\s+(S\S*)\s+binomial
 mc = {m.group(1): m.group(4) for m in re.finditer(
     r"^\s+(S\S*)\s+binomial SE.*gained (\d+), lost (\d+), McNemar p = (\S+)", rob, re.M)}
 ex = {i: an["part_A"]["summary"][i]["k=1"]["mean_excess_over_chance"] for i in INFO}
-LAB = {"S": r"$R$", "S+C1": r"$+C_1$", "S+C4": r"$+C_4$", "S+C16": r"$+C_{16}$", "S+P": r"$+P$"}
+LAB = {"S": r"$R$", "S+C1": r"$+R_{\mathrm{mean}}^{(1)}$", "S+C4": r"$+R_{\mathrm{mean}}^{(4)}$", "S+C16": r"$+R_{\mathrm{mean}}^{(16)}$", "S+P": r"$+R_{\mathrm{mean}}^{(\mathrm{all})}$"}
 shade = {"S": GRAY, "S+C1": "#8fb8ea", "S+C4": "#5b97df", "S+C16": "#2a78d6", "S+P": "#0d3b75"}
 MK = {"S": "o", "S+C1": "s", "S+C4": "D", "S+C16": "^", "S+P": "v"}
 conf = json.load(open(os.path.join(DATADIR, "pairwise2d_confirm_summary.json")))
