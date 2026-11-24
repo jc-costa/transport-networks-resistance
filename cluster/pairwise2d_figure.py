@@ -18,7 +18,7 @@ an = json.load(open(os.path.join(RES, "analysis.json")))
 rob = open(os.path.join(RES, "robustness.txt")).read()
 A, B, V = an["part_A"], an["part_B"], an["verdicts"]
 INFO = ["S", "S+C1", "S+C4", "S+C16", "S+P"]
-TEX = {"S": "$S$", "S+C1": "$S{+}C_1$", "S+C4": "$S{+}C_4$", "S+C16": "$S{+}C_{16}$", "S+P": "$S{+}P$"}
+TEX = {"S": "$S$", "S+C1": r"$S{+}R_{\mathrm{mean}}^{(1)}$", "S+C4": r"$S{+}R_{\mathrm{mean}}^{(4)}$", "S+C16": r"$S{+}R_{\mathrm{mean}}^{(16)}$", "S+P": r"$S{+}R_{\mathrm{mean}}^{(\mathrm{all})}$"}
 se = {m.group(1): float(m.group(2)) for m in re.finditer(r"^\s+(S\S*)\s+binomial SE ~ ([0-9.]+)", rob, re.M)}
 mc = {m.group(1): (int(m.group(2)), int(m.group(3)), m.group(4))
       for m in re.finditer(r"^\s+(S\S*)\s+binomial SE.*gained (\d+), lost (\d+), McNemar p = (\S+)", rob, re.M)}
@@ -27,7 +27,7 @@ assert set(se) == set(INFO) and set(mc) == set(INFO[1:]), (se, mc)
 cm = plt.get_cmap("plasma")
 COL = {"S": "#7a7a7a", "S+C1": cm(0.0), "S+C4": cm(0.25), "S+C16": cm(0.5), "S+P": cm(0.72)}
 MK = {"S": "o", "S+C1": "s", "S+C4": "D", "S+C16": "^", "S+P": "v"}
-LAB = {"S": r"$R_{\mathrm{eff}}$", "S+C1": "$+C_1$", "S+C4": "$+C_4$", "S+C16": "$+C_{16}$", "S+P": "$+P$"}
+LAB = {"S": r"$R_{\mathrm{eff}}$", "S+C1": r"$+R_{\mathrm{mean}}^{(1)}$", "S+C4": r"$+R_{\mathrm{mean}}^{(4)}$", "S+C16": r"$+R_{\mathrm{mean}}^{(16)}$", "S+P": r"$+R_{\mathrm{mean}}^{(\mathrm{all})}$"}
 ex = {i: A["summary"][i]["k=1"]["mean_excess_over_chance"] for i in INFO}
 targets = sorted(A["targets"], key=float)
 
