@@ -76,7 +76,7 @@ f3 = lambda v: f"{v:.3f}"
 L = []
 L.append(r"\begin{tabular}{rrr" + "r" * len(INFO) + "}")
 L.append(r"\toprule")
-L.append(r"Target ($\Omega$) & $C$ & Chance & " + " & ".join(TEX[i] for i in INFO) + r" \\")
+L.append(r"Target ($\Omega$) & $n_{\mathrm{cand}}$ & Chance & " + " & ".join(TEX[i] for i in INFO) + r" \\")
 L.append(r"\midrule")
 for t in targets:
     r = A["targets"][t]
