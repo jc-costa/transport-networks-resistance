@@ -241,22 +241,22 @@ def make_panels(curves3d, by_combo, interior_anchor, density, outdir):
     ax.plot(rr, ref * np.sqrt(rr / 0.9), 'k:', lw=1.2, label="$\\propto\\sqrt{r}$ pinned at $r$=0.9")
     ax.plot([], [], 'k--', lw=0.8, label="$\\propto r$ through the origin (per combination)")
     ax.set_xlim(0, 1); ax.set_ylim(0, 1550); ax.grid(alpha=.3); ax.legend(fontsize=8, frameon=False, loc='upper left')
-    ax.set_xlabel("Distance $r$ from the fixed node $i$ to the moved node $j$")
-    ax.set_ylabel("Mean $R_{\\mathrm{eff},ij}$ per shell ($\\Omega$)")
+    ax.set_xlabel("Distance $r$ from the anchor $i$ to node $j$")
+    ax.set_ylabel("$R_{\\mathrm{mean}}(r)$ ($\\Omega$)")
     fig.tight_layout(); fig.savefig(os.path.join(outdir, "probe_distance_3d_linear.png"), dpi=200); plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(5.6, 4.3))
     for c, m, key in zip(COLS, MARKERS, combos):
         mu, se, n = mean_se(by_combo[key]["boundary"])
         ax.errorbar(SHELLS, mu, yerr=se, color=c, marker=m, ms=4.5, lw=1.3, capsize=2,
-                    label=f"$N$={key[0]}, $a$={key[1]}, from source boundary")
+                    label=f"$N$={key[0]}, $a$={key[1]}, anchor on the source strip")
     mu, se, n = mean_se(interior_anchor)
     ok = n > 100
     ax.errorbar(SHELLS[ok], mu[ok], yerr=se[ok], color='#0b0b0b', marker='x', ms=6, lw=1.3, capsize=2,
-                label="all combinations, from nodes within 0.1 of the centre")
-    ax.set_xlim(0, 1); ax.set_ylim(0, 320); ax.grid(alpha=.3); ax.legend(fontsize=8, frameon=False, loc='upper left')
-    ax.set_xlabel("Distance $r$ from the fixed node $i$ to the moved node $j$")
-    ax.set_ylabel("Mean $R_{\\mathrm{eff},ij}$ per shell ($\\Omega$)")
+                label="all combinations, anchors within 0.1 of the center")
+    ax.set_xlim(0, 1); ax.set_ylim(0, 420); ax.grid(alpha=.3); ax.legend(fontsize=8, frameon=False, loc='upper left')
+    ax.set_xlabel("Distance $r$ from the anchor $i$ to node $j$")
+    ax.set_ylabel("$R_{\\mathrm{mean}}(r)$ ($\\Omega$)")
     fig.tight_layout(); fig.savefig(os.path.join(outdir, "probe_distance_2d_linear.png"), dpi=200); plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(5.6, 4.3))
@@ -270,8 +270,8 @@ def make_panels(curves3d, by_combo, interior_anchor, density, outdir):
         # plotted at the bin centres 0.1 ... 0.9, the same abscissae as the shells of panel (a)
         ax.plot(SHELLS, pf, color=c, marker=m, ms=4.5, lw=1.3, label=f"$N$={key[0]}, $a$={key[1]}")
     ax.set_xlim(0, 1); ax.set_ylim(0, 8); ax.grid(alpha=.3); ax.legend(fontsize=8, frameon=False, loc='lower right')
-    ax.set_xlabel("Distance $l$ between nodes $i$ and $j$ (all pairs)")
-    ax.set_ylabel("Parallel factor $d_{ij}/R_{\\mathrm{eff},ij}$")
+    ax.set_xlabel("Distance $r$ between nodes $i$ and $j$ (all pairs)")
+    ax.set_ylabel("Parallel factor $\\ell_G(i,j)/R_{ij}$")
     fig.tight_layout(); fig.savefig(os.path.join(outdir, "probe_distance_parallel_factor.png"), dpi=200); plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(5.6, 4.3))
@@ -281,7 +281,7 @@ def make_panels(curves3d, by_combo, interior_anchor, density, outdir):
     for x, y, dg_ in zip(mid, density["per_area"], density["mean_degree"]):
         ax.text(x, y + 15, f"$\\langle k\\rangle$={dg_:.2f}", ha='center', fontsize=7.5, rotation=90, va='bottom')
     ax.set_xlim(0, 0.5); ax.set_ylim(0, 300); ax.grid(alpha=.3, axis='y')
-    ax.set_xlabel("Distance of a node to the nearest box edge (0.5 = box centre)")
+    ax.set_xlabel("Distance of a node to the nearest film edge (0.5 = film center)")
     ax.set_ylabel("Nodes per unit area, per network")
     fig.tight_layout(); fig.savefig(os.path.join(outdir, "probe_distance_density_profile.png"), dpi=200); plt.close(fig)
 

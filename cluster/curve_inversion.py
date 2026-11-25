@@ -122,28 +122,29 @@ def plot_averaging(av, ks, path):
     fig, axes = plt.subplots(1, 3, figsize=(12, 3.8), sharey=True)
     for j, sym in enumerate(("N", "a", "d")):
         ax = axes[j]
-        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "radial profile + scalar")):
+        for fname, mk, lab in (("scalar", "s--", "$R_{\\mathrm{eff}}$ only"), ("curve+scalar", "o-", "radial profile + $R_{\\mathrm{eff}}$")):
             ax.plot(ks, [av[f"{fname}/k={k}"]["r2"][j] for k in ks], mk, label=lab)
         ax.axhline(0, color="gray", lw=0.8); ax.set_xscale("log"); ax.set_xticks(ks); ax.set_xticklabels([str(k) for k in ks])
-        ax.set_xlabel("realizations averaged, k"); ax.grid(True, alpha=0.3)
+        ax.set_xlabel("realizations averaged, $k$"); ax.grid(True, alpha=0.3)
         # panel label inside the axes rather than a title (the thesis caption carries the title)
         ax.text(0.04, 0.95, f"target: $\\log_{{10}} {sym}$", transform=ax.transAxes, ha="left", va="top", fontsize=11)
-    axes[0].set_ylabel("out-of-sample R^2"); axes[0].set_ylim(-0.15, 0.85); axes[0].legend(loc="upper right", fontsize=9)
+    axes[0].set_ylabel("out-of-sample $R^2$"); axes[0].set_ylim(-0.15, 0.85); axes[0].legend(loc="upper right", fontsize=9)
     fig.tight_layout(); fig.savefig(path, dpi=150, metadata={"Software": None}); plt.close(fig)
     print(f"wrote {path}")
 
     # the same three panels as separate files (<path>_N.png, _a.png, _d.png), for the
     # thesis, which sets them as subfigures (a), (b), (c) and describes them in the caption
     stem, ext = os.path.splitext(path)
+    plt.rcParams.update({"font.size": 14})  # the panels are set at a third of the text width
     for j, sym in enumerate(("N", "a", "d")):
         fig, ax = plt.subplots(figsize=(4.4, 3.8))
-        for fname, mk, lab in (("scalar", "s--", "scalar R_eff only"), ("curve+scalar", "o-", "radial profile + scalar")):
+        for fname, mk, lab in (("scalar", "s--", "$R_{\\mathrm{eff}}$ only"), ("curve+scalar", "o-", "radial profile + $R_{\\mathrm{eff}}$")):
             ax.plot(ks, [av[f"{fname}/k={k}"]["r2"][j] for k in ks], mk, label=lab)
         ax.axhline(0, color="gray", lw=0.8); ax.set_xscale("log"); ax.set_xticks(ks); ax.set_xticklabels([str(k) for k in ks])
-        ax.set_xlabel("realizations averaged, k"); ax.set_ylabel("out-of-sample R^2"); ax.set_ylim(-0.15, 0.85); ax.grid(True, alpha=0.3)
-        ax.text(0.04, 0.95, f"target: $\\log_{{10}} {sym}$", transform=ax.transAxes, ha="left", va="top", fontsize=11)
+        ax.set_xlabel("realizations averaged, $k$"); ax.set_ylabel("out-of-sample $R^2$"); ax.set_ylim(-0.15, 0.85); ax.grid(True, alpha=0.3)
+        ax.text(0.04, 0.95, f"target: $\\log_{{10}} {sym}$", transform=ax.transAxes, ha="left", va="top", fontsize=14)
         if j == 0:
-            ax.legend(loc="upper right", fontsize=8)
+            ax.legend(loc="center right", fontsize=11)
         fig.tight_layout(); out = f"{stem}_{sym}{ext}"
         fig.savefig(out, dpi=150, metadata={"Software": None}); plt.close(fig); print(f"wrote {out}")
 

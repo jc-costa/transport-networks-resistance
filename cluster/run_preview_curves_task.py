@@ -256,14 +256,14 @@ def cmd_aggregate():
         ax.errorbar(ds, means, yerr=sems, fmt='o-', capsize=3, markersize=4, linewidth=1.4,
                     label=f"$N$={row['N']}, $a$={row['a']}, $d$={row['d']} ($n$={row['n']})")
     ax.set_yscale('log')
-    ax.set_xlabel(r'Distance from reference node, $r$')
-    ax.set_ylabel(r'Mean $R_{\mathrm{eff},ij}$ per layer ($\Omega$)')
+    ax.set_xlabel(r'Distance from anchor, $r$')
+    ax.set_ylabel(r'$R_{\mathrm{mean}}(r)$ ($\Omega$, log scale)')
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3, which='both')
     plt.tight_layout()
 
     fig_path = os.path.join(HERE, "..", "figures", "partA_preview_radial_profile_curves_errorbars.png")
-    fig.savefig(fig_path, dpi=150, bbox_inches='tight')
+    fig.savefig(fig_path, dpi=150)
     json_path = os.path.join(RESULTS_DIR, "preview_curves_summary.json")
     with open(json_path, "w") as f:
         json.dump(summary, f, indent=2)

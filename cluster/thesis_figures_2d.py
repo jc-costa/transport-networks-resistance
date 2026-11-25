@@ -47,7 +47,7 @@ def main():
         ax.tick_params(axis="both", labelsize=10)
         ax.grid(True, alpha=0.3, which="both")
     fig.supxlabel("N (number of sticks)", fontsize=14)
-    fig.supylabel("R_eff (Ω, log scale)", fontsize=14)
+    fig.supylabel(r"$R_{\mathrm{eff}}$ ($\Omega$, log scale)", fontsize=14)
     fig.savefig(args.out, dpi=150, metadata={"Software": None})
     print(f"wrote {args.out}")
 
